@@ -1,0 +1,9 @@
+#summary One-sentence summary of this page.
+
+= Screenshots =
+
+== Main interface ==
+[http://mpnzb.googlecode.com/svn/wiki/images/screenshots/SS2.png]
+
+== Job queue ==
+[http://mpnzb.googlecode.com/svn/wiki/images/screenshots/SS3.png]
