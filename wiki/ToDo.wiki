@@ -2,24 +2,24 @@
 #labels Phase-Requirements,Phase-Design
 
 == Top priority: ==
-  * Add searching using Binsearch.info
+  * Add searching using [http://binsearch.info/ Binsearch]
 
 == Skin: ==
   * Total/Job progress bars
   * Download complete sound effect
 
 == Future features: ==
-  * NZBPlayer integration
-  * MyTVSeries integration
+  * [http://www.nzbplayer.com/ NZBPlayer] playback
+  * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
   * MPI installation
 
 == Sites to add: ==
-  * Yabse
-  * Bintube.com
-  * NZBMovieSeeker
-  * MyTvNZB
+  * [http://www.bintube.com/ Bintube]
+  * [http://www.nzbmovieseeker.com/ NZBMovieSeeker]
+  * [http://mytvnzb.foechoer.be/ MyTvNZB]
+  * [http://nzbserien.org/ NZBSerien]
 
 == Clients to add: ==
-  * Ninan
-  * alt.binz
+  * [http://www.ninan.org/modules/news/ Ninan]
+  * [http://www.altbinz.net/ alt.binz]
   * "Save NZB to Folder"
