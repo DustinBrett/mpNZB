@@ -1,6 +1,5 @@
 #labels Phase-Requirements,Phase-Design,Phase-Implementation
 <H3>Top Priority</H3>
-- Add support for Blue3Wide/StreamedMP<BR>
 - Add searching using Binsearch.info
 
 <H3>Skin</H3>
