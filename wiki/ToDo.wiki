@@ -7,6 +7,7 @@
 == Skin: ==
   * Total/Job progress bars
   * Download complete sound effect
+  * Language support
 
 == Future features: ==
   * [http://www.nzbplayer.com/ NZBPlayer] playback
@@ -22,4 +23,3 @@
 == Clients to add: ==
   * [http://www.ninan.org/modules/news/ Ninan]
   * [http://www.altbinz.net/ alt.binz]
-  * "Save NZB to Folder"
