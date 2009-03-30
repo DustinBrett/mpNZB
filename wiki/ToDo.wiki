@@ -1,0 +1,22 @@
+#labels Phase-Requirements,Phase-Design,Phase-Implementation
+<H2><U>ToDo List</U><H2>
+
+<H3>Top Priority</H3>
+- Add support for Blue3Wide/StreamedMP<BR>
+- Add searching using Binsearch.info
+
+<H3>Skin</H3>
+- Total/Job progress bars<BR>
+- Download complete sound effect
+
+<H3>Future features</H3>
+- NZBPlayer integration<BR>
+- MyTVSeries integration<BR>
+- MPI installation
+
+<H3>Sites</H3>
+- Add Yasbe/Bintube.com/NZBMatrix(VIP)/NZBMovieSeeker/MyTvNZB
+
+<H3>Clients</H3>
+- Add Ninan/alt.binz support<BR>
+- Add a "Save NZB to Folder" option
