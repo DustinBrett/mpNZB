@@ -3,6 +3,18 @@
 
 == High priority: ==
   * [http://binsearch.info/ Binsearch] search/feed support
+  * Rewrite code from scratch
+    # Classes
+    # Logging
+    # Comments
+    # Speed
+    # Create a mpFunctions class for Dialogs/Progress Bar
+    # Can itemlist be assigned to item array?
+
+== Coding: ==
+  * When item is clicked open a new page with information related to it
+  * Redo RSS reader to grab all possible nodes
+  * Have RSS information save to an array other than the Itemlist
 
 == Skin: ==
   * Total/Job progress bars
