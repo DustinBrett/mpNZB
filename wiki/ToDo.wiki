@@ -1,8 +1,8 @@
 #summary To-Do list for project
 #labels Phase-Requirements,Phase-Design
 
-== Top priority: ==
-  * Searching with [http://binsearch.info/ Binsearch]
+== High priority: ==
+  * [http://binsearch.info/ Binsearch] search/feed.
 
 == Skin: ==
   * Total/Job progress bars
