@@ -9,6 +9,9 @@
   * Download complete sound effect
   * Language support
 
+== Configuration ==
+  * Test connection to SABnzbd
+
 == Future features: ==
   * [http://www.nzbplayer.com/ NZBPlayer] playback
   * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
