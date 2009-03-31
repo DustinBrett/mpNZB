@@ -15,6 +15,7 @@
       * Client Load (Test connection)
       * OnClicked/OnPageLoad/OnPageDestory/SkinControlAttribute/Init/DeInit
       * All status updates are inside client class
+  * Upload source code to Google-Code
 
 == Coding: ==
   * When item is clicked open a new page with information related to it
