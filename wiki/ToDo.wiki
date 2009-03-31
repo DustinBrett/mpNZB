@@ -8,8 +8,13 @@
     # Logging
     # Comments
     # Speed
-    # Create a mpFunctions class for Dialogs/Progress Bar
-    # Can itemlist be assigned to item array?
+    # Create a mpFunctions class for Dialogs/Progress Bar Refresher
+    # Main class
+      * ISetupForm (Copy from example)
+      * Settings Load
+      * Client Load (Test connection)
+      * OnClicked/OnPageLoad/OnPageDestory/SkinControlAttribute/Init/DeInit
+      * All status updates are inside client class
 
 == Coding: ==
   * When item is clicked open a new page with information related to it
