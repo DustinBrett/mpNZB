@@ -3,18 +3,13 @@
 
 == High priority: ==
   * [http://binsearch.info/ Binsearch] search/feed support
-  * Rewrite code from scratch
+  * Rewrite code
     # Classes
     # Logging
     # Comments
     # Speed
-    # Create a mpFunctions class for Dialogs/Progress Bar Refresher
     # Main class
-      * ISetupForm (Copy from example)
-      * Settings Load
       * Client Load (Test connection)
-      * OnClicked/OnPageLoad/OnPageDestory/SkinControlAttribute/Init/DeInit
-      * All status updates are inside client class
   * Upload source code to Google-Code
 
 == Coding: ==
