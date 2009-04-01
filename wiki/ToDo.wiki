@@ -11,18 +11,12 @@
   * NZBMatrix - {{{<description><b>Size:</b> 4003.21MB<br /></description>}}}
   * NZBsRus - {{{<description>pm&lt;br&gt;&lt;b&gt;Size:&lt;/b&gt; 811.60 MiB (65 files)</description>}}}
 
-== Coding: ==
-  * When item is clicked open a new page with information related to it
-  * Redo RSS reader to grab all possible nodes
-  * Have RSS information save to an array other than the Itemlist
-
 == Skin: ==
-  * Total/Job progress bars
   * Download complete sound effect
   * Language support
 
 == Future features: ==
-  * [http://www.nzbplayer.com/ NZBPlayer] playback
+  * [http://www.nzbplayer.com/ NZBPlayer] playback (Streaming)
   * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
   * MPI installation
 
@@ -31,7 +25,3 @@
   * [http://www.nzbmovieseeker.com/ NZBMovieSeeker]
   * [http://mytvnzb.foechoer.be/ MyTvNZB]
   * [http://nzbserien.org/ NZBSerien]
-
-== Clients to add: ==
-  * [http://www.ninan.org/modules/news/ Ninan]
-  * [http://www.altbinz.net/ alt.binz]
