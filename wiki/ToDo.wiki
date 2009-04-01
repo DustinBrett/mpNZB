@@ -3,7 +3,7 @@
 
 == Code related: ==
   * Add client {{{OnLoad}}} connection test
-  * Upload source code to Google-Code
+  * Upload source code to SVN
 
 == RSS information: ==
   * Newzbin - {{{<report:size type="bytes">4813045471</report:size>}}}
