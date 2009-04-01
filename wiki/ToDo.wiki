@@ -7,9 +7,9 @@
   * Upload source code to Google-Code
 
 == Size information: ==
-  * Newzbin [<report:size type="bytes">4813045471</report:size>]
-  * NZBMatrix [<description><b>Size:</b> 4003.21MB<br /></description>]
-  * NZBsRus [<description>pm&lt;br&gt;&lt;b&gt;Size:&lt;/b&gt; 811.60 MiB (65 files)</description>]
+  * Newzbin - *<report:size type="bytes">4813045471</report:size>
+  * NZBMatrix - *<description><b>Size:</b> 4003.21MB<br /></description>]
+  * NZBsRus - *<description>pm&lt;br&gt;&lt;b&gt;Size:&lt;/b&gt; 811.60 MiB (65 files)</description>]
 
 == Coding: ==
   * When item is clicked open a new page with information related to it
