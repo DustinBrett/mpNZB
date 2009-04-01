@@ -1,12 +1,11 @@
 #summary To-Do list for project
 #labels Phase-Requirements,Phase-Design
 
-== High priority: ==
-  * [http://binsearch.info/ Binsearch] search/feed support
-  * Client Load (Test connection)
+== Code related: ==
+  * Add client OnLoad connection test
   * Upload source code to Google-Code
 
-== Size information: ==
+== RSS information: ==
   * Newzbin - {{{<report:size type="bytes">4813045471</report:size>}}}
   * NZBMatrix - {{{<description><b>Size:</b> 4003.21MB<br /></description>}}}
   * NZBsRus - {{{<description>pm&lt;br&gt;&lt;b&gt;Size:&lt;/b&gt; 811.60 MiB (65 files)</description>}}}
@@ -20,7 +19,10 @@
   * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
   * MPI installation
 
-== Sites to add: ==
+== Sites to add: (High priority) ==
+  * [http://binsearch.info/ Binsearch]
+
+== Sites to add: (Low priority) ==
   * [http://www.bintube.com/ Bintube]
   * [http://www.nzbmovieseeker.com/ NZBMovieSeeker]
   * [http://mytvnzb.foechoer.be/ MyTvNZB]
