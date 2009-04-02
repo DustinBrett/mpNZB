@@ -2,7 +2,6 @@
 #labels Phase-Requirements,Phase-Design
 
 == Code related: ==
-  * Add client {{{OnLoad}}} connection test
   * Upload source code to SVN
 
 == RSS information: ==
