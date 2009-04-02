@@ -15,6 +15,12 @@
   * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
   * MPI installation
 
+== Search to add: ==
+  * NZBIndex
+    * http://www.nzbindex.com/rss/?q=[SEARCH]&sort=dateTime&max=250
+    * <enclosure url="[NZB]">
+    * <b>[SIZE]</b>
+
 == Sites to add: (Low priority) ==
   * [http://www.bintube.com/ Bintube]
   * [http://www.nzbmovieseeker.com/ NZBMovieSeeker]
