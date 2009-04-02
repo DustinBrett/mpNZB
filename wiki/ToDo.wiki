@@ -4,21 +4,15 @@
 == Code related: ==
   * Upload source code to SVN
 
-== RSS information: ==
-  * NZBMatrix - {{{<description><b>Size:</b> 4003.21MB<br /></description>}}}
-  * NZBsRus - {{{<description>pm&lt;br&gt;&lt;b&gt;Size:&lt;/b&gt; 811.60 MiB (65 files)</description>}}}
-
 == Skin: ==
   * Download complete sound effect
   * Language support
+  * Redo Blue3/Blue3Wide
 
 == Future features: ==
   * [http://www.nzbplayer.com/ NZBPlayer] playback (Streaming)
   * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
   * MPI installation
-
-== Sites to add: (High priority) ==
-  * [http://binsearch.info/ Binsearch]
 
 == Sites to add: (Low priority) ==
   * [http://www.bintube.com/ Bintube]
