@@ -292,30 +292,47 @@ namespace mpNZB
           XmlNodeList nodeList = xmlDoc.SelectNodes("rss/channel/item");         
 
           string strSize = String.Empty;
+          string strPath = String.Empty;
+          string strTemp = String.Empty;
+          string strSizeText = String.Empty;
+          int intSizePOS = 0;
 
           foreach (XmlNode nodeItem in nodeList)
           {
-            if (Site.strSite == "Newzbin")
+            switch (Site.strSite)
             {
-              double dblSize;              
-              double.TryParse(nodeItem["report:size"].InnerText, out dblSize);
-              strSize =  string.Format("{0:0.00}", Math.Round((dblSize / 1024) / 1024, 2)) + " MB";
+              case "TvNZB":
+                strPath = nodeItem["link"].InnerText;
+                break;
+              case "Newzbin":
+                double dblSize;
+                double.TryParse(nodeItem["report:size"].InnerText, out dblSize);
+                strSize = string.Format("{0:0.00}", Math.Round((dblSize / 1024) / 1024, 2)) + " MB";
+                strPath = nodeItem["report:id"].InnerText;
+                break;
+              case "NZBMatrix":
+                strTemp = nodeItem["description"].InnerText.Replace(" ", String.Empty);
+                strSizeText = "<b>Size:</b>".ToLower();
+                intSizePOS = strTemp.ToLower().IndexOf(strSizeText) + strSizeText.Length;
+                strSize = strTemp.Substring(intSizePOS, strTemp.IndexOf("<", intSizePOS) - intSizePOS);
+                strPath = nodeItem["link"].InnerText;
+                break;
+              case "NZBsRus":
+                strTemp = nodeItem["description"].InnerText.Replace(" ", String.Empty);
+                strSizeText = "<b>Size:</b>".ToLower();
+                intSizePOS = strTemp.ToLower().IndexOf(strSizeText) + strSizeText.Length;
+                strSize = strTemp.Substring(intSizePOS, strTemp.IndexOf("(", intSizePOS) - intSizePOS);
+                strPath = nodeItem["link"].InnerText;
+                break;
+              case "NZBIndex":
+                strTemp = nodeItem["description"].InnerText.Replace(" ", String.Empty);
+                strSizeText = "<b>".ToLower();
+                intSizePOS = strTemp.ToLower().IndexOf(strSizeText) + strSizeText.Length;
+                strSize = strTemp.Substring(intSizePOS, strTemp.IndexOf("</b>", intSizePOS) - intSizePOS);
+                strPath = nodeItem["enclosure"].Attributes["url"].InnerText;
+                break;
             }
-            else if (Site.strSite == "NZBMatrix")
-            {
-              string strTemp = nodeItem["description"].InnerText.Replace(" ", String.Empty);
-              string strSizeText = "<b>Size:</b>".ToLower();
-              int intSizePOS = strTemp.ToLower().IndexOf(strSizeText) + strSizeText.Length;
-              strSize = strTemp.Substring(intSizePOS, strTemp.IndexOf("<", intSizePOS) - intSizePOS);
-            }
-            else if (Site.strSite == "NZBsRus")
-            {
-              string strTemp = nodeItem["description"].InnerText.Replace(" ", String.Empty);
-              string strSizeText = "<b>Size:</b>".ToLower();
-              int intSizePOS = strTemp.ToLower().IndexOf(strSizeText) + strSizeText.Length;
-              strSize = strTemp.Substring(intSizePOS, strTemp.IndexOf("(", intSizePOS) - intSizePOS);
-            }
-            Dialogs.AddItem(lstItemList, nodeItem["title"].InnerText, strSize, nodeItem[((Site.strSite == "Newzbin") ? "report:id" : "link")].InnerText, 1);
+            Dialogs.AddItem(lstItemList, nodeItem["title"].InnerText, strSize, strPath, 1);
           }
 
           GUIPropertyManager.SetProperty("#Status", "Item Count (" + nodeList.Count + ")");
@@ -351,17 +368,11 @@ namespace mpNZB
 
     private void fncSearchFeed()
     {
-      // Create Site List
-      // ##################################################
-      string strSiteList = "Binsearch";
-      string[] strSites = strSiteList.Split((char)0);
-      // ##################################################
-
       // Select Site/Feed
       // ##################################################
       string strResult = String.Empty;
       Site.strSite = String.Empty;
-      Site.strSite = Dialogs.Menu(strSites, "Select Site");
+      Site.strSite = Dialogs.Menu(new string[] { "Binsearch", "NZBIndex" }, "Select Site");
       switch (Site.strSite)
       {
         case "Binsearch":
@@ -370,7 +381,19 @@ namespace mpNZB
           {
             Dialogs.Wait();
             Site.strSearchString = strResult;
-            Site.fncBinsearch(lstItems, this, btnNext);            
+            Site.fncBinsearch(lstItems, this, btnNext);
+            btnNext.Visible = true;
+            btnPrev.Visible = true;
+          }
+          break;
+        case "NZBIndex":
+          strResult = Dialogs.Keyboard();
+          if (strResult.Length > 0)
+          {
+            Dialogs.Wait();            
+            Site.strSearchString = strResult;
+            Site.strFeedURL = "http://www.nzbindex.com/rss/?q=" + Site.strSearchString + "&sort=dateTime&max=250";
+            fncReadRSS(Site.strFeedURL, lstItems);
           }
           break;
       }
@@ -382,8 +405,6 @@ namespace mpNZB
       {
         Site.intPageNumber = 0;
         btnRefreshFeed.Disabled = false;
-        btnNext.Visible = true;
-        btnPrev.Visible = true;
         GUIPropertyManager.SetProperty("#PageTitle", Site.strSite + " - " + strResult);
       }
       // ##################################################
