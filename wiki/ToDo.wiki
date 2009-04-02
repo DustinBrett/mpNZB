@@ -1,21 +1,21 @@
 #summary To-Do list for project
 #labels Phase-Requirements,Phase-Design
 
-== Code related: ==
+== Coding: ==
   * Timeout to connection tests (2s)
   * fncSelectFeed check if Username/Password <> "" before adding
 
-== Skin: ==
+== Skining: ==
   * Download complete sound effect
   * Language support
   * Create {{{Blue3Wide}}} using {{{StreamedMP}}} as template
 
-== Future features: ==
+== Features: ==
   * [http://www.nzbplayer.com/ NZBPlayer] playback (Streaming)
   * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
   * MPI installation
 
-== Sites to add: (Low priority) ==
+== Sites: ==
   * [http://www.bintube.com/ Bintube]
   * [http://www.nzbmovieseeker.com/ NZBMovieSeeker]
   * [http://mytvnzb.foechoer.be/ MyTvNZB]
