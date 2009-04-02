@@ -2,13 +2,12 @@
 #labels Phase-Requirements,Phase-Design
 
 == Code related: ==
-  * Add a timeout to connection test
-  * Add checking for blank textbox's in config
+  * Timeout to connection tests (2s)
+  * fncSelectFeed check if Username/Password <> ""
 
 == Skin: ==
   * Download complete sound effect
   * Language support
-  * Redo Blue3/Blue3Wide
 
 == Future features: ==
   * [http://www.nzbplayer.com/ NZBPlayer] playback (Streaming)
