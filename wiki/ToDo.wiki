@@ -3,6 +3,7 @@
 
 == Code related: ==
   * Upload source code to SVN
+  * Add a timeout to connection test
 
 == Skin: ==
   * Download complete sound effect
