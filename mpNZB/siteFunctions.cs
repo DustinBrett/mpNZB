@@ -23,11 +23,12 @@ namespace mpNZB.Sites
     public string NZBsRus_uid = String.Empty;
     public string NZBsRus_pass = String.Empty;
 
-    // Binsearch
+    // Search Data
     public int intResultLimit = 250;
     public int intPageNumber = 0;
     public string strSearchString = String.Empty;
 
+    // Current List
     public string strSite;
     public string strFeedURL;
 
@@ -59,14 +60,14 @@ namespace mpNZB.Sites
       }
       if (bolNoCookie)
       {
-        if (GetCookie(strSite))
+        if (GetCookie())
         {
           return true;
         }
       }
       else
       {
-        if (CheckCookie(strSite))
+        if (CheckCookie())
         {
           return true;
         }
@@ -75,14 +76,14 @@ namespace mpNZB.Sites
       return false;
     }
     
-    private bool CheckCookie(string strSiteName)
+    private bool CheckCookie()
     {
       string htmlLine;
       WebClient webClient = new WebClient();
       Stream htmlStream;
       StreamReader htmlReader;
 
-      switch (strSiteName)
+      switch (strSite)
       {
         case "Newzbin":
           webClient.Headers.Set("Cookie", "NzbSmoke=" + Newzbin_NzbSmoke + "; NzbSessionID=" + Newzbin_NzbSessionID);
@@ -90,7 +91,7 @@ namespace mpNZB.Sites
           htmlReader = new StreamReader(htmlStream);
           while ((htmlLine = htmlReader.ReadLine()) != null)
           {
-            if (htmlLine.ToUpper().Contains("MY ACCOUNT"))
+            if (htmlLine.ToUpper().Contains("My Account"))
             {
               htmlReader.Close();
               htmlReader.Dispose();
@@ -104,7 +105,7 @@ namespace mpNZB.Sites
           htmlReader = new StreamReader(htmlStream);
           while ((htmlLine = htmlReader.ReadLine()) != null)
           {
-            if (htmlLine.ToUpper().Contains("USER CP"))
+            if (htmlLine.ToUpper().Contains("User CP"))
             {
               htmlReader.Close();
               htmlReader.Dispose();
@@ -118,7 +119,7 @@ namespace mpNZB.Sites
           htmlReader = new StreamReader(htmlStream);
           while ((htmlLine = htmlReader.ReadLine()) != null)
           {
-            if (htmlLine.ToUpper().Contains("PRIVATE PAGE"))
+            if (htmlLine.ToUpper().Contains("private page"))
             {
               htmlReader.Close();
               htmlReader.Dispose();
@@ -128,14 +129,14 @@ namespace mpNZB.Sites
           break;
       }
 
-      return GetCookie(strSiteName);
+      return GetCookie();
     }
 
-    private bool GetCookie(string strSiteName)
+    private bool GetCookie()
     {
       // Create URL
       string strLoginURL = String.Empty;
-      switch (strSiteName)
+      switch (strSite)
       {
         case "Newzbin":
           strLoginURL = "http://www.newzbin.com/account/login/";
@@ -151,8 +152,8 @@ namespace mpNZB.Sites
       if (strLoginURL.Length > 0)
       {
         Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
-        string strUsername = mpSettings.GetValue("#Sites", strSiteName + "_username");
-        string strPassword = mpSettings.GetValue("#Sites", strSiteName + "_password");
+        string strUsername = mpSettings.GetValue("#Sites", strSite + "_username");
+        string strPassword = mpSettings.GetValue("#Sites", strSite + "_password");
         mpSettings.Dispose();
 
         if ((strUsername.Length > 0) && (strPassword.Length > 0))
@@ -182,7 +183,7 @@ namespace mpNZB.Sites
             Settings mpSaveSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
             foreach (Cookie Cookies in webResp.Cookies)
             {
-              switch (strSiteName)
+              switch (strSite)
               {
                 case "Newzbin":
                   {

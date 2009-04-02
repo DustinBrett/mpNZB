@@ -69,44 +69,50 @@ namespace mpNZB.Clients
       {
         if ((strUID.Length > 0) && (strPass.Length > 0))
         {
-          string strTempFile = Path.GetTempPath() + Path.GetRandomFileName() + ".zip";
+          string strTempFile = String.Empty;
+          string strContentType = String.Empty;
 
           // Download NZB
           if (strURL.Contains("http://nzbmatrix.com"))
           {
-            WebClient webClient = new WebClient();
-            webClient.Headers.Set("Cookie", "uid=" + strUID + "; pass=" + strPass);
-            webClient.DownloadFile(strURL, strTempFile);
+              strTempFile = Path.GetTempPath() + Path.GetRandomFileName() + ".zip";
+              strContentType = "application/zip";
+              WebClient webClient = new WebClient();
+              webClient.Headers.Set("Cookie", "uid=" + strUID + "; pass=" + strPass);
+              webClient.DownloadFile(strURL, strTempFile);
           }
 
-          // Setup Request Information
-          string strBoundary = "----------------------------" + DateTime.Now.Ticks.ToString("x");
-          byte[] byteNZB = File.ReadAllBytes(strTempFile);
-          byte[] byteBoundary = System.Text.Encoding.ASCII.GetBytes("\r\n--" + strBoundary + "\r\n");
-          byte[] byteHeader = System.Text.Encoding.UTF8.GetBytes("Content-Disposition: form-data; name=\"name\" ;filename=\"" + Path.GetFileName(strTempFile) + "\"\r\nContent-Type: application/zip\r\n\r\n");
+          if (strTempFile.Length > 0)
+          {
+            // Setup Request Information
+            string strBoundary = "----------------------------" + DateTime.Now.Ticks.ToString("x");
+            byte[] byteNZB = File.ReadAllBytes(strTempFile);
+            byte[] byteBoundary = System.Text.Encoding.ASCII.GetBytes("\r\n--" + strBoundary + "\r\n");
+            byte[] byteHeader = System.Text.Encoding.UTF8.GetBytes("Content-Disposition: form-data; name=\"name\" ;filename=\"" + Path.GetFileName(strTempFile) + "\"\r\nContent-Type: " + strContentType + "\r\n\r\n");
 
-          // Create Web Request
-          HttpWebRequest webReq = (HttpWebRequest)HttpWebRequest.Create(fncCreateURL("/sabnzbd/", "api?mode=addfile", "&name=" + strTempFile));
-          webReq.ContentType = "multipart/form-data; boundary=" + strBoundary;
-          webReq.Method = "POST";
-          webReq.KeepAlive = true;
-          webReq.ContentLength = byteNZB.Length + byteHeader.Length + (byteBoundary.Length * 2) + 2;
+            // Create Web Request
+            HttpWebRequest webReq = (HttpWebRequest)HttpWebRequest.Create(fncCreateURL("/sabnzbd/", "api?mode=addfile", "&name=" + strTempFile));
+            webReq.ContentType = "multipart/form-data; boundary=" + strBoundary;
+            webReq.Method = "POST";
+            webReq.KeepAlive = true;
+            webReq.ContentLength = byteNZB.Length + byteHeader.Length + (byteBoundary.Length * 2) + 2;
 
-          // Send Stream
-          Stream reqStream = webReq.GetRequestStream();
-          reqStream.Write(byteBoundary, 0, byteBoundary.Length);
-          reqStream.Write(byteHeader, 0, byteHeader.Length);
-          reqStream.Write(byteNZB, 0, byteNZB.Length);
-          byteBoundary = System.Text.Encoding.ASCII.GetBytes("\r\n--" + strBoundary + "--\r\n");
-          reqStream.Write(byteBoundary, 0, byteBoundary.Length);
-          reqStream.Close();
+            // Send Stream
+            Stream reqStream = webReq.GetRequestStream();
+            reqStream.Write(byteBoundary, 0, byteBoundary.Length);
+            reqStream.Write(byteHeader, 0, byteHeader.Length);
+            reqStream.Write(byteNZB, 0, byteNZB.Length);
+            byteBoundary = System.Text.Encoding.ASCII.GetBytes("\r\n--" + strBoundary + "--\r\n");
+            reqStream.Write(byteBoundary, 0, byteBoundary.Length);
+            reqStream.Close();
 
-          // Get Response
-          WebResponse webResp = webReq.GetResponse();
-          Stream streamResp = webResp.GetResponseStream();
-          StreamReader responseReader = new StreamReader(streamResp);        
-          strResponse = responseReader.ReadToEnd();
-          webResp.Close();
+            // Get Response
+            WebResponse webResp = webReq.GetResponse();
+            Stream streamResp = webResp.GetResponseStream();
+            StreamReader responseReader = new StreamReader(streamResp);
+            strResponse = responseReader.ReadToEnd();
+            webResp.Close();
+          }
         }
       }
       catch (Exception e)
@@ -183,7 +189,8 @@ namespace mpNZB.Clients
             if (Status.KeepAlive)
             {
               Status.KeepAlive = false;
-              Dialogs.OK("Downloads complete." + " - " + intJobCount.ToString() + " - " + xmlDoc["queue"]["paused"].InnerText, "mNZB Status");
+              Dialogs.OK("Downloads complete.", "mNZB Status");
+              return;
             }
           }
 
@@ -219,17 +226,28 @@ namespace mpNZB.Clients
             }
           }
         }
+        else
+        {
+          GUIPropertyManager.SetProperty("#Status", "Error parsing status.");
+        }
       }
       catch (Exception e)
       {
         Status.tmrTimer.Enabled = false;
-        Log.Error(e.Source + " - " + e.Message);
+        Log.Info("Data: " + e.Data);
+        Log.Info("HelpLink: " + e.HelpLink);
+        Log.Info("InnerException: " + e.InnerException);
+        Log.Info("Message: " + e.Message);
+        Log.Info("Source: " + e.Source);
+        Log.Info("StackTrace: " + e.StackTrace);
+        Log.Info("TargetSite: " + e.TargetSite);
       }
     }
 
     private string Categories()
     {
       string strCatList = String.Empty;
+      string strResult = String.Empty;
       try
       {
         XmlDocument xmlDoc = new XmlDocument();
@@ -243,6 +261,10 @@ namespace mpNZB.Clients
             strCatList += nodeItem.InnerText + (char)0;
           }
         }
+        else
+        {
+          GUIPropertyManager.SetProperty("#Status", "Error parsing categories.");
+        }
       }
       catch (Exception e)
       {
@@ -254,16 +276,16 @@ namespace mpNZB.Clients
         Log.Info("StackTrace: " + e.StackTrace);
         Log.Info("TargetSite: " + e.TargetSite);
       }
-      if (strCatList.Length > 0)
+      finally
       {
-        string[] strCategories = strCatList.Substring(0, strCatList.Length - 1).Split((char)0);
-        string strResult = Dialogs.Menu(strCategories, "Select Category");
-        if (strResult.Length > 0)
+        if (strCatList.Length > 0)
         {
-          return strResult;
-        }       
+          string[] strCategories = strCatList.Substring(0, strCatList.Length - 1).Split((char)0);
+          strResult = Dialogs.Menu(strCategories, "Select Category");
+        }
       }
-      return String.Empty;
+
+      return strResult;
     }
 
     public void Queue(GUIListControl lstItemList, GUIWindow GUI)
@@ -333,29 +355,23 @@ namespace mpNZB.Clients
     {
       if (Dialogs.YesNo("Download file?", lstItemList.ListItems[lstItemList.SelectedListItemIndex].Label))
       {
+        string strResult;
         if (Site.strSite == "NZBMatrix")
         {
-          if (fncSendFile(lstItemList.ListItems[lstItemList.SelectedListItemIndex].Path.Replace("nzb-details.php", "nzb-download.php").Replace("&hit=1", String.Empty), Site.NZBMatrix_uid, Site.NZBMatrix_pass) == "ok\n")
-          {
-            Status.tmrTimer.Enabled = true;
-            GUIPropertyManager.SetProperty("#Status", "Downloading NZB.");
-          }
-          else
-          {
-            GUIPropertyManager.SetProperty("#Status", "Error downloading NZB.");
-          }
+          strResult = fncSendFile(lstItemList.ListItems[lstItemList.SelectedListItemIndex].Path.Replace("nzb-details.php", "nzb-download.php").Replace("&hit=1", String.Empty), Site.NZBMatrix_uid, Site.NZBMatrix_pass);
         }
         else
         {
-          if (fncSendURL(fncCreateURL("/sabnzbd/", "api?mode=" + (lstItemList.ListItems[lstItemList.SelectedListItemIndex].Path.Contains("http://") ? "addurl" : "addid"), "&name=" + lstItemList.ListItems[lstItemList.SelectedListItemIndex].Path)) == "ok\n")
-          {
-            Status.tmrTimer.Enabled = true;
-            GUIPropertyManager.SetProperty("#Status", "Downloading NZB.");
-          }
-          else
-          {
-            GUIPropertyManager.SetProperty("#Status", "Error downloading NZB.");
-          }
+          strResult = fncSendURL(fncCreateURL("/sabnzbd/", "api?mode=" + (lstItemList.ListItems[lstItemList.SelectedListItemIndex].Path.Contains("http://") ? "addurl" : "addid"), "&name=" + lstItemList.ListItems[lstItemList.SelectedListItemIndex].Path));
+        }
+        if (strResults == "ok\n")
+        {
+          Status.tmrTimer.Enabled = true;
+          GUIPropertyManager.SetProperty("#Status", "Downloading NZB.");
+        }
+        else
+        {
+          GUIPropertyManager.SetProperty("#Status", "Error downloading NZB.");
         }
       }
     }
