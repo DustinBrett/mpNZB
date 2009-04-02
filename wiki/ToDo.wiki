@@ -8,7 +8,7 @@
 == Skin: ==
   * Download complete sound effect
   * Language support
-  * Create Blue3Wide using StreamedMP as template
+  * Create {{{Blue3Wide}}} using {{{StreamedMP}}} as template
 
 == Logging: ==
   * Status information for failed login
