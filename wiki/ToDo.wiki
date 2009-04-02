@@ -3,27 +3,17 @@
 
 == Code related: ==
   * Timeout to connection tests (2s)
-  * fncSelectFeed check if Username/Password <> ""
+  * fncSelectFeed check if Username/Password <> "" before adding
 
 == Skin: ==
   * Download complete sound effect
   * Language support
   * Create {{{Blue3Wide}}} using {{{StreamedMP}}} as template
 
-== Logging: ==
-  * Status information for failed login
-  * Logging of failed login
-
 == Future features: ==
   * [http://www.nzbplayer.com/ NZBPlayer] playback (Streaming)
   * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
   * MPI installation
-
-== Search to add: ==
-  * NZBIndex
-    * {{{http://www.nzbindex.com/rss/?q=[SEARCH]&sort=dateTime&max=250}}}
-    * {{{<enclosure url="[NZB]">}}}
-    * {{{<b>[SIZE]</b>}}}
 
 == Sites to add: (Low priority) ==
   * [http://www.bintube.com/ Bintube]
