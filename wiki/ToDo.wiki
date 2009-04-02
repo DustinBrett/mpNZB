@@ -2,7 +2,6 @@
 #labels Phase-Requirements,Phase-Design
 
 == Code related: ==
-  * Upload source code to SVN
   * Add a timeout to connection test
 
 == Skin: ==
