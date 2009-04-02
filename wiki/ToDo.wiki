@@ -3,6 +3,7 @@
 
 == Code related: ==
   * Add a timeout to connection test
+  * Add checking for blank textbox's in config
 
 == Skin: ==
   * Download complete sound effect
