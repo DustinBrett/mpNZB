@@ -9,6 +9,10 @@
   * Download complete sound effect
   * Language support
 
+== Logging: ==
+  * Status information for failed login
+  * Logging of failed login
+
 == Future features: ==
   * [http://www.nzbplayer.com/ NZBPlayer] playback (Streaming)
   * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
