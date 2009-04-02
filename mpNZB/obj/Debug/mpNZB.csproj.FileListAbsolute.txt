@@ -1,0 +1,40 @@
+C:\Documents and Settings\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\mpNZB.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\mpNZB.pdb
+C:\Documents and Settings\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\Core.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\Dialogs.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\Microsoft.DirectX.Direct3DX.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\Microsoft.DirectX.Direct3D.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\Microsoft.DirectX.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\DirectShowLib.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\Utils.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\edtftpnet-1.2.2.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\taglib-sharp.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\Interop.WMPLib.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\MediaPortal.Support.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\BassRegistration.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\Bass.Net.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\AxInterop.WMPLib.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\mpNZB\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Dustin\Desktop\mpNZB\mpNZB\obj\Debug\mpNZB.frmSetup.resources
+C:\Documents and Settings\Dustin\Desktop\mpNZB\mpNZB\obj\Debug\mpNZB.csproj.GenerateResource.Cache
+C:\Documents and Settings\Dustin\Desktop\mpNZB\mpNZB\obj\Debug\mpNZB.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\mpNZB\obj\Debug\mpNZB.pdb
+C:\Users\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\mpNZB.dll
+C:\Users\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\mpNZB.pdb
+C:\Users\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\Utils.dll
+C:\Users\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\Microsoft.DirectX.Direct3DX.dll
+C:\Users\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\Microsoft.DirectX.dll
+C:\Users\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\DirectShowLib.dll
+C:\Users\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\Microsoft.DirectX.Direct3D.dll
+C:\Users\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\edtftpnet-1.2.2.dll
+C:\Users\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\taglib-sharp.dll
+C:\Users\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\Interop.WMPLib.dll
+C:\Users\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\MediaPortal.Support.dll
+C:\Users\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\BassRegistration.dll
+C:\Users\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\Bass.Net.dll
+C:\Users\Dustin\Desktop\mpNZB\mpNZB\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\Dustin\Desktop\mpNZB\mpNZB\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Dustin\Desktop\mpNZB\mpNZB\obj\Debug\mpNZB.frmSetup.resources
+C:\Users\Dustin\Desktop\mpNZB\mpNZB\obj\Debug\mpNZB.csproj.GenerateResource.Cache
+C:\Users\Dustin\Desktop\mpNZB\mpNZB\obj\Debug\mpNZB.dll
+C:\Users\Dustin\Desktop\mpNZB\mpNZB\obj\Debug\mpNZB.pdb
