@@ -1,25 +1,31 @@
 #summary To-Do list for project
 #labels Phase-Requirements,Phase-Design
 
-== Coding: ==
+== Coding Issues: ==
   * Change NZBsRus URL grabber to something better
     * Also add NZBsRus categories to list
   * Progress bar works intermittently
     * Stops working after clicking NZBsRus ?maybe?
-  * SABnzbd pausing on video play
+    * Test new code
 
-== Skining: ==
-  * Download complete sound effect
+== Features: (_Low_) ==
+  * SABnzbd pauses D/L's during video play
   * Language support
 
-== Features: ==
-  * [http://www.nzbplayer.com/ NZBPlayer] playback (Streaming)
+== Features: (_Medium_) ==
   * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
+  * [http://www.nzbplayer.com/ NZBPlayer] playback (Streaming)
+  * Download complete sound effect
+
+== Features: (_High_) ==
   * MPI installation
   * SABnzbd history view
 
-== Sites: ==
+== Sites: (_Low_) ==
   * [http://www.bintube.com/ Bintube]
   * [http://www.nzbmovieseeker.com/ NZBMovieSeeker]
   * [http://mytvnzb.foechoer.be/ MyTvNZB]
   * [http://nzbserien.org/ NZBSerien]
+
+== Sites: (_Medium_) ==
+  * [http://www.newzleech.com/ Newzleech]
