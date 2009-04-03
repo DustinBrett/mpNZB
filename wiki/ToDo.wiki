@@ -3,7 +3,6 @@
 
 == Coding: ==
   * Timeout to connection tests (2s)
-  * fncSelectFeed check if Username/Password <> "" before adding
 
 == Skining: ==
   * Download complete sound effect
