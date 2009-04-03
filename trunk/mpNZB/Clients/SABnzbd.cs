@@ -364,7 +364,7 @@ namespace mpNZB.Clients
         {
           strResult = fncSendURL(fncCreateURL("/sabnzbd/", "api?mode=" + (lstItemList.ListItems[lstItemList.SelectedListItemIndex].Path.Contains("http://") ? "addurl" : "addid"), "&name=" + lstItemList.ListItems[lstItemList.SelectedListItemIndex].Path));
         }
-        if (strResults == "ok\n")
+        if (strResult == "ok\n")
         {
           Status.tmrTimer.Enabled = true;
           GUIPropertyManager.SetProperty("#Status", "Downloading NZB.");
