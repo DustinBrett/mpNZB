@@ -6,6 +6,7 @@
     * Also add NZBsRus categories to list
   * Progress bar works intermittently
     * Stops working after clicking NZBsRus ?maybe?
+  * SABnzbd pausing on video play
 
 == Skining: ==
   * Download complete sound effect
