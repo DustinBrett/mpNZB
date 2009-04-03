@@ -7,6 +7,12 @@
   * Progress bar works intermittently
     * Stops working after clicking NZBsRus ?maybe?
     * Test new code
+  * Change form so it has a drop-down of sites and 1 username/password field
+    * You press add to make a list of them
+    * Save P/W's in same place
+    * Add not allowed unless P/W-User are filled in
+    * Clear all boxes on add and put in ListView
+    * Seperate with (char)0 and then split later
 
 == Features: (_Low_) ==
   * SABnzbd pauses D/L's during video play
