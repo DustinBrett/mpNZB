@@ -31,6 +31,7 @@
       this.tabSetup = new System.Windows.Forms.TabControl();
       this.tabClientSetup = new System.Windows.Forms.TabPage();
       this.grpSettings = new System.Windows.Forms.GroupBox();
+      this.btnTestConn = new System.Windows.Forms.Button();
       this.chkAuth = new System.Windows.Forms.CheckBox();
       this.txtUsername = new System.Windows.Forms.TextBox();
       this.lblUsername = new System.Windows.Forms.Label();
@@ -51,27 +52,23 @@
       this.lblDisplayName = new System.Windows.Forms.Label();
       this.lblUpdateFrequency = new System.Windows.Forms.Label();
       this.tabSetupSetup = new System.Windows.Forms.TabPage();
-      this.chkNewzbin_auth = new System.Windows.Forms.CheckBox();
-      this.chkNZBMatrix_auth = new System.Windows.Forms.CheckBox();
-      this.chkNZBsRus_auth = new System.Windows.Forms.CheckBox();
-      this.groupBox2 = new System.Windows.Forms.GroupBox();
-      this.txtNZBsRus_password = new System.Windows.Forms.TextBox();
-      this.label3 = new System.Windows.Forms.Label();
-      this.txtNZBsRus_username = new System.Windows.Forms.TextBox();
-      this.label4 = new System.Windows.Forms.Label();
-      this.groupBox1 = new System.Windows.Forms.GroupBox();
-      this.txtNZBMatrix_password = new System.Windows.Forms.TextBox();
-      this.label1 = new System.Windows.Forms.Label();
-      this.txtNZBMatrix_username = new System.Windows.Forms.TextBox();
-      this.label2 = new System.Windows.Forms.Label();
-      this.grpNZBsRus = new System.Windows.Forms.GroupBox();
-      this.txtNewzbin_password = new System.Windows.Forms.TextBox();
-      this.lblCategorySelection = new System.Windows.Forms.Label();
-      this.txtNewzbin_username = new System.Windows.Forms.TextBox();
-      this.lblID = new System.Windows.Forms.Label();
       this.btnCancel = new System.Windows.Forms.Button();
       this.btnOK = new System.Windows.Forms.Button();
-      this.btnTestConn = new System.Windows.Forms.Button();
+      this.grpSites = new System.Windows.Forms.GroupBox();
+      this.txtSitePassword = new System.Windows.Forms.TextBox();
+      this.lblSitePassword = new System.Windows.Forms.Label();
+      this.txtSiteUsername = new System.Windows.Forms.TextBox();
+      this.lblSiteUsername = new System.Windows.Forms.Label();
+      this.btnAdd = new System.Windows.Forms.Button();
+      this.cmbSites = new System.Windows.Forms.ComboBox();
+      this.lblSite = new System.Windows.Forms.Label();
+      this.lvSites = new System.Windows.Forms.ListView();
+      this.clmSite = new System.Windows.Forms.ColumnHeader();
+      this.clmUsername = new System.Windows.Forms.ColumnHeader();
+      this.clmPassword = new System.Windows.Forms.ColumnHeader();
+      this.btnDelete = new System.Windows.Forms.Button();
+      this.clmFeed = new System.Windows.Forms.ColumnHeader();
+      this.clmSearch = new System.Windows.Forms.ColumnHeader();
       this.tabSetup.SuspendLayout();
       this.tabClientSetup.SuspendLayout();
       this.grpSettings.SuspendLayout();
@@ -79,9 +76,7 @@
       this.tabPluginSetup.SuspendLayout();
       this.grpVisual.SuspendLayout();
       this.tabSetupSetup.SuspendLayout();
-      this.groupBox2.SuspendLayout();
-      this.groupBox1.SuspendLayout();
-      this.grpNZBsRus.SuspendLayout();
+      this.grpSites.SuspendLayout();
       this.SuspendLayout();
       // 
       // tabSetup
@@ -128,6 +123,16 @@
       this.grpSettings.TabIndex = 10;
       this.grpSettings.TabStop = false;
       this.grpSettings.Text = "Settings:";
+      // 
+      // btnTestConn
+      // 
+      this.btnTestConn.Location = new System.Drawing.Point(160, 47);
+      this.btnTestConn.Name = "btnTestConn";
+      this.btnTestConn.Size = new System.Drawing.Size(104, 21);
+      this.btnTestConn.TabIndex = 8;
+      this.btnTestConn.Text = "Test Connection";
+      this.btnTestConn.UseVisualStyleBackColor = true;
+      this.btnTestConn.Click += new System.EventHandler(this.btnTestConn_Click);
       // 
       // chkAuth
       // 
@@ -197,7 +202,6 @@
       this.txtPort.Name = "txtPort";
       this.txtPort.Size = new System.Drawing.Size(77, 21);
       this.txtPort.TabIndex = 4;
-      this.txtPort.Text = "8080";
       // 
       // lblPassword
       // 
@@ -216,7 +220,6 @@
       this.txtHost.Name = "txtHost";
       this.txtHost.Size = new System.Drawing.Size(187, 21);
       this.txtHost.TabIndex = 3;
-      this.txtHost.Text = "127.0.0.1";
       // 
       // grpProgram
       // 
@@ -237,9 +240,9 @@
       this.chkCatSelect.Enabled = false;
       this.chkCatSelect.Location = new System.Drawing.Point(68, 44);
       this.chkCatSelect.Name = "chkCatSelect";
-      this.chkCatSelect.Size = new System.Drawing.Size(145, 17);
+      this.chkCatSelect.Size = new System.Drawing.Size(116, 17);
       this.chkCatSelect.TabIndex = 11;
-      this.chkCatSelect.Text = "Save NZB\'s to categories";
+      this.chkCatSelect.Text = "Save to categories";
       this.chkCatSelect.UseVisualStyleBackColor = true;
       // 
       // cmbGrabber
@@ -327,12 +330,7 @@
       // 
       // tabSetupSetup
       // 
-      this.tabSetupSetup.Controls.Add(this.chkNewzbin_auth);
-      this.tabSetupSetup.Controls.Add(this.chkNZBMatrix_auth);
-      this.tabSetupSetup.Controls.Add(this.chkNZBsRus_auth);
-      this.tabSetupSetup.Controls.Add(this.groupBox2);
-      this.tabSetupSetup.Controls.Add(this.groupBox1);
-      this.tabSetupSetup.Controls.Add(this.grpNZBsRus);
+      this.tabSetupSetup.Controls.Add(this.grpSites);
       this.tabSetupSetup.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.tabSetupSetup.Location = new System.Drawing.Point(4, 22);
       this.tabSetupSetup.Name = "tabSetupSetup";
@@ -340,198 +338,6 @@
       this.tabSetupSetup.TabIndex = 2;
       this.tabSetupSetup.Text = "Site Setup";
       this.tabSetupSetup.UseVisualStyleBackColor = true;
-      // 
-      // chkNewzbin_auth
-      // 
-      this.chkNewzbin_auth.AutoSize = true;
-      this.chkNewzbin_auth.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.chkNewzbin_auth.Location = new System.Drawing.Point(10, 14);
-      this.chkNewzbin_auth.Name = "chkNewzbin_auth";
-      this.chkNewzbin_auth.Size = new System.Drawing.Size(15, 14);
-      this.chkNewzbin_auth.TabIndex = 1;
-      this.chkNewzbin_auth.UseVisualStyleBackColor = true;
-      this.chkNewzbin_auth.CheckedChanged += new System.EventHandler(this.chkNewzbin_CheckedChanged);
-      // 
-      // chkNZBMatrix_auth
-      // 
-      this.chkNZBMatrix_auth.AutoSize = true;
-      this.chkNZBMatrix_auth.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.chkNZBMatrix_auth.Location = new System.Drawing.Point(10, 95);
-      this.chkNZBMatrix_auth.Name = "chkNZBMatrix_auth";
-      this.chkNZBMatrix_auth.Size = new System.Drawing.Size(15, 14);
-      this.chkNZBMatrix_auth.TabIndex = 1;
-      this.chkNZBMatrix_auth.UseVisualStyleBackColor = true;
-      this.chkNZBMatrix_auth.CheckedChanged += new System.EventHandler(this.chkNZBMatrix_auth_CheckedChanged);
-      // 
-      // chkNZBsRus_auth
-      // 
-      this.chkNZBsRus_auth.AutoSize = true;
-      this.chkNZBsRus_auth.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.chkNZBsRus_auth.Location = new System.Drawing.Point(10, 176);
-      this.chkNZBsRus_auth.Name = "chkNZBsRus_auth";
-      this.chkNZBsRus_auth.Size = new System.Drawing.Size(15, 14);
-      this.chkNZBsRus_auth.TabIndex = 1;
-      this.chkNZBsRus_auth.UseVisualStyleBackColor = true;
-      this.chkNZBsRus_auth.CheckedChanged += new System.EventHandler(this.chkNZBsRus_auth_CheckedChanged);
-      // 
-      // groupBox2
-      // 
-      this.groupBox2.Controls.Add(this.txtNZBsRus_password);
-      this.groupBox2.Controls.Add(this.label3);
-      this.groupBox2.Controls.Add(this.txtNZBsRus_username);
-      this.groupBox2.Controls.Add(this.label4);
-      this.groupBox2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.groupBox2.Location = new System.Drawing.Point(16, 176);
-      this.groupBox2.Name = "groupBox2";
-      this.groupBox2.Size = new System.Drawing.Size(280, 75);
-      this.groupBox2.TabIndex = 24;
-      this.groupBox2.TabStop = false;
-      this.groupBox2.Text = "NZBsRus:";
-      // 
-      // txtNZBsRus_password
-      // 
-      this.txtNZBsRus_password.Enabled = false;
-      this.txtNZBsRus_password.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtNZBsRus_password.Location = new System.Drawing.Point(75, 44);
-      this.txtNZBsRus_password.Name = "txtNZBsRus_password";
-      this.txtNZBsRus_password.Size = new System.Drawing.Size(189, 21);
-      this.txtNZBsRus_password.TabIndex = 22;
-      this.txtNZBsRus_password.UseSystemPasswordChar = true;
-      // 
-      // label3
-      // 
-      this.label3.AutoSize = true;
-      this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label3.Location = new System.Drawing.Point(14, 47);
-      this.label3.Name = "label3";
-      this.label3.Size = new System.Drawing.Size(57, 13);
-      this.label3.TabIndex = 21;
-      this.label3.Text = "Password:";
-      // 
-      // txtNZBsRus_username
-      // 
-      this.txtNZBsRus_username.Enabled = false;
-      this.txtNZBsRus_username.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtNZBsRus_username.Location = new System.Drawing.Point(75, 17);
-      this.txtNZBsRus_username.Name = "txtNZBsRus_username";
-      this.txtNZBsRus_username.Size = new System.Drawing.Size(189, 21);
-      this.txtNZBsRus_username.TabIndex = 20;
-      // 
-      // label4
-      // 
-      this.label4.AutoSize = true;
-      this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label4.Location = new System.Drawing.Point(12, 21);
-      this.label4.Name = "label4";
-      this.label4.Size = new System.Drawing.Size(59, 13);
-      this.label4.TabIndex = 19;
-      this.label4.Text = "Username:";
-      // 
-      // groupBox1
-      // 
-      this.groupBox1.Controls.Add(this.txtNZBMatrix_password);
-      this.groupBox1.Controls.Add(this.label1);
-      this.groupBox1.Controls.Add(this.txtNZBMatrix_username);
-      this.groupBox1.Controls.Add(this.label2);
-      this.groupBox1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.groupBox1.Location = new System.Drawing.Point(16, 95);
-      this.groupBox1.Name = "groupBox1";
-      this.groupBox1.Size = new System.Drawing.Size(280, 75);
-      this.groupBox1.TabIndex = 23;
-      this.groupBox1.TabStop = false;
-      this.groupBox1.Text = "NZBMatrix:";
-      // 
-      // txtNZBMatrix_password
-      // 
-      this.txtNZBMatrix_password.Enabled = false;
-      this.txtNZBMatrix_password.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtNZBMatrix_password.Location = new System.Drawing.Point(75, 44);
-      this.txtNZBMatrix_password.Name = "txtNZBMatrix_password";
-      this.txtNZBMatrix_password.Size = new System.Drawing.Size(189, 21);
-      this.txtNZBMatrix_password.TabIndex = 22;
-      this.txtNZBMatrix_password.UseSystemPasswordChar = true;
-      // 
-      // label1
-      // 
-      this.label1.AutoSize = true;
-      this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label1.Location = new System.Drawing.Point(14, 47);
-      this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(57, 13);
-      this.label1.TabIndex = 21;
-      this.label1.Text = "Password:";
-      // 
-      // txtNZBMatrix_username
-      // 
-      this.txtNZBMatrix_username.Enabled = false;
-      this.txtNZBMatrix_username.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtNZBMatrix_username.Location = new System.Drawing.Point(75, 17);
-      this.txtNZBMatrix_username.Name = "txtNZBMatrix_username";
-      this.txtNZBMatrix_username.Size = new System.Drawing.Size(189, 21);
-      this.txtNZBMatrix_username.TabIndex = 20;
-      // 
-      // label2
-      // 
-      this.label2.AutoSize = true;
-      this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label2.Location = new System.Drawing.Point(12, 21);
-      this.label2.Name = "label2";
-      this.label2.Size = new System.Drawing.Size(59, 13);
-      this.label2.TabIndex = 19;
-      this.label2.Text = "Username:";
-      // 
-      // grpNZBsRus
-      // 
-      this.grpNZBsRus.Controls.Add(this.txtNewzbin_password);
-      this.grpNZBsRus.Controls.Add(this.lblCategorySelection);
-      this.grpNZBsRus.Controls.Add(this.txtNewzbin_username);
-      this.grpNZBsRus.Controls.Add(this.lblID);
-      this.grpNZBsRus.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.grpNZBsRus.Location = new System.Drawing.Point(16, 14);
-      this.grpNZBsRus.Name = "grpNZBsRus";
-      this.grpNZBsRus.Size = new System.Drawing.Size(280, 75);
-      this.grpNZBsRus.TabIndex = 0;
-      this.grpNZBsRus.TabStop = false;
-      this.grpNZBsRus.Text = "Newzbin:";
-      // 
-      // txtNewzbin_password
-      // 
-      this.txtNewzbin_password.Enabled = false;
-      this.txtNewzbin_password.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtNewzbin_password.Location = new System.Drawing.Point(75, 44);
-      this.txtNewzbin_password.Name = "txtNewzbin_password";
-      this.txtNewzbin_password.Size = new System.Drawing.Size(189, 21);
-      this.txtNewzbin_password.TabIndex = 22;
-      this.txtNewzbin_password.UseSystemPasswordChar = true;
-      // 
-      // lblCategorySelection
-      // 
-      this.lblCategorySelection.AutoSize = true;
-      this.lblCategorySelection.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblCategorySelection.Location = new System.Drawing.Point(14, 47);
-      this.lblCategorySelection.Name = "lblCategorySelection";
-      this.lblCategorySelection.Size = new System.Drawing.Size(57, 13);
-      this.lblCategorySelection.TabIndex = 21;
-      this.lblCategorySelection.Text = "Password:";
-      // 
-      // txtNewzbin_username
-      // 
-      this.txtNewzbin_username.Enabled = false;
-      this.txtNewzbin_username.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtNewzbin_username.Location = new System.Drawing.Point(75, 17);
-      this.txtNewzbin_username.Name = "txtNewzbin_username";
-      this.txtNewzbin_username.Size = new System.Drawing.Size(189, 21);
-      this.txtNewzbin_username.TabIndex = 20;
-      // 
-      // lblID
-      // 
-      this.lblID.AutoSize = true;
-      this.lblID.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblID.Location = new System.Drawing.Point(12, 21);
-      this.lblID.Name = "lblID";
-      this.lblID.Size = new System.Drawing.Size(59, 13);
-      this.lblID.TabIndex = 19;
-      this.lblID.Text = "Username:";
       // 
       // btnCancel
       // 
@@ -555,15 +361,156 @@
       this.btnOK.UseVisualStyleBackColor = true;
       this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
       // 
-      // btnTestConn
+      // grpSites
       // 
-      this.btnTestConn.Location = new System.Drawing.Point(160, 47);
-      this.btnTestConn.Name = "btnTestConn";
-      this.btnTestConn.Size = new System.Drawing.Size(104, 21);
-      this.btnTestConn.TabIndex = 8;
-      this.btnTestConn.Text = "Test Connection";
-      this.btnTestConn.UseVisualStyleBackColor = true;
-      this.btnTestConn.Click += new System.EventHandler(this.btnTestConn_Click);
+      this.grpSites.Controls.Add(this.btnDelete);
+      this.grpSites.Controls.Add(this.lvSites);
+      this.grpSites.Controls.Add(this.cmbSites);
+      this.grpSites.Controls.Add(this.lblSite);
+      this.grpSites.Controls.Add(this.btnAdd);
+      this.grpSites.Controls.Add(this.txtSitePassword);
+      this.grpSites.Controls.Add(this.lblSitePassword);
+      this.grpSites.Controls.Add(this.txtSiteUsername);
+      this.grpSites.Controls.Add(this.lblSiteUsername);
+      this.grpSites.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.grpSites.Location = new System.Drawing.Point(16, 14);
+      this.grpSites.Name = "grpSites";
+      this.grpSites.Size = new System.Drawing.Size(280, 237);
+      this.grpSites.TabIndex = 0;
+      this.grpSites.TabStop = false;
+      this.grpSites.Text = "Add Sites:";
+      // 
+      // txtSitePassword
+      // 
+      this.txtSitePassword.Enabled = false;
+      this.txtSitePassword.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtSitePassword.Location = new System.Drawing.Point(75, 72);
+      this.txtSitePassword.Name = "txtSitePassword";
+      this.txtSitePassword.Size = new System.Drawing.Size(189, 21);
+      this.txtSitePassword.TabIndex = 26;
+      this.txtSitePassword.UseSystemPasswordChar = true;
+      // 
+      // lblSitePassword
+      // 
+      this.lblSitePassword.AutoSize = true;
+      this.lblSitePassword.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblSitePassword.Location = new System.Drawing.Point(14, 75);
+      this.lblSitePassword.Name = "lblSitePassword";
+      this.lblSitePassword.Size = new System.Drawing.Size(57, 13);
+      this.lblSitePassword.TabIndex = 25;
+      this.lblSitePassword.Text = "Password:";
+      // 
+      // txtSiteUsername
+      // 
+      this.txtSiteUsername.Enabled = false;
+      this.txtSiteUsername.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtSiteUsername.Location = new System.Drawing.Point(75, 45);
+      this.txtSiteUsername.Name = "txtSiteUsername";
+      this.txtSiteUsername.Size = new System.Drawing.Size(189, 21);
+      this.txtSiteUsername.TabIndex = 24;
+      // 
+      // lblSiteUsername
+      // 
+      this.lblSiteUsername.AutoSize = true;
+      this.lblSiteUsername.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblSiteUsername.Location = new System.Drawing.Point(12, 49);
+      this.lblSiteUsername.Name = "lblSiteUsername";
+      this.lblSiteUsername.Size = new System.Drawing.Size(59, 13);
+      this.lblSiteUsername.TabIndex = 23;
+      this.lblSiteUsername.Text = "Username:";
+      // 
+      // btnAdd
+      // 
+      this.btnAdd.Enabled = false;
+      this.btnAdd.Location = new System.Drawing.Point(148, 18);
+      this.btnAdd.Name = "btnAdd";
+      this.btnAdd.Size = new System.Drawing.Size(55, 21);
+      this.btnAdd.TabIndex = 28;
+      this.btnAdd.Text = "Add";
+      this.btnAdd.UseVisualStyleBackColor = true;
+      this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+      // 
+      // cmbSites
+      // 
+      this.cmbSites.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.cmbSites.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.cmbSites.FormattingEnabled = true;
+      this.cmbSites.Items.AddRange(new object[] {
+            "Newzbin",
+            "NZBIndex",
+            "NZBMatrix",
+            "NZBsRus",
+            "TvNZB"});
+      this.cmbSites.Location = new System.Drawing.Point(47, 18);
+      this.cmbSites.Name = "cmbSites";
+      this.cmbSites.Size = new System.Drawing.Size(95, 21);
+      this.cmbSites.TabIndex = 29;
+      this.cmbSites.SelectedIndexChanged += new System.EventHandler(this.cmbSites_SelectedIndexChanged);
+      // 
+      // lblSite
+      // 
+      this.lblSite.AutoSize = true;
+      this.lblSite.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblSite.Location = new System.Drawing.Point(12, 21);
+      this.lblSite.Name = "lblSite";
+      this.lblSite.Size = new System.Drawing.Size(29, 13);
+      this.lblSite.TabIndex = 30;
+      this.lblSite.Text = "Site:";
+      // 
+      // lvSites
+      // 
+      this.lvSites.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.clmSite,
+            this.clmUsername,
+            this.clmPassword,
+            this.clmFeed,
+            this.clmSearch});
+      this.lvSites.FullRowSelect = true;
+      this.lvSites.GridLines = true;
+      this.lvSites.Location = new System.Drawing.Point(15, 99);
+      this.lvSites.MultiSelect = false;
+      this.lvSites.Name = "lvSites";
+      this.lvSites.Size = new System.Drawing.Size(250, 122);
+      this.lvSites.TabIndex = 31;
+      this.lvSites.UseCompatibleStateImageBehavior = false;
+      this.lvSites.View = System.Windows.Forms.View.Details;
+      this.lvSites.SelectedIndexChanged += new System.EventHandler(this.lvSites_SelectedIndexChanged);
+      // 
+      // clmSite
+      // 
+      this.clmSite.Text = "Site";
+      this.clmSite.Width = 55;
+      // 
+      // clmUsername
+      // 
+      this.clmUsername.Text = "Username";
+      this.clmUsername.Width = 68;
+      // 
+      // clmPassword
+      // 
+      this.clmPassword.Text = "Password";
+      this.clmPassword.Width = 68;
+      // 
+      // btnDelete
+      // 
+      this.btnDelete.Enabled = false;
+      this.btnDelete.Location = new System.Drawing.Point(209, 18);
+      this.btnDelete.Name = "btnDelete";
+      this.btnDelete.Size = new System.Drawing.Size(55, 21);
+      this.btnDelete.TabIndex = 32;
+      this.btnDelete.Text = "Delete";
+      this.btnDelete.UseVisualStyleBackColor = true;
+      this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+      // 
+      // clmFeed
+      // 
+      this.clmFeed.Text = "F";
+      this.clmFeed.Width = 20;
+      // 
+      // clmSearch
+      // 
+      this.clmSearch.Text = "S";
+      this.clmSearch.Width = 20;
       // 
       // frmSetup
       // 
@@ -588,13 +535,8 @@
       this.grpVisual.ResumeLayout(false);
       this.grpVisual.PerformLayout();
       this.tabSetupSetup.ResumeLayout(false);
-      this.tabSetupSetup.PerformLayout();
-      this.groupBox2.ResumeLayout(false);
-      this.groupBox2.PerformLayout();
-      this.groupBox1.ResumeLayout(false);
-      this.groupBox1.PerformLayout();
-      this.grpNZBsRus.ResumeLayout(false);
-      this.grpNZBsRus.PerformLayout();
+      this.grpSites.ResumeLayout(false);
+      this.grpSites.PerformLayout();
       this.ResumeLayout(false);
 
     }
@@ -622,28 +564,25 @@
     private System.Windows.Forms.TextBox txtDisplayName;
     private System.Windows.Forms.Label lblDisplayName;
     private System.Windows.Forms.TabPage tabSetupSetup;
-    private System.Windows.Forms.GroupBox grpNZBsRus;
-    private System.Windows.Forms.TextBox txtNewzbin_password;
-    private System.Windows.Forms.Label lblCategorySelection;
-    private System.Windows.Forms.TextBox txtNewzbin_username;
-    private System.Windows.Forms.Label lblID;
-    private System.Windows.Forms.CheckBox chkNewzbin_auth;
     private System.Windows.Forms.TextBox txtUpdateFreq;
-    private System.Windows.Forms.GroupBox groupBox1;
-    private System.Windows.Forms.CheckBox chkNZBMatrix_auth;
-    private System.Windows.Forms.TextBox txtNZBMatrix_password;
-    private System.Windows.Forms.Label label1;
-    private System.Windows.Forms.TextBox txtNZBMatrix_username;
-    private System.Windows.Forms.Label label2;
-    private System.Windows.Forms.GroupBox groupBox2;
-    private System.Windows.Forms.CheckBox chkNZBsRus_auth;
-    private System.Windows.Forms.TextBox txtNZBsRus_password;
-    private System.Windows.Forms.Label label3;
-    private System.Windows.Forms.TextBox txtNZBsRus_username;
-    private System.Windows.Forms.Label label4;
     private System.Windows.Forms.Button btnCancel;
     private System.Windows.Forms.Button btnOK;
     private System.Windows.Forms.CheckBox chkCatSelect;
     private System.Windows.Forms.Button btnTestConn;
+    private System.Windows.Forms.GroupBox grpSites;
+    private System.Windows.Forms.ComboBox cmbSites;
+    private System.Windows.Forms.Label lblSite;
+    private System.Windows.Forms.Button btnAdd;
+    private System.Windows.Forms.TextBox txtSitePassword;
+    private System.Windows.Forms.Label lblSitePassword;
+    private System.Windows.Forms.TextBox txtSiteUsername;
+    private System.Windows.Forms.Label lblSiteUsername;
+    private System.Windows.Forms.ListView lvSites;
+    private System.Windows.Forms.ColumnHeader clmSite;
+    private System.Windows.Forms.ColumnHeader clmUsername;
+    private System.Windows.Forms.ColumnHeader clmPassword;
+    private System.Windows.Forms.Button btnDelete;
+    private System.Windows.Forms.ColumnHeader clmFeed;
+    private System.Windows.Forms.ColumnHeader clmSearch;
   }
 }
