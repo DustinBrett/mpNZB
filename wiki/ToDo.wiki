@@ -29,5 +29,5 @@
 
 == Sites: (_Medium_) ==
   * [http://www.newzleech.com/ Newzleech]
-  * [http://www.binsearch.info/rssfeed.php Binsearch] Categories (alt.binaries.*)
+  * [http://www.binsearch.info/rssfeed.php Binsearch] Categories (alt.binaries)
   * [http://www.nzbsrus.com/rss.php NZBsRus] Categories
