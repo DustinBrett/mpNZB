@@ -303,7 +303,6 @@ namespace mpNZB
             txtSitePassword.Enabled = false;
             break;
         }
-
       }
     }
 
@@ -317,8 +316,11 @@ namespace mpNZB
 
     private void btnDelete_Click(object sender, EventArgs e)
     {
-      cmbSites.Items.Add(lvSites.SelectedItems[0].Text);      
-      lvSites.SelectedItems[0].Remove();      
+      if (lvSites.SelectedItems.Count > 0)
+      {
+        cmbSites.Items.Add(lvSites.SelectedItems[0].Text);      
+        lvSites.SelectedItems[0].Remove();
+      }
     }
   }
 }
