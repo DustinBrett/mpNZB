@@ -91,7 +91,7 @@ namespace mpNZB.Clients
             byte[] byteHeader = System.Text.Encoding.UTF8.GetBytes("Content-Disposition: form-data; name=\"name\" ;filename=\"" + Path.GetFileName(strTempFile) + "\"\r\nContent-Type: " + strContentType + "\r\n\r\n");
 
             // Create Web Request
-            HttpWebRequest webReq = (HttpWebRequest)HttpWebRequest.Create(fncCreateURL("/sabnzbd/", "api?mode=addfile", "&name=" + strTempFile));
+            HttpWebRequest webReq = (HttpWebRequest)HttpWebRequest.Create(fncCreateURL("/sabnzbd/", "api?mode=addfile", "&name=" + strTempFile, bolCategorySelect));
             webReq.ContentType = "multipart/form-data; boundary=" + strBoundary;
             webReq.Method = "POST";
             webReq.KeepAlive = true;
@@ -129,7 +129,7 @@ namespace mpNZB.Clients
       return strResponse;
     }
 
-    private string fncCreateURL(string strPath, string strMode, string strOptions)
+    private string fncCreateURL(string strPath, string strMode, string strOptions, bool bolCatSelect)
     {
       string strResponse = String.Empty;
       try
@@ -143,7 +143,7 @@ namespace mpNZB.Clients
           }
 
           string strCategory = String.Empty;
-          if (bolCategorySelect)
+          if (bolCatSelect)
           {
             strCategory = "&cat=" + Categories();
           }
@@ -174,7 +174,7 @@ namespace mpNZB.Clients
       try
       {
         XmlDocument xmlDoc = new XmlDocument();
-        XmlTextReader xmlTextReader = new XmlTextReader(fncCreateURL("/sabnzbd/", "api?mode=qstatus", "&output=xml"));
+        XmlTextReader xmlTextReader = new XmlTextReader(fncCreateURL("/sabnzbd/", "api?mode=qstatus", "&output=xml", false));
         xmlDoc.Load(xmlTextReader);
 
         if (xmlDoc.ChildNodes[1].Name == "queue")
@@ -251,7 +251,7 @@ namespace mpNZB.Clients
       try
       {
         XmlDocument xmlDoc = new XmlDocument();
-        XmlTextReader xmlTextReader = new XmlTextReader(fncCreateURL("/sabnzbd/", "api?mode=get_cats", "&output=xml"));
+        XmlTextReader xmlTextReader = new XmlTextReader(fncCreateURL("/sabnzbd/", "api?mode=get_cats", "&output=xml", false));
         xmlDoc.Load(xmlTextReader);
 
         if (xmlDoc.ChildNodes[1].Name == "categories")
@@ -293,7 +293,7 @@ namespace mpNZB.Clients
       try
       {
         XmlDocument xmlDoc = new XmlDocument();
-        XmlTextReader xmlTextReader = new XmlTextReader(fncCreateURL("/sabnzbd/", "api?mode=qstatus", "&output=xml"));
+        XmlTextReader xmlTextReader = new XmlTextReader(fncCreateURL("/sabnzbd/", "api?mode=qstatus", "&output=xml", false));
         xmlDoc.Load(xmlTextReader);
 
         if (xmlDoc.ChildNodes[1].Name == "queue")
@@ -338,8 +338,8 @@ namespace mpNZB.Clients
     {
       if (Dialogs.YesNo("Delete file?", lstItemList.ListItems[lstItemList.SelectedListItemIndex].Label))
       {
-        fncSendURL(fncCreateURL("/sabnzbd/queue/", "delete?uid=", lstItemList.ListItems[lstItemList.SelectedListItemIndex].Path)).Contains(lstItemList.ListItems[lstItemList.SelectedListItemIndex].Path);
-        if (!(fncSendURL(fncCreateURL("/sabnzbd/", "api?mode=qstatus", "&output=xml")).Contains(lstItemList.ListItems[lstItemList.SelectedListItemIndex].Label)))
+        fncSendURL(fncCreateURL("/sabnzbd/queue/", "delete?uid=", lstItemList.ListItems[lstItemList.SelectedListItemIndex].Path, false)).Contains(lstItemList.ListItems[lstItemList.SelectedListItemIndex].Path);
+        if (!(fncSendURL(fncCreateURL("/sabnzbd/", "api?mode=qstatus", "&output=xml", false)).Contains(lstItemList.ListItems[lstItemList.SelectedListItemIndex].Label)))
         {
           Queue(lstItemList, GUI);
           GUIPropertyManager.SetProperty("#Status", "Job deleted.");
@@ -362,7 +362,7 @@ namespace mpNZB.Clients
         }
         else
         {
-          strResult = fncSendURL(fncCreateURL("/sabnzbd/", "api?mode=" + (lstItemList.ListItems[lstItemList.SelectedListItemIndex].Path.Contains("http://") ? "addurl" : "addid"), "&name=" + lstItemList.ListItems[lstItemList.SelectedListItemIndex].Path));
+          strResult = fncSendURL(fncCreateURL("/sabnzbd/", "api?mode=" + (lstItemList.ListItems[lstItemList.SelectedListItemIndex].Path.Contains("http://") ? "addurl" : "addid"), "&name=" + lstItemList.ListItems[lstItemList.SelectedListItemIndex].Path, bolCategorySelect));
         }
         if (strResult == "ok\n")
         {
@@ -380,7 +380,7 @@ namespace mpNZB.Clients
     {
       if (bolPause)
       {
-        if (fncSendURL(fncCreateURL("/sabnzbd/", "api?mode=pause", String.Empty)) == "ok\n")
+        if (fncSendURL(fncCreateURL("/sabnzbd/", "api?mode=pause", String.Empty, false)) == "ok\n")
         {
           GUIPropertyManager.SetProperty("#Status", "Queue paused.");
         }
@@ -391,7 +391,7 @@ namespace mpNZB.Clients
       }
       else
       {
-        if (fncSendURL(fncCreateURL("/sabnzbd/", "api?mode=resume", String.Empty)) == "ok\n")
+        if (fncSendURL(fncCreateURL("/sabnzbd/", "api?mode=resume", String.Empty, false)) == "ok\n")
         {
           Status.tmrTimer.Enabled = true;
           GUIPropertyManager.SetProperty("#Status", "Queue resumed.");
@@ -410,7 +410,7 @@ namespace mpNZB.Clients
       try
       {
         XmlDocument xmlDoc = new XmlDocument();
-        XmlTextReader xmlTextReader = new XmlTextReader(fncCreateURL("/sabnzbd/", "api?mode=version", "&output=xml"));
+        XmlTextReader xmlTextReader = new XmlTextReader(fncCreateURL("/sabnzbd/", "api?mode=version", "&output=xml", false));
         xmlDoc.Load(xmlTextReader);
 
         strVersion = xmlDoc["versions"]["version"].InnerText;
