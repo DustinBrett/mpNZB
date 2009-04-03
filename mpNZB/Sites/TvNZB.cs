@@ -52,6 +52,7 @@ namespace mpNZB.Sites
     public void SetFeed()
     {
       FeedName = Dialogs.Menu(new string[] { "New Files", "All Files", "Old Files" }, "Select Feed");
+
       if (FeedName.Length > 0)
       {
         Dialogs.Wait(true);
@@ -62,7 +63,7 @@ namespace mpNZB.Sites
           case "Old Files": FeedURL = "http://www.tvnzb.com/tvnzb_old.rss"; break;
         }
         Dialogs.Wait(false);
-      }
+      }      
     }
 
     public void Search()

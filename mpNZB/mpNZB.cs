@@ -327,6 +327,7 @@ namespace mpNZB
         case "NZBMatrix": Site = new Sites.NZBMatrix(); break;
         case "NZBsRus":   Site = new Sites.NZBsRus();   break;
         case "TvNZB":     Site = new Sites.TvNZB();     break;
+        default: return;
       }
       // ##################################################
 
@@ -338,7 +339,6 @@ namespace mpNZB
       }
       else
       {
-        Dialogs.OK("Meow", "Woof");
         Site.SetFeed();
       }
       // ##################################################

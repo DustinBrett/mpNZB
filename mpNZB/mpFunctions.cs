@@ -98,7 +98,7 @@ namespace mpNZB
       }
       else
       {
-        bwWorker.CancelAsync();
+        //bwWorker.CancelAsync();
       }
     }
 
