@@ -161,8 +161,8 @@ namespace mpNZB
         fncReadRSS(Site.FeedURL, lstItems);
         Dialogs.Wait(false);
       }
-      if (control == btnSelectFeed) { fncSelectFeed(); }
-      if (control == btnSearch)     { fncSearchFeed(); }
+      if (control == btnSelectFeed) { fncSelectFeed(false); }
+      if (control == btnSearch)     { fncSelectFeed(true); }
       if (control == btnJobQueue)   { Client.Queue(lstItems, this); }
       if (control == btnPause)      { Client.Pause(btnPause.Selected, Status); }
       if (control == lstItems)
@@ -303,67 +303,42 @@ namespace mpNZB
       }
     }
 
-    private void fncSearchFeed()
+    private void fncSelectFeed(bool bolSearch)
     {
-      // Create Site List
+      // Create Feed List
       // ##################################################
-      string strSiteList = "NZBIndex";
       Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
-      if (mpSettings.GetValueAsBool("#Sites", "Newzbin_auth", false)) { strSiteList += (char)0 + "Newzbin"; }
-      mpSettings.Dispose();
-      string[] strSites = strSiteList.Split((char)0);
+      string strList = mpSettings.GetValue("#Lists", (bolSearch ? "SearchList" : "FeedList"));
+      string[] strSites = strList.Split((char)0);
+      mpSettings.Dispose();      
       // ##################################################
 
       // Select Site
       // ##################################################
       switch (Dialogs.Menu(strSites, "Select Site"))
-      {
-        case "Newzbin":  Site = new Sites.Newzbin();  break;
-        case "NZBIndex": Site = new Sites.NZBIndex(); break;
-      }
-      // ##################################################
-
-      // Select Feed
-      // ##################################################
-      Site.Search();
-      if (Site.FeedURL.Length > 0)
-      {
-        Dialogs.Wait(true);
-        fncReadRSS(Site.FeedURL, lstItems);
-        btnRefreshFeed.Disabled = false;
-        GUIPropertyManager.SetProperty("#PageTitle", Site.SiteName + " - " + Site.FeedName);
-        Dialogs.Wait(false);
-      }
-      // ##################################################
-    }
-
-    private void fncSelectFeed()
-    {
-      // Create Site List
-      // ##################################################
-      string strSiteList = "TvNZB";
-      Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
-      if (mpSettings.GetValueAsBool("#Sites", "Newzbin_auth", false))   { strSiteList += (char)0 + "Newzbin"; }
-      if (mpSettings.GetValueAsBool("#Sites", "NZBMatrix_auth", false)) { strSiteList += (char)0 + "NZBMatrix"; }
-      if (mpSettings.GetValueAsBool("#Sites", "NZBsRus_auth", false))   { strSiteList += (char)0 + "NZBsRus"; }
-      mpSettings.Dispose();
-      string[] strSites = strSiteList.Split((char)0);
-      // ##################################################
-
-      // Select Site
-      // ##################################################
-      switch (Dialogs.Menu(strSites, "Select Site"))
-      {
-        case "TvNZB":     Site = new Sites.TvNZB();     break;
+      {        
         case "Newzbin":   Site = new Sites.Newzbin();   break;
+        case "NZBIndex":  Site = new Sites.NZBIndex();  break;
         case "NZBMatrix": Site = new Sites.NZBMatrix(); break;
         case "NZBsRus":   Site = new Sites.NZBsRus();   break;
+        case "TvNZB":     Site = new Sites.TvNZB();     break;
       }
       // ##################################################
 
-      // Select Feed
+      // SetFeed or Search
       // ##################################################
-      Site.SetFeed();
+      if (bolSearch)
+      {
+        Site.Search();
+      }
+      else
+      {
+        Site.SetFeed();
+      }
+      // ##################################################
+
+      // Update List
+      // ##################################################
       if (Site.FeedURL.Length > 0)
       {
         Dialogs.Wait(true);

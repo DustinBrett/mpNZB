@@ -44,23 +44,20 @@ namespace mpNZB
 
       // Site Settings
       // --------------------------------------------------
-      chkNewzbin_auth.Checked = mpSettings.GetValueAsBool("#Sites", "Newzbin_auth", false);
-      txtNewzbin_username.Enabled = chkNewzbin_auth.Checked;
-      txtNewzbin_password.Enabled = chkNewzbin_auth.Checked;
-      txtNewzbin_username.Text = mpSettings.GetValue("#Sites", "Newzbin_username");
-      txtNewzbin_password.Text = mpSettings.GetValue("#Sites", "Newzbin_password");
+      string strTempUsername;
+      string strTempPassword;
 
-      chkNZBMatrix_auth.Checked = mpSettings.GetValueAsBool("#Sites", "NZBMatrix_auth", false);
-      txtNZBMatrix_username.Enabled = chkNZBMatrix_auth.Checked;
-      txtNZBMatrix_password.Enabled = chkNZBMatrix_auth.Checked;
-      txtNZBMatrix_username.Text = mpSettings.GetValue("#Sites", "NZBMatrix_username");
-      txtNZBMatrix_password.Text = mpSettings.GetValue("#Sites", "NZBMatrix_password");
-
-      chkNZBsRus_auth.Checked = mpSettings.GetValueAsBool("#Sites", "NZBsRus_auth", false);
-      txtNZBsRus_username.Enabled = chkNZBsRus_auth.Checked;
-      txtNZBsRus_password.Enabled = chkNZBsRus_auth.Checked;
-      txtNZBsRus_username.Text = mpSettings.GetValue("#Sites", "NZBsRus_username");
-      txtNZBsRus_password.Text = mpSettings.GetValue("#Sites", "NZBsRus_password");
+      for (int i = 0; i < (cmbSites.Items.Count - 1); i++)
+      {        
+        strTempUsername = mpSettings.GetValue("#Sites", cmbSites.Items[i].ToString() + "_username");
+        strTempPassword = mpSettings.GetValue("#Sites", cmbSites.Items[i].ToString() + "_password");
+        if ((strTempUsername.Length > 0) && (strTempPassword.Length > 0))
+        {
+          lvSites.Items.Add(cmbSites.Items[i].ToString());
+          lvSites.Items[lvSites.Items.Count - 1].SubItems.Add(strTempUsername);
+          lvSites.Items[lvSites.Items.Count - 1].SubItems.Add(strTempPassword);
+        }
+      }
       // --------------------------------------------------
 
       mpSettings.Dispose();
@@ -94,38 +91,27 @@ namespace mpNZB
 
       // Site Settings
       // --------------------------------------------------
-      if ((txtNewzbin_username.Text.Length > 0) && (txtNewzbin_password.Text.Length > 0) && chkNewzbin_auth.Checked)
+      string strFeedList = String.Empty;
+      string strSearchList = String.Empty;
+      for (int i = 0; i < (lvSites.Items.Count - 1); i++)
       {
-        mpSettings.SetValueAsBool("#Sites", "Newzbin_auth", true);
-      }
-      else
-      {
-        mpSettings.SetValueAsBool("#Sites", "Newzbin_auth", false);
-      }
-      mpSettings.SetValue("#Sites", "Newzbin_username", txtNewzbin_username.Text);
-      mpSettings.SetValue("#Sites", "Newzbin_password", txtNewzbin_password.Text);
+        mpSettings.SetValue("#Sites", lvSites.Items[i].Text + "_username", lvSites.Items[i].SubItems[1].Text);
+        mpSettings.SetValue("#Sites", lvSites.Items[i].Text + "_password", lvSites.Items[i].SubItems[2].Text);
 
-      if ((txtNZBMatrix_username.Text.Length > 0) && (txtNZBMatrix_password.Text.Length > 0) && chkNZBMatrix_auth.Checked)
-      {
-        mpSettings.SetValueAsBool("#Sites", "NZBMatrix_auth", true);
-      }
-      else
-      {
-        mpSettings.SetValueAsBool("#Sites", "NZBMatrix_auth", false);
-      }
-      mpSettings.SetValue("#Sites", "NZBMatrix_username", txtNZBMatrix_username.Text);
-      mpSettings.SetValue("#Sites", "NZBMatrix_password", txtNZBMatrix_password.Text);
+        // Add as Feed
+        if (lvSites.Items[i].SubItems[3].Text == "*")
+        {
+          strFeedList += lvSites.Items[i].Text + (char)0;
+        }
 
-      if ((txtNZBsRus_username.Text.Length > 0) && (txtNZBsRus_password.Text.Length > 0) && chkNZBsRus_auth.Checked)
-      {
-        mpSettings.SetValueAsBool("#Sites", "NZBsRus_auth", true);
+        // Add as Search
+        if (lvSites.Items[i].SubItems[4].Text == "*")
+        {
+          strFeedList += lvSites.Items[i].Text + (char)0;
+        }
       }
-      else
-      {
-        mpSettings.SetValueAsBool("#Sites", "NZBsRus_auth", false);
-      }
-      mpSettings.SetValue("#Sites", "NZBsRus_username", txtNZBsRus_username.Text);
-      mpSettings.SetValue("#Sites", "NZBsRus_password", txtNZBsRus_password.Text);
+      mpSettings.SetValue("#Lists", "FeedList", strFeedList.Substring(0, (strFeedList.Length - 1)));
+      mpSettings.SetValue("#Lists", "SearchList", strSearchList.Substring(0, (strSearchList.Length - 1)));
       // --------------------------------------------------
 
       mpSettings.Dispose();
@@ -149,24 +135,6 @@ namespace mpNZB
       txtPassword.Enabled = chkAuth.Checked;
     }
 
-    private void chkNewzbin_CheckedChanged(object sender, EventArgs e)
-    {
-      txtNewzbin_username.Enabled = chkNewzbin_auth.Checked;
-      txtNewzbin_password.Enabled = chkNewzbin_auth.Checked;
-    }
-
-    private void chkNZBMatrix_auth_CheckedChanged(object sender, EventArgs e)
-    {
-      txtNZBMatrix_username.Enabled = chkNZBMatrix_auth.Checked;
-      txtNZBMatrix_password.Enabled = chkNZBMatrix_auth.Checked;
-    }
-
-    private void chkNZBsRus_auth_CheckedChanged(object sender, EventArgs e)
-    {
-      txtNZBsRus_username.Enabled = chkNZBsRus_auth.Checked;
-      txtNZBsRus_password.Enabled = chkNZBsRus_auth.Checked;
-    }
-
     private void btnTestConn_Click(object sender, EventArgs e)
     {     
       // Setup Client
@@ -188,6 +156,82 @@ namespace mpNZB
           break;
       }
       // --------------------------------------------------
+    }
+
+    private void btnAdd_Click(object sender, EventArgs e)
+    {
+      // Set Username/Password
+      switch (cmbSites.SelectedText)
+      {
+        case "Newzbin":
+        case "NZBMatrix":
+        case "NZBsRus":
+          if ((txtSiteUsername.Text.Length > 0) && (txtSitePassword.Text.Length > 0))
+          {
+            lvSites.Items.Add(cmbSites.Text);
+            lvSites.Items[lvSites.Items.Count - 1].SubItems.Add(txtSiteUsername.Text);
+            lvSites.Items[lvSites.Items.Count - 1].SubItems.Add(txtSitePassword.Text);
+          }
+          else
+          {
+            MessageBox.Show(null, "Username/Password Invalid", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+          }
+          break;
+        case "TvNZB":
+        case "NZBIndex":
+          lvSites.Items.Add(cmbSites.Text);
+          lvSites.Items[lvSites.Items.Count - 1].SubItems.Add(String.Empty);
+          lvSites.Items[lvSites.Items.Count - 1].SubItems.Add(String.Empty);
+          break;
+        default:
+          return;
+      }
+
+      // Set Username/Password
+      switch (cmbSites.SelectedText)
+      {
+        case "Newzbin":
+          lvSites.Items[lvSites.Items.Count - 1].SubItems.Add("*");
+          lvSites.Items[lvSites.Items.Count - 1].SubItems.Add("*");
+          break;
+        case "NZBIndex":
+          lvSites.Items[lvSites.Items.Count - 1].SubItems.Add(String.Empty);
+          lvSites.Items[lvSites.Items.Count - 1].SubItems.Add("*");
+          break;
+        case "NZBMatrix":
+        case "NZBsRus":
+        case "TvNZB":
+          lvSites.Items[lvSites.Items.Count - 1].SubItems.Add("*");
+          lvSites.Items[lvSites.Items.Count - 1].SubItems.Add(String.Empty);
+          break;
+      }
+
+      cmbSites.SelectedIndex = -1;
+      btnAdd.Enabled = false;
+      txtSiteUsername.Text = "";
+      txtSitePassword.Text = "";
+    }
+
+    private void cmbSites_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      if (cmbSites.SelectedIndex != -1)
+      {
+        btnAdd.Enabled = true;
+      }
+    }
+
+    private void lvSites_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      if (lvSites.SelectedItems.Count > 0)
+      {
+        btnDelete.Enabled = true;
+      }
+    }
+
+    private void btnDelete_Click(object sender, EventArgs e)
+    {
+      lvSites.SelectedItems[0].Remove();
     }
   }
 }
