@@ -52,7 +52,6 @@ namespace mpNZB.Sites
     public void SetFeed()
     {
       FeedName = Dialogs.Menu(new string[] { "New Files", "All Files", "Old Files" }, "Select Feed");
-
       if (FeedName.Length > 0)
       {
         Dialogs.Wait(true);
