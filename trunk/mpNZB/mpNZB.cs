@@ -338,6 +338,7 @@ namespace mpNZB
       }
       else
       {
+        Dialogs.OK("Meow", "Woof");
         Site.SetFeed();
       }
       // ##################################################
