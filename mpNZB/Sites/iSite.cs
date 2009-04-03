@@ -21,8 +21,21 @@ namespace mpNZB.Sites
       set;
     }
 
+    string Username
+    {
+      get;
+      set;
+    }
+
+    string Password
+    {
+      get;
+      set;
+    }
+
     void SetFeed();
     void Search();
     void AddItem(XmlNode node, GUIListControl lstList);
+    string Cookie();
   }
 }

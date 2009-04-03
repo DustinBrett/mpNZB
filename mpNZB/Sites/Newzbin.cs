@@ -33,14 +33,26 @@ namespace mpNZB.Sites
       set { _FeedURL = value; }
     }
 
+    private string _Username;
+    public string Username
+    {
+      get { return _Username; }
+      set { _Username = value; }
+    }
+
+    private string _Password;
+    public string Password
+    {
+      get { return _Password; }
+      set { _Password = value; }
+    }
+
     #endregion    
 
     #region Init
 
     private string NzbSmoke;
     private string NzbSessionID;
-    private string Username;
-    private string Password;
 
     public Newzbin()
     {
@@ -66,7 +78,7 @@ namespace mpNZB.Sites
       if (FeedName.Length > 0)
       {
         Dialogs.Wait();
-        if (!(Cookie())) { return; }
+        if (Cookie() == String.Empty) { return; }
         FeedURL = "http://www.newzbin.com/browse/category/p/" + FeedName.ToLower() + "/?feed=rss" + "&COOKIE:NzbSmoke=" + NzbSmoke + ";NzbSessionID=" + NzbSessionID;
         Dialogs.bolWaiting = false;
       }
@@ -78,7 +90,7 @@ namespace mpNZB.Sites
       if (FeedName.Length > 0)
       {
         Dialogs.Wait();
-        if (!(Cookie())) { return; }
+        if (Cookie() == String.Empty) { return; }
         FeedURL = "http://www.newzbin.com/search/query/?q=" + FeedName + "&searchaction=Go&feed=rss" + "&COOKIE:NzbSmoke=" + NzbSmoke + ";NzbSessionID=" + NzbSessionID;
         Dialogs.bolWaiting = false;
       }
@@ -88,27 +100,27 @@ namespace mpNZB.Sites
     {
       double dblSize = 0;
       double.TryParse(Node["report:size"].InnerText, out dblSize);
-      Dialogs.AddItem(lstList, Node["title"].InnerText, string.Format("{0:0.00}", Math.Round((dblSize / 1024) / 1024, 2)) + " MB", Node["report:id"].InnerText, 1);
+      Dialogs.AddItem(lstList, Node["title"].InnerText, string.Format("{0:0.00}", Math.Round((dblSize / 1024) / 1024, 2)) + " MB", Node["report:id"].InnerText, 4);
     }
 
     #endregion
 
     #region Cookie
 
-    private bool Cookie()
+    public string Cookie()
     {
       if ((NzbSmoke.Length == 0) || (NzbSessionID.Length == 0))
       {
         if (GetCookie())
         {
-          return true;
+          return "NzbSmoke=" + NzbSmoke + "; NzbSessionID=" + NzbSessionID;
         }
       }
       else if (CheckCookie())
       {
-        return true;
+        return "NzbSmoke=" + NzbSmoke + "; NzbSessionID=" + NzbSessionID;
       }
-      return false;
+      return String.Empty;
     }
 
     private bool CheckCookie()

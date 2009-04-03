@@ -62,58 +62,57 @@ namespace mpNZB.Clients
       return strResponse;
     }
 
-    private string fncSendFile(string strURL, string strUID, string strPass, bool IsZip)
+    private string fncSendFile(string strURL, Sites.iSite Site, bool IsZip)
     {
       string strResponse = String.Empty;
 
       try
       {
-        if ((strUID.Length > 0) && (strPass.Length > 0))
+        string strTempFile = String.Empty;
+        string strContentType = String.Empty;
+
+        // Set File Type
+        if (IsZip)
         {
-          string strTempFile = String.Empty;
-          string strContentType = String.Empty;
+            strTempFile = Path.GetTempPath() + Path.GetRandomFileName() + ".zip";
+            strContentType = "application/zip";
+        }
 
-          // Download File
-          if (IsZip)
-          {
-              strTempFile = Path.GetTempPath() + Path.GetRandomFileName() + ".zip";
-              strContentType = "application/zip";
-              WebClient webClient = new WebClient();
-              webClient.Headers.Set("Cookie", "uid=" + strUID + "; pass=" + strPass);
-              webClient.DownloadFile(strURL, strTempFile);
-          }
+        // Download File
+        WebClient webClient = new WebClient();
+        webClient.Headers.Set("Cookie", Site.Cookie());
+        webClient.DownloadFile(strURL, strTempFile);
 
-          if (strTempFile.Length > 0)
-          {
-            // Setup Request Information
-            string strBoundary = "----------------------------" + DateTime.Now.Ticks.ToString("x");
-            byte[] byteNZB = File.ReadAllBytes(strTempFile);
-            byte[] byteBoundary = System.Text.Encoding.ASCII.GetBytes("\r\n--" + strBoundary + "\r\n");
-            byte[] byteHeader = System.Text.Encoding.UTF8.GetBytes("Content-Disposition: form-data; name=\"name\" ;filename=\"" + Path.GetFileName(strTempFile) + "\"\r\nContent-Type: " + strContentType + "\r\n\r\n");
+        if (strTempFile.Length > 0)
+        {
+          // Setup Request Information
+          string strBoundary = "----------------------------" + DateTime.Now.Ticks.ToString("x");
+          byte[] byteNZB = File.ReadAllBytes(strTempFile);
+          byte[] byteBoundary = System.Text.Encoding.ASCII.GetBytes("\r\n--" + strBoundary + "\r\n");
+          byte[] byteHeader = System.Text.Encoding.UTF8.GetBytes("Content-Disposition: form-data; name=\"name\" ;filename=\"" + Path.GetFileName(strTempFile) + "\"\r\nContent-Type: " + strContentType + "\r\n\r\n");
 
-            // Create Web Request
-            HttpWebRequest webReq = (HttpWebRequest)HttpWebRequest.Create(fncCreateURL("/sabnzbd/", "api?mode=addfile", "&name=" + strTempFile, bolCategorySelect));
-            webReq.ContentType = "multipart/form-data; boundary=" + strBoundary;
-            webReq.Method = "POST";
-            webReq.KeepAlive = true;
-            webReq.ContentLength = byteNZB.Length + byteHeader.Length + (byteBoundary.Length * 2) + 2;
+          // Create Web Request
+          HttpWebRequest webReq = (HttpWebRequest)HttpWebRequest.Create(fncCreateURL("/sabnzbd/", "api?mode=addfile", "&name=" + strTempFile, bolCategorySelect));
+          webReq.ContentType = "multipart/form-data; boundary=" + strBoundary;
+          webReq.Method = "POST";
+          webReq.KeepAlive = true;
+          webReq.ContentLength = byteNZB.Length + byteHeader.Length + (byteBoundary.Length * 2) + 2;
 
-            // Send Stream
-            Stream reqStream = webReq.GetRequestStream();
-            reqStream.Write(byteBoundary, 0, byteBoundary.Length);
-            reqStream.Write(byteHeader, 0, byteHeader.Length);
-            reqStream.Write(byteNZB, 0, byteNZB.Length);
-            byteBoundary = System.Text.Encoding.ASCII.GetBytes("\r\n--" + strBoundary + "--\r\n");
-            reqStream.Write(byteBoundary, 0, byteBoundary.Length);
-            reqStream.Close();
+          // Send Stream
+          Stream reqStream = webReq.GetRequestStream();
+          reqStream.Write(byteBoundary, 0, byteBoundary.Length);
+          reqStream.Write(byteHeader, 0, byteHeader.Length);
+          reqStream.Write(byteNZB, 0, byteNZB.Length);
+          byteBoundary = System.Text.Encoding.ASCII.GetBytes("\r\n--" + strBoundary + "--\r\n");
+          reqStream.Write(byteBoundary, 0, byteBoundary.Length);
+          reqStream.Close();
 
-            // Get Response
-            WebResponse webResp = webReq.GetResponse();
-            Stream streamResp = webResp.GetResponseStream();
-            StreamReader responseReader = new StreamReader(streamResp);
-            strResponse = responseReader.ReadToEnd();
-            webResp.Close();
-          }
+          // Get Response
+          WebResponse webResp = webReq.GetResponse();
+          Stream streamResp = webResp.GetResponseStream();
+          StreamReader responseReader = new StreamReader(streamResp);
+          strResponse = responseReader.ReadToEnd();
+          webResp.Close();
         }
       }
       catch (Exception e)
@@ -335,12 +334,12 @@ namespace mpNZB.Clients
       }
     }
 
-    public void Delete(GUIListControl lstItemList, GUIWindow GUI)
+    public void Delete(GUIListItem lstItem, GUIListControl lstItemList, GUIWindow GUI)
     {
-      if (Dialogs.YesNo("Delete file?", lstItemList.ListItems[lstItemList.SelectedListItemIndex].Label))
+      if (Dialogs.YesNo("Delete file?", lstItem.Label))
       {
-        fncSendURL(fncCreateURL("/sabnzbd/queue/", "delete?uid=", lstItemList.ListItems[lstItemList.SelectedListItemIndex].Path, false)).Contains(lstItemList.ListItems[lstItemList.SelectedListItemIndex].Path);
-        if (!(fncSendURL(fncCreateURL("/sabnzbd/", "api?mode=qstatus", "&output=xml", false)).Contains(lstItemList.ListItems[lstItemList.SelectedListItemIndex].Label)))
+        fncSendURL(fncCreateURL("/sabnzbd/queue/", "delete?uid=", lstItem.Path, false)).Contains(lstItem.Path);
+        if (!(fncSendURL(fncCreateURL("/sabnzbd/", "api?mode=qstatus", "&output=xml", false)).Contains(lstItem.Label)))
         {
           Queue(lstItemList, GUI);
           GUIPropertyManager.SetProperty("#Status", "Job deleted.");
@@ -352,20 +351,22 @@ namespace mpNZB.Clients
       }
     }
 
-    public void Download(GUIListControl lstItemList, string strSiteName, Clients.statusTimer Status)
+    public void Download(GUIListItem lstItem, Sites.iSite Site, Clients.statusTimer Status)
     {
-      if (Dialogs.YesNo("Download file?", lstItemList.ListItems[lstItemList.SelectedListItemIndex].Label))
+      if (Dialogs.YesNo("Download file?", lstItem.Label))
       {
-        string strResult;
-        if (strSiteName == "NZBMatrix")
+        string strResult = String.Empty;
+        switch (lstItem.ItemId)
         {
-          Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
-          strResult = fncSendFile(lstItemList.ListItems[lstItemList.SelectedListItemIndex].Path.Replace("nzb-details.php", "nzb-download.php").Replace("&hit=1", String.Empty), mpSettings.GetValue("#Cookies", "NZBMatrix_uid"), mpSettings.GetValue("#Cookies", "NZBMatrix_pass"), true);
-          mpSettings.Dispose();
-        }
-        else
-        {
-          strResult = fncSendURL(fncCreateURL("/sabnzbd/", "api?mode=" + (lstItemList.ListItems[lstItemList.SelectedListItemIndex].Path.Contains("http://") ? "addurl" : "addid"), "&name=" + lstItemList.ListItems[lstItemList.SelectedListItemIndex].Path, bolCategorySelect));
+          case 1:
+            strResult = fncSendURL(fncCreateURL("/sabnzbd/", "api?mode=addurl", "&name=" + lstItem.Path, bolCategorySelect));
+            break;
+          case 3:
+            strResult = fncSendFile(lstItem.Path, Site, true);
+            break;
+          case 4:
+            strResult = fncSendURL(fncCreateURL("/sabnzbd/", "api?mode=addid", "&name=" + lstItem.Path, bolCategorySelect));
+            break;
         }
         if (strResult == "ok\n")
         {

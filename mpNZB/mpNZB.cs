@@ -131,7 +131,6 @@ namespace mpNZB
     
     private Sites.iSite Site;
     private Clients.iClient Client;
-
     private Clients.statusTimer Status = new Clients.statusTimer();
 
     private mpFunctions Dialogs = new mpFunctions();
@@ -170,8 +169,14 @@ namespace mpNZB
       {
         switch (lstItems.ListItems[lstItems.SelectedListItemIndex].ItemId)
         {
-          case 1: Client.Download(lstItems, Site.SiteName, Status); break;
-          case 2: Client.Delete(lstItems, this); break;
+          case 1:
+          case 3:
+          case 4:
+            Client.Download(lstItems.ListItems[lstItems.SelectedListItemIndex], Site, Status);
+            break;
+          case 2:
+            Client.Delete(lstItems.ListItems[lstItems.SelectedListItemIndex], lstItems, this);
+            break;
         }
       }
       base.OnClicked(controlId, control, actionType);

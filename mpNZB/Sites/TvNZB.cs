@@ -29,6 +29,20 @@ namespace mpNZB.Sites
       set { _FeedURL = value; }
     }
 
+    private string _Username;
+    public string Username
+    {
+      get { return _Username; }
+      set { _Username = value; }
+    }
+
+    private string _Password;
+    public string Password
+    {
+      get { return _Password; }
+      set { _Password = value; }
+    }
+
     #endregion    
 
     #region Functions
@@ -58,6 +72,15 @@ namespace mpNZB.Sites
     public void AddItem(XmlNode Node, GUIListControl lstList)
     {
       Dialogs.AddItem(lstList, Node["title"].InnerText, String.Empty, Node["link"].InnerText, 1);
+    }
+
+    #endregion
+
+    #region Cookie
+
+    public string Cookie()
+    {
+      return String.Empty;
     }
 
     #endregion
