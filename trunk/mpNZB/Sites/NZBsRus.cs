@@ -77,10 +77,10 @@ namespace mpNZB.Sites
       FeedName = Dialogs.Menu(new string[] { "Main RSS Feed", "User's Category Selection RSS" }, "Select Feed");
       if (FeedName.Length > 0)
       {
-        Dialogs.Wait();
+        Dialogs.Wait(true);
         if (Cookie() == String.Empty) { return; }
         FeedURL = URLGrab();
-        Dialogs.bolWaiting = false;
+        Dialogs.Wait(false);
       }
     }
 
