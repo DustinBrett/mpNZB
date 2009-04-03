@@ -309,6 +309,11 @@ namespace mpNZB
       // ##################################################
       Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
       string strList = mpSettings.GetValue("#Lists", (bolSearch ? "SearchList" : "FeedList"));
+      if (strList.Length == 0)
+      {
+        GUIPropertyManager.SetProperty("#Status", "Site list is empty.");
+        return;
+      }
       string[] strSites = strList.Split((char)0);
       mpSettings.Dispose();      
       // ##################################################
