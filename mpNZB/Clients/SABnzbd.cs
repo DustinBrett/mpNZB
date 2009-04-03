@@ -30,7 +30,7 @@ namespace mpNZB.Clients
 
       bolCategorySelect = _bolCategorySelect;
       bolAuthorization = _bolAuthorization;
-
+      
       strUsername = _strUsername;
       strPassword = _strPassword;
     }
@@ -194,6 +194,12 @@ namespace mpNZB.Clients
             }
           }
 
+          if (xmlDoc["queue"]["paused"].InnerText == "True")
+          {
+            Status.tmrTimer.Enabled = false;
+            btnButton.Selected = true;
+          }
+
           if (!(Status.KeepAlive))
           {
             double intKBps = 0;
@@ -218,12 +224,6 @@ namespace mpNZB.Clients
             GUIPropertyManager.SetProperty("#DiskSpace1", string.Format("{0:0.00}", Math.Round(intDiskSpace1, 2)) + " GB");
             GUIPropertyManager.SetProperty("#DiskSpace2", string.Format("{0:0.00}", Math.Round(intDiskSpace2, 2)) + " GB");
             GUIPropertyManager.SetProperty("#TimeLeft", xmlDoc["queue"]["timeleft"].InnerText + " s");
-
-            if (xmlDoc["queue"]["paused"].InnerText == "True")
-            {
-              Status.tmrTimer.Enabled = false;
-              btnButton.Selected = true;
-            }
           }
         }
         else
