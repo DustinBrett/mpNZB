@@ -5,6 +5,7 @@
   * Change NZBsRus URL grabber to something better
     * Also add NZBsRus categories to list
   * Progress bar works intermittently
+    * Stops working after clicking NZBsRus ?maybe?
 
 == Skining: ==
   * Download complete sound effect
