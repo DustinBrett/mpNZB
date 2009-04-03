@@ -207,27 +207,27 @@ namespace mpNZB.Clients
 
           if (!(Status.KeepAlive))
           {
-            double intKBps = 0;
-            double intMBLeft = 0;
-            double intMBTotal = 0;
-            double intDiskSpace1 = 0;
-            double intDiskSpace2 = 0;
+            double dblKBps = 0;
+            double dblMBLeft = 0;
+            double dblMBTotal = 0;
+            double dblDiskSpace1 = 0;
+            double dblDiskSpace2 = 0;
 
             if (intJobCount > 0)
             {
-              double.TryParse(xmlDoc["queue"]["kbpersec"].InnerText, out intKBps);
+              double.TryParse(xmlDoc["queue"]["kbpersec"].InnerText, out dblKBps);
             }
-            double.TryParse(xmlDoc["queue"]["mbleft"].InnerText, out intMBLeft);
-            double.TryParse(xmlDoc["queue"]["mb"].InnerText, out intMBTotal);
-            double.TryParse(xmlDoc["queue"]["diskspace1"].InnerText, out intDiskSpace1);
-            double.TryParse(xmlDoc["queue"]["diskspace2"].InnerText, out intDiskSpace2);
+            double.TryParse(xmlDoc["queue"]["mbleft"].InnerText, out dblMBLeft);
+            double.TryParse(xmlDoc["queue"]["mb"].InnerText, out dblMBTotal);
+            double.TryParse(xmlDoc["queue"]["diskspace1"].InnerText, out dblDiskSpace1);
+            double.TryParse(xmlDoc["queue"]["diskspace2"].InnerText, out dblDiskSpace2);
 
             GUIPropertyManager.SetProperty("#Paused", xmlDoc["queue"]["paused"].InnerText);
-            GUIPropertyManager.SetProperty("#KBps", string.Format("{0:0.00}", Math.Round(intKBps, 2)) + " KB/s");
-            GUIPropertyManager.SetProperty("#MBStatus", string.Format("{0:0.00}", Math.Round(intMBLeft, 2)) + "/" + string.Format("{0:0.00}", Math.Round(intMBTotal, 2)) + " MB");
+            GUIPropertyManager.SetProperty("#KBps", dblKBps.ToString("N2") + " KB/s");
+            GUIPropertyManager.SetProperty("#MBStatus", dblMBLeft.ToString("N2") + "/" + dblMBTotal.ToString("N2") + " MB");
             GUIPropertyManager.SetProperty("#JobCount", intJobCount.ToString());
-            GUIPropertyManager.SetProperty("#DiskSpace1", string.Format("{0:0.00}", Math.Round(intDiskSpace1, 2)) + " GB");
-            GUIPropertyManager.SetProperty("#DiskSpace2", string.Format("{0:0.00}", Math.Round(intDiskSpace2, 2)) + " GB");
+            GUIPropertyManager.SetProperty("#DiskSpace1", dblDiskSpace1.ToString("N2") + " GB");
+            GUIPropertyManager.SetProperty("#DiskSpace2", dblDiskSpace2.ToString("N2") + " GB");
             GUIPropertyManager.SetProperty("#TimeLeft", xmlDoc["queue"]["timeleft"].InnerText + " s");
           }
         }
