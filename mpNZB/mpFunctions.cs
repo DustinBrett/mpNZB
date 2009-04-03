@@ -6,8 +6,11 @@ using MediaPortal.GUI.Library;
 
 namespace mpNZB
 {
-  class mpFunctions
+  class mpFunctions : GUIWindow
   {
+
+    #region GUI Controls
+
     public void OK(string strLine, string strHeading)
     {
       GUIDialogOK dlgOK = (GUIDialogOK)GUIWindowManager.GetWindow((int)GUIWindow.Window.WINDOW_DIALOG_OK);
@@ -98,5 +101,8 @@ namespace mpNZB
       GUIWaitCursor.Hide();
     }
     // ##################################################
+
+    #endregion
+
   }
 }

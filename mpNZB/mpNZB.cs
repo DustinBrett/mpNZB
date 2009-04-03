@@ -23,11 +23,6 @@ namespace mpNZB
     [SkinControlAttribute(5)]
     protected GUIToggleButtonControl btnPause = null;
 
-    [SkinControlAttribute(60)]
-    protected GUIButtonControl btnPrev = null;
-    [SkinControlAttribute(61)]
-    protected GUIButtonControl btnNext = null;
-
     [SkinControlAttribute(50)]
     protected GUIListControl lstItems = null;
 
@@ -133,11 +128,13 @@ namespace mpNZB
     #endregion
 
     #region Definitions
+    
+    private Sites.iSite Site;
+    private Clients.iClient Client;
+
+    private Clients.statusTimer Status = new Clients.statusTimer();
 
     private mpFunctions Dialogs = new mpFunctions();
-    private Sites.siteFunctions Site = new Sites.siteFunctions();
-    private Clients.iClient Client;
-    private Clients.statusTimer Status = new Clients.statusTimer();
 
     #endregion
 
@@ -162,41 +159,18 @@ namespace mpNZB
       if (control == btnRefreshFeed)
       {
         Dialogs.Wait();
-        switch (Site.strSite)
-        {
-          case "Binsearch":
-            Site.fncBinsearch(lstItems, this, btnNext);
-            break;
-          default:
-            fncReadRSS(Site.strFeedURL, lstItems);
-            break;
-        }        
+        fncReadRSS(Site.FeedURL, lstItems);
         Dialogs.bolWaiting = false;
       }
       if (control == btnSelectFeed) { fncSelectFeed(); }
       if (control == btnSearch)     { fncSearchFeed(); }
       if (control == btnJobQueue)   { Client.Queue(lstItems, this); }
       if (control == btnPause)      { Client.Pause(btnPause.Selected, Status); }
-      if (control == btnPrev)
-      {        
-        if (Site.intPageNumber == 0) { return; }
-        if (Site.intPageNumber > 0) { Site.intPageNumber -= 1; }
-        Dialogs.Wait();
-        Site.fncBinsearch(lstItems, this, btnNext);
-        Dialogs.bolWaiting = false;
-      }
-      if (control == btnNext)
-      {
-        Site.intPageNumber += 1;
-        Dialogs.Wait();
-        Site.fncBinsearch(lstItems, this, btnNext);
-        Dialogs.bolWaiting = false;
-      }
       if (control == lstItems)
       {
         switch (lstItems.ListItems[lstItems.SelectedListItemIndex].ItemId)
         {
-          case 1: Client.Download(lstItems, Site, Status); break;
+          case 1: Client.Download(lstItems, Site.SiteName, Status); break;
           case 2: Client.Delete(lstItems, this); break;
         }
       }
@@ -207,8 +181,6 @@ namespace mpNZB
     {
       // Disable "Refresh Feed" button
       btnRefreshFeed.Disabled = true;
-      btnNext.Visible = false;
-      btnPrev.Visible = false;
 
       // Load Settings
       Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
@@ -234,16 +206,6 @@ namespace mpNZB
             break;
           }
       }
-      // ##################################################
-
-      // Setup Cookies
-      // ##################################################
-      Site.Newzbin_NzbSessionID = mpSettings.GetValue("#Cookies", "Newzbin_NzbSessionID");
-      Site.Newzbin_NzbSmoke = mpSettings.GetValue("#Cookies", "Newzbin_NzbSmoke");
-      Site.NZBMatrix_uid = mpSettings.GetValue("#Cookies", "NZBMatrix_uid");
-      Site.NZBMatrix_pass = mpSettings.GetValue("#Cookies", "NZBMatrix_pass");
-      Site.NZBsRus_uid = mpSettings.GetValue("#Cookies", "NZBsRus_uid");
-      Site.NZBsRus_pass = mpSettings.GetValue("#Cookies", "NZBsRus_pass");
       // ##################################################
 
       // Unload Settings
@@ -291,48 +253,9 @@ namespace mpNZB
 
           XmlNodeList nodeList = xmlDoc.SelectNodes("rss/channel/item");         
 
-          string strSize = String.Empty;
-          string strPath = String.Empty;
-          string strTemp = String.Empty;
-          string strSizeText = String.Empty;
-          int intSizePOS = 0;
-
           foreach (XmlNode nodeItem in nodeList)
           {
-            switch (Site.strSite)
-            {
-              case "TvNZB":
-                strPath = nodeItem["link"].InnerText;
-                break;
-              case "Newzbin":
-                double dblSize;
-                double.TryParse(nodeItem["report:size"].InnerText, out dblSize);
-                strSize = string.Format("{0:0.00}", Math.Round((dblSize / 1024) / 1024, 2)) + " MB";
-                strPath = nodeItem["report:id"].InnerText;
-                break;
-              case "NZBMatrix":
-                strTemp = nodeItem["description"].InnerText.Replace(" ", String.Empty);
-                strSizeText = "<b>Size:</b>".ToLower();
-                intSizePOS = strTemp.ToLower().IndexOf(strSizeText) + strSizeText.Length;
-                strSize = strTemp.Substring(intSizePOS, strTemp.IndexOf("<", intSizePOS) - intSizePOS);
-                strPath = nodeItem["link"].InnerText;
-                break;
-              case "NZBsRus":
-                strTemp = nodeItem["description"].InnerText.Replace(" ", String.Empty);
-                strSizeText = "<b>Size:</b>".ToLower();
-                intSizePOS = strTemp.ToLower().IndexOf(strSizeText) + strSizeText.Length;
-                strSize = strTemp.Substring(intSizePOS, strTemp.IndexOf("(", intSizePOS) - intSizePOS);
-                strPath = nodeItem["link"].InnerText;
-                break;
-              case "NZBIndex":
-                strTemp = nodeItem["description"].InnerText.Replace(" ", String.Empty);
-                strSizeText = "<b>".ToLower();
-                intSizePOS = strTemp.ToLower().IndexOf(strSizeText) + strSizeText.Length;
-                strSize = strTemp.Substring(intSizePOS, strTemp.IndexOf("</b>", intSizePOS) - intSizePOS);
-                strPath = nodeItem["enclosure"].Attributes["url"].InnerText;
-                break;
-            }
-            Dialogs.AddItem(lstItemList, nodeItem["title"].InnerText, strSize, strPath, 1);
+            Site.AddItem(nodeItem, lstItemList);
           }
 
           GUIPropertyManager.SetProperty("#Status", "Item Count (" + nodeList.Count + ")");
@@ -370,67 +293,34 @@ namespace mpNZB
     {
       // Create Site List
       // ##################################################
-      string strSiteList = "Binsearch" + (char)0 + "NZBIndex";
+      string strSiteList = "NZBIndex";
       Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
       if (mpSettings.GetValueAsBool("#Sites", "Newzbin_auth", false)) { strSiteList += (char)0 + "Newzbin"; }
       mpSettings.Dispose();
       string[] strSites = strSiteList.Split((char)0);
       // ##################################################
 
-      // Select Site/Feed
+      // Select Site
       // ##################################################
-      string strResult = String.Empty;
-      Site.strSite = String.Empty;
-      Site.strSite = Dialogs.Menu(strSites, "Select Site");
-      switch (Site.strSite)
+      switch (Dialogs.Menu(strSites, "Select Site"))
       {
-        case "Binsearch":
-          strResult = Dialogs.Keyboard();
-          if (strResult.Length > 0)
-          {
-            Dialogs.Wait();
-            Site.strSearchString = strResult;
-            Site.fncBinsearch(lstItems, this, btnNext);
-            btnNext.Visible = true;
-            btnPrev.Visible = true;
-          }
-          break;
-        case "Newzbin":
-          strResult = Dialogs.Keyboard();
-          if (strResult.Length > 0)
-          {
-            Dialogs.Wait();
-            Site.strSearchString = strResult;
-            if (!(Site.Cookie())) { return; }
-            Site.strFeedURL = "http://www.newzbin.com/search/query/?q=" + Site.strSearchString + "&searchaction=Go&feed=rss&COOKIE:NzbSmoke=" + Site.Newzbin_NzbSmoke + ";NzbSessionID=" + Site.Newzbin_NzbSessionID;
-            fncReadRSS(Site.strFeedURL, lstItems);
-          }
-          break;
-        case "NZBIndex":
-          strResult = Dialogs.Keyboard();
-          if (strResult.Length > 0)
-          {
-            Dialogs.Wait();
-            Site.strSearchString = strResult;
-            Site.strFeedURL = "http://www.nzbindex.com/rss/?q=" + Site.strSearchString + "&sort=dateTime&max=250";
-            fncReadRSS(Site.strFeedURL, lstItems);
-          }
-          break;
+        case "Newzbin":  Site = new Sites.Newzbin();  break;
+        case "NZBIndex": Site = new Sites.NZBIndex(); break;
       }
       // ##################################################
 
-      // Update List
+      // Select Feed
       // ##################################################
-      if (strResult.Length > 0)
+      Site.Search();
+      if (Site.FeedURL.Length > 0)
       {
-        Site.intPageNumber = 0;
+        Dialogs.Wait();
+        fncReadRSS(Site.FeedURL, lstItems);
         btnRefreshFeed.Disabled = false;
-        GUIPropertyManager.SetProperty("#PageTitle", Site.strSite + " - " + strResult);
+        GUIPropertyManager.SetProperty("#PageTitle", Site.SiteName + " - " + Site.FeedName);
+        Dialogs.bolWaiting = false;
       }
       // ##################################################
-
-      // Stop Waiting
-      Dialogs.bolWaiting = false;
     }
 
     private void fncSelectFeed()
@@ -446,67 +336,29 @@ namespace mpNZB
       string[] strSites = strSiteList.Split((char)0);
       // ##################################################
 
-      // Select Site/Feed
+      // Select Site
       // ##################################################
-      string strResult = String.Empty;
-      Site.strSite = String.Empty;
-      Site.strSite = Dialogs.Menu(strSites, "Select Site");
-      switch (Site.strSite)
+      switch (Dialogs.Menu(strSites, "Select Site"))
       {
-        case "TvNZB":
-          strResult = Dialogs.Menu(new string[] { "New Files", "All Files", "Old Files" }, "Select Feed");
-          Dialogs.Wait();
-          switch (strResult)
-          {
-            case "New Files": Site.strFeedURL = "http://www.tvnzb.com/tvnzb_new.rss"; break;
-            case "All Files": Site.strFeedURL = "http://www.tvnzb.com/tvnzb.rss"; break;
-            case "Old Files": Site.strFeedURL = "http://www.tvnzb.com/tvnzb_old.rss"; break;
-          }
-          break;
-        case "Newzbin":
-          strResult = Dialogs.Menu(new string[] { "Everything", "Unknown", "Anime", "Apps", "Books", "Consoles", "Discussions", "Emulation", "Games", "Misc", "Movies", "Music", "PDA", "Resources", "TV" }, "Select Feed");
-          if (strResult.Length > 0)
-          {
-            Dialogs.Wait();
-            if (!(Site.Cookie())) { return; }
-            Site.strFeedURL = "http://www.newzbin.com/browse/category/p/" + strResult.ToLower() + "/?feed=rss" + "&COOKIE:NzbSmoke=" + Site.Newzbin_NzbSmoke + ";NzbSessionID=" + Site.Newzbin_NzbSessionID;
-          }
-          break;
-        case "NZBMatrix":
-          strResult = Dialogs.Menu(new string[] { "All", "Movies", "TV", "Documentaries", "Games", "Apps", "Music", "Anime", "Other" }, "Select Feed");
-          if (strResult.Length > 0)
-          {
-            Dialogs.Wait();
-            if (!(Site.Cookie())) { return; }
-            Site.strFeedURL = "http://nzbmatrix.com/rss.php" + ((strResult == "All") ? String.Empty : "?cat=" + strResult.ToLower());
-          }
-          break;
-        case "NZBsRus":
-          strResult = Dialogs.Menu(new string[] { "Main RSS Feed", "User's Category Selection RSS" }, "Select Feed");
-          if (strResult.Length > 0)
-          {
-            Dialogs.Wait();
-            if (!(Site.Cookie())) { return; }
-            Site.strFeedURL = Site.fncNZBsRusFeed(strResult, Site.NZBsRus_uid, Site.NZBsRus_pass);
-          }
-          break;
+        case "TvNZB":     Site = new Sites.TvNZB();     break;
+        case "Newzbin":   Site = new Sites.Newzbin();   break;
+        case "NZBMatrix": Site = new Sites.NZBMatrix(); break;
+        case "NZBsRus":   Site = new Sites.NZBsRus();   break;
       }
       // ##################################################
 
-      // Update List
+      // Select Feed
       // ##################################################
-      if (strResult.Length > 0)
+      Site.SetFeed();
+      if (Site.FeedURL.Length > 0)
       {
-        GUIPropertyManager.SetProperty("#PageTitle", Site.strSite + " - " + strResult);
-        fncReadRSS(Site.strFeedURL, lstItems);
+        Dialogs.Wait();
+        fncReadRSS(Site.FeedURL, lstItems);
         btnRefreshFeed.Disabled = false;
-        btnNext.Visible = false;
-        btnPrev.Visible = false;
+        GUIPropertyManager.SetProperty("#PageTitle", Site.SiteName + " - " + Site.FeedName);
+        Dialogs.bolWaiting = false;
       }
       // ##################################################
-
-      // Stop Waiting
-      Dialogs.bolWaiting = false;
     }
 
     #endregion
