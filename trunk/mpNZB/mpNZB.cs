@@ -169,6 +169,15 @@ namespace mpNZB
       {
         switch (lstItems.ListItems[lstItems.SelectedListItemIndex].ItemId)
         {
+
+          // ID Types
+          // ==============================
+          // 1 = Direct NZB Link
+          // 2 = Job Queue Item
+          // 3 = Download File Link
+          // 4 = Direct Newzbin ID Link
+          // ==============================
+
           case 1:
           case 3:
           case 4:
