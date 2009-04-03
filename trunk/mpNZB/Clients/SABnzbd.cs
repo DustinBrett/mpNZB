@@ -77,6 +77,11 @@ namespace mpNZB.Clients
             strTempFile = Path.GetTempPath() + Path.GetRandomFileName() + ".zip";
             strContentType = "application/zip";
         }
+        else
+        {
+          strTempFile = Path.GetTempPath() + Path.GetRandomFileName() + ".nzb";
+          strContentType = "application/x-nzb";
+        }
 
         // Download File
         WebClient webClient = new WebClient();
