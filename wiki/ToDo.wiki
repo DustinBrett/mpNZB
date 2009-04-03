@@ -9,7 +9,7 @@
       * How best to grab them without parsing HTML?
   * Progress bar works intermittently
     * Stops working after clicking NZBsRus ?maybe?
-    * Test new code
+    * New code is no better
 
 == Features: (_Low_) ==
   * SABnzbd pauses D/L's during video play
