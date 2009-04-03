@@ -47,15 +47,65 @@ namespace mpNZB
       string strTempUsername;
       string strTempPassword;
 
-      for (int i = 0; i < (cmbSites.Items.Count - 1); i++)
-      {        
-        strTempUsername = mpSettings.GetValue("#Sites", cmbSites.Items[i].ToString() + "_username");
-        strTempPassword = mpSettings.GetValue("#Sites", cmbSites.Items[i].ToString() + "_password");
+      ListViewItem lvItem;
+
+      string strList = mpSettings.GetValue("#Lists", "SiteList");
+      if (strList.Length == 0) { return; }
+      string[] strSites = strList.Split((char)0);
+
+      foreach (string strSite in strSites)
+      {
+
+        strTempUsername = mpSettings.GetValue("#Sites", strSite + "_username");
+        strTempPassword = mpSettings.GetValue("#Sites", strSite + "_password");
         if ((strTempUsername.Length > 0) && (strTempPassword.Length > 0))
         {
-          lvSites.Items.Add(cmbSites.Items[i].ToString());
-          lvSites.Items[lvSites.Items.Count - 1].SubItems.Add(strTempUsername);
-          lvSites.Items[lvSites.Items.Count - 1].SubItems.Add(strTempPassword);
+          lvItem = new ListViewItem();
+
+          lvItem.Text = strSite;
+          lvItem.SubItems.Add(strTempUsername);
+          lvItem.SubItems.Add(strTempPassword);
+
+          // Set Feed Type
+          switch (strSite)
+          {
+            case "Newzbin":
+              lvItem.SubItems.Add("*");
+              lvItem.SubItems.Add("*");
+              break;
+            case "NZBMatrix":
+            case "NZBsRus":
+              lvItem.SubItems.Add("*");
+              lvItem.SubItems.Add(" ");
+              break;
+          }
+
+          cmbSites.Items.Remove(strSite);
+          lvSites.Items.Add(lvItem);
+        }
+        else
+        {
+          lvItem = new ListViewItem();
+
+          lvItem.Text = strSite;
+          lvItem.SubItems.Add("");
+          lvItem.SubItems.Add("");
+
+          // Set Feed Type
+          switch (strSite)
+          {
+            case "NZBIndex":
+              lvItem.SubItems.Add(" ");
+              lvItem.SubItems.Add("*");
+              break;
+            case "TvNZB":
+              lvItem.SubItems.Add("*");
+              lvItem.SubItems.Add(" ");
+              break;
+          }
+
+          cmbSites.Items.Remove(strSite);
+          lvSites.Items.Add(lvItem);
         }
       }
       // --------------------------------------------------
@@ -91,12 +141,15 @@ namespace mpNZB
 
       // Site Settings
       // --------------------------------------------------
-      string strFeedList = String.Empty;
-      string strSearchList = String.Empty;
-      for (int i = 0; i < (lvSites.Items.Count - 1); i++)
+      string strFeedList = "";
+      string strSearchList = "";
+      string strSiteList = "";
+      for (int i = 0; i < lvSites.Items.Count; i++)
       {
         mpSettings.SetValue("#Sites", lvSites.Items[i].Text + "_username", lvSites.Items[i].SubItems[1].Text);
         mpSettings.SetValue("#Sites", lvSites.Items[i].Text + "_password", lvSites.Items[i].SubItems[2].Text);
+
+        strSiteList += lvSites.Items[i].Text + (char)0;
 
         // Add as Feed
         if (lvSites.Items[i].SubItems[3].Text == "*")
@@ -107,11 +160,12 @@ namespace mpNZB
         // Add as Search
         if (lvSites.Items[i].SubItems[4].Text == "*")
         {
-          strFeedList += lvSites.Items[i].Text + (char)0;
-        }
+          strSearchList += lvSites.Items[i].Text + (char)0;
+        }        
       }
-      mpSettings.SetValue("#Lists", "FeedList", strFeedList.Substring(0, (strFeedList.Length - 1)));
-      mpSettings.SetValue("#Lists", "SearchList", strSearchList.Substring(0, (strSearchList.Length - 1)));
+      if (strSiteList.Length > 1) { mpSettings.SetValue("#Lists", "SiteList", strSiteList.Substring(0, (strSiteList.Length - 1))); }
+      if (strFeedList.Length > 1) { mpSettings.SetValue("#Lists", "FeedList", strFeedList.Substring(0, (strFeedList.Length - 1))); }
+      if (strSearchList.Length > 1) { mpSettings.SetValue("#Lists", "SearchList", strSearchList.Substring(0, (strSearchList.Length - 1))); }
       // --------------------------------------------------
 
       mpSettings.Dispose();
@@ -160,17 +214,40 @@ namespace mpNZB
 
     private void btnAdd_Click(object sender, EventArgs e)
     {
+      ListViewItem lvItem = new ListViewItem();
+
       // Set Username/Password
-      switch (cmbSites.SelectedText)
+      switch (cmbSites.Text)
       {
         case "Newzbin":
         case "NZBMatrix":
         case "NZBsRus":
           if ((txtSiteUsername.Text.Length > 0) && (txtSitePassword.Text.Length > 0))
           {
-            lvSites.Items.Add(cmbSites.Text);
-            lvSites.Items[lvSites.Items.Count - 1].SubItems.Add(txtSiteUsername.Text);
-            lvSites.Items[lvSites.Items.Count - 1].SubItems.Add(txtSitePassword.Text);
+            lvItem.Text = cmbSites.Text;
+            lvItem.SubItems.Add(txtSiteUsername.Text);
+            lvItem.SubItems.Add(txtSitePassword.Text);
+
+            // Set Feed Type
+            switch (cmbSites.Text)
+            {
+              case "Newzbin":
+                lvItem.SubItems.Add("*");
+                lvItem.SubItems.Add("*");
+                break;
+              case "NZBMatrix":
+              case "NZBsRus":
+                lvItem.SubItems.Add("*");
+                lvItem.SubItems.Add(" ");
+                break;
+            }
+
+            lvSites.Items.Add(lvItem);
+            cmbSites.Items.Remove(cmbSites.Text);
+            cmbSites.SelectedIndex = -1;
+            btnAdd.Enabled = false;
+            txtSiteUsername.Text = "";
+            txtSitePassword.Text = "";
           }
           else
           {
@@ -180,37 +257,31 @@ namespace mpNZB
           break;
         case "TvNZB":
         case "NZBIndex":
-          lvSites.Items.Add(cmbSites.Text);
-          lvSites.Items[lvSites.Items.Count - 1].SubItems.Add(String.Empty);
-          lvSites.Items[lvSites.Items.Count - 1].SubItems.Add(String.Empty);
-          break;
-        default:
-          return;
-      }
+          lvItem.Text = cmbSites.Text;
+          lvItem.SubItems.Add("");
+          lvItem.SubItems.Add("");
 
-      // Set Username/Password
-      switch (cmbSites.SelectedText)
-      {
-        case "Newzbin":
-          lvSites.Items[lvSites.Items.Count - 1].SubItems.Add("*");
-          lvSites.Items[lvSites.Items.Count - 1].SubItems.Add("*");
-          break;
-        case "NZBIndex":
-          lvSites.Items[lvSites.Items.Count - 1].SubItems.Add(String.Empty);
-          lvSites.Items[lvSites.Items.Count - 1].SubItems.Add("*");
-          break;
-        case "NZBMatrix":
-        case "NZBsRus":
-        case "TvNZB":
-          lvSites.Items[lvSites.Items.Count - 1].SubItems.Add("*");
-          lvSites.Items[lvSites.Items.Count - 1].SubItems.Add(String.Empty);
+          // Set Feed Type
+          switch (cmbSites.Text)
+          {
+            case "NZBIndex":
+              lvItem.SubItems.Add(" ");
+              lvItem.SubItems.Add("*");
+              break;
+            case "TvNZB":
+              lvItem.SubItems.Add("*");
+              lvItem.SubItems.Add(" ");
+              break;
+          }
+
+          lvSites.Items.Add(lvItem);
+          cmbSites.Items.Remove(cmbSites.Text);
+          cmbSites.SelectedIndex = -1;
+          btnAdd.Enabled = false;
+          txtSiteUsername.Text = "";
+          txtSitePassword.Text = "";
           break;
       }
-
-      cmbSites.SelectedIndex = -1;
-      btnAdd.Enabled = false;
-      txtSiteUsername.Text = "";
-      txtSitePassword.Text = "";
     }
 
     private void cmbSites_SelectedIndexChanged(object sender, EventArgs e)
@@ -218,6 +289,21 @@ namespace mpNZB
       if (cmbSites.SelectedIndex != -1)
       {
         btnAdd.Enabled = true;
+        switch (cmbSites.Text)
+        {
+          case "Newzbin":          
+          case "NZBMatrix":
+          case "NZBsRus":
+            txtSiteUsername.Enabled = true;
+            txtSitePassword.Enabled = true;
+            break;
+          case "NZBIndex":
+          case "TvNZB":
+            txtSiteUsername.Enabled = false;
+            txtSitePassword.Enabled = false;
+            break;
+        }
+
       }
     }
 
@@ -231,7 +317,8 @@ namespace mpNZB
 
     private void btnDelete_Click(object sender, EventArgs e)
     {
-      lvSites.SelectedItems[0].Remove();
+      cmbSites.Items.Add(lvSites.SelectedItems[0].Text);      
+      lvSites.SelectedItems[0].Remove();      
     }
   }
 }

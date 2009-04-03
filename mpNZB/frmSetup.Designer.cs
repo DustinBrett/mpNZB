@@ -52,23 +52,23 @@
       this.lblDisplayName = new System.Windows.Forms.Label();
       this.lblUpdateFrequency = new System.Windows.Forms.Label();
       this.tabSetupSetup = new System.Windows.Forms.TabPage();
-      this.btnCancel = new System.Windows.Forms.Button();
-      this.btnOK = new System.Windows.Forms.Button();
       this.grpSites = new System.Windows.Forms.GroupBox();
-      this.txtSitePassword = new System.Windows.Forms.TextBox();
-      this.lblSitePassword = new System.Windows.Forms.Label();
-      this.txtSiteUsername = new System.Windows.Forms.TextBox();
-      this.lblSiteUsername = new System.Windows.Forms.Label();
-      this.btnAdd = new System.Windows.Forms.Button();
-      this.cmbSites = new System.Windows.Forms.ComboBox();
-      this.lblSite = new System.Windows.Forms.Label();
+      this.btnDelete = new System.Windows.Forms.Button();
       this.lvSites = new System.Windows.Forms.ListView();
       this.clmSite = new System.Windows.Forms.ColumnHeader();
       this.clmUsername = new System.Windows.Forms.ColumnHeader();
       this.clmPassword = new System.Windows.Forms.ColumnHeader();
-      this.btnDelete = new System.Windows.Forms.Button();
       this.clmFeed = new System.Windows.Forms.ColumnHeader();
       this.clmSearch = new System.Windows.Forms.ColumnHeader();
+      this.cmbSites = new System.Windows.Forms.ComboBox();
+      this.lblSite = new System.Windows.Forms.Label();
+      this.btnAdd = new System.Windows.Forms.Button();
+      this.txtSitePassword = new System.Windows.Forms.TextBox();
+      this.lblSitePassword = new System.Windows.Forms.Label();
+      this.txtSiteUsername = new System.Windows.Forms.TextBox();
+      this.lblSiteUsername = new System.Windows.Forms.Label();
+      this.btnCancel = new System.Windows.Forms.Button();
+      this.btnOK = new System.Windows.Forms.Button();
       this.tabSetup.SuspendLayout();
       this.tabClientSetup.SuspendLayout();
       this.grpSettings.SuspendLayout();
@@ -339,28 +339,6 @@
       this.tabSetupSetup.Text = "Site Setup";
       this.tabSetupSetup.UseVisualStyleBackColor = true;
       // 
-      // btnCancel
-      // 
-      this.btnCancel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnCancel.Location = new System.Drawing.Point(257, 321);
-      this.btnCancel.Name = "btnCancel";
-      this.btnCancel.Size = new System.Drawing.Size(75, 23);
-      this.btnCancel.TabIndex = 2;
-      this.btnCancel.Text = "Cancel";
-      this.btnCancel.UseVisualStyleBackColor = true;
-      this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-      // 
-      // btnOK
-      // 
-      this.btnOK.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnOK.Location = new System.Drawing.Point(176, 321);
-      this.btnOK.Name = "btnOK";
-      this.btnOK.Size = new System.Drawing.Size(75, 23);
-      this.btnOK.TabIndex = 3;
-      this.btnOK.Text = "OK";
-      this.btnOK.UseVisualStyleBackColor = true;
-      this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
-      // 
       // grpSites
       // 
       this.grpSites.Controls.Add(this.btnDelete);
@@ -380,6 +358,99 @@
       this.grpSites.TabStop = false;
       this.grpSites.Text = "Add Sites:";
       // 
+      // btnDelete
+      // 
+      this.btnDelete.Enabled = false;
+      this.btnDelete.Location = new System.Drawing.Point(209, 18);
+      this.btnDelete.Name = "btnDelete";
+      this.btnDelete.Size = new System.Drawing.Size(55, 21);
+      this.btnDelete.TabIndex = 32;
+      this.btnDelete.Text = "Delete";
+      this.btnDelete.UseVisualStyleBackColor = true;
+      this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+      // 
+      // lvSites
+      // 
+      this.lvSites.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.clmSite,
+            this.clmUsername,
+            this.clmPassword,
+            this.clmFeed,
+            this.clmSearch});
+      this.lvSites.FullRowSelect = true;
+      this.lvSites.GridLines = true;
+      this.lvSites.Location = new System.Drawing.Point(15, 99);
+      this.lvSites.MultiSelect = false;
+      this.lvSites.Name = "lvSites";
+      this.lvSites.Size = new System.Drawing.Size(250, 122);
+      this.lvSites.TabIndex = 31;
+      this.lvSites.UseCompatibleStateImageBehavior = false;
+      this.lvSites.View = System.Windows.Forms.View.Details;
+      this.lvSites.SelectedIndexChanged += new System.EventHandler(this.lvSites_SelectedIndexChanged);
+      // 
+      // clmSite
+      // 
+      this.clmSite.Text = "Site";
+      this.clmSite.Width = 58;
+      // 
+      // clmUsername
+      // 
+      this.clmUsername.Text = "Username";
+      this.clmUsername.Width = 68;
+      // 
+      // clmPassword
+      // 
+      this.clmPassword.Text = "Password";
+      this.clmPassword.Width = 68;
+      // 
+      // clmFeed
+      // 
+      this.clmFeed.Text = "F";
+      this.clmFeed.Width = 18;
+      // 
+      // clmSearch
+      // 
+      this.clmSearch.Text = "S";
+      this.clmSearch.Width = 18;
+      // 
+      // cmbSites
+      // 
+      this.cmbSites.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.cmbSites.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.cmbSites.FormattingEnabled = true;
+      this.cmbSites.Items.AddRange(new object[] {
+            "Newzbin",
+            "NZBIndex",
+            "NZBMatrix",
+            "NZBsRus",
+            "TvNZB"});
+      this.cmbSites.Location = new System.Drawing.Point(47, 18);
+      this.cmbSites.Name = "cmbSites";
+      this.cmbSites.Size = new System.Drawing.Size(95, 21);
+      this.cmbSites.TabIndex = 29;
+      this.cmbSites.SelectedIndexChanged += new System.EventHandler(this.cmbSites_SelectedIndexChanged);
+      // 
+      // lblSite
+      // 
+      this.lblSite.AutoSize = true;
+      this.lblSite.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblSite.Location = new System.Drawing.Point(12, 21);
+      this.lblSite.Name = "lblSite";
+      this.lblSite.Size = new System.Drawing.Size(29, 13);
+      this.lblSite.TabIndex = 30;
+      this.lblSite.Text = "Site:";
+      // 
+      // btnAdd
+      // 
+      this.btnAdd.Enabled = false;
+      this.btnAdd.Location = new System.Drawing.Point(148, 18);
+      this.btnAdd.Name = "btnAdd";
+      this.btnAdd.Size = new System.Drawing.Size(55, 21);
+      this.btnAdd.TabIndex = 28;
+      this.btnAdd.Text = "Add";
+      this.btnAdd.UseVisualStyleBackColor = true;
+      this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+      // 
       // txtSitePassword
       // 
       this.txtSitePassword.Enabled = false;
@@ -388,7 +459,6 @@
       this.txtSitePassword.Name = "txtSitePassword";
       this.txtSitePassword.Size = new System.Drawing.Size(189, 21);
       this.txtSitePassword.TabIndex = 26;
-      this.txtSitePassword.UseSystemPasswordChar = true;
       // 
       // lblSitePassword
       // 
@@ -419,98 +489,27 @@
       this.lblSiteUsername.TabIndex = 23;
       this.lblSiteUsername.Text = "Username:";
       // 
-      // btnAdd
+      // btnCancel
       // 
-      this.btnAdd.Enabled = false;
-      this.btnAdd.Location = new System.Drawing.Point(148, 18);
-      this.btnAdd.Name = "btnAdd";
-      this.btnAdd.Size = new System.Drawing.Size(55, 21);
-      this.btnAdd.TabIndex = 28;
-      this.btnAdd.Text = "Add";
-      this.btnAdd.UseVisualStyleBackColor = true;
-      this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+      this.btnCancel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnCancel.Location = new System.Drawing.Point(257, 321);
+      this.btnCancel.Name = "btnCancel";
+      this.btnCancel.Size = new System.Drawing.Size(75, 23);
+      this.btnCancel.TabIndex = 2;
+      this.btnCancel.Text = "Cancel";
+      this.btnCancel.UseVisualStyleBackColor = true;
+      this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
       // 
-      // cmbSites
+      // btnOK
       // 
-      this.cmbSites.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-      this.cmbSites.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.cmbSites.FormattingEnabled = true;
-      this.cmbSites.Items.AddRange(new object[] {
-            "Newzbin",
-            "NZBIndex",
-            "NZBMatrix",
-            "NZBsRus",
-            "TvNZB"});
-      this.cmbSites.Location = new System.Drawing.Point(47, 18);
-      this.cmbSites.Name = "cmbSites";
-      this.cmbSites.Size = new System.Drawing.Size(95, 21);
-      this.cmbSites.TabIndex = 29;
-      this.cmbSites.SelectedIndexChanged += new System.EventHandler(this.cmbSites_SelectedIndexChanged);
-      // 
-      // lblSite
-      // 
-      this.lblSite.AutoSize = true;
-      this.lblSite.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblSite.Location = new System.Drawing.Point(12, 21);
-      this.lblSite.Name = "lblSite";
-      this.lblSite.Size = new System.Drawing.Size(29, 13);
-      this.lblSite.TabIndex = 30;
-      this.lblSite.Text = "Site:";
-      // 
-      // lvSites
-      // 
-      this.lvSites.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.clmSite,
-            this.clmUsername,
-            this.clmPassword,
-            this.clmFeed,
-            this.clmSearch});
-      this.lvSites.FullRowSelect = true;
-      this.lvSites.GridLines = true;
-      this.lvSites.Location = new System.Drawing.Point(15, 99);
-      this.lvSites.MultiSelect = false;
-      this.lvSites.Name = "lvSites";
-      this.lvSites.Size = new System.Drawing.Size(250, 122);
-      this.lvSites.TabIndex = 31;
-      this.lvSites.UseCompatibleStateImageBehavior = false;
-      this.lvSites.View = System.Windows.Forms.View.Details;
-      this.lvSites.SelectedIndexChanged += new System.EventHandler(this.lvSites_SelectedIndexChanged);
-      // 
-      // clmSite
-      // 
-      this.clmSite.Text = "Site";
-      this.clmSite.Width = 55;
-      // 
-      // clmUsername
-      // 
-      this.clmUsername.Text = "Username";
-      this.clmUsername.Width = 68;
-      // 
-      // clmPassword
-      // 
-      this.clmPassword.Text = "Password";
-      this.clmPassword.Width = 68;
-      // 
-      // btnDelete
-      // 
-      this.btnDelete.Enabled = false;
-      this.btnDelete.Location = new System.Drawing.Point(209, 18);
-      this.btnDelete.Name = "btnDelete";
-      this.btnDelete.Size = new System.Drawing.Size(55, 21);
-      this.btnDelete.TabIndex = 32;
-      this.btnDelete.Text = "Delete";
-      this.btnDelete.UseVisualStyleBackColor = true;
-      this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-      // 
-      // clmFeed
-      // 
-      this.clmFeed.Text = "F";
-      this.clmFeed.Width = 20;
-      // 
-      // clmSearch
-      // 
-      this.clmSearch.Text = "S";
-      this.clmSearch.Width = 20;
+      this.btnOK.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnOK.Location = new System.Drawing.Point(176, 321);
+      this.btnOK.Name = "btnOK";
+      this.btnOK.Size = new System.Drawing.Size(75, 23);
+      this.btnOK.TabIndex = 3;
+      this.btnOK.Text = "OK";
+      this.btnOK.UseVisualStyleBackColor = true;
+      this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
       // 
       // frmSetup
       // 
