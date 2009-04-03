@@ -94,15 +94,36 @@ namespace mpNZB
 
       // Site Settings
       // --------------------------------------------------
-      mpSettings.SetValueAsBool("#Sites", "Newzbin_auth", chkNewzbin_auth.Checked);
+      if ((txtNewzbin_username.Text.Length > 0) && (txtNewzbin_password.Text.Length > 0) && chkNewzbin_auth.Checked)
+      {
+        mpSettings.SetValueAsBool("#Sites", "Newzbin_auth", true);
+      }
+      else
+      {
+        mpSettings.SetValueAsBool("#Sites", "Newzbin_auth", false);
+      }
       mpSettings.SetValue("#Sites", "Newzbin_username", txtNewzbin_username.Text);
       mpSettings.SetValue("#Sites", "Newzbin_password", txtNewzbin_password.Text);
 
-      mpSettings.SetValueAsBool("#Sites", "NZBMatrix_auth", chkNZBMatrix_auth.Checked);
+      if ((txtNZBMatrix_username.Text.Length > 0) && (txtNZBMatrix_password.Text.Length > 0) && chkNZBMatrix_auth.Checked)
+      {
+        mpSettings.SetValueAsBool("#Sites", "NZBMatrix_auth", true);
+      }
+      else
+      {
+        mpSettings.SetValueAsBool("#Sites", "NZBMatrix_auth", false);
+      }
       mpSettings.SetValue("#Sites", "NZBMatrix_username", txtNZBMatrix_username.Text);
       mpSettings.SetValue("#Sites", "NZBMatrix_password", txtNZBMatrix_password.Text);
 
-      mpSettings.SetValueAsBool("#Sites", "NZBsRus_auth", chkNZBsRus_auth.Checked);
+      if ((txtNZBsRus_username.Text.Length > 0) && (txtNZBsRus_password.Text.Length > 0) && chkNZBsRus_auth.Checked)
+      {
+        mpSettings.SetValueAsBool("#Sites", "NZBsRus_auth", true);
+      }
+      else
+      {
+        mpSettings.SetValueAsBool("#Sites", "NZBsRus_auth", false);
+      }
       mpSettings.SetValue("#Sites", "NZBsRus_username", txtNZBsRus_username.Text);
       mpSettings.SetValue("#Sites", "NZBsRus_password", txtNZBsRus_password.Text);
       // --------------------------------------------------
