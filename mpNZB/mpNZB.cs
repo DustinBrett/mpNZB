@@ -157,9 +157,9 @@ namespace mpNZB
     {
       if (control == btnRefreshFeed)
       {
-        Dialogs.Wait();
+        Dialogs.Wait(true);
         fncReadRSS(Site.FeedURL, lstItems);
-        Dialogs.bolWaiting = false;
+        Dialogs.Wait(false);
       }
       if (control == btnSelectFeed) { fncSelectFeed(); }
       if (control == btnSearch)     { fncSearchFeed(); }
@@ -328,11 +328,11 @@ namespace mpNZB
       Site.Search();
       if (Site.FeedURL.Length > 0)
       {
-        Dialogs.Wait();
+        Dialogs.Wait(true);
         fncReadRSS(Site.FeedURL, lstItems);
         btnRefreshFeed.Disabled = false;
         GUIPropertyManager.SetProperty("#PageTitle", Site.SiteName + " - " + Site.FeedName);
-        Dialogs.bolWaiting = false;
+        Dialogs.Wait(false);
       }
       // ##################################################
     }
@@ -366,11 +366,11 @@ namespace mpNZB
       Site.SetFeed();
       if (Site.FeedURL.Length > 0)
       {
-        Dialogs.Wait();
+        Dialogs.Wait(true);
         fncReadRSS(Site.FeedURL, lstItems);
         btnRefreshFeed.Disabled = false;
         GUIPropertyManager.SetProperty("#PageTitle", Site.SiteName + " - " + Site.FeedName);
-        Dialogs.bolWaiting = false;
+        Dialogs.Wait(false);
       }
       // ##################################################
     }

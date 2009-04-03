@@ -54,14 +54,14 @@ namespace mpNZB.Sites
       FeedName = Dialogs.Menu(new string[] { "New Files", "All Files", "Old Files" }, "Select Feed");
       if (FeedName.Length > 0)
       {
-        Dialogs.Wait();
+        Dialogs.Wait(true);
         switch (FeedName)
         {
           case "New Files": FeedURL = "http://www.tvnzb.com/tvnzb_new.rss"; break;
           case "All Files": FeedURL = "http://www.tvnzb.com/tvnzb.rss"; break;
           case "Old Files": FeedURL = "http://www.tvnzb.com/tvnzb_old.rss"; break;
         }
-        Dialogs.bolWaiting = false;
+        Dialogs.Wait(false);
       }
     }
 

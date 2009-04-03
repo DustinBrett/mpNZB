@@ -77,10 +77,10 @@ namespace mpNZB.Sites
       FeedName = Dialogs.Menu(new string[] { "Everything", "Unknown", "Anime", "Apps", "Books", "Consoles", "Discussions", "Emulation", "Games", "Misc", "Movies", "Music", "PDA", "Resources", "TV" }, "Select Feed");
       if (FeedName.Length > 0)
       {
-        Dialogs.Wait();
+        Dialogs.Wait(true);
         if (Cookie() == String.Empty) { return; }
         FeedURL = "http://www.newzbin.com/browse/category/p/" + FeedName.ToLower() + "/?feed=rss" + "&COOKIE:NzbSmoke=" + NzbSmoke + ";NzbSessionID=" + NzbSessionID;
-        Dialogs.bolWaiting = false;
+        Dialogs.Wait(false);
       }
     }
 
@@ -89,10 +89,10 @@ namespace mpNZB.Sites
       FeedName = Dialogs.Keyboard();
       if (FeedName.Length > 0)
       {
-        Dialogs.Wait();
+        Dialogs.Wait(true);
         if (Cookie() == String.Empty) { return; }
         FeedURL = "http://www.newzbin.com/search/query/?q=" + FeedName + "&searchaction=Go&feed=rss" + "&COOKIE:NzbSmoke=" + NzbSmoke + ";NzbSessionID=" + NzbSessionID;
-        Dialogs.bolWaiting = false;
+        Dialogs.Wait(false);
       }
     }
 

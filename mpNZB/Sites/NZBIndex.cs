@@ -58,9 +58,9 @@ namespace mpNZB.Sites
       FeedName = Dialogs.Keyboard();
       if (FeedName.Length > 0)
       {
-        Dialogs.Wait();
+        Dialogs.Wait(true);
         FeedURL = "http://www.nzbindex.com/rss/?q=" + FeedName + "&sort=dateTime&max=250";
-        Dialogs.bolWaiting = false;
+        Dialogs.Wait(false);
       }
     }
 
