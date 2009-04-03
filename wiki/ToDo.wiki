@@ -4,7 +4,6 @@
 == Skining: ==
   * Download complete sound effect
   * Language support
-  * Create {{{Blue3Wide}}} using {{{StreamedMP}}} as template
 
 == Features: ==
   * [http://www.nzbplayer.com/ NZBPlayer] playback (Streaming)
