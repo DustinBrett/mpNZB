@@ -2,8 +2,8 @@
 
 = Screenshots =
 
-== Main Interface ==
-[http://mpnzb.googlecode.com/svn/wiki/images/screenshots/SS2.png]
+|| == Main Interface == ||
+|| [http://mpnzb.googlecode.com/svn/wiki/images/screenshots/SS2.png] ||
 
 == Job Queue ==
 [http://mpnzb.googlecode.com/svn/wiki/images/screenshots/SS3.png]
