@@ -368,11 +368,20 @@ namespace mpNZB
 
     private void fncSearchFeed()
     {
+      // Create Site List
+      // ##################################################
+      string strSiteList = "Binsearch" + (char)0 + "NZBIndex";
+      Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
+      if (mpSettings.GetValueAsBool("#Sites", "Newzbin_auth", false)) { strSiteList += (char)0 + "Newzbin"; }
+      mpSettings.Dispose();
+      string[] strSites = strSiteList.Split((char)0);
+      // ##################################################
+
       // Select Site/Feed
       // ##################################################
       string strResult = String.Empty;
       Site.strSite = String.Empty;
-      Site.strSite = Dialogs.Menu(new string[] { "Binsearch", "NZBIndex" }, "Select Site");
+      Site.strSite = Dialogs.Menu(strSites, "Select Site");
       switch (Site.strSite)
       {
         case "Binsearch":
@@ -386,11 +395,22 @@ namespace mpNZB
             btnPrev.Visible = true;
           }
           break;
+        case "Newzbin":
+          strResult = Dialogs.Keyboard();
+          if (strResult.Length > 0)
+          {
+            Dialogs.Wait();
+            Site.strSearchString = strResult;
+            if (!(Site.Cookie())) { return; }
+            Site.strFeedURL = "http://www.newzbin.com/search/query/?q=" + Site.strSearchString + "&searchaction=Go&feed=rss&COOKIE:NzbSmoke=" + Site.Newzbin_NzbSmoke + ";NzbSessionID=" + Site.Newzbin_NzbSessionID;
+            fncReadRSS(Site.strFeedURL, lstItems);
+          }
+          break;
         case "NZBIndex":
           strResult = Dialogs.Keyboard();
           if (strResult.Length > 0)
           {
-            Dialogs.Wait();            
+            Dialogs.Wait();
             Site.strSearchString = strResult;
             Site.strFeedURL = "http://www.nzbindex.com/rss/?q=" + Site.strSearchString + "&sort=dateTime&max=250";
             fncReadRSS(Site.strFeedURL, lstItems);
