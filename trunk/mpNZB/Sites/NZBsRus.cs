@@ -33,14 +33,26 @@ namespace mpNZB.Sites
       set { _FeedURL = value; }
     }
 
+    private string _Username;
+    public string Username
+    {
+      get { return _Username; }
+      set { _Username = value; }
+    }
+
+    private string _Password;
+    public string Password
+    {
+      get { return _Password; }
+      set { _Password = value; }
+    }
+
     #endregion    
 
     #region Init
 
     private string uid;
     private string pass;
-    private string Username;
-    private string Password;
 
     public NZBsRus()
     {
@@ -66,7 +78,7 @@ namespace mpNZB.Sites
       if (FeedName.Length > 0)
       {
         Dialogs.Wait();
-        if (!(Cookie())) { return; }
+        if (Cookie() == String.Empty) { return; }
         FeedURL = URLGrab();
         Dialogs.bolWaiting = false;
       }
@@ -118,20 +130,20 @@ namespace mpNZB.Sites
 
     #region Cookie
 
-    private bool Cookie()
+    public string Cookie()
     {
       if ((uid.Length == 0) || (pass.Length == 0))
       {
         if (GetCookie())
         {
-          return true;
+          return "uid=" + uid + "; pass=" + pass;
         }
       }
       else if (CheckCookie())
       {
-        return true;
+        return "uid=" + uid + "; pass=" + pass;
       }
-      return false;
+      return String.Empty;
     }
 
     private bool CheckCookie()

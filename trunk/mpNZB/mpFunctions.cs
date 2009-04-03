@@ -9,7 +9,7 @@ namespace mpNZB
   class mpFunctions : GUIWindow
   {
 
-    #region GUI Controls
+    #region Windows
 
     public void OK(string strLine, string strHeading)
     {
@@ -45,27 +45,30 @@ namespace mpNZB
       }
       dlgMenu.DoModal(GUIWindowManager.ActiveWindow);
 
-      if (dlgMenu.SelectedLabel == -1)
+      if (dlgMenu.SelectedLabel != -1)
       {
-        return String.Empty;
+        return dlgMenu.SelectedLabelText;
       }
-      return dlgMenu.SelectedLabelText;
+      return String.Empty;
     }
 
     public string Keyboard()
     {
       VirtualKeyboard dlgKeyboard = (VirtualKeyboard)GUIWindowManager.GetWindow((int)GUIWindow.Window.WINDOW_VIRTUAL_KEYBOARD);
-      if (dlgKeyboard != null)
+      
+      dlgKeyboard.Reset();
+      dlgKeyboard.DoModal(GUIWindowManager.ActiveWindow);
+
+      if (dlgKeyboard.IsConfirmed)
       {
-        dlgKeyboard.Reset();
-        dlgKeyboard.DoModal(GUIWindowManager.ActiveWindow);
-        if (dlgKeyboard.IsConfirmed)
-        {
-          return dlgKeyboard.Text;
-        }
+        return dlgKeyboard.Text;
       }
       return String.Empty;
     }
+
+    #endregion
+
+    #region Controls
 
     public void AddItem(GUIListControl lstItemList, string strLabel, string strLabel2, string strPath, int intItemId)
     {
@@ -75,6 +78,7 @@ namespace mpNZB
       Item.Label2 = strLabel2;
       Item.Path = strPath;
       Item.ItemId = intItemId;
+
       lstItemList.Add(Item);
     }
 

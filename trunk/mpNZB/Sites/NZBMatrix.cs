@@ -33,14 +33,26 @@ namespace mpNZB.Sites
       set { _FeedURL = value; }
     }
 
+    private string _Username;
+    public string Username
+    {
+      get { return _Username; }
+      set { _Username = value; }
+    }
+
+    private string _Password;
+    public string Password
+    {
+      get { return _Password; }
+      set { _Password = value; }
+    }
+
     #endregion    
 
     #region Init
 
     private string uid;
     private string pass;
-    private string Username;
-    private string Password;
 
     public NZBMatrix()
     {
@@ -66,7 +78,7 @@ namespace mpNZB.Sites
       if (FeedName.Length > 0)
       {
         Dialogs.Wait();
-        if (!(Cookie())) { return; }
+        if (Cookie() == String.Empty) { return; }
         FeedURL = "http://nzbmatrix.com/rss.php" + ((FeedName == "All") ? String.Empty : "?cat=" + FeedName.ToLower());
         Dialogs.bolWaiting = false;
       }
@@ -81,27 +93,27 @@ namespace mpNZB.Sites
       string strTemp = Node["description"].InnerText.Replace(" ", String.Empty);
       string strSizeText = "<b>Size:</b>".ToLower();
       int intSizePOS = strTemp.ToLower().IndexOf(strSizeText.ToLower()) + strSizeText.Length;
-      Dialogs.AddItem(lstList, Node["title"].InnerText, strTemp.Substring(intSizePOS, strTemp.IndexOf("<", intSizePOS) - intSizePOS), Node["link"].InnerText, 1);
+      Dialogs.AddItem(lstList, Node["title"].InnerText, strTemp.Substring(intSizePOS, strTemp.IndexOf("<", intSizePOS) - intSizePOS), Node["link"].InnerText.Replace("nzb-details.php", "nzb-download.php").Replace("&hit=1", String.Empty), 3);
     }
 
     #endregion
 
     #region Cookie
 
-    private bool Cookie()
+    public string Cookie()
     {
       if ((uid.Length == 0) || (pass.Length == 0))
       {
         if (GetCookie())
         {
-          return true;
+          return "uid=" + uid + "; pass=" + pass;
         }
       }
       else if (CheckCookie())
       {
-        return true;
+        return "uid=" + uid + "; pass=" + pass;
       }
-      return false;
+      return String.Empty;
     }
 
     private bool CheckCookie()
