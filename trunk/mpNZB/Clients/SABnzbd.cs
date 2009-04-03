@@ -4,6 +4,7 @@ using System.Net;
 using System.Xml;
 
 using MediaPortal.GUI.Library;
+using MediaPortal.Profile;
 
 namespace mpNZB.Clients
 {
@@ -61,7 +62,7 @@ namespace mpNZB.Clients
       return strResponse;
     }
 
-    private string fncSendFile(string strURL, string strUID, string strPass)
+    private string fncSendFile(string strURL, string strUID, string strPass, bool IsZip)
     {
       string strResponse = String.Empty;
 
@@ -72,8 +73,8 @@ namespace mpNZB.Clients
           string strTempFile = String.Empty;
           string strContentType = String.Empty;
 
-          // Download NZB
-          if (strURL.Contains("http://nzbmatrix.com"))
+          // Download File
+          if (IsZip)
           {
               strTempFile = Path.GetTempPath() + Path.GetRandomFileName() + ".zip";
               strContentType = "application/zip";
@@ -351,14 +352,16 @@ namespace mpNZB.Clients
       }
     }
 
-    public void Download(GUIListControl lstItemList, Sites.siteFunctions Site, Clients.statusTimer Status)
+    public void Download(GUIListControl lstItemList, string strSiteName, Clients.statusTimer Status)
     {
       if (Dialogs.YesNo("Download file?", lstItemList.ListItems[lstItemList.SelectedListItemIndex].Label))
       {
         string strResult;
-        if (Site.strSite == "NZBMatrix")
+        if (strSiteName == "NZBMatrix")
         {
-          strResult = fncSendFile(lstItemList.ListItems[lstItemList.SelectedListItemIndex].Path.Replace("nzb-details.php", "nzb-download.php").Replace("&hit=1", String.Empty), Site.NZBMatrix_uid, Site.NZBMatrix_pass);
+          Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
+          strResult = fncSendFile(lstItemList.ListItems[lstItemList.SelectedListItemIndex].Path.Replace("nzb-details.php", "nzb-download.php").Replace("&hit=1", String.Empty), mpSettings.GetValue("#Cookies", "NZBMatrix_uid"), mpSettings.GetValue("#Cookies", "NZBMatrix_pass"), true);
+          mpSettings.Dispose();
         }
         else
         {

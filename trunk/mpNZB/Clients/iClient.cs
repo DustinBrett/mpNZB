@@ -9,7 +9,7 @@ namespace mpNZB.Clients
     void Status(statusTimer Status, GUIToggleButtonControl btnButton);
     void Queue(GUIListControl lstItemList, GUIWindow GUI);
     void Delete(GUIListControl lstItemList, GUIWindow GUI);
-    void Download(GUIListControl lstItemList, Sites.siteFunctions Site, Clients.statusTimer Status);
+    void Download(GUIListControl lstItemList, string strSiteName, Clients.statusTimer Status);
     void Pause(bool bolPause, Clients.statusTimer Status);
     string Version();
   }

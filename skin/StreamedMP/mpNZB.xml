@@ -83,34 +83,7 @@
       <label>Pause Queue</label>
       <onright>50</onright>
       <onup>4</onup>
-      <ondown>60</ondown>
-    </control>
-
-    <control>
-      <description>Prev</description>
-      <type>button</type>
-      <id>60</id>
-      <posX>60</posX>
-      <posY>650</posY>
-      <width>80</width>
-      <label>Prev</label>
-      <onright>61</onright>
-      <onup>5</onup>
-      <ondown>1</ondown>
-    </control>
-
-    <control>
-      <description>Next</description>
-      <type>button</type>
-      <id>61</id>
-      <posX>140</posX>
-      <posY>650</posY>
-      <width>80</width>
-      <label>Next</label>
-      <onleft>60</onleft>
-      <onright>50</onright>
-      <onup>5</onup>
-      <ondown>1</ondown>
+      <ondown>2</ondown>
     </control>
 
     <control>
