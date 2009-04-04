@@ -361,6 +361,7 @@ namespace mpNZB.Clients
       if (Dialogs.YesNo("Download file?", lstItem.Label))
       {
         string strResult = String.Empty;
+
         switch (lstItem.ItemId)
         {
           case 1:

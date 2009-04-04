@@ -77,10 +77,8 @@ namespace mpNZB.Sites
       FeedName = Dialogs.Menu(new string[] { "All", "Movies", "TV", "Documentaries", "Games", "Apps", "Music", "Anime", "Other" }, "Select Feed");
       if (FeedName.Length > 0)
       {
-        Dialogs.Wait(true);
         if (Cookie() == String.Empty) { return; }
         FeedURL = "http://nzbmatrix.com/rss.php" + ((FeedName == "All") ? String.Empty : "?cat=" + FeedName.ToLower());
-        Dialogs.Wait(false);
       }
     }
 

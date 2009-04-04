@@ -155,16 +155,11 @@ namespace mpNZB
 
     protected override void OnClicked(int controlId, GUIControl control, Action.ActionType actionType)
     {
-      if (control == btnRefreshFeed)
-      {
-        Dialogs.Wait(true);
-        fncReadRSS(Site.FeedURL, lstItems);
-        Dialogs.Wait(false);
-      }
-      if (control == btnSelectFeed) { fncSelectFeed(false); }
-      if (control == btnSearch)     { fncSelectFeed(true); }
-      if (control == btnJobQueue)   { Client.Queue(lstItems, this); }
-      if (control == btnPause)      { Client.Pause(btnPause.Selected, Status); }
+      if (control == btnRefreshFeed) { fncReadRSS(Site.FeedURL, lstItems); }
+      if (control == btnSelectFeed)  { fncSelectFeed(false); }
+      if (control == btnSearch)      { fncSelectFeed(true); }
+      if (control == btnJobQueue)    { Client.Queue(lstItems, this); }
+      if (control == btnPause)       { Client.Pause(btnPause.Selected, Status); }
       if (control == lstItems)
       {
         switch (lstItems.ListItems[lstItems.SelectedListItemIndex].ItemId)
@@ -347,11 +342,9 @@ namespace mpNZB
       // ##################################################
       if (Site.FeedURL.Length > 0)
       {
-        Dialogs.Wait(true);
         fncReadRSS(Site.FeedURL, lstItems);
         btnRefreshFeed.Disabled = false;
         GUIPropertyManager.SetProperty("#PageTitle", Site.SiteName + " - " + Site.FeedName);
-        Dialogs.Wait(false);
       }
       // ##################################################
     }
