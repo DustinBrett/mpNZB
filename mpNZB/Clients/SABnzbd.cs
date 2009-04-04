@@ -307,9 +307,18 @@ namespace mpNZB.Clients
 
           XmlNodeList nodeList = xmlDoc.SelectNodes("queue/jobs/job");
 
+          double dblMBLeft = 0;
+          double dblMBTotal = 0;
+
           foreach (XmlNode nodeItem in nodeList)
           {
-            Dialogs.AddItem(lstItemList, nodeItem["filename"].InnerText, string.Format("{0:0.00}", double.Parse(nodeItem["mb"].InnerText)) + " MB", nodeItem["id"].InnerText, 2);
+            dblMBLeft = 0;
+            dblMBTotal = 0;
+
+            double.TryParse(nodeItem["mbleft"].InnerText, out dblMBLeft);
+            double.TryParse(nodeItem["mb"].InnerText, out dblMBTotal);
+
+            Dialogs.AddItem(lstItemList, nodeItem["filename"].InnerText, dblMBLeft.ToString("N2") + "/" + dblMBTotal.ToString("N2") + " MB", nodeItem["id"].InnerText, 2);
           }
 
           GUIPropertyManager.SetProperty("#Status", "Job Count (" + nodeList.Count + ")");
