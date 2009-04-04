@@ -96,7 +96,8 @@ namespace mpNZB.Sites
     {
       double dblSize = 0;
       double.TryParse(Node["report:size"].InnerText, out dblSize);
-      Dialogs.AddItem(lstList, Node["title"].InnerText, string.Format("{0:0.00}", Math.Round((dblSize / 1024) / 1024, 2)) + " MB", Node["report:id"].InnerText, 4);
+      if (dblSize > 0) { dblSize = ((dblSize / 1024) / 1024); }
+      Dialogs.AddItem(lstList, Node["title"].InnerText, dblSize.ToString("N2") + " MB", Node["report:id"].InnerText, 4);
     }
 
     #endregion
