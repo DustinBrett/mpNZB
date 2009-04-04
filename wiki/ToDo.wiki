@@ -2,14 +2,8 @@
 #labels Phase-Requirements,Phase-Design
 
 == Coding Issues: ==
-  * Change NZBsRus URL grabber to something better
-    * Also add NZBsRus categories to list
-    * Feeds can be easy if I can just get i= and h= during D/L
-    * Grab i= and h= on Site.Init and save them as var's?
-      * How best to grab them without parsing HTML?
-  * Progress bar works intermittently
-    * Stops working after clicking NZBsRus ?maybe?
-    * New code is no better
+  * Progress bar not working
+    * Temp removed
 
 == Features: (_Low_) ==
   * SABnzbd pauses D/L's during video play
