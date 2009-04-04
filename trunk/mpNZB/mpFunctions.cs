@@ -82,36 +82,6 @@ namespace mpNZB
       lstItemList.Add(Item);
     }
 
-    // Progress Cursor
-    // ##################################################
-    private bool bolWaiting;
-    private BackgroundWorker bwWorker;
-
-    public void Wait(bool bolWait)
-    {
-      bolWaiting = bolWait;
-      if (bolWait)
-      {
-        bwWorker = new BackgroundWorker();
-        bwWorker.DoWork += new DoWorkEventHandler(Waiting);
-        bwWorker.RunWorkerAsync(new object());
-      }
-      else
-      {
-        //bwWorker.CancelAsync();
-      }
-    }
-
-    private void Waiting(object sender, DoWorkEventArgs e)
-    {
-      WaitCursor wCursor = new WaitCursor();
-
-      while (bolWaiting == true) GUIWindowManager.Process();
-
-      wCursor.Dispose();
-    }
-    // ##################################################
-
     #endregion
 
   }

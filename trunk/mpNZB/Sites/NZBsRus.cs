@@ -72,21 +72,39 @@ namespace mpNZB.Sites
 
     private mpFunctions Dialogs = new mpFunctions();
 
+    private string h = String.Empty;
+
     public void SetFeed()
     {
-      FeedName = Dialogs.Menu(new string[] { "Main RSS Feed", "User's Category Selection RSS" }, "Select Feed");
+      FeedName = Dialogs.Menu(new string[] { "Main RSS Feed" }, "Select Feed");
       if (FeedName.Length > 0)
       {
-        Dialogs.Wait(true);
         if (Cookie() == String.Empty) { return; }
-        FeedURL = URLGrab();
-        Dialogs.Wait(false);
+
+        if (h.Length == 0)
+        {
+          WebClient webClient = new WebClient();
+          webClient.Headers.Set("Cookie", "uid=" + uid + "; pass=" + pass);
+          string htmlCode = webClient.DownloadString("http://www.nzbsrus.com/rss.php");
+
+          int intStartIndex = htmlCode.IndexOf(";h=") + 3;
+          if (intStartIndex > 0)
+          {
+            int intStopIndex = htmlCode.IndexOf("\"", intStartIndex);
+            h = htmlCode.Substring(intStartIndex, intStopIndex - intStartIndex);
+          }
+        }
+
+        switch (FeedName)
+        {
+          case "Main RSS Feed": FeedURL = "http://www.nzbsrus.com/rssfeed.php" + "?i=" + uid + "&h=" + h; break;
+        }
       }
     }
 
     public void Search()
     {
-    }
+    }    
 
     public void AddItem(XmlNode Node, GUIListControl lstList)
     {
@@ -94,36 +112,6 @@ namespace mpNZB.Sites
       string strSizeText = "<b>Size:</b>".ToLower();
       int intSizePOS = strTemp.ToLower().IndexOf(strSizeText.ToLower()) + strSizeText.Length;
       Dialogs.AddItem(lstList, Node["title"].InnerText, strTemp.Substring(intSizePOS, strTemp.IndexOf("(", intSizePOS) - intSizePOS), Node["link"].InnerText, 1);
-    }
-
-    #endregion
-
-    #region Special Functions
-
-    private string URLGrab()
-    {
-      WebClient webClient = new WebClient();
-      webClient.Headers.Set("Cookie", "uid=" + uid + "; pass=" + pass);
-      string htmlCode = webClient.DownloadString("http://www.nzbsrus.com/rss.php");
-
-      int intStartIndex = 0;
-      switch (FeedName)
-      {
-        case "Main RSS Feed":
-          intStartIndex = htmlCode.IndexOf(">http://www.nzbsrus.com/rssfeed.php?i") + 1;
-          break;
-        case "User's Category Selection RSS":
-          intStartIndex = htmlCode.IndexOf(">http://www.nzbsrus.com/rssfeed.php?c") + 1;
-          break;
-      }
-
-      if (intStartIndex > 0)
-      {
-        int intStopIndex = htmlCode.IndexOf("</a>", intStartIndex);
-        return htmlCode.Substring(intStartIndex, intStopIndex - intStartIndex).Replace("&amp;", "&");
-      }
-
-      return String.Empty;
     }
 
     #endregion
