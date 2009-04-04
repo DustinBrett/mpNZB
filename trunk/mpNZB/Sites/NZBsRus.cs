@@ -76,7 +76,7 @@ namespace mpNZB.Sites
 
     public void SetFeed()
     {
-      FeedName = Dialogs.Menu(new string[] { "Main RSS Feed" }, "Select Feed");
+      FeedName = Dialogs.Menu(new string[] { "Main RSS Feed", "Anime", "Apps - 0-Day", "Apps - MAC", "Apps - Misc", "Apps - PC iSO", "Console - Gamecube", "Console - PS2", "Console - PS3", "Console - Wii", "Console - XBOX", "Console - XBOX 360", "eBooks/ Tutorials", "Games - Misc", "Games - PC DOX", "Games - PC iSO", "Handheld - DS", "Handheld - PSP", "Movies - DVDr", "Movies - HD", "Movies - Misc", "Movies - XviD", "Music - MP3", "Music - Video", "Phone", "TV - DVDr", "TV - HD", "TV - Misc", "TV - XviD" }, "Select Feed");
       if (FeedName.Length > 0)
       {
         if (Cookie() == String.Empty) { return; }
@@ -95,10 +95,40 @@ namespace mpNZB.Sites
           }
         }
 
+        int intID = 0;
         switch (FeedName)
         {
-          case "Main RSS Feed": FeedURL = "http://www.nzbsrus.com/rssfeed.php" + "?i=" + uid + "&h=" + h; break;
+          case "Anime": intID = 3; break;
+          case "Apps - 0-Day": intID = 6; break;
+          case "Apps - MAC": intID = 93; break;
+          case "Apps - Misc": intID = 9; break;
+          case "Apps - PC iSO": intID = 12; break;
+          case "Console - Gamecube": intID = 87; break;
+          case "Console - PS2": intID = 30; break;
+          case "Console - PS3": intID = 89; break;
+          case "Console - Wii": intID = 92; break;
+          case "Console - XBOX": intID = 39; break;
+          case "Console - XBOX 360": intID = 88; break;
+          case "eBooks/ Tutorials": intID = 15; break;
+          case "Games - Misc": intID = 24; break;
+          case "Games - PC DOX": intID = 96; break;
+          case "Games - PC iSO": intID = 27; break;
+          case "Handheld - DS": intID = 21; break;
+          case "Handheld - PSP": intID = 33; break;
+          case "Movies - DVDr": intID = 45; break;
+          case "Movies - HD": intID = 90; break;
+          case "Movies - Misc": intID = 48; break;
+          case "Movies - XviD": intID = 51; break;
+          case "Music - MP3": intID = 54; break;
+          case "Music - Video": intID = 60; break;
+          case "Phone": intID = 99; break;
+          case "TV - DVDr": intID = 69; break;
+          case "TV - HD": intID = 91; break;
+          case "TV - Misc": intID = 72; break;
+          case "TV - XviD": intID = 75; break;
         }
+
+        FeedURL = "http://www.nzbsrus.com/rssfeed.php" + ((intID > 0) ? "?cat=" + intID.ToString() + "&" : "?") + "i=" + uid + "&h=" + h;
       }
     }
 
