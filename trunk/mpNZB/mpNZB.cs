@@ -324,7 +324,7 @@ namespace mpNZB
         case "TvNZB":     Site = new Sites.TvNZB();     break;
         default: return;
       }
-      // ##################################################
+      // ##################################################      
 
       // SetFeed or Search
       // ##################################################
@@ -346,7 +346,7 @@ namespace mpNZB
         btnRefreshFeed.Disabled = false;
         GUIPropertyManager.SetProperty("#PageTitle", Site.SiteName + " - " + Site.FeedName);
       }
-      // ##################################################
+      // ##################################################      
     }
 
     #endregion
