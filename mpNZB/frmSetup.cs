@@ -163,9 +163,9 @@ namespace mpNZB
           strSearchList += lvSites.Items[i].Text + (char)0;
         }        
       }
-      if (strSiteList.Length > 1) { mpSettings.SetValue("#Lists", "SiteList", strSiteList.Substring(0, (strSiteList.Length - 1))); }
-      if (strFeedList.Length > 1) { mpSettings.SetValue("#Lists", "FeedList", strFeedList.Substring(0, (strFeedList.Length - 1))); }
-      if (strSearchList.Length > 1) { mpSettings.SetValue("#Lists", "SearchList", strSearchList.Substring(0, (strSearchList.Length - 1))); }
+      mpSettings.SetValue("#Lists", "SiteList", ((strSiteList.Length > 1) ? strSiteList.Substring(0, (strSiteList.Length - 1)) : String.Empty));
+      mpSettings.SetValue("#Lists", "FeedList", ((strFeedList.Length > 1) ? strFeedList.Substring(0, (strFeedList.Length - 1)) : String.Empty));
+      mpSettings.SetValue("#Lists", "SearchList", ((strSearchList.Length > 1) ? strSearchList.Substring(0, (strSearchList.Length - 1)) : String.Empty));
       // --------------------------------------------------
 
       mpSettings.Dispose();
