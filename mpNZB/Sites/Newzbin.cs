@@ -95,9 +95,11 @@ namespace mpNZB.Sites
     public void AddItem(XmlNode Node, GUIListControl lstList)
     {
       double dblSize = 0;
+
       double.TryParse(Node["report:size"].InnerText, out dblSize);
       if (dblSize > 0) { dblSize = ((dblSize / 1024) / 1024); }
-      Dialogs.AddItem(lstList, Node["title"].InnerText, dblSize.ToString("N2") + " MB", Node["report:id"].InnerText, 4);
+
+      Dialogs.AddItem(lstList, Node["title"].InnerText, dblSize.ToString().Substring(0, dblSize.ToString().IndexOf(".") + (((dblSize.ToString().IndexOf(".") + 3) <= dblSize.ToString().Length) ? 3 : 2)) + " MB", Node["report:id"].InnerText, 4);
     }
 
     #endregion
