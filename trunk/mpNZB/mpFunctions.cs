@@ -1,12 +1,11 @@
 ﻿using System;
-using System.ComponentModel;
 
 using MediaPortal.Dialogs;
 using MediaPortal.GUI.Library;
 
 namespace mpNZB
 {
-  class mpFunctions : GUIWindow
+  class mpFunctions
   {
 
     #region Windows
@@ -80,6 +79,18 @@ namespace mpNZB
       Item.ItemId = intItemId;
 
       lstItemList.Add(Item);
+    }
+
+    public void Wait(bool bolWaiting)
+    {
+      if (bolWaiting)
+      {
+        GUIWaitCursor.Show();
+      }
+      else
+      {
+        GUIWaitCursor.Hide();
+      }
     }
 
     #endregion
