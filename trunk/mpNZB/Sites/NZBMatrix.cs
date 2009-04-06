@@ -93,7 +93,7 @@ namespace mpNZB.Sites
       string strSizeText = "<b>Size:</b>".ToLower();
       int intSizePOS = strTemp.ToLower().IndexOf(strSizeText.ToLower()) + strSizeText.Length;
 
-      Dialogs.AddItem(lstList, Node["title"].InnerText, strTemp.Substring(intSizePOS, strTemp.IndexOf("<", intSizePOS) - intSizePOS).Replace("GB", " GB").Replace("MB", " MB").Replace(".", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.ToCharArray()[0].ToString()), Node["link"].InnerText.Replace("nzb-details.php", "nzb-download.php"), 3);
+      Dialogs.AddItem(lstList, Node["title"].InnerText, strTemp.Substring(intSizePOS, strTemp.IndexOf("<", intSizePOS) - intSizePOS).Replace("GB", " GB").Replace("MB", " MB").Replace("KB", " KB").Replace(".", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.ToCharArray()[0].ToString()).Replace(",", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.ToCharArray()[0].ToString()), Node["link"].InnerText.Replace("nzb-details.php", "nzb-download.php"), 3);
     }
 
     #endregion
