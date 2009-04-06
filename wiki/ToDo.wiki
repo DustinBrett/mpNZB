@@ -9,7 +9,7 @@
 
 == Things to tests: ==
   * NZBIndex new size grabber
-  * Bintube/NZBClub List/DL'ing/Search
+  * Bintube/NZBClub/Newzleech List/DL'ing/Search
 
 == Features: (_Medium_) ==
   * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
@@ -20,11 +20,6 @@
 == Features: (_High_) ==
   * MPI installation
   * Download complete sound effect
-
-== Sites: ==
-  * [http://www.newzleech.com/ Newzleech]
-    * {{{http://www.newzleech.com/rss.php?n=250&s=[SEARCH]}}}
-    * {{{Replace "?p=" with "?m=gen&dl=1&post="}}}
 
 === (_Custom_) ===
   * [http://mytvnzb.foechoer.be/ MyTvNZB]
@@ -42,4 +37,3 @@
   * [http://www.newzleech.com/ Newzleech]
     * {{{http://www.nzbindex.com/groups/}}}
     * {{{http://www.nzbindex.com/rss/[GROUP]/}}}
-    * Parse size: {{{">Size: 747,3 MB<"}}}
