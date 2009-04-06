@@ -16,11 +16,11 @@
   * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
   * NZB Streaming
   * SABnzbd History view
-  * Customizable search result limit
 
 == Features: (_High_) ==
   * MPI installation
   * Download complete sound effect
+  * Customizable search result limit
 
 === (_Custom_) ===
   * [http://mytvnzb.foechoer.be/ MyTvNZB]
