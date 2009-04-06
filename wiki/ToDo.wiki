@@ -19,8 +19,10 @@
   * [http://www.bintube.com/ Bintube]
   * [http://www.nzbmovieseeker.com/ NZBMovieSeeker]
   * [http://mytvnzb.foechoer.be/ MyTvNZB]
-  * [http://nzbserien.org/ NZBSerien]
 
 == Sites: (_Medium_) ==
   * [http://www.newzleech.com/ Newzleech]
+    * {{{http://www.newzleech.com/?m=gen&dl=1&post=[POSTID]}}}
+    * {{{http://www.newzleech.com/rss.php?n=50&s=[SEARCH]}}}
+    * {{{http://newzleech.com/?p=[POSTID]}}}
   * [http://www.binsearch.info/rssfeed.php Binsearch] Categories (alt.binaries)
