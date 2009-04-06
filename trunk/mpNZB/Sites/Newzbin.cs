@@ -88,7 +88,7 @@ namespace mpNZB.Sites
       if (FeedName.Length > 0)
       {
         if (Cookie() == String.Empty) { return; }
-        FeedURL = "http://www.newzbin.com/search/query/?q=" + FeedName + "&searchaction=Go&feed=rss" + "&COOKIE:NzbSmoke=" + NzbSmoke + ";NzbSessionID=" + NzbSessionID;
+        FeedURL = "http://www.newzbin.com/search/query/?q=" + FeedName.Replace(" ", "+") + "&searchaction=Go&feed=rss" + "&COOKIE:NzbSmoke=" + NzbSmoke + ";NzbSessionID=" + NzbSessionID;
       }
     }
 
