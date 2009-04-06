@@ -69,7 +69,7 @@ namespace mpNZB.Sites
       string strSizeText = ">Size:".ToLower();
       int intSizePOS = strTemp.ToLower().IndexOf(strSizeText.ToLower()) + strSizeText.Length;
 
-      Dialogs.AddItem(lstList, Node["title"].InnerText, strTemp.Substring(intSizePOS, strTemp.IndexOf("<", intSizePOS) - intSizePOS).Replace("GB", " GB").Replace("MB", " MB").Replace("KB", " KB").Replace(".", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.ToCharArray()[0].ToString()).Replace(",", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.ToCharArray()[0].ToString()), Node["link"].InnerText.Replace("?p=", "?m=gen&dl=1&post="), 1);
+      Dialogs.AddItem(lstList, Node["title"].InnerText, strTemp.Substring(intSizePOS, strTemp.IndexOf("<", intSizePOS) - intSizePOS).Replace("GB", " GB").Replace("MB", " MB").Replace("KB", " KB").Replace(".", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.ToCharArray()[0].ToString()).Replace(",", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.ToCharArray()[0].ToString()), Node["link"].InnerText.Replace("?p=", "?m=gen&dl=1&post=").Replace("?", "%3F").Replace("=", "%3D").Replace("&", "%26"), 1);
     }
 
     #endregion
