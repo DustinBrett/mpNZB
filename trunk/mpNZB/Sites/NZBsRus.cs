@@ -141,7 +141,7 @@ namespace mpNZB.Sites
       string strTemp = Node["description"].InnerText.Replace(" ", String.Empty);
       string strSizeText = "<b>Size:</b>".ToLower();
       int intSizePOS = strTemp.ToLower().IndexOf(strSizeText.ToLower()) + strSizeText.Length;
-      Dialogs.AddItem(lstList, Node["title"].InnerText, strTemp.Substring(intSizePOS, strTemp.IndexOf("(", intSizePOS) - intSizePOS), Node["link"].InnerText, 1);
+      Dialogs.AddItem(lstList, Node["title"].InnerText, strTemp.Substring(intSizePOS, strTemp.IndexOf("(", intSizePOS) - intSizePOS).Replace("GiB", " GB").Replace("MiB", " MB"), Node["link"].InnerText, 1);
     }
 
     #endregion
