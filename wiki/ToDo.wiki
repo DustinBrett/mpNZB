@@ -34,12 +34,12 @@
 === (_alt.binaries_) ===
   * [http://www.binsearch.info/rssfeed.php Binsearch]
     * {{{http://binsearch.info/groups.php}}}
-    * {{{http://rss.binsearch.net/rss.php?max=250&g=alt.binaries.*}}}
+    * {{{http://rss.binsearch.net/rss.php?max=250&g=[GROUP]}}}
 
   * [http://www.bintube.com/ Bintube]
     * {{{http://www.bintube.com/newsgroups/}}}
-    * {{{http://www.bintube.com/rss/g/alt.binaries.*}}}
+    * {{{http://www.bintube.com/rss/g/[GROUP]}}}
 
   * [http://www.newzleech.com/ Newzleech]
     * {{{http://www.nzbindex.com/groups/}}}
-    * {{{http://www.nzbindex.com/rss/alt.binaries.*/}}}
+    * {{{http://www.nzbindex.com/rss/[GROUP]/}}}
