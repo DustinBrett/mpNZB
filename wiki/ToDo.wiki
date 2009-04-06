@@ -6,7 +6,7 @@
     * Temp removed
     * {{{WaitCursor}}} is a bitch
   * Number formatting isn't working for some people
-  * Change NZBIndex to grab <enclosure length="">
+  * Change NZBIndex to grab {{{<enclosure length="">}}}
 
 == Features: (_Medium_) ==
   * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
