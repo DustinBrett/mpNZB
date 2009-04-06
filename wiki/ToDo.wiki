@@ -4,7 +4,7 @@
 == Coding Issues: ==
   * Progress bar not working
     * Temp removed
-    * WaitCursor is a bitch
+    * {{{WaitCursor}}} is a bitch
   * Number formatting isn't working for some people
 
 == Features: (_Medium_) ==
