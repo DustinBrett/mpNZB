@@ -221,7 +221,6 @@ namespace mpNZB.Clients
             double.TryParse(xmlDoc["queue"]["diskspace1"].InnerText, out dblDiskSpace1);
             double.TryParse(xmlDoc["queue"]["diskspace2"].InnerText, out dblDiskSpace2);
 
-
             GUIPropertyManager.SetProperty("#Paused", xmlDoc["queue"]["paused"].InnerText);
             GUIPropertyManager.SetProperty("#KBps", String.Format("{0:#,##0.00 KB/s}", dblKBps));
             GUIPropertyManager.SetProperty("#MBStatus", String.Format("{0:#,##0.00}", dblMBLeft) + " / " + String.Format("{0:#,##0.00 MB}", dblMBTotal));
