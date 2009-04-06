@@ -17,12 +17,9 @@
 
 == Sites: ==
 
-=== (_Low_) ===
   * [http://www.bintube.com/ Bintube]
     * {{{http://www.bintube.com/rss.aspx?q=[SEARCH]&r=250}}}
     * {{{Replace "/nzb/" with "/download/"}}}
-
-=== (_Medium_) ===
   * [http://www.newzleech.com/ Newzleech]
     * {{{http://www.newzleech.com/rss.php?n=250&s=[SEARCH]}}}
     * {{{Replace "?p=" with "?m=gen&dl=1&post="}}}
