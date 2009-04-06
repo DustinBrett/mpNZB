@@ -6,6 +6,8 @@
     * Temp removed
     * {{{WaitCursor}}} is a bitch
   * Number formatting isn't working for some people
+
+== Tests: ==
   * Test NZBIndex new size grabber
   * Test Bintube/NZBClub List/DL'ing/Search
 
