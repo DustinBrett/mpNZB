@@ -6,7 +6,7 @@
     * Temp removed
     * {{{WaitCursor}}} is a bitch
   * Number formatting isn't working for some people
-  * Change NZBIndex to grab {{{<enclosure length="">}}}
+  * Test NZBIndex new size grabber
   * Test Bintube/NZBClub List/DL'ing/Search
 
 == Features: (_Medium_) ==
