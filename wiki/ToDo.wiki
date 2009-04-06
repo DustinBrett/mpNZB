@@ -15,20 +15,22 @@
   * MPI installation
   * Download complete sound effect
 
-== Sites: (_Low_) ==
+== Sites: ==
+
+=== (_Low_) ===
   * [http://www.bintube.com/ Bintube]
     * {{{http://www.bintube.com/rss.aspx?q=[SEARCH]&r=250}}}
     * {{{Replace "/nzb/" with "/download/"}}}
 
-== Sites: (_Medium_) ==
+=== (_Medium_) ===
   * [http://www.newzleech.com/ Newzleech]
     * {{{http://www.newzleech.com/rss.php?n=250&s=[SEARCH]}}}
     * {{{Replace "?p=" with "?m=gen&dl=1&post="}}}
 
-== Sites: (Custom) ==
+=== (_Custom_) ===
   * [http://mytvnzb.foechoer.be/ MyTvNZB]
 
-== Sites: (_alt.binaries_) ==
+=== (_alt.binaries_) ===
   * [http://www.binsearch.info/rssfeed.php Binsearch]
   * [http://www.bintube.com/ Bintube]
   * [http://www.newzleech.com/ Newzleech]
