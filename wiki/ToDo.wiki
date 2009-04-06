@@ -5,12 +5,10 @@
   * Progress bar not working
     * Temp removed
     * {{{WaitCursor}}} is a bitch
-  * Number formatting isn't working for some people
-    * {{{string.format}}}
 
 == Things to tests: ==
   * NZBIndex new size grabber
-  * Bintube/NZBClub/Newzleech List/DL'ing/Search/Etc.
+  * Bintube/=Newzleech List/DL'ing/Search/Etc.
 
 == Features: (_Medium_) ==
   * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
@@ -24,7 +22,6 @@
 
 === (_Custom_) ===
   * Custom URL's
-  * XPAT?
   * [http://mytvnzb.foechoer.be/ MyTvNZB]
 
 === (_alt.binaries_) ===
