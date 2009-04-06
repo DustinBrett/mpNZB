@@ -68,7 +68,7 @@ namespace mpNZB.Sites
       string strSizeText = "<b>".ToLower();
       int intSizePOS = strTemp.ToLower().IndexOf(strSizeText) + strSizeText.Length;
 
-      Dialogs.AddItem(lstList, Node["title"].InnerText, strTemp.Substring(intSizePOS, strTemp.IndexOf("</b>", intSizePOS) - intSizePOS), Node["enclosure"].Attributes["url"].InnerText, 1);
+      Dialogs.AddItem(lstList, Node["title"].InnerText, strTemp.Substring(intSizePOS, strTemp.IndexOf("</b>", intSizePOS) - intSizePOS).Replace("GB", " GB").Replace("MB", " MB"), Node["enclosure"].Attributes["url"].InnerText, 1);
     }
 
     #endregion

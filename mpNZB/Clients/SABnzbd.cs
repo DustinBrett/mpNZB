@@ -222,12 +222,13 @@ namespace mpNZB.Clients
             double.TryParse(xmlDoc["queue"]["diskspace1"].InnerText, out dblDiskSpace1);
             double.TryParse(xmlDoc["queue"]["diskspace2"].InnerText, out dblDiskSpace2);
 
+
             GUIPropertyManager.SetProperty("#Paused", xmlDoc["queue"]["paused"].InnerText);
-            GUIPropertyManager.SetProperty("#KBps", ((dblKBps != 0.0) ? dblKBps.ToString().Substring(0, dblKBps.ToString().IndexOf(".") + 3) : "0.0") + " KB/s");
-            GUIPropertyManager.SetProperty("#MBStatus", ((dblMBLeft != 0.0) ? dblMBLeft.ToString().Substring(0, dblMBLeft.ToString().IndexOf(".") + 3) : "0.0") + " / " + ((dblMBTotal != 0.0) ? dblMBTotal.ToString().Substring(0, dblMBTotal.ToString().IndexOf(".") + 3) : "0.0") + " MB");
+            GUIPropertyManager.SetProperty("#KBps", String.Format("{0:#,##0.00 KB/s}", dblKBps));
+            GUIPropertyManager.SetProperty("#MBStatus", String.Format("{0:#,##0.00}", dblMBLeft) + " / " + String.Format("{0:#,##0.00 MB}", dblMBTotal));
             GUIPropertyManager.SetProperty("#JobCount", intJobCount.ToString());
-            GUIPropertyManager.SetProperty("#DiskSpace1", ((dblDiskSpace1 != 0.0) ? dblDiskSpace1.ToString().Substring(0, dblDiskSpace1.ToString().IndexOf(".") + 3) : "0.0") + " GB");
-            GUIPropertyManager.SetProperty("#DiskSpace2", ((dblDiskSpace2 != 0.0) ? dblDiskSpace2.ToString().Substring(0, dblDiskSpace2.ToString().IndexOf(".") + 3) : "0.0") + " GB");
+            GUIPropertyManager.SetProperty("#DiskSpace1", String.Format("{0:#,##0.00 GB}", dblDiskSpace1));
+            GUIPropertyManager.SetProperty("#DiskSpace2", String.Format("{0:#,##0.00 GB}", dblDiskSpace2));
             GUIPropertyManager.SetProperty("#TimeLeft", xmlDoc["queue"]["timeleft"].InnerText + " s");
           }
         }
@@ -318,7 +319,7 @@ namespace mpNZB.Clients
             double.TryParse(nodeItem["mbleft"].InnerText, out dblMBLeft);
             double.TryParse(nodeItem["mb"].InnerText, out dblMBTotal);
 
-            Dialogs.AddItem(lstItemList, nodeItem["filename"].InnerText, ((dblMBLeft != 0.0) ? dblMBLeft.ToString().Substring(0, dblMBLeft.ToString().IndexOf(".") + 3) : "0.0") + " / " + ((dblMBTotal != 0.0) ? dblMBTotal.ToString().Substring(0, dblMBTotal.ToString().IndexOf(".") + 3) : "0.0") + " MB", nodeItem["id"].InnerText, 2);
+            Dialogs.AddItem(lstItemList, nodeItem["filename"].InnerText, String.Format("{0:#,##0.00}", dblMBLeft) + " / " + String.Format("{0:#,##0.00 MB}", dblMBTotal), nodeItem["id"].InnerText, 2);
           }
 
           GUIPropertyManager.SetProperty("#Status", "Job Count (" + nodeList.Count + ")");
