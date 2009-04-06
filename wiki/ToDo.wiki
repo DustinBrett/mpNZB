@@ -36,7 +36,7 @@
   * [http://www.binsearch.info/rssfeed.php Binsearch]
     * {{{http://binsearch.info/groups.php}}}
     * {{{http://rss.binsearch.net/rss.php?max=250&g=[GROUP]}}}
-    * Parse size: {{{size: 7.75 MB,}}}
+    * Parse size: {{{"size: 7.75 MB,"}}}
 
   * [http://www.bintube.com/ Bintube]
     * {{{http://www.bintube.com/newsgroups/}}}
