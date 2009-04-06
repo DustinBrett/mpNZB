@@ -47,3 +47,4 @@
   * [http://www.newzleech.com/ Newzleech]
     * {{{http://www.nzbindex.com/groups/}}}
     * {{{http://www.nzbindex.com/rss/[GROUP]/}}}
+    * Parse size: {{{">Size: 747,3 MB<"}}}
