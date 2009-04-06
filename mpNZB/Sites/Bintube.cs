@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Xml;
 
 using MediaPortal.GUI.Library;
@@ -68,7 +69,7 @@ namespace mpNZB.Sites
       string strSizeText = "<TR><TD>Size:</TD><TD>".ToLower();
       int intSizePOS = strTemp.ToLower().IndexOf(strSizeText.ToLower()) + strSizeText.Length;
 
-      Dialogs.AddItem(lstList, Node["title"].InnerText, strTemp.Substring(intSizePOS, strTemp.IndexOf("</TD></TR>", intSizePOS) - intSizePOS).Replace("GB", " GB").Replace("MB", " MB"), Node["link"].InnerText.Replace("/nzb/", "/download/"), 1);
+      Dialogs.AddItem(lstList, Node["title"].InnerText, strTemp.Substring(intSizePOS, strTemp.IndexOf("</TD></TR>", intSizePOS) - intSizePOS).Replace("GB", " GB").Replace("MB", " MB").Replace(".", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.ToCharArray()[0].ToString()), Node["link"].InnerText.Replace("/nzb/", "/download/"), 1);
     }
 
     #endregion

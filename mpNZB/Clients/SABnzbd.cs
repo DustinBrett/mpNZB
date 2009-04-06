@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Xml;
@@ -205,21 +206,21 @@ namespace mpNZB.Clients
           }
 
           if (!(Status.KeepAlive))
-          {
-            double dblKBps = 0;
-            double dblMBLeft = 0;
-            double dblMBTotal = 0;
-            double dblDiskSpace1 = 0;
-            double dblDiskSpace2 = 0;
+          {           
+            CultureInfo ciClone = (CultureInfo)CultureInfo.InvariantCulture.Clone();
+            ciClone.NumberFormat.NumberDecimalSeparator = ".";
 
+            double dblKBps = 0;
             if (intJobCount > 0)
             {
-              double.TryParse(xmlDoc["queue"]["kbpersec"].InnerText, out dblKBps);
+              dblKBps = 0.0;
             }
-            double.TryParse(xmlDoc["queue"]["mbleft"].InnerText, out dblMBLeft);
-            double.TryParse(xmlDoc["queue"]["mb"].InnerText, out dblMBTotal);
-            double.TryParse(xmlDoc["queue"]["diskspace1"].InnerText, out dblDiskSpace1);
-            double.TryParse(xmlDoc["queue"]["diskspace2"].InnerText, out dblDiskSpace2);
+            dblKBps = double.Parse(xmlDoc["queue"]["kbpersec"].InnerText, ciClone);
+
+            double dblMBLeft = double.Parse(xmlDoc["queue"]["mbleft"].InnerText, ciClone);
+            double dblMBTotal = double.Parse(xmlDoc["queue"]["mb"].InnerText, ciClone);
+            double dblDiskSpace1 = double.Parse(xmlDoc["queue"]["diskspace1"].InnerText, ciClone);
+            double dblDiskSpace2 = double.Parse(xmlDoc["queue"]["diskspace2"].InnerText, ciClone);
 
             GUIPropertyManager.SetProperty("#Paused", xmlDoc["queue"]["paused"].InnerText);
             GUIPropertyManager.SetProperty("#KBps", String.Format("{0:#,##0.00 KB/s}", dblKBps));
@@ -309,13 +310,13 @@ namespace mpNZB.Clients
           double dblMBLeft = 0;
           double dblMBTotal = 0;
 
+          CultureInfo ciClone = (CultureInfo)CultureInfo.InvariantCulture.Clone();
+          ciClone.NumberFormat.NumberDecimalSeparator = ".";
+
           foreach (XmlNode nodeItem in nodeList)
           {
-            dblMBLeft = 0;
-            dblMBTotal = 0;
-
-            double.TryParse(nodeItem["mbleft"].InnerText, out dblMBLeft);
-            double.TryParse(nodeItem["mb"].InnerText, out dblMBTotal);
+            dblMBLeft = double.Parse(xmlDoc["queue"]["mbleft"].InnerText, ciClone);
+            dblMBTotal = double.Parse(xmlDoc["queue"]["mb"].InnerText, ciClone);
 
             Dialogs.AddItem(lstItemList, nodeItem["filename"].InnerText, String.Format("{0:#,##0.00}", dblMBLeft) + " / " + String.Format("{0:#,##0.00 MB}", dblMBTotal), nodeItem["id"].InnerText, 2);
           }
