@@ -95,7 +95,6 @@ namespace mpNZB.Sites
     public void AddItem(XmlNode Node, GUIListControl lstList)
     {
       double dblSize = 0;
-
       double.TryParse(Node["report:size"].InnerText, out dblSize);
       if (dblSize > 0) { dblSize = ((dblSize / 1024) / 1024); }
 

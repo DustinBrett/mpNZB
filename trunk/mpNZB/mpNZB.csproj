@@ -64,7 +64,10 @@
       <DependentUpon>frmSetup.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sites\Newzleech.cs" />
+    <Compile Include="Sites\NZBClub.cs" />
     <Compile Include="Sites\NZBIndex.cs" />
+    <Compile Include="Sites\Bintube.cs" />
     <Compile Include="Sites\NZBsRus.cs" />
     <Compile Include="Sites\NZBMatrix.cs" />
     <Compile Include="Sites\TvNZB.cs" />
@@ -85,7 +88,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetPath)" "\\192.168.1.200\C$\Program Files\MediaPortal\plugins\Windows\mpNZB.dll" /y
-copy "C:\Users\Dustin\Desktop\mpNZB\skin\StreamedMP\mpNZB.xml" "\\192.168.1.200\C$\Program Files\MediaPortal\skin\StreamedMP\mpNZB.xml" /y</PostBuildEvent>
+    <PostBuildEvent>rem copy "$(TargetPath)" "\\192.168.1.200\C$\Program Files\MediaPortal\plugins\Windows\mpNZB.dll" /y
+rem copy "C:\Users\Dustin\Desktop\mpNZB\skin\StreamedMP\mpNZB.xml" "\\192.168.1.200\C$\Program Files\MediaPortal\skin\StreamedMP\mpNZB.xml" /y</PostBuildEvent>
   </PropertyGroup>
 </Project>
