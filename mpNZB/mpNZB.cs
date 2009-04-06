@@ -316,8 +316,11 @@ namespace mpNZB
       // Select Site
       // ##################################################
       switch (Dialogs.Menu(strSites, "Select Site"))
-      {        
+      {
+        case "Bintube":   Site = new Sites.Bintube();   break;
         case "Newzbin":   Site = new Sites.Newzbin();   break;
+        case "Newzleech": Site = new Sites.Newzleech(); break;
+        case "NZBClub":   Site = new Sites.NZBClub();   break;
         case "NZBIndex":  Site = new Sites.NZBIndex();  break;
         case "NZBMatrix": Site = new Sites.NZBMatrix(); break;
         case "NZBsRus":   Site = new Sites.NZBsRus();   break;

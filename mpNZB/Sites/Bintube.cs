@@ -5,14 +5,14 @@ using MediaPortal.GUI.Library;
 
 namespace mpNZB.Sites
 {
-  class NZBIndex:iSite
+  class Bintube:iSite
   {
     
     #region Definitions
 
     public string SiteName
     {
-      get { return "NZBIndex"; }
+      get { return "Bintube"; }
     }
 
     private string _FeedName;
@@ -58,17 +58,17 @@ namespace mpNZB.Sites
       FeedName = Dialogs.Keyboard();
       if (FeedName.Length > 0)
       {
-        FeedURL = "http://www.nzbindex.com/rss/?q=" + FeedName.Replace(" ", "+") + "&max=250";
+        FeedURL = "http://www.bintube.com/rss.aspx?q=" + FeedName.Replace(" ", "+") + "&r=250";
       }
     }
 
     public void AddItem(XmlNode Node, GUIListControl lstList)
     {
-      double dblSize = 0;
-      double.TryParse(Node["enclosure"].Attributes["length"].InnerText, out dblSize);
-      if (dblSize > 0) { dblSize = ((dblSize / 1024) / 1024); }
+      string strTemp = Node["description"].InnerText.Replace(" ", String.Empty);
+      string strSizeText = "<TR><TD>Size:</TD><TD>".ToLower();
+      int intSizePOS = strTemp.ToLower().IndexOf(strSizeText.ToLower()) + strSizeText.Length;
 
-      Dialogs.AddItem(lstList, Node["title"].InnerText, ((dblSize >= 1024) ? String.Format("{0:#,##0.00 GB}", dblSize / 1024) : String.Format("{0:#,##0.00 MB}", dblSize)), Node["enclosure"].Attributes["url"].InnerText, 1);
+      Dialogs.AddItem(lstList, Node["title"].InnerText, strTemp.Substring(intSizePOS, strTemp.IndexOf("</TD></TR>", intSizePOS) - intSizePOS).Replace("GB", " GB").Replace("MB", " MB"), Node["link"].InnerText.Replace("/nzb/", "/download/"), 1);
     }
 
     #endregion

@@ -94,6 +94,9 @@ namespace mpNZB
           // Set Feed Type
           switch (strSite)
           {
+            case "Bintube":
+            case "Newzleech":
+            case "NZBClub":
             case "NZBIndex":
               lvItem.SubItems.Add(" ");
               lvItem.SubItems.Add("*");
@@ -256,6 +259,9 @@ namespace mpNZB
           }
           break;
         case "TvNZB":
+        case "Bintube":
+        case "Newzleech":
+        case "NZBClub":
         case "NZBIndex":
           lvItem.Text = cmbSites.Text;
           lvItem.SubItems.Add("");
@@ -264,6 +270,9 @@ namespace mpNZB
           // Set Feed Type
           switch (cmbSites.Text)
           {
+            case "Bintube":
+            case "Newzleech":
+            case "NZBClub":
             case "NZBIndex":
               lvItem.SubItems.Add(" ");
               lvItem.SubItems.Add("*");
@@ -297,6 +306,9 @@ namespace mpNZB
             txtSiteUsername.Enabled = true;
             txtSitePassword.Enabled = true;
             break;
+          case "Bintube":
+          case "Newzleech":
+          case "NZBClub":
           case "NZBIndex":
           case "TvNZB":
             txtSiteUsername.Enabled = false;
