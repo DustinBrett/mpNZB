@@ -4,7 +4,6 @@ using System.Net;
 using System.Xml;
 
 using MediaPortal.GUI.Library;
-using MediaPortal.Profile;
 
 namespace mpNZB.Clients
 {
