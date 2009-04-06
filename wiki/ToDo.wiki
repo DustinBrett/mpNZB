@@ -23,6 +23,8 @@
   * Customizable search result limit
 
 === (_Custom_) ===
+  * Custom URL's
+  * XPAT?
   * [http://mytvnzb.foechoer.be/ MyTvNZB]
 
 === (_alt.binaries_) ===
