@@ -374,7 +374,7 @@ namespace mpNZB.Clients
         switch (lstItem.ItemId)
         {
           case 1:
-            strResult = fncSendURL(fncCreateURL("/sabnzbd/", "api?mode=addurl", "&name=" + lstItem.Path, bolCategorySelect));
+            strResult = fncSendURL(fncCreateURL("/sabnzbd/", "api?mode=addurl", "&name=" + lstItem.Path.Replace("?", "%3F").Replace("=", "%3D").Replace("&", "%26"), bolCategorySelect));
             break;
           case 3:
             strResult = fncSendFile(lstItem.Path, Site, true);
