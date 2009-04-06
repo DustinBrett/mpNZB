@@ -11,6 +11,7 @@
 == Features: (_Medium_) ==
   * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
   * NZB Streaming
+  * SABnzbd History view
   * Customizable search result limit
 
 == Features: (_High_) ==
