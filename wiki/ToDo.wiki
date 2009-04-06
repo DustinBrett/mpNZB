@@ -1,10 +1,9 @@
 #summary To-Do list for project
 #labels Phase-Requirements,Phase-Design
 
-== Coding Issues: ==
-  * Progress bar not working
-    * Temp removed
-    * {{{WaitCursor}}} is a bitch
+== Coding: ==
+  * {{{WaitCursor}}} not working
+  * Replace things like {{{&lt; | &gt; | &quot;}}}
 
 == Things to tests: ==
   * NZBIndex new size grabber
