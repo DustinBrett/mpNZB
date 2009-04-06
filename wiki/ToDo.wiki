@@ -19,11 +19,14 @@
   * [http://www.bintube.com/ Bintube]
     * {{{http://www.bintube.com/rss.aspx?q=[SEARCH]&r=250}}}
     * {{{Replace "/nzb/" with "/download/"}}}
-  * [http://www.nzbmovieseeker.com/ NZBMovieSeeker]
   * [http://mytvnzb.foechoer.be/ MyTvNZB]
 
 == Sites: (_Medium_) ==
   * [http://www.newzleech.com/ Newzleech]
     * {{{http://www.newzleech.com/rss.php?n=250&s=[SEARCH]}}}
     * {{{Replace "?p=" with "?m=gen&dl=1&post="}}}
-  * [http://www.binsearch.info/rssfeed.php Binsearch] Categories (alt.binaries)
+
+== Sites: (_alt.binaries_) ==
+  * [http://www.binsearch.info/rssfeed.php Binsearch]
+  * [http://www.bintube.com/ Bintube]
+  * [http://www.newzleech.com/ Newzleech]
