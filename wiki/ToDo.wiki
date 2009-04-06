@@ -41,6 +41,7 @@
   * [http://www.bintube.com/ Bintube]
     * {{{http://www.bintube.com/newsgroups/}}}
     * {{{http://www.bintube.com/rss/g/[GROUP]}}}
+    * Parse size: {{{"<TR><TD>Size:</TD><TD>456.43 MB</TD></TR>"}}}
 
   * [http://www.newzleech.com/ Newzleech]
     * {{{http://www.nzbindex.com/groups/}}}
