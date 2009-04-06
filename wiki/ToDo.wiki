@@ -7,7 +7,7 @@
 
 == Things to tests: ==
   * NZBIndex new size grabber
-  * Bintube/Newzleech List/DL'ing/Search/Etc.
+  * Bintube DL'ing/Search
 
 == Features: (_Medium_) ==
   * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
