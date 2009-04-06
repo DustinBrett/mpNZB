@@ -3,7 +3,7 @@
 
 == Coding: ==
   * {{{WaitCursor}}} not working
-  * Replace things like ({{{&lt; | &gt; | &quot;}}})
+  * Parse things like ({{{&lt; | &gt; | &quot;}}})
 
 == Things to tests: ==
   * NZBIndex new size grabber
