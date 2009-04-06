@@ -6,6 +6,7 @@
     * Temp removed
     * {{{WaitCursor}}} is a bitch
   * Number formatting isn't working for some people
+    * {{{string.format}}}
 
 == Things to tests: ==
   * NZBIndex new size grabber
