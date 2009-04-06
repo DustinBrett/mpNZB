@@ -23,11 +23,6 @@
     * {{{http://www.newzleech.com/rss.php?n=250&s=[SEARCH]}}}
     * {{{Replace "?p=" with "?m=gen&dl=1&post="}}}
 
-  * [http://www.nzbclub.com/ NZBClub]
-    * {{{http://www.nzbclub.com/nzbfeed.aspx?ss=[SEARCH]}}}
-    * {{{Replace "nzbcollection.aspx" with "nzbdownload.aspx"}}}
-    * Parse size: {{{">Size: 718.49 MB in"}}}
-
 === (_Custom_) ===
   * [http://mytvnzb.foechoer.be/ MyTvNZB]
 
