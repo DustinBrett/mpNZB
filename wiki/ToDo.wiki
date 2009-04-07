@@ -4,14 +4,16 @@
 == Features: (_Medium_) ==
   * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
   * NZB Streaming
-  * Search all sites at once
-    * How best to sort?
   * SABnzbd History view
 
 == Features: (_High_) ==
   * MPI installation
   * Download complete sound effect
-  * Customizable search result limit
+  * Search results limit (intMaxResults)
+  * Search all sites at once
+    * Add everything then sort by pubDate
+      * Add pubDate as Label3
+    * Math.Round(intMaxResults / intNumSites)
 
 === (_Custom_) ===
   * Custom URL's
