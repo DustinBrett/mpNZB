@@ -1,17 +1,11 @@
 #summary To-Do list for project
 #labels Phase-Requirements,Phase-Design
 
-== Coding: ==
-  * {{{WaitCursor}}} not working
-  * Parse things like ({{{&lt; | &gt; | &quot;}}})
-
-== Things to tests: ==
-  * NZBIndex new size grabber
-  * Bintube DL'ing/Search
-
 == Features: (_Medium_) ==
   * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
   * NZB Streaming
+  * Search all sites at once
+    * How best to sort?
   * SABnzbd History view
 
 == Features: (_High_) ==
