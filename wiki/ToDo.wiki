@@ -11,6 +11,8 @@
   * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
   * NZB Streaming
   * SABnzbd History view
+  * RSS Watch
+    * Set every 10-30 minutes to check RSS some RegEx and start D/L
 
 == Features: (_High_) ==
   * MPI installation
