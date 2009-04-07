@@ -6,17 +6,11 @@ namespace mpNZB.Clients
 {
   interface iClient
   {
-    void Status(statusTimer Status, GUIToggleButtonControl btnButton);
+    void Status(Timer Status, GUIToggleButtonControl btnButton);
     void Queue(GUIListControl lstItemList, GUIWindow GUI);
     void Delete(GUIListItem lstItem, GUIListControl lstItemList, GUIWindow GUI);
-    void Download(GUIListItem lstItem, Sites.iSite Site, Clients.statusTimer Status);
-    void Pause(bool bolPause, Clients.statusTimer Status);
+    void Download(GUIListItem lstItem, Sites.iSite Site, Timer Status);
+    void Pause(bool bolPause, Timer Status);
     string Version();
-  }
-
-  struct statusTimer
-  {
-    public Timer tmrTimer;
-    public bool KeepAlive;
   }
 }

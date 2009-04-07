@@ -131,7 +131,7 @@ namespace mpNZB
     
     private Sites.iSite Site;
     private Clients.iClient Client;
-    private Clients.statusTimer Status = new Clients.statusTimer();
+    private Timer Status = new Timer();
 
     private mpFunctions Dialogs = new mpFunctions();
 
@@ -222,11 +222,10 @@ namespace mpNZB
 
       // Start Timer
       // ##################################################
-      Status.KeepAlive = false;
-      Status.tmrTimer = new Timer();
-      Status.tmrTimer.Elapsed += new System.Timers.ElapsedEventHandler(OnTimer);
-      Status.tmrTimer.Interval = (mpSettings.GetValueAsInt("#Plugin", "UpdateFrequency", 1) * 1000);
-      Status.tmrTimer.Enabled = true;
+      Status = new Timer();
+      Status.Elapsed += new System.Timers.ElapsedEventHandler(OnTimer);
+      Status.Interval = (mpSettings.GetValueAsInt("#Plugin", "UpdateFrequency", 1) * 1000);
+      Status.Enabled = true;
       // ##################################################
 
       // Update Status
@@ -235,7 +234,6 @@ namespace mpNZB
 
     protected override void OnPageDestroy(int newWindowId)
     {
-      Status.KeepAlive = Status.tmrTimer.Enabled;
       base.OnPageDestroy(newWindowId);
     }
 
