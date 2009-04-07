@@ -1,6 +1,10 @@
 #summary To-Do list for project
 #labels Phase-Requirements,Phase-Design
 
+== GUI ==
+  * More Queue/NZB information
+  * Percent downloaded
+
 == Features: (_Medium_) ==
   * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
   * NZB Streaming
