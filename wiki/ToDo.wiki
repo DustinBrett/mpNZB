@@ -4,6 +4,8 @@
 == GUI ==
   * More Queue/NZB information
   * Percent downloaded
+  * Test download complete notification more
+    * Allow disabling it
 
 == Features: (_Medium_) ==
   * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
