@@ -7,11 +7,6 @@
   * NZB streaming
   * MPI installation
 
-== GUI ==
-  * Test download complete notification more
-    * Allow disabling it
-    * Download complete sound effect
-
 == Features: (_Medium_) ==
   * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
   * SABnzbd history view
