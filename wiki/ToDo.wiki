@@ -1,24 +1,24 @@
 #summary To-Do list for project
 #labels Phase-Requirements,Phase-Design
 
+== General (_Low_) ==
   * Write documentation
+  * More Queue/NZB information
+  * NZB streaming
+  * MPI installation
 
 == GUI ==
-  * More Queue/NZB information
-  * Percent downloaded
   * Test download complete notification more
     * Allow disabling it
+    * Download complete sound effect
 
 == Features: (_Medium_) ==
   * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
-  * NZB Streaming
-  * SABnzbd History view
-  * RSS Watch
+  * SABnzbd history view
+  * RSS watch
     * Set every 10-30 minutes to check RSS some RegEx and start D/L
 
-== Features: (_High_) ==
-  * MPI installation
-  * Download complete sound effect
+== Features: (_High_) ==  
   * Search results limit (intMaxResults)
   * Search all sites at once
     * Add everything then sort by pubDate
