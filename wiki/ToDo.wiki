@@ -20,6 +20,9 @@
 
 == Features: (_High_) ==  
   * Search results limit (intMaxResults)
+  * Search history
+    * Clear history
+    * Read/Append like SiteList
   * Search all sites at once
     * Add everything then sort by pubDate
       * Add pubDate as Label3
