@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.IO;
 using System.Net;
+using System.Timers;
 using System.Xml;
 
 using MediaPortal.GUI.Library;
@@ -177,7 +178,7 @@ namespace mpNZB.Clients
 
     #region Commands
 
-    public void Status(statusTimer Status, GUIToggleButtonControl btnButton)
+    public void Status(Timer Status, GUIToggleButtonControl btnButton)
     {
       try
       {
@@ -187,52 +188,41 @@ namespace mpNZB.Clients
 
         if (xmlDoc.ChildNodes[1].Name == "queue")
         {
-          int intJobCount;
-          int.TryParse(xmlDoc["queue"]["noofslots"].InnerText, out intJobCount);
+          int intJobCount = int.Parse(xmlDoc["queue"]["noofslots"].InnerText);
 
           if (intJobCount == 0)
           {
-            Status.tmrTimer.Enabled = false;
-
-            if (Status.KeepAlive)
-            {
-              Status.KeepAlive = false;
-              Dialogs.OK("Downloads complete.", "mNZB Status");
-              return;
-            }
+            Status.Enabled = false;
           }
 
           if (xmlDoc["queue"]["paused"].InnerText == "True")
           {
-            Status.tmrTimer.Enabled = false;
+            Status.Enabled = false;
             btnButton.Selected = true;
           }
 
-          if (!(Status.KeepAlive))
-          {           
-            CultureInfo ciClone = (CultureInfo)CultureInfo.InvariantCulture.Clone();
-            ciClone.NumberFormat.NumberDecimalSeparator = ".";
+          CultureInfo ciClone = (CultureInfo)CultureInfo.InvariantCulture.Clone();
+          ciClone.NumberFormat.NumberDecimalSeparator = ".";
 
-            double dblKBps = 0;
-            if (intJobCount > 0)
-            {
-              dblKBps = 0.0;
-            }
-            dblKBps = double.Parse(xmlDoc["queue"]["kbpersec"].InnerText, ciClone);
-
-            double dblMBLeft = double.Parse(xmlDoc["queue"]["mbleft"].InnerText, ciClone);
-            double dblMBTotal = double.Parse(xmlDoc["queue"]["mb"].InnerText, ciClone);
-            double dblDiskSpace1 = double.Parse(xmlDoc["queue"]["diskspace1"].InnerText, ciClone);
-            double dblDiskSpace2 = double.Parse(xmlDoc["queue"]["diskspace2"].InnerText, ciClone);
-
-            GUIPropertyManager.SetProperty("#Paused", xmlDoc["queue"]["paused"].InnerText);
-            GUIPropertyManager.SetProperty("#KBps", String.Format("{0:#,##0.00 KB/s}", dblKBps));
-            GUIPropertyManager.SetProperty("#MBStatus", String.Format("{0:#,##0.00}", dblMBLeft) + " / " + String.Format("{0:#,##0.00 MB}", dblMBTotal));
-            GUIPropertyManager.SetProperty("#JobCount", intJobCount.ToString());
-            GUIPropertyManager.SetProperty("#DiskSpace1", String.Format("{0:#,##0.00 GB}", dblDiskSpace1));
-            GUIPropertyManager.SetProperty("#DiskSpace2", String.Format("{0:#,##0.00 GB}", dblDiskSpace2));
-            GUIPropertyManager.SetProperty("#TimeLeft", xmlDoc["queue"]["timeleft"].InnerText + " s");
+          double dblKBps = 0;
+          if (intJobCount > 0)
+          {
+            dblKBps = 0.0;
           }
+          dblKBps = double.Parse(xmlDoc["queue"]["kbpersec"].InnerText, ciClone);
+
+          double dblMBLeft = double.Parse(xmlDoc["queue"]["mbleft"].InnerText, ciClone);
+          double dblMBTotal = double.Parse(xmlDoc["queue"]["mb"].InnerText, ciClone);
+          double dblDiskSpace1 = double.Parse(xmlDoc["queue"]["diskspace1"].InnerText, ciClone);
+          double dblDiskSpace2 = double.Parse(xmlDoc["queue"]["diskspace2"].InnerText, ciClone);
+
+          GUIPropertyManager.SetProperty("#Paused", xmlDoc["queue"]["paused"].InnerText);
+          GUIPropertyManager.SetProperty("#KBps", String.Format("{0:#,##0.00 KB/s}", dblKBps));
+          GUIPropertyManager.SetProperty("#MBStatus", String.Format("{0:#,##0.00}", dblMBLeft) + " / " + String.Format("{0:#,##0.00 MB}", dblMBTotal));
+          GUIPropertyManager.SetProperty("#JobCount", intJobCount.ToString());
+          GUIPropertyManager.SetProperty("#DiskSpace1", String.Format("{0:#,##0.00 GB}", dblDiskSpace1));
+          GUIPropertyManager.SetProperty("#DiskSpace2", String.Format("{0:#,##0.00 GB}", dblDiskSpace2));
+          GUIPropertyManager.SetProperty("#TimeLeft", xmlDoc["queue"]["timeleft"].InnerText + " s");
         }
         else
         {
@@ -241,7 +231,7 @@ namespace mpNZB.Clients
       }
       catch (Exception e)
       {
-        Status.tmrTimer.Enabled = false;
+        Status.Enabled = false;
         Log.Info("Data: " + e.Data);
         Log.Info("HelpLink: " + e.HelpLink);
         Log.Info("InnerException: " + e.InnerException);
@@ -320,8 +310,8 @@ namespace mpNZB.Clients
 
           foreach (XmlNode nodeItem in nodeList)
           {
-            dblMBLeft = double.Parse(xmlDoc["queue"]["mbleft"].InnerText, ciClone);
-            dblMBTotal = double.Parse(xmlDoc["queue"]["mb"].InnerText, ciClone);
+            dblMBLeft = double.Parse(nodeItem["mbleft"].InnerText, ciClone);
+            dblMBTotal = double.Parse(nodeItem["mb"].InnerText, ciClone);
 
             Dialogs.AddItem(lstItemList, nodeItem["filename"].InnerText, String.Format("{0:#,##0.00}", dblMBLeft) + " / " + String.Format("{0:#,##0.00 MB}", dblMBTotal), nodeItem["id"].InnerText, 2);
           }
@@ -371,7 +361,7 @@ namespace mpNZB.Clients
       }
     }
 
-    public void Download(GUIListItem lstItem, Sites.iSite Site, Clients.statusTimer Status)
+    public void Download(GUIListItem lstItem, Sites.iSite Site, Timer Status)
     {
       if (Dialogs.YesNo("Download file?", lstItem.Label))
       {
@@ -391,7 +381,7 @@ namespace mpNZB.Clients
         }
         if (strResult == "ok\n")
         {
-          Status.tmrTimer.Enabled = true;
+          Status.Enabled = true;
           GUIPropertyManager.SetProperty("#Status", "Downloading NZB.");
         }
         else
@@ -401,7 +391,7 @@ namespace mpNZB.Clients
       }
     }
 
-    public void Pause(bool bolPause, Clients.statusTimer Status)
+    public void Pause(bool bolPause, Timer Status)
     {
       if (bolPause)
       {
@@ -418,7 +408,7 @@ namespace mpNZB.Clients
       {
         if (fncSendURL(fncCreateURL("/sabnzbd/", "api?mode=resume", String.Empty, false)) == "ok\n")
         {
-          Status.tmrTimer.Enabled = true;
+          Status.Enabled = true;
           GUIPropertyManager.SetProperty("#Status", "Queue resumed.");
         }
         else

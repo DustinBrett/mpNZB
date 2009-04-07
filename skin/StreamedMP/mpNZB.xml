@@ -248,8 +248,9 @@
         <type>listcontrol</type>
         <id>50</id>
         <width>850</width>
+        <height>430</height>
         <textXOff2>850</textXOff2>
-        <posX>330</posX>
+        <posX>350</posX>
         <posY>250</posY>
         <onleft>2</onleft>
         <onright>2</onright>
@@ -259,7 +260,7 @@
         <description>Status</description>
         <type>label</type>
         <id>51</id>
-        <posX>375</posX>
+        <posX>395</posX>
         <posY>670</posY>
         <label>Status:</label>
         <align>Right</align>
@@ -270,7 +271,7 @@
         <description>Status</description>
         <type>label</type>
         <id>52</id>
-        <posX>382</posX>
+        <posX>402</posX>
         <posY>670</posY>
         <label>#Status</label>
         <align>Left</align>
