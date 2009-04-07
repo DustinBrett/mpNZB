@@ -18,12 +18,3 @@
 === (_Custom_) ===
   * Custom URL's
   * [http://mytvnzb.foechoer.be/ MyTvNZB]
-
-=== (_alt.binaries_) ===
-  * [http://www.bintube.com/ Bintube]
-    * {{{http://www.bintube.com/newsgroups/}}}
-    * {{{http://www.bintube.com/rss/g/[GROUP]}}}
-
-  * [http://www.newzleech.com/ Newzleech]
-    * {{{http://www.nzbindex.com/groups/}}}
-    * {{{http://www.nzbindex.com/rss/[GROUP]/}}}
