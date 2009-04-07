@@ -16,13 +16,13 @@
   * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
   * SABnzbd history view
   * RSS watch
-    * Set every 10-30 minutes to check RSS some RegEx and start D/L
+    * Set every 10-30 minutes to check RSS some {{{RegEx}}} and start D/L
 
 == Features: (_High_) ==  
   * Search results limit (intMaxResults)
   * Search history
     * Clear history
-    * Read/Append like SiteList
+    * Read/Append like {{{SiteList}}}
   * Search all sites at once
     * Add everything then sort by pubDate
       * Add pubDate as Label3
