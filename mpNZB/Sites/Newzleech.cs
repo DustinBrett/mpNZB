@@ -16,28 +16,28 @@ namespace mpNZB.Sites
       get { return "Newzleech"; }
     }
 
-    private string _FeedName;
+    private string _FeedName = String.Empty;
     public string FeedName
     {
       get { return _FeedName; }
       set { _FeedName = value; }
     }
 
-    private string _FeedURL;
+    private string _FeedURL = String.Empty;
     public string FeedURL
     {
       get { return _FeedURL; }
       set { _FeedURL = value; }
     }
 
-    private string _Username;
+    private string _Username = String.Empty;
     public string Username
     {
       get { return _Username; }
       set { _Username = value; }
     }
 
-    private string _Password;
+    private string _Password = String.Empty;
     public string Password
     {
       get { return _Password; }
@@ -69,7 +69,7 @@ namespace mpNZB.Sites
       string strSizeText = ">Size:".ToLower();
       int intSizePOS = strTemp.ToLower().IndexOf(strSizeText.ToLower()) + strSizeText.Length;
 
-      Dialogs.AddItem(lstList, Node["title"].InnerText, strTemp.Substring(intSizePOS, strTemp.IndexOf("<", intSizePOS) - intSizePOS).Replace("GB", " GB").Replace("MB", " MB").Replace("KB", " KB").Replace(".", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.ToCharArray()[0].ToString()).Replace(",", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.ToCharArray()[0].ToString()), Node["link"].InnerText.Replace("?p=", "?m=gen&dl=1&post="), 1);
+      Dialogs.AddItem(lstList, Node["title"].InnerText, strTemp.Substring(intSizePOS, strTemp.IndexOf("<", intSizePOS) - intSizePOS).Replace("GB", " GB").Replace("MB", " MB").Replace("KB", " KB").Replace(".", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.ToCharArray()[0].ToString()).Replace(",", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.ToCharArray()[0].ToString()), Node["link"].InnerText.Replace("?p=", "?m=gen&dl=1&post=").Replace("&lt;", "<").Replace("&gt;", ">").Replace("&quot;", "\""), 1);
     }
 
     #endregion

@@ -256,7 +256,7 @@ namespace mpNZB
 
         // Read RSS feed
         // ##################################################
-        if ((xmlDoc.ChildNodes[1].Name == "rss") && (xmlDoc.ChildNodes[1].Attributes["version"].InnerText == "2.0"))
+        if ((xmlDoc["rss"].Attributes["version"].InnerText == "2.0"))
         {
           lstItemList.Clear();
 
@@ -284,6 +284,7 @@ namespace mpNZB
         Log.Info("Source: " + e.Source);
         Log.Info("StackTrace: " + e.StackTrace);
         Log.Info("TargetSite: " + e.TargetSite);
+        GUIPropertyManager.SetProperty("#Status", "Error occured.");
       }
       finally
       {
@@ -300,56 +301,73 @@ namespace mpNZB
 
     private void fncSelectFeed(bool bolSearch)
     {
-      // Create Feed List
-      // ##################################################
-      Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
-      string strList = mpSettings.GetValue("#Lists", (bolSearch ? "SearchList" : "FeedList"));
-      if (strList.Length == 0)
+      try
       {
-        GUIPropertyManager.SetProperty("#Status", "Site list is empty.");
-        return;
-      }
-      string[] strSites = strList.Split((char)0);
-      mpSettings.Dispose();      
-      // ##################################################
+        // Create Feed List
+        // ##################################################
+        Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
+        string strList = mpSettings.GetValue("#Lists", (bolSearch ? "SearchList" : "FeedList"));
+        if (strList.Length == 0)
+        {
+          GUIPropertyManager.SetProperty("#Status", "Site list is empty.");
+          return;
+        }
+        string[] strSites = strList.Split((char)0);
+        mpSettings.Dispose();
+        // ##################################################
 
-      // Select Site
-      // ##################################################
-      switch (Dialogs.Menu(strSites, "Select Site"))
-      {
-        case "Bintube":   Site = new Sites.Bintube();   break;
-        case "Newzbin":   Site = new Sites.Newzbin();   break;
-        case "Newzleech": Site = new Sites.Newzleech(); break;
-        case "NZBClub":   Site = new Sites.NZBClub();   break;
-        case "NZBIndex":  Site = new Sites.NZBIndex();  break;
-        case "NZBMatrix": Site = new Sites.NZBMatrix(); break;
-        case "NZBsRus":   Site = new Sites.NZBsRus();   break;
-        case "TvNZB":     Site = new Sites.TvNZB();     break;
-        default: return;
-      }
-      // ##################################################      
+        // Select Site
+        // ##################################################
+        switch (Dialogs.Menu(strSites, "Select Site"))
+        {
+          case "Newzbin": Site = new Sites.Newzbin(); break;
+          case "Newzleech": Site = new Sites.Newzleech(); break;
+          case "NZBClub": Site = new Sites.NZBClub(); break;
+          case "NZBIndex": Site = new Sites.NZBIndex(); break;
+          case "NZBMatrix": Site = new Sites.NZBMatrix(); break;
+          case "NZBsRus": Site = new Sites.NZBsRus(); break;
+          case "TvNZB": Site = new Sites.TvNZB(); break;
+          default: return;
+        }
+        // ##################################################      
 
-      // SetFeed or Search
-      // ##################################################
-      if (bolSearch)
-      {
-        Site.Search();
-      }
-      else
-      {
-        Site.SetFeed();
-      }
-      // ##################################################
+        // SetFeed or Search
+        // ##################################################
+        if (bolSearch)
+        {
+          Site.Search();          
+        }
+        else
+        {
+          Site.SetFeed();
+        }        
+        // ##################################################
 
-      // Update List
-      // ##################################################
-      if (Site.FeedURL.Length > 0)
-      {
-        fncReadRSS(Site.FeedURL, lstItems);
-        btnRefreshFeed.Disabled = false;
-        GUIPropertyManager.SetProperty("#PageTitle", Site.SiteName + " - " + Site.FeedName);
+        // Update List
+        // ##################################################
+        if (Site.FeedURL != String.Empty)
+        {
+          GUIPropertyManager.SetProperty("#Status", "Processing...");
+          GUIWindowManager.Process();
+
+          fncReadRSS(Site.FeedURL, lstItems);
+
+          btnRefreshFeed.Disabled = false;
+          GUIPropertyManager.SetProperty("#PageTitle", Site.SiteName + " - " + Site.FeedName);
+        }
+        // ##################################################
       }
-      // ##################################################      
+      catch (Exception e)
+      {
+        Log.Info("Data: " + e.Data);
+        Log.Info("HelpLink: " + e.HelpLink);
+        Log.Info("InnerException: " + e.InnerException);
+        Log.Info("Message: " + e.Message);
+        Log.Info("Source: " + e.Source);
+        Log.Info("StackTrace: " + e.StackTrace);
+        Log.Info("TargetSite: " + e.TargetSite);
+        GUIPropertyManager.SetProperty("#Status", "Error occured.");
+      }
     }
 
     #endregion

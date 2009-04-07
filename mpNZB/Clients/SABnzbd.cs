@@ -57,6 +57,7 @@ namespace mpNZB.Clients
         Log.Info("Source: " + e.Source);
         Log.Info("StackTrace: " + e.StackTrace);
         Log.Info("TargetSite: " + e.TargetSite);
+        GUIPropertyManager.SetProperty("#Status", "Error occured.");
       }
 
       return strResponse;
@@ -129,6 +130,7 @@ namespace mpNZB.Clients
         Log.Info("Source: " + e.Source);
         Log.Info("StackTrace: " + e.StackTrace);
         Log.Info("TargetSite: " + e.TargetSite);
+        GUIPropertyManager.SetProperty("#Status", "Error occured.");
       }
 
       return strResponse;
@@ -165,6 +167,7 @@ namespace mpNZB.Clients
         Log.Info("Source: " + e.Source);
         Log.Info("StackTrace: " + e.StackTrace);
         Log.Info("TargetSite: " + e.TargetSite);
+        GUIPropertyManager.SetProperty("#Status", "Error occured.");
       }
 
       return strResponse;
@@ -246,6 +249,7 @@ namespace mpNZB.Clients
         Log.Info("Source: " + e.Source);
         Log.Info("StackTrace: " + e.StackTrace);
         Log.Info("TargetSite: " + e.TargetSite);
+        GUIPropertyManager.SetProperty("#Status", "Error occured.");
       }
     }
 
@@ -280,6 +284,7 @@ namespace mpNZB.Clients
         Log.Info("Source: " + e.Source);
         Log.Info("StackTrace: " + e.StackTrace);
         Log.Info("TargetSite: " + e.TargetSite);
+        GUIPropertyManager.SetProperty("#Status", "Error occured.");
       }
       finally
       {
@@ -337,6 +342,7 @@ namespace mpNZB.Clients
         Log.Info("Source: " + e.Source);
         Log.Info("StackTrace: " + e.StackTrace);
         Log.Info("TargetSite: " + e.TargetSite);
+        GUIPropertyManager.SetProperty("#Status", "Error occured.");
       }
       finally
       {
@@ -443,6 +449,7 @@ namespace mpNZB.Clients
         Log.Info("Source: " + e.Source);
         Log.Info("StackTrace: " + e.StackTrace);
         Log.Info("TargetSite: " + e.TargetSite);
+        GUIPropertyManager.SetProperty("#Status", "Error occured.");
       }
 
       return strVersion;

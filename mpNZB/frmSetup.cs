@@ -94,7 +94,6 @@ namespace mpNZB
           // Set Feed Type
           switch (strSite)
           {
-            case "Bintube":
             case "Newzleech":
             case "NZBClub":
             case "NZBIndex":
@@ -259,7 +258,6 @@ namespace mpNZB
           }
           break;
         case "TvNZB":
-        case "Bintube":
         case "Newzleech":
         case "NZBClub":
         case "NZBIndex":
@@ -270,7 +268,6 @@ namespace mpNZB
           // Set Feed Type
           switch (cmbSites.Text)
           {
-            case "Bintube":
             case "Newzleech":
             case "NZBClub":
             case "NZBIndex":
@@ -306,7 +303,6 @@ namespace mpNZB
             txtSiteUsername.Enabled = true;
             txtSitePassword.Enabled = true;
             break;
-          case "Bintube":
           case "Newzleech":
           case "NZBClub":
           case "NZBIndex":

@@ -15,28 +15,28 @@ namespace mpNZB.Sites
       get { return "TvNZB"; }
     }
 
-    private string _FeedName;
+    private string _FeedName = String.Empty;
     public string FeedName
     {
       get { return _FeedName; }
       set { _FeedName = value; }
     }
 
-    private string _FeedURL;
+    private string _FeedURL = String.Empty;
     public string FeedURL
     {
       get { return _FeedURL; }
       set { _FeedURL = value; }
     }
 
-    private string _Username;
+    private string _Username = String.Empty;
     public string Username
     {
       get { return _Username; }
       set { _Username = value; }
     }
 
-    private string _Password;
+    private string _Password = String.Empty;
     public string Password
     {
       get { return _Password; }
