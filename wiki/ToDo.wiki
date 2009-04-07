@@ -25,6 +25,6 @@
       * Add pubDate as Label3
     * Math.Round(intMaxResults / intNumSites)
 
-=== Sites: (_Custom_) ===
+== Sites: (_Custom_) ==
   * Custom URL's
   * [http://mytvnzb.foechoer.be/ MyTvNZB]
