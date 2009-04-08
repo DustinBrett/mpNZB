@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+Item Types
+===============
+1 = addurl
+3 = addfile
+4 = addid
+===============
+-->
+<!--
+Size Types
+==============================
+0 = Blank
+1 = Bytes
+4 = String (regex)
+==============================
+-->
+<sites>
+	<site name="Newzbin" enabled="true">
+		<feeds enabled="true">
+			<feed name="Everything">http://www.newzbin.com/browse/category/p/everything/?feed=rss&amp;COOKIE:NzbSmoke=[COOKIE-1];NzbSessionID=[COOKIE-2]</feed>
+			<feed name="Unknown">http://www.newzbin.com/browse/category/p/unknown/?feed=rss&amp;COOKIE:NzbSmoke=[COOKIE-1];NzbSessionID=[COOKIE-2]</feed>
+			<feed name="Anime">http://www.newzbin.com/browse/category/p/anime/?feed=rss&amp;COOKIE:NzbSmoke=[COOKIE-1];NzbSessionID=[COOKIE-2]</feed>
+			<feed name="Apps">http://www.newzbin.com/browse/category/p/apps/?feed=rss&amp;COOKIE:NzbSmoke=[COOKIE-1];NzbSessionID=[COOKIE-2]</feed>
+			<feed name="Books">http://www.newzbin.com/browse/category/p/books/?feed=rss&amp;COOKIE:NzbSmoke=[COOKIE-1];NzbSessionID=[COOKIE-2]</feed>
+			<feed name="Consoles">http://www.newzbin.com/browse/category/p/consoles/?feed=rss&amp;COOKIE:NzbSmoke=[COOKIE-1];NzbSessionID=[COOKIE-2]</feed>
+			<feed name="Discussions">http://www.newzbin.com/browse/category/p/discussions/?feed=rss&amp;COOKIE:NzbSmoke=[COOKIE-1];NzbSessionID=[COOKIE-2]</feed>
+			<feed name="Emulation">http://www.newzbin.com/browse/category/p/emulation/?feed=rss&amp;COOKIE:NzbSmoke=[COOKIE-1];NzbSessionID=[COOKIE-2]</feed>
+			<feed name="Games">http://www.newzbin.com/browse/category/p/games/?feed=rss&amp;COOKIE:NzbSmoke=[COOKIE-1];NzbSessionID=[COOKIE-2]</feed>
+			<feed name="Misc">http://www.newzbin.com/browse/category/p/misc/?feed=rss&amp;COOKIE:NzbSmoke=[COOKIE-1];NzbSessionID=[COOKIE-2]</feed>
+			<feed name="Movies">http://www.newzbin.com/browse/category/p/movies/?feed=rss&amp;COOKIE:NzbSmoke=[COOKIE-1];NzbSessionID=[COOKIE-2]</feed>
+			<feed name="Music">http://www.newzbin.com/browse/category/p/music/?feed=rss&amp;COOKIE:NzbSmoke=[COOKIE-1];NzbSessionID=[COOKIE-2]</feed>
+			<feed name="PDA">http://www.newzbin.com/browse/category/p/pda/?feed=rss&amp;COOKIE:NzbSmoke=[COOKIE-1];NzbSessionID=[COOKIE-2]</feed>
+			<feed name="Resources">http://www.newzbin.com/browse/category/p/resources/?feed=rss&amp;COOKIE:NzbSmoke=[COOKIE-1];NzbSessionID=[COOKIE-2]</feed>
+			<feed name="TV">http://www.newzbin.com/browse/category/p/tv/?feed=rss&amp;COOKIE:NzbSmoke=[COOKIE-1];NzbSessionID=[COOKIE-2]</feed>
+		</feeds>
+		<search enabled="true">
+			<url>http://www.newzbin.com/search/query/?q=[SEARCH]&amp;searchaction=Go&amp;feed=rss&amp;COOKIE:NzbSmoke=[COOKIE-1];NzbSessionID=[COOKIE-2]</url>
+		</search>
+		<cookies enabled="true">
+			<login>
+				<url>http://www.newzbin.com/account/login/</url>
+				<username>SpiderMang</username>
+				<password>spyder</password>
+			</login>
+			<cookie id="1">NzbSmoke</cookie>
+			<cookie id="2">NzbSessionID</cookie>
+		</cookies>
+		<items type="4">
+			<size type="1">
+				<field>report:size</field>
+			</size>
+			<title>
+				<field>title</field>
+			</title>
+			<link>
+				<field>report:id</field>
+			</link>
+		</items>
+	</site>
+	<site name="Newzleech" enabled="true">
+		<feeds enabled="false">
+		</feeds>
+		<search enabled="true">
+			<url>http://www.newzleech.com/rss.php?n=[MAX]&amp;s=[SEARCH]</url>
+		</search>
+		<cookies enabled="false">
+		</cookies>
+		<items type="1">
+			<size type="4">
+				<field>description</field>
+				<regex>Size: [Size_Comma] [K/M/G]B</regex>
+			</size>
+			<title>
+				<field>title</field>
+			</title>
+			<link>
+				<field>link</field>
+				<replace input="?p=">?m=gen&amp;dl=1&amp;post=</replace>
+			</link>
+		</items>
+	</site>
+	<site name="NZBClub" enabled="true">
+		<feeds enabled="false">
+		</feeds>
+		<search enabled="true">
+			<url>http://www.nzbclub.com/nzbfeed.aspx?ss=[SEARCH]</url>
+		</search>
+		<cookies enabled="false">
+		</cookies>
+		<items type="1">
+			<size type="4">
+				<field>description</field>
+				<regex>Size: [Size_Period] [K/M/G]B</regex>
+			</size>
+			<title>
+				<field>title</field>
+			</title>
+			<link>
+				<field>enclosure</field>
+				<replace input="nzbcollection.aspx">nzbdownload.aspx</replace>
+			</link>
+		</items>
+	</site>
+	<site name="NZBIndex" enabled="true">
+		<feeds enabled="false">
+		</feeds>
+		<search enabled="true">
+			<url>http://www.nzbindex.com/rss/?q=[SEARCH]&amp;max=[MAX]</url>
+		</search>
+		<cookies enabled="false">
+		</cookies>
+		<items type="1">
+			<size type="1">
+				<field>enclosure</field>
+				<attribute>length</attribute>
+			</size>
+			<title>
+				<field>title</field>
+			</title>
+			<link>
+				<field>enclosure</field>
+				<attribute>url</attribute>
+			</link>
+		</items>
+	</site>
+	<site name="NZBMatrix" enabled="true">
+		<feeds enabled="true">
+			<feed name="All">http://nzbmatrix.com/rss.php</feed>
+			<feed name="Movies">http://nzbmatrix.com/rss.php?cat=movies</feed>
+			<feed name="TV">http://nzbmatrix.com/rss.php?cat=tv</feed>
+			<feed name="Documentaries">http://nzbmatrix.com/rss.php?cat=documentaries</feed>
+			<feed name="Games">http://nzbmatrix.com/rss.php?cat=games</feed>
+			<feed name="Apps">http://nzbmatrix.com/rss.php?cat=apps</feed>
+			<feed name="Music">http://nzbmatrix.com/rss.php?cat=music</feed>
+			<feed name="Other">http://nzbmatrix.com/rss.php?cat=other</feed>
+			<feed name="Anime">http://nzbmatrix.com/rss.php?cat=anime</feed>
+		</feeds>
+		<search enabled="false">
+		</search>
+		<cookies enabled="true">
+			<login>
+				<url>http://nzbmatrix.com/account-login.php</url>
+				<username>SpiderMang</username>
+				<password>spyder</password>
+			</login>
+			<cookie id="1">uid</cookie>
+			<cookie id="2">pass</cookie>
+		</cookies>
+		<items type="3">
+			<size type="4">
+				<field>description</field>
+				<regex>Size: [Size_Period] [K/M/G]B</regex>
+			</size>
+			<title>
+				<field>title</field>
+			</title>
+			<link>
+				<field>link</field>
+				<replace input="nzb-details.php">nzb-download.php</replace>
+			</link>
+		</items>
+	</site>
+	<site name="TvNZB" enabled="true">
+		<feeds enabled="true">
+			<feed name="New Files">http://www.tvnzb.com/tvnzb_new.rss</feed>
+			<feed name="All Files">http://www.tvnzb.com/tvnzb.rss</feed>
+			<feed name="Old Files">http://www.tvnzb.com/tvnzb_old.rss</feed>
+		</feeds>
+		<search enabled="false">
+		</search>
+		<cookies enabled="false">
+		</cookies>
+		<items type="1">
+			<size type="0">
+			</size>
+			<title>
+				<field>title</field>
+			</title>
+			<link>
+				<field>link</field>
+			</link>
+		</items>
+	</site>
+</sites>
