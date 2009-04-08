@@ -153,7 +153,7 @@ namespace mpNZB.Clients
           string strCategory = String.Empty;
           if (bolCatSelect)
           {
-            strCategory = "&cat=" + Categories();
+            strCategory = "&cat=" + fncCategories();
           }
 
           strResponse = "http://" + strClientIP + ":" + strClientPort + strPath + strMode + strOptions + strAuthenticate + strCategory;
@@ -172,6 +172,51 @@ namespace mpNZB.Clients
       }
 
       return strResponse;
+    }
+
+    private string fncCategories()
+    {
+      string strCatList = String.Empty;
+      string strResult = String.Empty;
+      try
+      {
+        XmlDocument xmlDoc = new XmlDocument();
+        XmlTextReader xmlTextReader = new XmlTextReader(fncCreateURL("/sabnzbd/", "api?mode=get_cats", "&output=xml", false));
+        xmlDoc.Load(xmlTextReader);
+
+        if (xmlDoc.ChildNodes[1].Name == "categories")
+        {
+          foreach (XmlNode nodeItem in xmlDoc.ChildNodes[1].ChildNodes)
+          {
+            strCatList += nodeItem.InnerText + (char)0;
+          }
+        }
+        else
+        {
+          GUIPropertyManager.SetProperty("#Status", "Error parsing categories.");
+        }
+      }
+      catch (Exception e)
+      {
+        Log.Info("Data: " + e.Data);
+        Log.Info("HelpLink: " + e.HelpLink);
+        Log.Info("InnerException: " + e.InnerException);
+        Log.Info("Message: " + e.Message);
+        Log.Info("Source: " + e.Source);
+        Log.Info("StackTrace: " + e.StackTrace);
+        Log.Info("TargetSite: " + e.TargetSite);
+        GUIPropertyManager.SetProperty("#Status", "Error occured.");
+      }
+      finally
+      {
+        if (strCatList.Length > 0)
+        {
+          string[] strCategories = strCatList.Substring(0, strCatList.Length - 1).Split((char)0);
+          strResult = Dialogs.Menu(strCategories, "Select Category");
+        }
+      }
+
+      return strResult;
     }
 
     #endregion
@@ -241,51 +286,6 @@ namespace mpNZB.Clients
         Log.Info("TargetSite: " + e.TargetSite);
         GUIPropertyManager.SetProperty("#Status", "Error occured.");
       }
-    }
-
-    private string Categories()
-    {
-      string strCatList = String.Empty;
-      string strResult = String.Empty;
-      try
-      {
-        XmlDocument xmlDoc = new XmlDocument();
-        XmlTextReader xmlTextReader = new XmlTextReader(fncCreateURL("/sabnzbd/", "api?mode=get_cats", "&output=xml", false));
-        xmlDoc.Load(xmlTextReader);
-
-        if (xmlDoc.ChildNodes[1].Name == "categories")
-        {
-          foreach (XmlNode nodeItem in xmlDoc.ChildNodes[1].ChildNodes)
-          {
-            strCatList += nodeItem.InnerText + (char)0;
-          }
-        }
-        else
-        {
-          GUIPropertyManager.SetProperty("#Status", "Error parsing categories.");
-        }
-      }
-      catch (Exception e)
-      {
-        Log.Info("Data: " + e.Data);
-        Log.Info("HelpLink: " + e.HelpLink);
-        Log.Info("InnerException: " + e.InnerException);
-        Log.Info("Message: " + e.Message);
-        Log.Info("Source: " + e.Source);
-        Log.Info("StackTrace: " + e.StackTrace);
-        Log.Info("TargetSite: " + e.TargetSite);
-        GUIPropertyManager.SetProperty("#Status", "Error occured.");
-      }
-      finally
-      {
-        if (strCatList.Length > 0)
-        {
-          string[] strCategories = strCatList.Substring(0, strCatList.Length - 1).Split((char)0);
-          strResult = Dialogs.Menu(strCategories, "Select Category");
-        }
-      }
-
-      return strResult;
     }
 
     public void Queue(GUIListControl lstItemList, GUIWindow GUI)
