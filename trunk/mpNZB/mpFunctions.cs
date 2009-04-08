@@ -81,18 +81,6 @@ namespace mpNZB
       lstItemList.Add(Item);
     }
 
-    public void Wait(bool bolWaiting)
-    {
-      if (bolWaiting)
-      {
-        GUIWaitCursor.Show();
-      }
-      else
-      {
-        GUIWaitCursor.Hide();
-      }
-    }
-
     #endregion
 
   }
