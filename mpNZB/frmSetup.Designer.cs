@@ -46,27 +46,14 @@
       this.cmbGrabber = new System.Windows.Forms.ComboBox();
       this.lblGrabber = new System.Windows.Forms.Label();
       this.tabPluginSetup = new System.Windows.Forms.TabPage();
+      this.groupBox1 = new System.Windows.Forms.GroupBox();
+      this.txtMaxResults = new System.Windows.Forms.TextBox();
+      this.label2 = new System.Windows.Forms.Label();
       this.grpVisual = new System.Windows.Forms.GroupBox();
       this.txtUpdateFreq = new System.Windows.Forms.TextBox();
       this.txtDisplayName = new System.Windows.Forms.TextBox();
       this.lblDisplayName = new System.Windows.Forms.Label();
       this.lblUpdateFrequency = new System.Windows.Forms.Label();
-      this.tabSetupSetup = new System.Windows.Forms.TabPage();
-      this.grpSites = new System.Windows.Forms.GroupBox();
-      this.btnDelete = new System.Windows.Forms.Button();
-      this.lvSites = new System.Windows.Forms.ListView();
-      this.clmSite = new System.Windows.Forms.ColumnHeader();
-      this.clmUsername = new System.Windows.Forms.ColumnHeader();
-      this.clmPassword = new System.Windows.Forms.ColumnHeader();
-      this.clmFeed = new System.Windows.Forms.ColumnHeader();
-      this.clmSearch = new System.Windows.Forms.ColumnHeader();
-      this.cmbSites = new System.Windows.Forms.ComboBox();
-      this.lblSite = new System.Windows.Forms.Label();
-      this.btnAdd = new System.Windows.Forms.Button();
-      this.txtSitePassword = new System.Windows.Forms.TextBox();
-      this.lblSitePassword = new System.Windows.Forms.Label();
-      this.txtSiteUsername = new System.Windows.Forms.TextBox();
-      this.lblSiteUsername = new System.Windows.Forms.Label();
       this.btnCancel = new System.Windows.Forms.Button();
       this.btnOK = new System.Windows.Forms.Button();
       this.tabSetup.SuspendLayout();
@@ -74,16 +61,14 @@
       this.grpSettings.SuspendLayout();
       this.grpProgram.SuspendLayout();
       this.tabPluginSetup.SuspendLayout();
+      this.groupBox1.SuspendLayout();
       this.grpVisual.SuspendLayout();
-      this.tabSetupSetup.SuspendLayout();
-      this.grpSites.SuspendLayout();
       this.SuspendLayout();
       // 
       // tabSetup
       // 
       this.tabSetup.Controls.Add(this.tabClientSetup);
       this.tabSetup.Controls.Add(this.tabPluginSetup);
-      this.tabSetup.Controls.Add(this.tabSetupSetup);
       this.tabSetup.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.tabSetup.Location = new System.Drawing.Point(12, 12);
       this.tabSetup.Name = "tabSetup";
@@ -269,6 +254,7 @@
       // 
       // tabPluginSetup
       // 
+      this.tabPluginSetup.Controls.Add(this.groupBox1);
       this.tabPluginSetup.Controls.Add(this.grpVisual);
       this.tabPluginSetup.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.tabPluginSetup.Location = new System.Drawing.Point(4, 22);
@@ -277,6 +263,36 @@
       this.tabPluginSetup.TabIndex = 1;
       this.tabPluginSetup.Text = "Plugin Setup";
       this.tabPluginSetup.UseVisualStyleBackColor = true;
+      // 
+      // groupBox1
+      // 
+      this.groupBox1.Controls.Add(this.txtMaxResults);
+      this.groupBox1.Controls.Add(this.label2);
+      this.groupBox1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.groupBox1.Location = new System.Drawing.Point(16, 95);
+      this.groupBox1.Name = "groupBox1";
+      this.groupBox1.Size = new System.Drawing.Size(280, 49);
+      this.groupBox1.TabIndex = 19;
+      this.groupBox1.TabStop = false;
+      this.groupBox1.Text = "Feeds:";
+      // 
+      // txtMaxResults
+      // 
+      this.txtMaxResults.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtMaxResults.Location = new System.Drawing.Point(139, 18);
+      this.txtMaxResults.Name = "txtMaxResults";
+      this.txtMaxResults.Size = new System.Drawing.Size(55, 21);
+      this.txtMaxResults.TabIndex = 18;
+      // 
+      // label2
+      // 
+      this.label2.AutoSize = true;
+      this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label2.Location = new System.Drawing.Point(12, 21);
+      this.label2.Name = "label2";
+      this.label2.Size = new System.Drawing.Size(121, 13);
+      this.label2.TabIndex = 16;
+      this.label2.Text = "Max Results (per feed):";
       // 
       // grpVisual
       // 
@@ -328,169 +344,6 @@
       this.lblUpdateFrequency.TabIndex = 16;
       this.lblUpdateFrequency.Text = "Update Frequency (sec):";
       // 
-      // tabSetupSetup
-      // 
-      this.tabSetupSetup.Controls.Add(this.grpSites);
-      this.tabSetupSetup.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tabSetupSetup.Location = new System.Drawing.Point(4, 22);
-      this.tabSetupSetup.Name = "tabSetupSetup";
-      this.tabSetupSetup.Size = new System.Drawing.Size(312, 273);
-      this.tabSetupSetup.TabIndex = 2;
-      this.tabSetupSetup.Text = "Site Setup";
-      this.tabSetupSetup.UseVisualStyleBackColor = true;
-      // 
-      // grpSites
-      // 
-      this.grpSites.Controls.Add(this.btnDelete);
-      this.grpSites.Controls.Add(this.lvSites);
-      this.grpSites.Controls.Add(this.cmbSites);
-      this.grpSites.Controls.Add(this.lblSite);
-      this.grpSites.Controls.Add(this.btnAdd);
-      this.grpSites.Controls.Add(this.txtSitePassword);
-      this.grpSites.Controls.Add(this.lblSitePassword);
-      this.grpSites.Controls.Add(this.txtSiteUsername);
-      this.grpSites.Controls.Add(this.lblSiteUsername);
-      this.grpSites.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.grpSites.Location = new System.Drawing.Point(16, 14);
-      this.grpSites.Name = "grpSites";
-      this.grpSites.Size = new System.Drawing.Size(280, 237);
-      this.grpSites.TabIndex = 0;
-      this.grpSites.TabStop = false;
-      this.grpSites.Text = "Add Sites:";
-      // 
-      // btnDelete
-      // 
-      this.btnDelete.Enabled = false;
-      this.btnDelete.Location = new System.Drawing.Point(209, 18);
-      this.btnDelete.Name = "btnDelete";
-      this.btnDelete.Size = new System.Drawing.Size(55, 21);
-      this.btnDelete.TabIndex = 32;
-      this.btnDelete.Text = "Delete";
-      this.btnDelete.UseVisualStyleBackColor = true;
-      this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-      // 
-      // lvSites
-      // 
-      this.lvSites.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.clmSite,
-            this.clmUsername,
-            this.clmPassword,
-            this.clmFeed,
-            this.clmSearch});
-      this.lvSites.FullRowSelect = true;
-      this.lvSites.GridLines = true;
-      this.lvSites.Location = new System.Drawing.Point(15, 99);
-      this.lvSites.MultiSelect = false;
-      this.lvSites.Name = "lvSites";
-      this.lvSites.Size = new System.Drawing.Size(250, 122);
-      this.lvSites.TabIndex = 31;
-      this.lvSites.UseCompatibleStateImageBehavior = false;
-      this.lvSites.View = System.Windows.Forms.View.Details;
-      this.lvSites.SelectedIndexChanged += new System.EventHandler(this.lvSites_SelectedIndexChanged);
-      // 
-      // clmSite
-      // 
-      this.clmSite.Text = "Site";
-      this.clmSite.Width = 58;
-      // 
-      // clmUsername
-      // 
-      this.clmUsername.Text = "Username";
-      this.clmUsername.Width = 68;
-      // 
-      // clmPassword
-      // 
-      this.clmPassword.Text = "Password";
-      this.clmPassword.Width = 68;
-      // 
-      // clmFeed
-      // 
-      this.clmFeed.Text = "F";
-      this.clmFeed.Width = 18;
-      // 
-      // clmSearch
-      // 
-      this.clmSearch.Text = "S";
-      this.clmSearch.Width = 18;
-      // 
-      // cmbSites
-      // 
-      this.cmbSites.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-      this.cmbSites.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.cmbSites.FormattingEnabled = true;
-      this.cmbSites.Items.AddRange(new object[] {
-            "Newzbin",
-            "Newzleech",
-            "NZBClub",
-            "NZBIndex",
-            "NZBMatrix",
-            "NZBsRus",
-            "TvNZB"});
-      this.cmbSites.Location = new System.Drawing.Point(47, 18);
-      this.cmbSites.Name = "cmbSites";
-      this.cmbSites.Size = new System.Drawing.Size(95, 21);
-      this.cmbSites.TabIndex = 29;
-      this.cmbSites.SelectedIndexChanged += new System.EventHandler(this.cmbSites_SelectedIndexChanged);
-      // 
-      // lblSite
-      // 
-      this.lblSite.AutoSize = true;
-      this.lblSite.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblSite.Location = new System.Drawing.Point(12, 21);
-      this.lblSite.Name = "lblSite";
-      this.lblSite.Size = new System.Drawing.Size(29, 13);
-      this.lblSite.TabIndex = 30;
-      this.lblSite.Text = "Site:";
-      // 
-      // btnAdd
-      // 
-      this.btnAdd.Enabled = false;
-      this.btnAdd.Location = new System.Drawing.Point(148, 18);
-      this.btnAdd.Name = "btnAdd";
-      this.btnAdd.Size = new System.Drawing.Size(55, 21);
-      this.btnAdd.TabIndex = 28;
-      this.btnAdd.Text = "Add";
-      this.btnAdd.UseVisualStyleBackColor = true;
-      this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-      // 
-      // txtSitePassword
-      // 
-      this.txtSitePassword.Enabled = false;
-      this.txtSitePassword.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtSitePassword.Location = new System.Drawing.Point(75, 72);
-      this.txtSitePassword.Name = "txtSitePassword";
-      this.txtSitePassword.Size = new System.Drawing.Size(189, 21);
-      this.txtSitePassword.TabIndex = 26;
-      // 
-      // lblSitePassword
-      // 
-      this.lblSitePassword.AutoSize = true;
-      this.lblSitePassword.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblSitePassword.Location = new System.Drawing.Point(14, 75);
-      this.lblSitePassword.Name = "lblSitePassword";
-      this.lblSitePassword.Size = new System.Drawing.Size(57, 13);
-      this.lblSitePassword.TabIndex = 25;
-      this.lblSitePassword.Text = "Password:";
-      // 
-      // txtSiteUsername
-      // 
-      this.txtSiteUsername.Enabled = false;
-      this.txtSiteUsername.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtSiteUsername.Location = new System.Drawing.Point(75, 45);
-      this.txtSiteUsername.Name = "txtSiteUsername";
-      this.txtSiteUsername.Size = new System.Drawing.Size(189, 21);
-      this.txtSiteUsername.TabIndex = 24;
-      // 
-      // lblSiteUsername
-      // 
-      this.lblSiteUsername.AutoSize = true;
-      this.lblSiteUsername.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblSiteUsername.Location = new System.Drawing.Point(12, 49);
-      this.lblSiteUsername.Name = "lblSiteUsername";
-      this.lblSiteUsername.Size = new System.Drawing.Size(59, 13);
-      this.lblSiteUsername.TabIndex = 23;
-      this.lblSiteUsername.Text = "Username:";
-      // 
       // btnCancel
       // 
       this.btnCancel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -533,11 +386,10 @@
       this.grpProgram.ResumeLayout(false);
       this.grpProgram.PerformLayout();
       this.tabPluginSetup.ResumeLayout(false);
+      this.groupBox1.ResumeLayout(false);
+      this.groupBox1.PerformLayout();
       this.grpVisual.ResumeLayout(false);
       this.grpVisual.PerformLayout();
-      this.tabSetupSetup.ResumeLayout(false);
-      this.grpSites.ResumeLayout(false);
-      this.grpSites.PerformLayout();
       this.ResumeLayout(false);
 
     }
@@ -564,26 +416,13 @@
     private System.Windows.Forms.Label lblUpdateFrequency;
     private System.Windows.Forms.TextBox txtDisplayName;
     private System.Windows.Forms.Label lblDisplayName;
-    private System.Windows.Forms.TabPage tabSetupSetup;
     private System.Windows.Forms.TextBox txtUpdateFreq;
     private System.Windows.Forms.Button btnCancel;
     private System.Windows.Forms.Button btnOK;
     private System.Windows.Forms.CheckBox chkCatSelect;
     private System.Windows.Forms.Button btnTestConn;
-    private System.Windows.Forms.GroupBox grpSites;
-    private System.Windows.Forms.ComboBox cmbSites;
-    private System.Windows.Forms.Label lblSite;
-    private System.Windows.Forms.Button btnAdd;
-    private System.Windows.Forms.TextBox txtSitePassword;
-    private System.Windows.Forms.Label lblSitePassword;
-    private System.Windows.Forms.TextBox txtSiteUsername;
-    private System.Windows.Forms.Label lblSiteUsername;
-    private System.Windows.Forms.ListView lvSites;
-    private System.Windows.Forms.ColumnHeader clmSite;
-    private System.Windows.Forms.ColumnHeader clmUsername;
-    private System.Windows.Forms.ColumnHeader clmPassword;
-    private System.Windows.Forms.Button btnDelete;
-    private System.Windows.Forms.ColumnHeader clmFeed;
-    private System.Windows.Forms.ColumnHeader clmSearch;
+    private System.Windows.Forms.GroupBox groupBox1;
+    private System.Windows.Forms.TextBox txtMaxResults;
+    private System.Windows.Forms.Label label2;
   }
 }

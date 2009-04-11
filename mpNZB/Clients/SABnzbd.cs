@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
 using System.Net;
 using System.Timers;
 using System.Xml;
@@ -9,212 +9,136 @@ using MediaPortal.GUI.Library;
 
 namespace mpNZB.Clients
 {
-  class SABnzbd:iClient
-  {
+  class SABnzbd : iClient
+  {    
 
-    #region Definitions
+    #region Init
 
-    public string strClientIP;
-    public string strClientPort;
-
-    public bool bolCategorySelect;
-    public bool bolAuthorization;
-
-    public string strUsername;
-    public string strPassword;
-
-    private mpFunctions Dialogs = new mpFunctions();
-
-    public SABnzbd(string _strClientIP, string _strClientPort, bool _bolCategorySelect, bool _bolAuthorization, string _strUsername, string _strPassword)
+    private string _IP = String.Empty;
+    public string IP
     {
-      strClientIP = _strClientIP;
-      strClientPort = _strClientPort;
+      get { return _IP; }
+      set { _IP = value; }
+    }
 
-      bolCategorySelect = _bolCategorySelect;
-      bolAuthorization = _bolAuthorization;
-      
-      strUsername = _strUsername;
-      strPassword = _strPassword;
+    private string _Port = String.Empty;
+    public string Port
+    {
+      get { return _Port; }
+      set { _Port = value; }
+    }
+
+    private string _Username = String.Empty;
+    public string Username
+    {
+      get { return _Username; }
+      set { _Username = value; }
+    }
+
+    private string _Password = String.Empty;
+    public string Password
+    {
+      get { return _Password; }
+      set { _Password = value; }
+    }
+
+    private bool CatSelect;
+    private bool Auth;
+
+    public SABnzbd(string strIP, string strPort, bool bolCatSelect, bool bolAuth, string strUsername, string strPassword, int intUpdateFreq)
+    {
+      IP = strIP;
+      Port = strPort;
+
+      Username = strUsername;
+      Password = strPassword;
+
+      CatSelect = bolCatSelect;
+      Auth = bolAuth;
+
+      tmrStatus = new Timer();
+      tmrStatus.Elapsed += new System.Timers.ElapsedEventHandler(OnTimer);
+      tmrStatus.Interval = (intUpdateFreq * 1000);
+      tmrStatus.Enabled = true;
+    }
+
+    #endregion
+
+    #region Timer
+
+    private Timer tmrStatus = new Timer();
+
+    private void OnTimer(object sender, System.Timers.ElapsedEventArgs e)
+    {
+      Status();
     }
 
     #endregion
 
     #region Functions
 
-    private string fncSendURL(string strURL)
+    private mpFunctions MP = new mpFunctions();
+
+    private string SendURL(string _URL)
     {
-      string strResponse = String.Empty;
-      try
-      {
-        WebClient webClient = new WebClient();
-        strResponse = webClient.DownloadString(strURL);
-      }
-      catch (Exception e)
-      {
-        Log.Info("Data: " + e.Data);
-        Log.Info("HelpLink: " + e.HelpLink);
-        Log.Info("InnerException: " + e.InnerException);
-        Log.Info("Message: " + e.Message);
-        Log.Info("Source: " + e.Source);
-        Log.Info("StackTrace: " + e.StackTrace);
-        Log.Info("TargetSite: " + e.TargetSite);
-        GUIPropertyManager.SetProperty("#Status", "Error occured.");
-      }
-
-      return strResponse;
-    }
-
-    private string fncSendFile(string strURL, Sites.iSite Site, bool IsZip)
-    {
-      string strResponse = String.Empty;
-
-      try
-      {
-        string strTempFile = String.Empty;
-        string strContentType = String.Empty;
-
-        // Set File Type
-        if (IsZip)
-        {
-            strTempFile = Path.GetTempPath() + Path.GetRandomFileName() + ".zip";
-            strContentType = "application/zip";
-        }
-        else
-        {
-          strTempFile = Path.GetTempPath() + Path.GetRandomFileName() + ".nzb";
-          strContentType = "application/x-nzb";
-        }
-
-        // Download File
-        WebClient webClient = new WebClient();
-        webClient.Headers.Set("Cookie", Site.Cookie());
-        webClient.DownloadFile(strURL, strTempFile);
-
-        if (strTempFile.Length > 0)
-        {
-          // Setup Request Information
-          string strBoundary = "----------------------------" + DateTime.Now.Ticks.ToString("x");
-          byte[] byteNZB = File.ReadAllBytes(strTempFile);
-          byte[] byteBoundary = System.Text.Encoding.ASCII.GetBytes("\r\n--" + strBoundary + "\r\n");
-          byte[] byteHeader = System.Text.Encoding.UTF8.GetBytes("Content-Disposition: form-data; name=\"name\" ;filename=\"" + Path.GetFileName(strTempFile) + "\"\r\nContent-Type: " + strContentType + "\r\n\r\n");
-
-          // Create Web Request
-          HttpWebRequest webReq = (HttpWebRequest)HttpWebRequest.Create(fncCreateURL("/sabnzbd/", "api?mode=addfile", "&name=" + strTempFile, bolCategorySelect));
-          webReq.ContentType = "multipart/form-data; boundary=" + strBoundary;
-          webReq.Method = "POST";
-          webReq.KeepAlive = true;
-          webReq.ContentLength = byteNZB.Length + byteHeader.Length + (byteBoundary.Length * 2) + 2;
-
-          // Send Stream
-          Stream reqStream = webReq.GetRequestStream();
-          reqStream.Write(byteBoundary, 0, byteBoundary.Length);
-          reqStream.Write(byteHeader, 0, byteHeader.Length);
-          reqStream.Write(byteNZB, 0, byteNZB.Length);
-          byteBoundary = System.Text.Encoding.ASCII.GetBytes("\r\n--" + strBoundary + "--\r\n");
-          reqStream.Write(byteBoundary, 0, byteBoundary.Length);
-          reqStream.Close();
-
-          // Get Response
-          WebResponse webResp = webReq.GetResponse();
-          Stream streamResp = webResp.GetResponseStream();
-          StreamReader responseReader = new StreamReader(streamResp);
-          strResponse = responseReader.ReadToEnd();
-          webResp.Close();
-        }
-      }
-      catch (Exception e)
-      {
-        Log.Info("Data: " + e.Data);
-        Log.Info("HelpLink: " + e.HelpLink);
-        Log.Info("InnerException: " + e.InnerException);
-        Log.Info("Message: " + e.Message);
-        Log.Info("Source: " + e.Source);
-        Log.Info("StackTrace: " + e.StackTrace);
-        Log.Info("TargetSite: " + e.TargetSite);
-        GUIPropertyManager.SetProperty("#Status", "Error occured.");
-      }
-
-      return strResponse;
-    }
-
-    private string fncCreateURL(string strPath, string strMode, string strOptions, bool bolCatSelect)
-    {
-      string strResponse = String.Empty;
-      try
-      {
-        if ((strClientIP.Length > 0) && (strClientPort.Length > 0))
-        {
-          string strAuthenticate = String.Empty;
-          if ((bolAuthorization) && (strUsername.Length > 0) && (strPassword.Length > 0))
-          {
-            strAuthenticate = "&" + "ma_username=" + strUsername + "&" + "ma_password=" + strPassword;
-          }
-
-          string strCategory = String.Empty;
-          if (bolCatSelect)
-          {
-            strCategory = "&cat=" + fncCategories();
-          }
-
-          strResponse = "http://" + strClientIP + ":" + strClientPort + strPath + strMode + strOptions + strAuthenticate + strCategory;
-        }
-      }
-      catch (Exception e)
-      {
-        Log.Info("Data: " + e.Data);
-        Log.Info("HelpLink: " + e.HelpLink);
-        Log.Info("InnerException: " + e.InnerException);
-        Log.Info("Message: " + e.Message);
-        Log.Info("Source: " + e.Source);
-        Log.Info("StackTrace: " + e.StackTrace);
-        Log.Info("TargetSite: " + e.TargetSite);
-        GUIPropertyManager.SetProperty("#Status", "Error occured.");
-      }
-
-      return strResponse;
-    }
-
-    private string fncCategories()
-    {
-      string strCatList = String.Empty;
       string strResult = String.Empty;
+
+      try
+      {
+        WebClient webClient = new WebClient();
+        strResult = webClient.DownloadString(_URL);
+      }
+      catch (Exception e) { MP.Error(e); }
+
+      return strResult;
+    }
+
+    private string CreateURL(string _Mode, string _Command, bool _CatSelect)
+    {
+      string strResult = String.Empty;
+
+      try
+      {
+        if ((IP.Length != 0) && (Port.Length != 0))
+        {
+          strResult = "http://" + IP + ":" + Port + "/sabnzbd/" + _Mode + (((Auth) && ((Username.Length != 0) && (Password.Length != 0))) ? "&" + "ma_username=" + Username + "&" + "ma_password=" + Password : String.Empty) + ((_Command.Length != 0) ? "&" + _Command : String.Empty) + ((_CatSelect) ? "&" + "cat=" + SelectCategory() : String.Empty);
+        }
+      }
+      catch (Exception e) { MP.Error(e); }
+
+      return strResult;
+    }
+
+    private string SelectCategory()
+    {
+      string strResult = String.Empty;
+
       try
       {
         XmlDocument xmlDoc = new XmlDocument();
-        XmlTextReader xmlTextReader = new XmlTextReader(fncCreateURL("/sabnzbd/", "api?mode=get_cats", "&output=xml", false));
-        xmlDoc.Load(xmlTextReader);
+        xmlDoc.Load(new XmlTextReader(CreateURL("api?mode=get_cats", "output=xml", false)));
 
-        if (xmlDoc.ChildNodes[1].Name == "categories")
+        if (xmlDoc.SelectSingleNode("categories") != null)
         {
-          foreach (XmlNode nodeItem in xmlDoc.ChildNodes[1].ChildNodes)
+          List<mpFunctions.MenuItem> Categories = new List<mpFunctions.MenuItem>();
+
+          foreach (XmlNode nodeItem in xmlDoc.SelectSingleNode("categories").ChildNodes)
           {
-            strCatList += nodeItem.InnerText + (char)0;
+            Categories.Add(new mpFunctions.MenuItem(nodeItem.InnerText, String.Empty));
+          }
+
+          mpFunctions.MenuItem _Item = MP.Menu(Categories, "Select Category");
+          if (_Item != null)
+          {
+            strResult = _Item.Label;
           }
         }
         else
         {
-          GUIPropertyManager.SetProperty("#Status", "Error parsing categories.");
+          GUIPropertyManager.SetProperty("#Status", "Error parsing XML.");
         }
       }
-      catch (Exception e)
-      {
-        Log.Info("Data: " + e.Data);
-        Log.Info("HelpLink: " + e.HelpLink);
-        Log.Info("InnerException: " + e.InnerException);
-        Log.Info("Message: " + e.Message);
-        Log.Info("Source: " + e.Source);
-        Log.Info("StackTrace: " + e.StackTrace);
-        Log.Info("TargetSite: " + e.TargetSite);
-        GUIPropertyManager.SetProperty("#Status", "Error occured.");
-      }
-      finally
-      {
-        if (strCatList.Length > 0)
-        {
-          string[] strCategories = strCatList.Substring(0, strCatList.Length - 1).Split((char)0);
-          strResult = Dialogs.Menu(strCategories, "Select Category");
-        }
-      }
+      catch (Exception e) { MP.Error(e); }
 
       return strResult;
     }
@@ -223,135 +147,81 @@ namespace mpNZB.Clients
 
     #region Commands
 
-    public void Status(Timer Status, GUIToggleButtonControl btnButton)
+    public void Status()
     {
       try
       {
         XmlDocument xmlDoc = new XmlDocument();
-        XmlTextReader xmlTextReader = new XmlTextReader(fncCreateURL("/sabnzbd/", "api?mode=qstatus", "&output=xml", false));
-        xmlDoc.Load(xmlTextReader);
+        xmlDoc.Load(new XmlTextReader(CreateURL("api?mode=qstatus", "output=xml", false)));
 
-        if (xmlDoc.ChildNodes[1].Name == "queue")
+        if (xmlDoc.SelectSingleNode("queue") != null)
         {
-          int intJobCount = int.Parse(xmlDoc["queue"]["noofslots"].InnerText);
+          int intJobCount = int.Parse(xmlDoc.SelectSingleNode("queue/noofslots").InnerText);
 
-          if (intJobCount == 0)
-          {
-            Status.Enabled = false;
-          }
+          if ((intJobCount == 0) || (xmlDoc.SelectSingleNode("queue/paused").InnerText == "True")) { tmrStatus.Enabled = false; }
 
-          if (xmlDoc["queue"]["paused"].InnerText == "True")
-          {
-            Status.Enabled = false;
-            btnButton.Selected = true;
-          }
+          NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
 
-          CultureInfo ciClone = (CultureInfo)CultureInfo.InvariantCulture.Clone();
-          ciClone.NumberFormat.NumberDecimalSeparator = ".";
-
-          double dblKBps = 0;
-          if (intJobCount > 0)
-          {
-            dblKBps = 0.0;
-          }
-          dblKBps = double.Parse(xmlDoc["queue"]["kbpersec"].InnerText, ciClone);
-
-          double dblMBLeft = double.Parse(xmlDoc["queue"]["mbleft"].InnerText, ciClone);
-          double dblMBTotal = double.Parse(xmlDoc["queue"]["mb"].InnerText, ciClone);
-          double dblDiskSpace1 = double.Parse(xmlDoc["queue"]["diskspace1"].InnerText, ciClone);
-          double dblDiskSpace2 = double.Parse(xmlDoc["queue"]["diskspace2"].InnerText, ciClone);
-
-          GUIPropertyManager.SetProperty("#Paused", xmlDoc["queue"]["paused"].InnerText);
-          GUIPropertyManager.SetProperty("#KBps", String.Format("{0:#,##0.00 KB/s}", dblKBps));
-          GUIPropertyManager.SetProperty("#MBStatus", String.Format("{0:#,##0.00}", dblMBLeft) + " / " + String.Format("{0:#,##0.00 MB}", dblMBTotal));
+          GUIPropertyManager.SetProperty("#Paused", xmlDoc.SelectSingleNode("queue/paused").InnerText);
+          GUIPropertyManager.SetProperty("#KBps", ((intJobCount != 0) ? double.Parse(xmlDoc.SelectSingleNode("queue/kbpersec").InnerText, nfi).ToString("N2") : (0.0).ToString("N2")) + " KB/s");
+          GUIPropertyManager.SetProperty("#MBStatus", double.Parse(xmlDoc.SelectSingleNode("queue/mbleft").InnerText, nfi).ToString("N2") + " / " + double.Parse(xmlDoc.SelectSingleNode("queue/mb").InnerText, nfi).ToString("N2") + " MB");
           GUIPropertyManager.SetProperty("#JobCount", intJobCount.ToString());
-          GUIPropertyManager.SetProperty("#DiskSpace1", String.Format("{0:#,##0.00 GB}", dblDiskSpace1));
-          GUIPropertyManager.SetProperty("#DiskSpace2", String.Format("{0:#,##0.00 GB}", dblDiskSpace2));
-          GUIPropertyManager.SetProperty("#TimeLeft", xmlDoc["queue"]["timeleft"].InnerText + " s");
+          GUIPropertyManager.SetProperty("#DiskSpace1", double.Parse(xmlDoc.SelectSingleNode("queue/diskspace1").InnerText, nfi).ToString("N2") + " GB");
+          GUIPropertyManager.SetProperty("#DiskSpace2", double.Parse(xmlDoc.SelectSingleNode("queue/diskspace2").InnerText, nfi).ToString("N2") + " GB");
+          GUIPropertyManager.SetProperty("#TimeLeft", xmlDoc.SelectSingleNode("queue/timeleft").InnerText + " S");
         }
         else
         {
-          GUIPropertyManager.SetProperty("#Status", "Error parsing status.");
+          GUIPropertyManager.SetProperty("#Status", "Error parsing XML.");
         }
       }
-      catch (Exception e)
-      {
-        Status.Enabled = false;
-        Log.Info("Data: " + e.Data);
-        Log.Info("HelpLink: " + e.HelpLink);
-        Log.Info("InnerException: " + e.InnerException);
-        Log.Info("Message: " + e.Message);
-        Log.Info("Source: " + e.Source);
-        Log.Info("StackTrace: " + e.StackTrace);
-        Log.Info("TargetSite: " + e.TargetSite);
-        GUIPropertyManager.SetProperty("#Status", "Error occured.");
-      }
+      catch (Exception e) { MP.Error(e); }
     }
 
-    public void Queue(GUIListControl lstItemList, GUIWindow GUI)
+    public void Queue(GUIListControl _List, GUIWindow _GUI)
     {
       try
       {
         XmlDocument xmlDoc = new XmlDocument();
-        XmlTextReader xmlTextReader = new XmlTextReader(fncCreateURL("/sabnzbd/", "api?mode=qstatus", "&output=xml", false));
-        xmlDoc.Load(xmlTextReader);
+        xmlDoc.Load(new XmlTextReader(CreateURL("api?mode=qstatus", "output=xml", false)));
 
-        if (xmlDoc.ChildNodes[1].Name == "queue")
+        if (xmlDoc.SelectSingleNode("queue") != null)
         {
-          lstItemList.Clear();
+          _List.Clear();
 
-          XmlNodeList nodeList = xmlDoc.SelectNodes("queue/jobs/job");
+          NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
 
-          double dblMBLeft = 0;
-          double dblMBTotal = 0;
-
-          CultureInfo ciClone = (CultureInfo)CultureInfo.InvariantCulture.Clone();
-          ciClone.NumberFormat.NumberDecimalSeparator = ".";
-
-          foreach (XmlNode nodeItem in nodeList)
+          foreach (XmlNode nodeItem in xmlDoc.SelectNodes("queue/jobs/job"))
           {
-            dblMBLeft = double.Parse(nodeItem["mbleft"].InnerText, ciClone);
-            dblMBTotal = double.Parse(nodeItem["mb"].InnerText, ciClone);
-
-            Dialogs.AddItem(lstItemList, nodeItem["filename"].InnerText, String.Format("{0:#,##0.00}", dblMBLeft) + " / " + String.Format("{0:#,##0.00 MB}", dblMBTotal), nodeItem["id"].InnerText, 2);
+            MP.ListItem(_List, nodeItem.SelectSingleNode("filename").InnerText, double.Parse(nodeItem.SelectSingleNode("mbleft").InnerText, nfi).ToString("N2") + " / " + double.Parse(nodeItem.SelectSingleNode("mb").InnerText, nfi).ToString("N2") + " MB", nodeItem.SelectSingleNode("id").InnerText, 3);
           }
 
-          GUIPropertyManager.SetProperty("#Status", "Job Count (" + nodeList.Count + ")");
+          GUIPropertyManager.SetProperty("#Status", "Queue Loaded.");
         }
         else
         {
-          GUIPropertyManager.SetProperty("#Status", "Error parsing queue.");
+          GUIPropertyManager.SetProperty("#Status", "Error parsing XML.");
         }
       }
-      catch (Exception e)
-      {
-        Log.Info("Data: " + e.Data);
-        Log.Info("HelpLink: " + e.HelpLink);
-        Log.Info("InnerException: " + e.InnerException);
-        Log.Info("Message: " + e.Message);
-        Log.Info("Source: " + e.Source);
-        Log.Info("StackTrace: " + e.StackTrace);
-        Log.Info("TargetSite: " + e.TargetSite);
-        GUIPropertyManager.SetProperty("#Status", "Error occured.");
-      }
+      catch (Exception e) { MP.Error(e); }
       finally
       {
-        if (lstItemList.Count > 0)
+        if (_List.Count > 0)
         {
-          GUI.LooseFocus();
-          lstItemList.Focus = true;
+          _GUI.LooseFocus();
+          _List.Focus = true;
         }
       }
     }
 
-    public void Delete(GUIListItem lstItem, GUIListControl lstItemList, GUIWindow GUI)
+    public void Delete(GUIListControl _List, GUIWindow _GUI)
     {
-      if (Dialogs.YesNo("Delete file?", lstItem.Label))
+      if (MP.YesNo("Delete file?", _List.ListItems[_List.SelectedListItemIndex].Label))
       {
-        fncSendURL(fncCreateURL("/sabnzbd/queue/", "delete?uid=", lstItem.Path, false)).Contains(lstItem.Path);
-        if (!(fncSendURL(fncCreateURL("/sabnzbd/", "api?mode=qstatus", "&output=xml", false)).Contains(lstItem.Label)))
+        SendURL(CreateURL("queue/delete?uid=" + _List.ListItems[_List.SelectedListItemIndex].Path, String.Empty, false));
+        if (!(SendURL(CreateURL("api?mode=qstatus", "output=xml", false)).Contains(_List.ListItems[_List.SelectedListItemIndex].Label)))
         {
-          Queue(lstItemList, GUI);
+          Queue(_List, _GUI);
           GUIPropertyManager.SetProperty("#Status", "Job deleted.");
         }
         else
@@ -361,41 +231,39 @@ namespace mpNZB.Clients
       }
     }
 
-    public void Download(GUIListItem lstItem, Sites.iSite Site, Timer Status)
+    public void Download(GUIListItem _Item)
     {
-      if (Dialogs.YesNo("Download file?", lstItem.Label))
+      if (MP.YesNo("Download file?", _Item.Label))
       {
         string strResult = String.Empty;
 
-        switch (lstItem.ItemId)
+        switch (_Item.ItemId)
         {
           case 1:
-            strResult = fncSendURL(fncCreateURL("/sabnzbd/", "api?mode=addurl", "&name=" + lstItem.Path.Replace("?", "%3F").Replace("=", "%3D").Replace("&", "%26"), bolCategorySelect));
+            strResult = SendURL(CreateURL("api?mode=addurl", "name=" + _Item.Path.Replace("&", "%26").Replace("=", "%3D").Replace("?", "%3F"), CatSelect));
             break;
-          case 3:
-            strResult = fncSendFile(lstItem.Path, Site, true);
-            break;
-          case 4:
-            strResult = fncSendURL(fncCreateURL("/sabnzbd/", "api?mode=addid", "&name=" + lstItem.Path, bolCategorySelect));
+          case 2:
+            strResult = SendURL(CreateURL("api?mode=addid", "name=" + _Item.Path, CatSelect));
             break;
         }
+
         if (strResult == "ok\n")
         {
-          Status.Enabled = true;
-          GUIPropertyManager.SetProperty("#Status", "Downloading NZB.");
+          tmrStatus.Enabled = true;
+          GUIPropertyManager.SetProperty("#Status", "Downloading.");
         }
         else
         {
-          GUIPropertyManager.SetProperty("#Status", "Error downloading NZB.");
+          GUIPropertyManager.SetProperty("#Status", "Error downloading.");
         }
       }
     }
 
-    public void Pause(bool bolPause, Timer Status)
+    public void Pause(bool _Pause)
     {
-      if (bolPause)
+      if (_Pause)
       {
-        if (fncSendURL(fncCreateURL("/sabnzbd/", "api?mode=pause", String.Empty, false)) == "ok\n")
+        if (SendURL(CreateURL("api?mode=pause", String.Empty, false)) == "ok\n")
         {
           GUIPropertyManager.SetProperty("#Status", "Queue paused.");
         }
@@ -406,9 +274,9 @@ namespace mpNZB.Clients
       }
       else
       {
-        if (fncSendURL(fncCreateURL("/sabnzbd/", "api?mode=resume", String.Empty, false)) == "ok\n")
+        if (SendURL(CreateURL("api?mode=resume", String.Empty, false)) == "ok\n")
         {
-          Status.Enabled = true;
+          tmrStatus.Enabled = true;
           GUIPropertyManager.SetProperty("#Status", "Queue resumed.");
         }
         else
@@ -420,29 +288,21 @@ namespace mpNZB.Clients
 
     public string Version()
     {
-      string strVersion = String.Empty;
+      string strResult = String.Empty;
 
       try
       {
         XmlDocument xmlDoc = new XmlDocument();
-        XmlTextReader xmlTextReader = new XmlTextReader(fncCreateURL("/sabnzbd/", "api?mode=version", "&output=xml", false));
-        xmlDoc.Load(xmlTextReader);
+        xmlDoc.Load(new XmlTextReader(CreateURL("api?mode=version", "output=xml", false)));
 
-        strVersion = xmlDoc["versions"]["version"].InnerText;
+        if (xmlDoc.SelectSingleNode("versions/version") != null)
+        {
+          strResult = xmlDoc.SelectSingleNode("versions/version").InnerText;
+        }
       }
-      catch (Exception e)
-      {
-        Log.Info("Data: " + e.Data);
-        Log.Info("HelpLink: " + e.HelpLink);
-        Log.Info("InnerException: " + e.InnerException);
-        Log.Info("Message: " + e.Message);
-        Log.Info("Source: " + e.Source);
-        Log.Info("StackTrace: " + e.StackTrace);
-        Log.Info("TargetSite: " + e.TargetSite);
-        GUIPropertyManager.SetProperty("#Status", "Error occured.");
-      }
+      catch (Exception e) { MP.Error(e); }
 
-      return strVersion;
+      return strResult;
     }
 
     #endregion

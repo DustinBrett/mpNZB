@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 using MediaPortal.Dialogs;
 using MediaPortal.GUI.Library;
@@ -8,77 +9,127 @@ namespace mpNZB
   class mpFunctions
   {
 
-    #region Windows
+    #region Definition
 
-    public void OK(string strLine, string strHeading)
+    public class MenuItem
     {
-      GUIDialogOK dlgOK = (GUIDialogOK)GUIWindowManager.GetWindow((int)GUIWindow.Window.WINDOW_DIALOG_OK);
+      public string Label;
+      public string Path;
 
-      dlgOK.Reset();
-      dlgOK.SetHeading(strHeading);
-      dlgOK.SetLine(1, strLine);
-      dlgOK.DoModal(GUIWindowManager.ActiveWindow);
-    }
-
-    public bool YesNo(string strLine, string strHeading)
-    {
-      GUIDialogYesNo dlgYesNo = (GUIDialogYesNo)GUIWindowManager.GetWindow((int)GUIWindow.Window.WINDOW_DIALOG_YES_NO);
-
-      dlgYesNo.Reset();
-      dlgYesNo.SetHeading(strHeading);
-      dlgYesNo.SetLine(1, strLine);
-      dlgYesNo.DoModal(GUIWindowManager.ActiveWindow);
-
-      return dlgYesNo.IsConfirmed;
-    }
-
-    public string Menu(string[] strLabels, string strHeading)
-    {
-      GUIDialogMenu dlgMenu = (GUIDialogMenu)GUIWindowManager.GetWindow((int)GUIWindow.Window.WINDOW_DIALOG_MENU);
-
-      dlgMenu.Reset();
-      dlgMenu.SetHeading(strHeading);
-      foreach (string strLabel in strLabels)
+      public MenuItem(string _Label, string _Path)
       {
-        dlgMenu.Add(strLabel);
+        this.Label = _Label;
+        this.Path = _Path;
       }
-      dlgMenu.DoModal(GUIWindowManager.ActiveWindow);
-
-      if (dlgMenu.SelectedLabel != -1)
-      {
-        return dlgMenu.SelectedLabelText;
-      }
-      return String.Empty;
-    }
-
-    public string Keyboard()
-    {
-      VirtualKeyboard dlgKeyboard = (VirtualKeyboard)GUIWindowManager.GetWindow((int)GUIWindow.Window.WINDOW_VIRTUAL_KEYBOARD);
-      
-      dlgKeyboard.Reset();
-      dlgKeyboard.DoModal(GUIWindowManager.ActiveWindow);
-
-      if (dlgKeyboard.IsConfirmed)
-      {
-        return dlgKeyboard.Text;
-      }
-      return String.Empty;
     }
 
     #endregion
 
-    #region Controls
+    #region Dialog
 
-    public void AddItem(GUIListControl lstItemList, string strLabel, string strLabel2, string strPath, int intItemId)
+    public void OK(string _Line, string _Heading)
     {
+      // Init Dialog
+      GUIDialogOK Dialog = (GUIDialogOK)GUIWindowManager.GetWindow((int)GUIWindow.Window.WINDOW_DIALOG_OK);
+      Dialog.Reset();
+
+      // Set Dialog Information
+      Dialog.SetHeading(_Heading);
+      Dialog.SetLine(1, _Line);
+
+      // Display Dialog
+      Dialog.DoModal(GUIWindowManager.ActiveWindow);
+    }
+
+    public bool YesNo(string _Line, string _Heading)
+    {
+      // Init Dialog
+      GUIDialogYesNo Dialog = (GUIDialogYesNo)GUIWindowManager.GetWindow((int)GUIWindow.Window.WINDOW_DIALOG_YES_NO);
+      Dialog.Reset();
+
+      // Set Dialog Information
+      Dialog.SetHeading(_Heading);
+      Dialog.SetLine(1, _Line);
+
+      // Display Dialog
+      Dialog.DoModal(GUIWindowManager.ActiveWindow);
+
+      // Return Result
+      return Dialog.IsConfirmed;
+    }
+
+    public MenuItem Menu(List<MenuItem> _Items, string _Heading)
+    {
+      // Init Dialog
+      GUIDialogMenu Dialog = (GUIDialogMenu)GUIWindowManager.GetWindow((int)GUIWindow.Window.WINDOW_DIALOG_MENU);
+      Dialog.Reset();
+
+      // Set Dialog Information
+      Dialog.SetHeading(_Heading);
+      GUIListItem ListItem;
+      foreach (MenuItem Item in _Items)
+      {
+        ListItem = new GUIListItem(Item.Label);
+        ListItem.Path = Item.Path;
+        Dialog.Add(ListItem);
+      }
+
+      // Display Dialog
+      Dialog.DoModal(GUIWindowManager.ActiveWindow);
+
+      // Return Result
+      return ((Dialog.SelectedLabel != -1) ? _Items[Dialog.SelectedLabel] : null);
+    }
+
+    public string Keyboard()
+    {
+      // Init Dialog
+      VirtualKeyboard Dialog = (VirtualKeyboard)GUIWindowManager.GetWindow((int)GUIWindow.Window.WINDOW_VIRTUAL_KEYBOARD);
+      Dialog.Reset();
+
+      // Display Dialog
+      Dialog.DoModal(GUIWindowManager.ActiveWindow);
+
+      // Return Result
+      return ((Dialog.IsConfirmed) ? Dialog.Text : String.Empty);
+    }
+
+    #endregion
+
+    #region Control
+
+    public void ListItem(GUIListControl _List, string _Label, string _Label2, string _Path, int _ItemId)
+    {
+      // Init Item
       GUIListItem Item = new GUIListItem();
 
-      Item.Label = strLabel;
-      Item.Label2 = strLabel2;
-      Item.Path = strPath;
-      Item.ItemId = intItemId;
+      // Set Item Information
+      Item.Label = _Label;
+      Item.Label2 = _Label2;
+      Item.Path = _Path;
+      Item.ItemId = _ItemId;
 
-      lstItemList.Add(Item);
+      // Add Item to List
+      _List.Add(Item);
+    }
+
+    #endregion
+
+    #region Error
+
+    public void Error(Exception e)
+    {
+      // Log Error
+      Log.Info("Data: " + e.Data);
+      Log.Info("HelpLink: " + e.HelpLink);
+      Log.Info("InnerException: " + e.InnerException);
+      Log.Info("Message: " + e.Message);
+      Log.Info("Source: " + e.Source);
+      Log.Info("StackTrace: " + e.StackTrace);
+      Log.Info("TargetSite: " + e.TargetSite);
+
+      // Update Status
+      GUIPropertyManager.SetProperty("#Status", "Error occured.");
     }
 
     #endregion
