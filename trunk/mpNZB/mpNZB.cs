@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Timers;
 using System.Xml;
 
 using MediaPortal.GUI.Library;
@@ -20,6 +19,7 @@ namespace mpNZB
     protected GUIButtonControl btnSearch = null;
     [SkinControlAttribute(4)]
     protected GUIButtonControl btnJobQueue = null;
+
     [SkinControlAttribute(5)]
     protected GUIToggleButtonControl btnPause = null;
 
@@ -127,13 +127,12 @@ namespace mpNZB
 
     #endregion
 
-    #region Definitions
-    
-    private Sites.iSite Site;
-    private Clients.iClient Client;
-    private Timer Status = new Timer();
+    #region Definition
 
-    private mpFunctions Dialogs = new mpFunctions();
+    private Sites Site;
+    private Clients.iClient Client;
+
+    private mpFunctions MP = new mpFunctions();
 
     #endregion
 
@@ -148,38 +147,37 @@ namespace mpNZB
       return Load(GUIGraphicsContext.Skin + @"\mpNZB.xml");
     }
 
-    public void OnTimer(object sender, System.Timers.ElapsedEventArgs e)
-    {
-      Client.Status(Status, btnPause);
-    }
-
     protected override void OnClicked(int controlId, GUIControl control, Action.ActionType actionType)
     {
-      if (control == btnRefreshFeed) { fncReadRSS(Site.FeedURL, lstItems); }
-      if (control == btnSelectFeed)  { fncSelectFeed(false); }
-      if (control == btnSearch)      { fncSelectFeed(true); }
+      if (control == btnRefreshFeed)
+      {
+        GUIPropertyManager.SetProperty("#Status", "Processing...");
+        GUIWindowManager.Process();
+
+        ReadRSS(Site.FeedURL, lstItems);
+      }
+      if (control == btnSelectFeed)  { SelectSite(false); }
+      if (control == btnSearch)      { SelectSite(true); }
       if (control == btnJobQueue)    { Client.Queue(lstItems, this); }
-      if (control == btnPause)       { Client.Pause(btnPause.Selected, Status); }
+      if (control == btnPause)       { Client.Pause(btnPause.Selected); }
       if (control == lstItems)
       {
         switch (lstItems.ListItems[lstItems.SelectedListItemIndex].ItemId)
         {
 
           // ID Types
-          // ==============================
-          // 1 = Direct NZB Link
-          // 2 = Job Queue Item
-          // 3 = Download File Link
-          // 4 = Direct Newzbin ID Link
-          // ==============================
+          // ====================
+          // 1 = NZB
+          // 2 = Newzbin ID
+          // 3 = Queue Item
+          // ====================
 
           case 1:
-          case 3:
-          case 4:
-            Client.Download(lstItems.ListItems[lstItems.SelectedListItemIndex], Site, Status);
-            break;
           case 2:
-            Client.Delete(lstItems.ListItems[lstItems.SelectedListItemIndex], lstItems, this);
+            Client.Download(lstItems.ListItems[lstItems.SelectedListItemIndex]);
+            break;
+          case 3:
+            Client.Delete(lstItems, this);
             break;
         }
       }
@@ -188,48 +186,44 @@ namespace mpNZB
     
     protected override void OnPageLoad()
     {
-      // Disable "Refresh Feed" button
-      btnRefreshFeed.Disabled = true;
-
-      // Load Settings
-      Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
-
-      // Setup Page Title
-      // ##################################################
-      string strPageTitle = mpSettings.GetValue("#Plugin", "DisplayName");
-      GUIPropertyManager.SetProperty("#PageTitle", ((strPageTitle.Length == 0) ? "mpNZB" : strPageTitle));
-      // ##################################################
-
-      // Setup Client
-      // ##################################################
-      switch (mpSettings.GetValue("#Client", "Grabber"))
+      try
       {
-        case "SABnzbd":
-          {
-            Client = new Clients.SABnzbd(mpSettings.GetValue("#Client", "Host"), mpSettings.GetValue("#Client", "Port"), mpSettings.GetValueAsBool("#Client", "CatSelect", false), mpSettings.GetValueAsBool("#Client", "Auth", false), mpSettings.GetValue("#Client", "Username"), mpSettings.GetValue("#Client", "Password"));
-            if (Client.Version().Length == 0)
+        // Disable "Refresh Feed" button
+        btnRefreshFeed.Disabled = true;
+
+        // Load Settings
+        Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
+
+        // Setup Page Title
+        // ##################################################
+        string strPageTitle = mpSettings.GetValue("#Plugin", "DisplayName");
+        GUIPropertyManager.SetProperty("#PageTitle", ((strPageTitle.Length == 0) ? "mpNZB" : strPageTitle));
+        // ##################################################
+
+        // Setup Client
+        // ##################################################
+        switch (mpSettings.GetValue("#Client", "Grabber"))
+        {
+          case "SABnzbd":
             {
-              Dialogs.OK("SABnzbd connection failed.", "Client Status");
-              return;
+              Client = new Clients.SABnzbd(mpSettings.GetValue("#Client", "Host"), mpSettings.GetValue("#Client", "Port"), mpSettings.GetValueAsBool("#Client", "CatSelect", false), mpSettings.GetValueAsBool("#Client", "Auth", false), mpSettings.GetValue("#Client", "Username"), mpSettings.GetValue("#Client", "Password"), mpSettings.GetValueAsInt("#Plugin", "UpdateFrequency", 1));
+              if (Client.Version().Length == 0)
+              {
+                MP.OK("SABnzbd connection failed.", "Client Status");
+                return;
+              }
+              break;
             }
-            break;
-          }
+        }
+        // ##################################################
+
+        // Unload Settings
+        mpSettings.Dispose();
+
+        // Update Status
+        Client.Status();
       }
-      // ##################################################
-
-      // Unload Settings
-      mpSettings.Dispose();
-
-      // Start Timer
-      // ##################################################
-      Status = new Timer();
-      Status.Elapsed += new System.Timers.ElapsedEventHandler(OnTimer);
-      Status.Interval = (mpSettings.GetValueAsInt("#Plugin", "UpdateFrequency", 1) * 1000);
-      Status.Enabled = true;
-      // ##################################################
-
-      // Update Status
-      Client.Status(Status, btnPause);
+      catch (Exception e) { MP.Error(e); }
     }
 
     protected override void OnPageDestroy(int newWindowId)
@@ -241,131 +235,71 @@ namespace mpNZB
 
     #region Functions
 
-    private void fncReadRSS(string strURL, GUIListControl lstItemList)
+    private void ReadRSS(string _URL, GUIListControl _List)
     {
       try
       {
-        // Load RSS feed
-        // ##################################################
         XmlDocument xmlDoc = new XmlDocument();
-        XmlTextReader xmlTextReader = new XmlTextReader(strURL);
-        xmlDoc.Load(xmlTextReader);
-        // ##################################################
+        xmlDoc.Load(new XmlTextReader(_URL));
 
-        // Read RSS feed
-        // ##################################################
-        if ((xmlDoc["rss"].Attributes["version"].InnerText == "2.0"))
+        if (xmlDoc.SelectSingleNode("rss[@version='2.0']") != null)
         {
-          lstItemList.Clear();
+          _List.Clear();
 
-          XmlNodeList nodeList = xmlDoc.SelectNodes("rss/channel/item");         
-
-          foreach (XmlNode nodeItem in nodeList)
+          XmlNodeList xmlNodes = xmlDoc.SelectNodes("rss/channel/item");
+          foreach (XmlNode xmlNode in xmlNodes)
           {
-            Site.AddItem(nodeItem, lstItemList);
+            Site.AddItem(xmlNode, _List);
           }
 
-          GUIPropertyManager.SetProperty("#Status", "Item Count (" + nodeList.Count + ")");
+          GUIPropertyManager.SetProperty("#Status", "Found " + xmlNodes.Count.ToString() + " Items.");
         }
         else
         {
-          GUIPropertyManager.SetProperty("#Status", "RSS parsing error.");
+          GUIPropertyManager.SetProperty("#Status", "Error parsing XML.");
         }
-        // ##################################################
       }
-      catch (Exception e)
-      {
-        Log.Info("Data: " + e.Data);
-        Log.Info("HelpLink: " + e.HelpLink);
-        Log.Info("InnerException: " + e.InnerException);
-        Log.Info("Message: " + e.Message);
-        Log.Info("Source: " + e.Source);
-        Log.Info("StackTrace: " + e.StackTrace);
-        Log.Info("TargetSite: " + e.TargetSite);
-        GUIPropertyManager.SetProperty("#Status", "Error occured.");
-      }
+      catch (Exception e) { MP.Error(e); }
       finally
       {
-        // Focus on list
-        // ##################################################
-        if (lstItemList.Count > 0)
+        if (_List.Count > 0)
         {
           this.LooseFocus();
-          lstItemList.Focus = true;
+          _List.Focus = true;
         }
-        // ##################################################
       }
     }
 
-    private void fncSelectFeed(bool bolSearch)
+    private void SelectSite(bool _Search)
     {
       try
       {
-        // Create Feed List
-        // ##################################################
-        Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
-        string strList = mpSettings.GetValue("#Lists", (bolSearch ? "SearchList" : "FeedList"));
-        if (strList.Length == 0)
+        Site = new Sites(_Search);
+
+        if (Site.SiteName.Length != 0)
         {
-          GUIPropertyManager.SetProperty("#Status", "Site list is empty.");
-          return;
+          if (_Search)
+          {
+            Site.SetSearch();
+          }
+          else
+          {
+            Site.SetFeed();
+          }
+
+          if (Site.FeedURL != String.Empty)
+          {
+            GUIPropertyManager.SetProperty("#Status", "Processing...");
+            GUIWindowManager.Process();
+
+            ReadRSS(Site.FeedURL, lstItems);
+
+            btnRefreshFeed.Disabled = false;
+            GUIPropertyManager.SetProperty("#PageTitle", Site.SiteName + " - " + Site.FeedName);
+          }
         }
-        string[] strSites = strList.Split((char)0);
-        mpSettings.Dispose();
-        // ##################################################
-
-        // Select Site
-        // ##################################################
-        switch (Dialogs.Menu(strSites, "Select Site"))
-        {
-          case "Newzbin": Site = new Sites.Newzbin(); break;
-          case "Newzleech": Site = new Sites.Newzleech(); break;
-          case "NZBClub": Site = new Sites.NZBClub(); break;
-          case "NZBIndex": Site = new Sites.NZBIndex(); break;
-          case "NZBMatrix": Site = new Sites.NZBMatrix(); break;
-          case "NZBsRus": Site = new Sites.NZBsRus(); break;
-          case "TvNZB": Site = new Sites.TvNZB(); break;
-          default: return;
-        }
-        // ##################################################      
-
-        // SetFeed or Search
-        // ##################################################
-        if (bolSearch)
-        {
-          Site.Search();          
-        }
-        else
-        {
-          Site.SetFeed();
-        }        
-        // ##################################################
-
-        // Update List
-        // ##################################################
-        if (Site.FeedURL != String.Empty)
-        {
-          GUIPropertyManager.SetProperty("#Status", "Processing...");
-          GUIWindowManager.Process();
-
-          fncReadRSS(Site.FeedURL, lstItems);
-
-          btnRefreshFeed.Disabled = false;
-          GUIPropertyManager.SetProperty("#PageTitle", Site.SiteName + " - " + Site.FeedName);
-        }
-        // ##################################################
       }
-      catch (Exception e)
-      {
-        Log.Info("Data: " + e.Data);
-        Log.Info("HelpLink: " + e.HelpLink);
-        Log.Info("InnerException: " + e.InnerException);
-        Log.Info("Message: " + e.Message);
-        Log.Info("Source: " + e.Source);
-        Log.Info("StackTrace: " + e.StackTrace);
-        Log.Info("TargetSite: " + e.TargetSite);
-        GUIPropertyManager.SetProperty("#Status", "Error occured.");
-      }
+      catch (Exception e) { MP.Error(e); }
     }
 
     #endregion
