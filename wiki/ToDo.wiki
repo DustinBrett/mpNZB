@@ -14,6 +14,7 @@
 
 == Features: (_High_) ==
   * {{{ReadRSS}}} GZIP support
+  * Dont use MenuItem just use ListItem
   * Test error logging
   * Toggle pause button if {{{Status}}} is paused
   * Search history
