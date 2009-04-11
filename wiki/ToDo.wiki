@@ -2,8 +2,7 @@
 #labels Phase-Requirements,Phase-Design
 
 == General (_Low_) ==
-  * Write documentation
-  * More Queue/NZB information
+  * Write documentation (Sites.xml)
   * NZB streaming
   * MPI installation
 
@@ -13,18 +12,21 @@
   * RSS watch
     * Set every 10-30 minutes to check RSS some {{{RegEx}}} and start D/L
 
-== Features: (_High_) ==  
-  * Search results limit (intMaxResults)
+== Features: (_High_) ==
+  * {{{ReadRSS}}} GZIP support
+  * Test error logging
+  * Toggle pause button if {{{Status}}} is paused
   * Search history
     * Clear history
-    * Read/Append like {{{SiteList}}}
   * Search all sites at once
-    * Add everything then sort by pubDate
-      * Add pubDate as Label3
-    * Math.Round(intMaxResults / intNumSites)
+    * Add everything then sort by {{{pubDate}}}
+    * {{{Math.Round(MaxResults / Sites.url.Count)}}}
+    * {{{FeedURL}}} into {{{List<string> FeedURLs}}}
 
-== Sites: (_Custom_) ==
+== Sites: ==
   * Custom URL's
+  * Binsearch (Need GZIP)
+  * TvNZB Searching
   * [http://mytvnzb.foechoer.be/ MyTvNZB]
 
 == Notes: ==
