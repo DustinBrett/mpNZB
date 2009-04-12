@@ -20,6 +20,8 @@
     * Add everything then sort by {{{pubDate}}}
     * {{{Math.Round(MaxResults / Sites.url.Count)}}}
     * {{{FeedURL}}} into {{{List<string> FeedURLs}}}
+  * Add HTML support to Sites.xml
+    * Using {{{RegEx}}} for most of the code
 
 == Sites: ==
   * Binsearch (Need GZIP)
