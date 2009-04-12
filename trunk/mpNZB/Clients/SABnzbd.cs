@@ -10,7 +10,7 @@ using MediaPortal.GUI.Library;
 namespace mpNZB.Clients
 {
   class SABnzbd : iClient
-  {    
+  {
 
     #region Init
 
@@ -120,14 +120,14 @@ namespace mpNZB.Clients
 
         if (xmlDoc.SelectSingleNode("categories") != null)
         {
-          List<mpFunctions.MenuItem> Categories = new List<mpFunctions.MenuItem>();
+          List<GUIListItem> Categories = new List<GUIListItem>();
 
           foreach (XmlNode nodeItem in xmlDoc.SelectSingleNode("categories").ChildNodes)
           {
-            Categories.Add(new mpFunctions.MenuItem(nodeItem.InnerText, String.Empty));
+            Categories.Add(new GUIListItem(nodeItem.InnerText));
           }
 
-          mpFunctions.MenuItem _Item = MP.Menu(Categories, "Select Category");
+          GUIListItem _Item = MP.Menu(Categories, "Select Category");
           if (_Item != null)
           {
             strResult = _Item.Label;
@@ -157,12 +157,14 @@ namespace mpNZB.Clients
         if (xmlDoc.SelectSingleNode("queue") != null)
         {
           int intJobCount = int.Parse(xmlDoc.SelectSingleNode("queue/noofslots").InnerText);
+          string strPause = xmlDoc.SelectSingleNode("queue/paused").InnerText;
 
-          if ((intJobCount == 0) || (xmlDoc.SelectSingleNode("queue/paused").InnerText == "True")) { tmrStatus.Enabled = false; }
+          if (intJobCount == 0) { tmrStatus.Enabled = false; }
+          if (strPause == "True") { tmrStatus.Enabled = false; }
 
           NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
 
-          GUIPropertyManager.SetProperty("#Paused", xmlDoc.SelectSingleNode("queue/paused").InnerText);
+          GUIPropertyManager.SetProperty("#Paused", strPause);
           GUIPropertyManager.SetProperty("#KBps", ((intJobCount != 0) ? double.Parse(xmlDoc.SelectSingleNode("queue/kbpersec").InnerText, nfi).ToString("N2") : (0.0).ToString("N2")) + " KB/s");
           GUIPropertyManager.SetProperty("#MBStatus", double.Parse(xmlDoc.SelectSingleNode("queue/mbleft").InnerText, nfi).ToString("N2") + " / " + double.Parse(xmlDoc.SelectSingleNode("queue/mb").InnerText, nfi).ToString("N2") + " MB");
           GUIPropertyManager.SetProperty("#JobCount", intJobCount.ToString());
