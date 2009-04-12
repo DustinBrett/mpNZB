@@ -1,4 +1,4 @@
-#summary How to add a site to Sites.xml
+#summary Instructions on adding a site to Sites.xml
 #labels Phase-Implementation
 
 = Introduction =
