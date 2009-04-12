@@ -112,8 +112,8 @@ namespace mpNZB
       switch (cmbGrabber.Text)
       {
         case "SABnzbd":
-          Client = new Clients.SABnzbd(txtHost.Text, txtPort.Text, false, chkAuth.Checked, txtUsername.Text, txtPassword.Text, 0);
-          if (Client.Version().Length == 0)
+          Client = new Clients.SABnzbd(txtHost.Text, txtPort.Text, false, chkAuth.Checked, txtUsername.Text, txtPassword.Text, 1);
+          if (Client.Version().Length != 0)
           {
             MessageBox.Show(null, "Connection: OK", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
           }
