@@ -50,7 +50,7 @@ namespace mpNZB
 
         if (xmlDoc.SelectSingleNode("sites/site") != null)
         {
-          List<mpFunctions.MenuItem> _Items = new List<mpFunctions.MenuItem>();
+          List<GUIListItem> _Items = new List<GUIListItem>();
 
           foreach (XmlNode nodeItem in xmlDoc.SelectNodes("sites/site"))
           {
@@ -58,22 +58,22 @@ namespace mpNZB
             {
               if (nodeItem.SelectSingleNode("search") != null)
               {
-                _Items.Add(new mpFunctions.MenuItem(nodeItem.Attributes["name"].InnerText, String.Empty));
+                _Items.Add(new GUIListItem(nodeItem.Attributes["name"].InnerText));
               }
             }
             else
             {
               if (nodeItem.SelectNodes("feeds").Count != 0)
               {
-                _Items.Add(new mpFunctions.MenuItem(nodeItem.Attributes["name"].InnerText, String.Empty));
+                _Items.Add(new GUIListItem(nodeItem.Attributes["name"].InnerText));
               }
             }
           }
 
-          mpFunctions.MenuItem _Item = MP.Menu(_Items, "Select Site");
+          GUIListItem _Item = MP.Menu(_Items, "Select Site");
           if (_Item != null)
           {
-            SiteName = _Item.Label;
+            SiteName = _Item.Label.Substring(_Item.Label.IndexOf(" ") + 1, _Item.Label.Length - (_Item.Label.IndexOf(" ") + 1));
           }
         }
         else
@@ -103,17 +103,20 @@ namespace mpNZB
 
         if (xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/feeds/feed") != null)
         {
-          List<mpFunctions.MenuItem> _Items = new List<mpFunctions.MenuItem>();
+          List<GUIListItem> _Items = new List<GUIListItem>();
+          GUIListItem Item;
 
           foreach (XmlNode nodeItem in xmlDoc.SelectNodes("sites/site[@name='" + SiteName + "']/feeds/feed"))
           {
-            _Items.Add(new mpFunctions.MenuItem(nodeItem.Attributes["name"].InnerText, nodeItem.InnerText));
+            Item = new GUIListItem(nodeItem.Attributes["name"].InnerText);
+            Item.Path = nodeItem.InnerText;
+            _Items.Add(Item);
           }
 
-          mpFunctions.MenuItem _Item = MP.Menu(_Items, "Select Feed");
+          GUIListItem _Item = MP.Menu(_Items, "Select Feed");
           if (_Item != null)
           {
-            FeedName = _Item.Label;
+            FeedName = _Item.Label.Substring(_Item.Label.IndexOf(" ") + 1, _Item.Label.Length - (_Item.Label.IndexOf(" ") + 1));
             FeedURL = _Item.Path.Replace("[MAX]", MaxResults.ToString());
           }
         }

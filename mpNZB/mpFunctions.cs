@@ -9,22 +9,6 @@ namespace mpNZB
   class mpFunctions
   {
 
-    #region Definition
-
-    public class MenuItem
-    {
-      public string Label;
-      public string Path;
-
-      public MenuItem(string _Label, string _Path)
-      {
-        this.Label = _Label;
-        this.Path = _Path;
-      }
-    }
-
-    #endregion
-
     #region Dialog
 
     public void OK(string _Line, string _Heading)
@@ -58,21 +42,15 @@ namespace mpNZB
       return Dialog.IsConfirmed;
     }
 
-    public MenuItem Menu(List<MenuItem> _Items, string _Heading)
+    public GUIListItem Menu(List<GUIListItem> _Items, string _Heading)
     {
       // Init Dialog
       GUIDialogMenu Dialog = (GUIDialogMenu)GUIWindowManager.GetWindow((int)GUIWindow.Window.WINDOW_DIALOG_MENU);
       Dialog.Reset();
-
+      
       // Set Dialog Information
       Dialog.SetHeading(_Heading);
-      GUIListItem ListItem;
-      foreach (MenuItem Item in _Items)
-      {
-        ListItem = new GUIListItem(Item.Label);
-        ListItem.Path = Item.Path;
-        Dialog.Add(ListItem);
-      }
+      _Items.ForEach(Dialog.Add);
 
       // Display Dialog
       Dialog.DoModal(GUIWindowManager.ActiveWindow);
@@ -120,13 +98,13 @@ namespace mpNZB
     public void Error(Exception e)
     {
       // Log Error
-      Log.Info("Data: " + e.Data);
-      Log.Info("HelpLink: " + e.HelpLink);
-      Log.Info("InnerException: " + e.InnerException);
-      Log.Info("Message: " + e.Message);
-      Log.Info("Source: " + e.Source);
-      Log.Info("StackTrace: " + e.StackTrace);
-      Log.Info("TargetSite: " + e.TargetSite);
+      Log.Error("Data: " + e.Data);
+      Log.Error("HelpLink: " + e.HelpLink);
+      Log.Error("InnerException: " + e.InnerException);
+      Log.Error("Message: " + e.Message);
+      Log.Error("Source: " + e.Source);
+      Log.Error("StackTrace: " + e.StackTrace);
+      Log.Error("TargetSite: " + e.TargetSite);
 
       // Update Status
       GUIPropertyManager.SetProperty("#Status", "Error occured.");
