@@ -95,19 +95,16 @@ namespace mpNZB
 
     #region Error
 
+    private string strAppName = "mpNZB";
+
     public void Error(Exception e)
     {
       // Log Error
-      Log.Error("Data: " + e.Data);
-      Log.Error("HelpLink: " + e.HelpLink);
-      Log.Error("InnerException: " + e.InnerException);
-      Log.Error("Message: " + e.Message);
-      Log.Error("Source: " + e.Source);
-      Log.Error("StackTrace: " + e.StackTrace);
-      Log.Error("TargetSite: " + e.TargetSite);
+      Log.Error("[" + strAppName + "] " + "Message: " + e.Message);      
+      Log.Error("[" + strAppName + "] " + "TargetSite: " + e.TargetSite);
 
       // Update Status
-      GUIPropertyManager.SetProperty("#Status", "Error occured.");
+      GUIPropertyManager.SetProperty("#Status", "Error occured");
     }
 
     #endregion

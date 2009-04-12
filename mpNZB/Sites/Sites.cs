@@ -78,7 +78,7 @@ namespace mpNZB
         }
         else
         {
-          GUIPropertyManager.SetProperty("#Status", "Error parsing XML.");
+          GUIPropertyManager.SetProperty("#Status", "Error parsing XML");
         }
 
         Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
@@ -122,7 +122,7 @@ namespace mpNZB
         }
         else
         {
-          GUIPropertyManager.SetProperty("#Status", "Error parsing XML.");
+          GUIPropertyManager.SetProperty("#Status", "Error parsing XML");
         }
       }
       catch (Exception e) { MP.Error(e); }
@@ -144,7 +144,7 @@ namespace mpNZB
           }
           else
           {
-            GUIPropertyManager.SetProperty("#Status", "Error parsing XML.");
+            GUIPropertyManager.SetProperty("#Status", "Error parsing XML");
           }
         }
       }
@@ -195,7 +195,7 @@ namespace mpNZB
         }
         else
         {
-          GUIPropertyManager.SetProperty("#Status", "Error parsing XML.");
+          GUIPropertyManager.SetProperty("#Status", "Error parsing XML");
         }
       }
       catch (Exception e) { MP.Error(e); }
