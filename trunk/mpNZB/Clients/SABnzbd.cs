@@ -14,6 +14,13 @@ namespace mpNZB.Clients
 
     #region Init
 
+    private bool _PluginVisible = true;
+    public bool PluginVisible
+    {
+      get { return _PluginVisible; }
+      set { _PluginVisible = value; }
+    }
+
     private string _IP = String.Empty;
     public string IP
     {
@@ -159,8 +166,7 @@ namespace mpNZB.Clients
           int intJobCount = int.Parse(xmlDoc.SelectSingleNode("queue/noofslots").InnerText);
           string strPause = xmlDoc.SelectSingleNode("queue/paused").InnerText;
 
-          if (intJobCount == 0) { tmrStatus.Enabled = false; }
-          if (strPause == "True") { tmrStatus.Enabled = false; }
+          if ((intJobCount == 0) || (strPause == "True") || (PluginVisible = false)) { tmrStatus.Enabled = false; }
 
           NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
 
