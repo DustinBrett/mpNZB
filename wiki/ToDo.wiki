@@ -4,7 +4,6 @@
 == General ==
   * Toggle `btnPause` if `Status` is paused
   * Redo SABnzbd addfile API
-  * `ReadRSS` GZIP support
   * Multisearch
     * Add everything then sort by `pubDate`
     * `Math.Round(MaxResults / Sites.url.Count)`
@@ -19,7 +18,6 @@
   * Monitor RSS feeds
 
 == Sites: ==
-  * [http://www.binsearch.info/ Binsearch]
   * [http://www.tvnzb.com/ TvNZB] (Searching)
   * [http://mytvnzb.foechoer.be/ MyTvNZB]
   * [http://www.nzbsrus.com/ NZBsRus]
