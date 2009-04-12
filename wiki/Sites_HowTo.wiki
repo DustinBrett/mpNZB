@@ -75,14 +75,22 @@ This section contains the data needed to parse the RSS feeds.
 
 {{{
 <item type="(Type)">
-        <title element="(Title)" />
+        <title element="(Element)" />
         <size type="(Type)" element="(Element)" />
         <url element="(Element)" />
 </item>
 }}}
 
-  * *item (Type)* = This identifies what method of downloading should be used
-    * 1 = Link to NZB/ZIP
-    * 2 = Newzbin ID
+  * *(Type)* = This identifies what method of downloading should be used
+    * *item*
+      * 1 = Link to NZB/ZIP
+      * 2 = Newzbin ID
+    * *size*
+      * 1 = Link to NZB/ZIP
+      * 2 = Newzbin ID
+  * *(Element)*
+    * *title* = This identifies were to find the title field
+    * *size* = This identifies were to find the title field
+    * *url* = This identifies were to find the title field
 
 *Note:* `<search>` will allow more than one `<url>` in a future revision
