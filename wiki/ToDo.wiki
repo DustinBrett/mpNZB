@@ -19,9 +19,8 @@
   * Monitor RSS feeds
 
 == Sites: ==
-  * Binsearch
-  * TvNZB (Searching)
+  * [http://www.binsearch.info/ Binsearch]
+  * [http://www.tvnzb.com/ TvNZB] (Searching)
   * [http://mytvnzb.foechoer.be/ MyTvNZB]
-  * NZBsRus
-  * NZBS.org
-  * TVBinz
+  * [http://www.nzbsrus.com/ NZBsRus]
+  * [http://nzbs.org/ NZBS.org]
