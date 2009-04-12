@@ -2,7 +2,6 @@
 #labels Phase-Requirements,Phase-Design
 
 == General (_Low_) ==
-  * Write documentation (Sites.xml)
   * NZB streaming
   * MPI installation
 
