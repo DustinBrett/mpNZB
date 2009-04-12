@@ -6,6 +6,7 @@
   * Write instructions on adding
     * NZBsRus
     * NZBS.org
+    * TVBinz
 
 == Features: (_Medium_) ==
   * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
