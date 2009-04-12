@@ -1,5 +1,21 @@
 <?xml version="1.0"?>
 <sites>
+	<site name="Binsearch">
+		<feeds>
+			<feed name="alt.binaries.dvd">http://rss.binsearch.net/rss.php?max=[MAX]&amp;g=alt.binaries.dvd</feed>
+			<feed name="alt.binaries.hdtv">http://rss.binsearch.net/rss.php?max=[MAX]&amp;g=alt.binaries.hdtv</feed>
+			<feed name="alt.binaries.movies">http://rss.binsearch.net/rss.php?max=[MAX]&amp;g=alt.binaries.movies</feed>
+			<feed name="alt.binaries.multimedia">http://rss.binsearch.net/rss.php?max=[MAX]&amp;g=alt.binaries.multimedia</feed>
+			<feed name="alt.binaries.tv">http://rss.binsearch.net/rss.php?max=[MAX]&amp;g=alt.binaries.tv</feed>
+		</feeds>
+		<item type="1">
+			<title element="title" />
+			<size type="1" element="description">
+				<regex input="(\d+.\d+)\s(\w{2,4})" />
+			</size>
+			<url element="link" />
+		</item>
+	</site>
 	<site name="Newzbin">
 		<feeds>
 			<feed name="Everything">http://www.newzbin.com/browse/category/p/everything/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
