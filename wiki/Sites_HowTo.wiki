@@ -44,7 +44,9 @@ These fields will be replaced with the correct data automatically by mpNZB.
 == _Feeds_ ==
 This section contains the sites RSS feeds.
 
-`<feed name="`*`Name`*`">`*`URL`*`</feed>`
+{{{
+<feed name="*Name*">*URL*</feed>
+}}}
 
   * *Name* = Name of RSS feed
   * *URL* = URL to the RSS feed
@@ -54,7 +56,9 @@ This section contains the sites RSS feeds.
 == _Search_ ==
 This section contains the sites search feeds.
 
-`<url>`*`URL`*`</url>`
+{{{
+<url>*URL*</url>
+}}}
 
   * *URL* = URL to the search feed.
     * This can contain replacement fields such as *`[MAX]`* or *`[QUERY]`*
@@ -65,9 +69,9 @@ This section contains the sites search feeds.
 This section contains the data needed to parse the RSS feeds.
 
 {{{
-`<title element="`*`Title`*`" />`
-`<size type="`*`2`*`" element="`*`report:size`*`" />`
-`<url element="`*`report:id`*`" />`
+<title element="*Title*" />
+<size type="*2*" element="*report:size*" />
+<url element="*report:id*" />
 }}}
 
   * *URL* = URL to the search feed.
