@@ -20,7 +20,7 @@
 
 == Sites: ==
   * Binsearch
-  * TvNZB Searching
+  * TvNZB (Searching)
   * [http://mytvnzb.foechoer.be/ MyTvNZB]
   * NZBsRus
   * NZBS.org
