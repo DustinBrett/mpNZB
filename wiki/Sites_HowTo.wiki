@@ -60,3 +60,15 @@ This section contains the sites search feeds.
     * This can contain replacement fields such as *`[MAX]`* or *`[QUERY]`*
 
 *Note:* `<search>` will allow more than one `<url>` in a future revision
+
+== _Item_ ==
+This section contains the data needed to parse the RSS feeds.
+
+`<title element="`*`Title`*`" />`
+`<size type="`*`2`*`" element="`*`report:size`*`" />`
+`<url element="`*`report:id`*`" />`
+
+  * *URL* = URL to the search feed.
+    * This can contain replacement fields such as *`[MAX]`* or *`[QUERY]`*
+
+*Note:* `<search>` will allow more than one `<url>` in a future revision
