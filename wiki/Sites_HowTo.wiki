@@ -77,7 +77,7 @@ This section contains the data needed to parse the RSS feeds.
 <item type="(Type)">
         <title element="(Element)" />
         <size type="(Type)" element="(Element)">
-                <regex input="(RegEx-Input)" replacement="(RegEx-Replace)"/>
+                <regex input="(RegEx)" replacement="(RegEx)"/>
         </size>
         <url element="(Element)" />
 </item>
@@ -94,5 +94,6 @@ This section contains the data needed to parse the RSS feeds.
     * *title* = RSS element containing title information
     * *size* = RSS element containing size information
     * *url* = RSS element containing url information
-
-*Note:* `<search>` will allow more than one `<url>` in a future revision
+  * *(RegEx)*
+    * *input* = Input string for a regular expressions search
+    * *replacement* = Replacement string for the *input* field
