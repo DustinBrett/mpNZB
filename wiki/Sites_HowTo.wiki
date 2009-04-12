@@ -43,6 +43,7 @@ These fields will be replaced with the correct data automatically by mpNZB.
 
 == _Feeds_ ==
 This section contains the sites RSS feeds.
+*Note:* {{{<feeds>}}} can contain more than one {{{<feed>}}}
 
 {{{<feed name="}}}*{{{Name}}}*{{{">}}}*{{{URL}}}*{{{</feed>}}}
 
