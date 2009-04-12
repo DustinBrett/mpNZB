@@ -1,39 +1,27 @@
 #summary To-Do list for project
 #labels Phase-Requirements,Phase-Design
 
-== General (_Low_) ==
-  * NZB streaming
-  * Write instructions on adding
-    * NZBsRus
-    * NZBS.org
-    * TVBinz
-
-== Features: (_Medium_) ==
-  * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
-  * SABnzbd history view
-  * RSS watch
-    * Set every 10-30 minutes to check RSS some {{{RegEx}}} and start D/L
-
-== Features: (_High_) ==
-  * Tweak SABnzbd API addfile
+== General ==
+  * Toggle pause button if `Status` is paused
+  * Redo SABnzbd API addfile
   * {{{ReadRSS}}} GZIP support
-  * Toggle pause button if {{{Status}}} is paused
-  * Search history
-    * Clear history
-  * Search all sites at once
-    * Add everything then sort by {{{pubDate}}}
-    * {{{Math.Round(MaxResults / Sites.url.Count)}}}
-    * {{{FeedURL}}} into {{{List<string> FeedURLs}}}
+  * Multisearch
+    * Add everything then sort by `pubDate`
+    * `Math.Round(MaxResults / Sites.url.Count)`
+    * `FeedURL` into `List<string> FeedURLs`
   * Add HTML support to Sites.xml
-    * Using {{{RegEx}}} for most of the code
+    * Using `RegEx` for most of the code
+
+== Future Features: ==
+  * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
+  * NZB streaming
+  * SABnzbd history view
+  * Monitor RSS feeds
 
 == Sites: ==
   * Binsearch (Need GZIP)
   * TvNZB Searching
   * [http://mytvnzb.foechoer.be/ MyTvNZB]
-
-== Notes: ==
-  * NZBIndex: {{{<pubDate>Thu, 02 Apr 2009 03:28:15 +0200</pubDate>}}}
-  * Newzbin: {{{<pubDate>Mon, 06 Apr 2009 17:04:22 GMT</pubDate>}}}
-  * NZBClub: {{{<pubDate>Sun, 29 Mar 2009 18:47:54 -0500</pubDate>}}}
-  * Newzleech: {{{<pubDate>Thu, 02 Apr 2009 05:28:34 +0300</pubDate>}}}
+  * NZBsRus
+  * NZBS.org
+  * TVBinz
