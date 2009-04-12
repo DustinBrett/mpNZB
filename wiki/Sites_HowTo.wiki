@@ -7,8 +7,8 @@ This document will cover the specifications for adding a site to the Sites.xml f
 = Replacement Fields =
 These fields will be replaced with the correct data automatically by mpNZB.
 
-  * *{{{[MAX]}}}* = Maximum results per feed.
-  * *{{{[QUERY]}}}* = Search string.
+  * *`[MAX]`* = Maximum results per feed.
+  * *`[QUERY]`* = Search string.
 
 = Example Site =
 {{{
@@ -49,7 +49,7 @@ This section contains the sites RSS feeds.
   * *Name* = Name of RSS feed
   * *URL* = URL to the RSS feed
 
-*Note:* {{{<feeds>}}} can contain more than one {{{<feed>}}}
+*Note:* `<feeds>` can contain more than one `<feed>`
 
 == _Search_ ==
 This section contains the sites search feeds.
