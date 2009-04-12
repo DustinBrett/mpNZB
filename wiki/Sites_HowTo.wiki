@@ -49,7 +49,7 @@ This section contains the sites RSS feeds.
   * *Name* = Name of RSS feed
   * *URL* = URL to the RSS feed
 
-*Note:* `<feeds>` can contain more than one `<feed>`
+*Note:* `<feeds>` allows more than one `<feed>`
 
 == _Search_ ==
 This section contains the sites search feeds.
@@ -59,4 +59,4 @@ This section contains the sites search feeds.
   * *URL* = URL to the search feed.
     * This can contain replacement fields such as *`[MAX]`* or *`[QUERY]`*
 
-*Note:* `<search>` will contain more than one `<url>` in a future revision
+*Note:* `<search>` will allow more than one `<url>` in a future revision
