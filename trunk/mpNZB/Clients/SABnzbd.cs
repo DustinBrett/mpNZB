@@ -135,7 +135,7 @@ namespace mpNZB.Clients
         }
         else
         {
-          GUIPropertyManager.SetProperty("#Status", "Error parsing XML.");
+          GUIPropertyManager.SetProperty("#Status", "Error parsing XML");
         }
       }
       catch (Exception e) { MP.Error(e); }
@@ -174,7 +174,7 @@ namespace mpNZB.Clients
         }
         else
         {
-          GUIPropertyManager.SetProperty("#Status", "Error parsing XML.");
+          GUIPropertyManager.SetProperty("#Status", "Error parsing XML");
         }
       }
       catch (Exception e) { MP.Error(e); }
@@ -198,11 +198,11 @@ namespace mpNZB.Clients
             MP.ListItem(_List, nodeItem.SelectSingleNode("filename").InnerText, double.Parse(nodeItem.SelectSingleNode("mbleft").InnerText, nfi).ToString("N2") + " / " + double.Parse(nodeItem.SelectSingleNode("mb").InnerText, nfi).ToString("N2") + " MB", nodeItem.SelectSingleNode("id").InnerText, 3);
           }
 
-          GUIPropertyManager.SetProperty("#Status", "Queue Loaded.");
+          GUIPropertyManager.SetProperty("#Status", "Queue Loaded");
         }
         else
         {
-          GUIPropertyManager.SetProperty("#Status", "Error parsing XML.");
+          GUIPropertyManager.SetProperty("#Status", "Error parsing XML");
         }
       }
       catch (Exception e) { MP.Error(e); }
@@ -224,11 +224,11 @@ namespace mpNZB.Clients
         if (!(SendURL(CreateURL("api?mode=qstatus", "output=xml", false)).Contains(_List.ListItems[_List.SelectedListItemIndex].Label)))
         {
           Queue(_List, _GUI);
-          GUIPropertyManager.SetProperty("#Status", "Job deleted.");
+          GUIPropertyManager.SetProperty("#Status", "Job deleted");
         }
         else
         {
-          GUIPropertyManager.SetProperty("#Status", "Error deleting job.");
+          GUIPropertyManager.SetProperty("#Status", "Error deleting job");
         }
       }
     }
@@ -252,11 +252,11 @@ namespace mpNZB.Clients
         if (strResult == "ok\n")
         {
           tmrStatus.Enabled = true;
-          GUIPropertyManager.SetProperty("#Status", "Downloading.");
+          GUIPropertyManager.SetProperty("#Status", "Downloading");
         }
         else
         {
-          GUIPropertyManager.SetProperty("#Status", "Error downloading.");
+          GUIPropertyManager.SetProperty("#Status", "Error downloading");
         }
       }
     }
@@ -267,11 +267,11 @@ namespace mpNZB.Clients
       {
         if (SendURL(CreateURL("api?mode=pause", String.Empty, false)) == "ok\n")
         {
-          GUIPropertyManager.SetProperty("#Status", "Queue paused.");
+          GUIPropertyManager.SetProperty("#Status", "Queue paused");
         }
         else
         {
-          GUIPropertyManager.SetProperty("#Status", "Error pausing queue.");
+          GUIPropertyManager.SetProperty("#Status", "Error pausing queue");
         }
       }
       else
@@ -279,11 +279,11 @@ namespace mpNZB.Clients
         if (SendURL(CreateURL("api?mode=resume", String.Empty, false)) == "ok\n")
         {
           tmrStatus.Enabled = true;
-          GUIPropertyManager.SetProperty("#Status", "Queue resumed.");
+          GUIPropertyManager.SetProperty("#Status", "Queue resumed");
         }
         else
         {
-          GUIPropertyManager.SetProperty("#Status", "Error resuming queue.");
+          GUIPropertyManager.SetProperty("#Status", "Error resuming queue");
         }
       }
     }

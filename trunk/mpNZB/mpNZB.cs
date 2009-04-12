@@ -141,7 +141,7 @@ namespace mpNZB
     public override bool Init()
     {
       // Set "Status" label
-      GUIPropertyManager.SetProperty("#Status", "Idle.");
+      GUIPropertyManager.SetProperty("#Status", "Idle");
 
       // Load skin
       return Load(GUIGraphicsContext.Skin + @"\mpNZB.xml");
@@ -252,11 +252,11 @@ namespace mpNZB
             Site.AddItem(xmlNode, _List);
           }
 
-          GUIPropertyManager.SetProperty("#Status", "Found " + xmlNodes.Count.ToString() + " Items.");
+          GUIPropertyManager.SetProperty("#Status", "Found " + xmlNodes.Count.ToString() + " Items");
         }
         else
         {
-          GUIPropertyManager.SetProperty("#Status", "Error parsing XML.");
+          GUIPropertyManager.SetProperty("#Status", "Error parsing XML");
         }
       }
       catch (Exception e) { MP.Error(e); }
