@@ -76,7 +76,9 @@ This section contains the data needed to parse the RSS feeds.
 {{{
 <item type="(Type)">
         <title element="(Element)" />
-        <size type="(Type)" element="(Element)" />
+        <size type="(Type)" element="(Element)">
+                <regex input="(RegEx-Input)" replacement="(RegEx-Replace)"/>
+        </size>
         <url element="(Element)" />
 </item>
 }}}
@@ -86,11 +88,11 @@ This section contains the data needed to parse the RSS feeds.
       * 1 = Link to NZB/ZIP
       * 2 = Newzbin ID
     * *size*
-      * 1 = Link to NZB/ZIP
-      * 2 = Newzbin ID
+      * 1 = String
+      * 2 = Bytes
   * *(Element)*
-    * *title* = This identifies were to find the title field
-    * *size* = This identifies were to find the title field
-    * *url* = This identifies were to find the title field
+    * *title* = RSS element containing title information
+    * *size* = RSS element containing size information
+    * *url* = RSS element containing url information
 
 *Note:* `<search>` will allow more than one `<url>` in a future revision
