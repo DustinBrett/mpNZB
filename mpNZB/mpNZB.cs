@@ -1,4 +1,8 @@
 ﻿using System;
+using System.IO;
+using System.IO.Compression;
+using System.Net;
+using System.Text;
 using System.Xml;
 
 using MediaPortal.GUI.Library;
@@ -240,8 +244,13 @@ namespace mpNZB
     {
       try
       {
+        HttpWebRequest webReq = (HttpWebRequest)WebRequest.Create(_URL);
+        webReq.Headers.Add(HttpRequestHeader.AcceptEncoding, "gzip");
+        HttpWebResponse webResp = (HttpWebResponse)webReq.GetResponse();
+
         XmlDocument xmlDoc = new XmlDocument();
-        xmlDoc.Load(new XmlTextReader(_URL));
+        xmlDoc.Load(((webResp.ContentEncoding.ToLower().Contains("gzip")) ? new GZipStream(webResp.GetResponseStream(), CompressionMode.Decompress, false) : webResp.GetResponseStream()));
+        webResp.Close();
 
         if (xmlDoc.SelectSingleNode("rss[@version='2.0']") != null)
         {

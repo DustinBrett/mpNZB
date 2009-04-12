@@ -170,7 +170,7 @@ namespace mpNZB
                 if (xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size/regex") != null)
                 {
                   Match mSize = Regex.Match(strSize, xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size/regex").Attributes["input"].InnerText);
-                  if (mSize.Success) { strSize = mSize.Groups[1].Value + " " + mSize.Groups[2].Value; }
+                  if ((mSize.Success) && (mSize.Groups[1].Value.Length > 0) && (mSize.Groups[2].Value.Length > 0)) { strSize = mSize.Groups[1].Value + " " + mSize.Groups[2].Value; } else { strSize = String.Empty; }
                 }
                 strSize = Regex.Replace(strSize.Replace("Byte", "B").Replace("KiB", "KB").Replace("MiB", "MB").Replace("GiB", "GB").Replace("TiB", "TB"), "[(.|,)]", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.ToCharArray()[0].ToString());
                 break;
