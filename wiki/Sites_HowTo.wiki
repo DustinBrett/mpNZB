@@ -59,4 +59,4 @@ This section contains the sites search feeds.
   * *URL* = URL to the search feed.
     * This can contain replacement fields such as *`[MAX]`* or *`[QUERY]`*
 
-*Note:* `<search>` can contain more than one `<url>`
+*Note:* `<search>` will contain more than one `<url>` in a future revision
