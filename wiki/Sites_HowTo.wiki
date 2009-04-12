@@ -46,6 +46,5 @@ This section is for adding feeds that the site has.
 
 {{{<feed name="}}}*{{{Name}}}*{{{">}}}*{{{URL}}}*{{{</feed>}}}
 
-=== Data ===
   * *Name* = Name of RSS feed
   * *URL* = URL to the RSS feed
