@@ -3,23 +3,23 @@
 
 == General ==
   * Toggle `btnPause` if `Status` is paused
-  * Redo SABnzbd API addfile
-  * {{{ReadRSS}}} GZIP support
+  * Redo SABnzbd addfile API
+  * `ReadRSS` GZIP support
   * Multisearch
     * Add everything then sort by `pubDate`
     * `Math.Round(MaxResults / Sites.url.Count)`
-    * `FeedURL` into `List<string> FeedURLs`
-  * Add HTML support to Sites.xml
+    * `FeedURL` into `List<string> FeedURL`
+  * Add `<HTML>` support to Sites.xml
     * Using `RegEx` for most of the code
 
 == Future Features: ==
   * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
   * NZB streaming
-  * SABnzbd history view
+  * SABnzbd history viewer
   * Monitor RSS feeds
 
 == Sites: ==
-  * Binsearch (Need GZIP)
+  * Binsearch
   * TvNZB Searching
   * [http://mytvnzb.foechoer.be/ MyTvNZB]
   * NZBsRus
