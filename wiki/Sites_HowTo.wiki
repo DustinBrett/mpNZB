@@ -5,8 +5,8 @@
 This document will cover the specifications for adding a site to the Sites.xml file included with mpNZB. This Sites.xml file contains everything needed to add a site that supports RSS.
 
 = Special Fields =
-  * *[MAX]* = Replaced with maximum results per feed.
-  * *[QUERY]* = Replaced with search string.
+  * *{{{[MAX]}}}* = Replaced with maximum results per feed.
+  * *{{{[QUERY]}}}* = Replaced with search string.
 
 = Example Site =
 {{{
@@ -39,8 +39,7 @@ This document will cover the specifications for adding a site to the Sites.xml f
 </site>
 }}}
 
-== {{{<feeds></feeds>}}} ==
-
+== _Feeds_ ==
 This section is for adding feeds that the site has.
 
-{{{<feed name="*Name of feed*">*URL of feed*</feed>}}}
+{{{<feed name="}}}*{{{Name}}}*{{{">}}}*{{{URL}}}*{{{</feed>}}}
