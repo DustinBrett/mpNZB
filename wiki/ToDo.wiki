@@ -22,7 +22,6 @@
     * {{{FeedURL}}} into {{{List<string> FeedURLs}}}
 
 == Sites: ==
-  * Custom URL's
   * Binsearch (Need GZIP)
   * TvNZB Searching
   * [http://mytvnzb.foechoer.be/ MyTvNZB]
