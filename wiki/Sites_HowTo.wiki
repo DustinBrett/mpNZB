@@ -42,9 +42,17 @@ These fields will be replaced with the correct data automatically by mpNZB.
 }}}
 
 == _Feeds_ ==
-This section is for adding feeds that the site has.
+This section contains the sites RSS feeds.
 
 {{{<feed name="}}}*{{{Name}}}*{{{">}}}*{{{URL}}}*{{{</feed>}}}
+
+  * *Name* = Name of RSS feed
+  * *URL* = URL to the RSS feed
+
+== _Search_ ==
+This section contains the sites search feeds.
+
+{{{<url>}}}*{{{URL}}}*{{{</url>}}}
 
   * *Name* = Name of RSS feed
   * *URL* = URL to the RSS feed
