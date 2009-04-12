@@ -81,7 +81,9 @@ This section contains the data needed to parse the RSS feeds.
 </item>
 }}}
 
-  * *URL* = URL to the search feed.
-    * This can contain replacement fields such as *`[MAX]`* or *`[QUERY]`*
+  * item
+    * *Type* = This identifies what method of downloading should be used
+      * 1 = Link to NZB/ZIP
+      * 2 = Newzbin ID
 
 *Note:* `<search>` will allow more than one `<url>` in a future revision
