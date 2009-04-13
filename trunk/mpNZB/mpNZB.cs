@@ -262,6 +262,16 @@ namespace mpNZB
             Site.AddItem(xmlNode, _List);
           }
 
+          switch (Site.SortBy)
+          {
+            case "Title":
+              _List.ListItems.Sort(delegate(GUIListItem _Item1, GUIListItem _Item2) { return _Item1.Label.CompareTo(_Item2.Label); });
+              break;
+            case "Date":
+              _List.ListItems.Sort(delegate(GUIListItem _Item1, GUIListItem _Item2) { return _Item1.DVDLabel.CompareTo(_Item2.DVDLabel); });
+              break;
+          }
+
           GUIPropertyManager.SetProperty("#Status", "Found " + xmlNodes.Count.ToString() + " Items");
         }
         else

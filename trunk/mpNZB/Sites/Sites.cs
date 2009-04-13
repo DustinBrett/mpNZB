@@ -14,26 +14,10 @@ namespace mpNZB
 
     #region Definitions
 
-    private string _SiteName = String.Empty;
-    public string SiteName
-    {
-      get { return _SiteName; }
-      set { _SiteName = value; }
-    }
-
-    private string _FeedName = String.Empty;
-    public string FeedName
-    {
-      get { return _FeedName; }
-      set { _FeedName = value; }
-    }
-
-    private string _FeedURL = String.Empty;
-    public string FeedURL
-    {
-      get { return _FeedURL; }
-      set { _FeedURL = value; }
-    }
+    public string SiteName = String.Empty;
+    public string FeedName = String.Empty;
+    public string FeedURL = String.Empty;
+    public string SortBy = String.Empty;
 
     private int MaxResults;
 
@@ -83,6 +67,7 @@ namespace mpNZB
 
         Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
         MaxResults = mpSettings.GetValueAsInt("#Sites", "MaxResults", 50);
+        SortBy = mpSettings.GetValue("#Sites", "SortBy");
         mpSettings.Dispose();
       }
       catch (Exception e) { MP.Error(e); }
@@ -191,7 +176,9 @@ namespace mpNZB
             }
           }
 
-          MP.ListItem(_List, ((xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title[@attribute]") != null) ? _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["element"].InnerText].Attributes[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["attribute"].InnerText].InnerText : _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["element"].InnerText].InnerText).Replace("&quot;", "\"").Replace("&amp;", "&").Replace("&lt;", "<").Replace("&gt;", ">"), strSize, strURL, int.Parse(xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item").Attributes["type"].InnerText));
+          DateTime dtPubDate = DateTime.ParseExact(_Node["pubDate"].InnerText.Replace("GMT", "+0000"), "ddd, dd MMM yyyy HH:mm:ss zzz", CultureInfo.InvariantCulture);
+
+          MP.ListItem(_List, ((xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title[@attribute]") != null) ? _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["element"].InnerText].Attributes[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["attribute"].InnerText].InnerText : _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["element"].InnerText].InnerText).Replace("&quot;", "\"").Replace("&amp;", "&").Replace("&lt;", "<").Replace("&gt;", ">"), strSize, dtPubDate.Ticks.ToString(), strURL, int.Parse(xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item").Attributes["type"].InnerText));
         }
         else
         {

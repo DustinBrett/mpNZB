@@ -76,7 +76,7 @@ namespace mpNZB
 
     #region Control
 
-    public void ListItem(GUIListControl _List, string _Label, string _Label2, string _Path, int _ItemId)
+    public void ListItem(GUIListControl _List, string _Label, string _Label2, string _DVDLabel, string _Path, int _ItemId)
     {
       // Init Item
       GUIListItem Item = new GUIListItem();
@@ -84,8 +84,9 @@ namespace mpNZB
       // Set Item Information
       Item.Label = _Label;
       Item.Label2 = _Label2;
+      Item.DVDLabel = _DVDLabel;
       Item.Path = _Path;
-      Item.ItemId = _ItemId;
+      Item.ItemId = _ItemId;      
 
       // Add Item to List
       _List.Add(Item);
