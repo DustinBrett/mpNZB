@@ -4,6 +4,11 @@
 = Introduction =
 This document will cover the specifications for adding a site to the Sites.xml file included with mpNZB. This Sites.xml file contains everything needed to add a site that supports RSS.
 
+= Notes =
+  * `&` has to be replaced with `&amp;`
+  * `GZIP` compressed RSS feeds are supported
+  * `<feeds>`, `<search>` and `<size>` can be removed when not needed
+
 = Replacement Fields =
 These fields will be replaced with the correct data automatically by mpNZB.
 
