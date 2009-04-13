@@ -25,7 +25,7 @@ namespace mpNZB
       // Client Settings
       // ##################################################
       string strGrabber = mpSettings.GetValue("#Client", "Grabber");
-      cmbGrabber.Text = ((strGrabber.Length > 0) ? strGrabber : "SABnzbd");      
+      cmbGrabber.Text = ((strGrabber.Length > 0) ? strGrabber : "SABnzbd");
 
       string strHost = mpSettings.GetValue("#Client", "Host");
       string strPort = mpSettings.GetValue("#Client", "Port");
@@ -45,6 +45,8 @@ namespace mpNZB
       // Site Settings
       // ##################################################
       txtMaxResults.Text = mpSettings.GetValueAsInt("#Sites", "MaxResults", 50).ToString();
+      string strSortBy = mpSettings.GetValue("#Sites", "SortBy");
+      cmbSort.Text = ((strSortBy.Length > 0) ? strSortBy : "Default");
       // ##################################################
 
       mpSettings.Dispose();
@@ -81,6 +83,7 @@ namespace mpNZB
       int intMaxResults = 50;
       int.TryParse(txtMaxResults.Text, out intMaxResults);
       mpSettings.SetValue("#Sites", "MaxResults", intMaxResults);
+      mpSettings.SetValue("#Sites", "SortBy", cmbSort.Text);
       // ##################################################
 
       mpSettings.Dispose();

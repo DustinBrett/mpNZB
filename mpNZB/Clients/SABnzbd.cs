@@ -201,7 +201,7 @@ namespace mpNZB.Clients
 
           foreach (XmlNode nodeItem in xmlDoc.SelectNodes("queue/jobs/job"))
           {
-            MP.ListItem(_List, nodeItem.SelectSingleNode("filename").InnerText, double.Parse(nodeItem.SelectSingleNode("mbleft").InnerText, nfi).ToString("N2") + " / " + double.Parse(nodeItem.SelectSingleNode("mb").InnerText, nfi).ToString("N2") + " MB", nodeItem.SelectSingleNode("id").InnerText, 3);
+            MP.ListItem(_List, nodeItem.SelectSingleNode("filename").InnerText, double.Parse(nodeItem.SelectSingleNode("mbleft").InnerText, nfi).ToString("N2") + " / " + double.Parse(nodeItem.SelectSingleNode("mb").InnerText, nfi).ToString("N2") + " MB", String.Empty, nodeItem.SelectSingleNode("id").InnerText, 3);
           }
 
           GUIPropertyManager.SetProperty("#Status", "Queue Loaded");
