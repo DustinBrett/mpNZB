@@ -20,5 +20,3 @@
 == Sites: ==
   * [http://www.tvnzb.com/ TvNZB] (Searching)
   * [http://mytvnzb.foechoer.be/ MyTvNZB]
-  * [http://www.nzbsrus.com/ NZBsRus]
-  * [http://nzbs.org/ NZBS.org]
