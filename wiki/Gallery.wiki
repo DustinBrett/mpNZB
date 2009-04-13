@@ -1,4 +1,5 @@
 #summary Gallery of screenshots
+#labels Featured,Phase-Design
 
 = Screenshots =
 
