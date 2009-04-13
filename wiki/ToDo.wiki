@@ -17,8 +17,11 @@
 == Future Features: ==
   * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
   * NZB streaming
+    * [http://code.google.com/p/stream-unrar/ stream-unrar]
+    * [http://www.nzbplayer.com/ NZBPlayer]
   * SABnzbd download history
   * Monitor RSS feeds
+    * Auto search/download
 
 == Sites: ==
   * [http://www.tvnzb.com/ TvNZB] (Searching)
