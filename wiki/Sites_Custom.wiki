@@ -75,7 +75,7 @@ The information needed to replace `[I]` and `[H]` can be found at [http://www.nz
 }}}
 
 == [http://mytvnzb.foechoer.be/ MyTvNZB] ==
-The information needed to replace `[ID]` can be found at [http://mytvnzb.foechoer.be/] once you select the sites you want to monitor and press `[Generate Feed]`.
+The information needed to replace `[ID]` can be found at [http://mytvnzb.foechoer.be/] once you select the check boxes of the sites you want to monitor and press `[Generate Feed]`.
 
 {{{
 <site name="MyTvNZB">
