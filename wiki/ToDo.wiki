@@ -1,13 +1,15 @@
 #summary To-Do list for project
 #labels Phase-Requirements,Phase-Design
 
-== General ==
-  * Toggle `btnPause` if `Status` is paused
-  * Redo SABnzbd addfile API
+== Important Features ==
   * Multisearch
     * Add everything then sort by `pubDate`
     * `Math.Round(MaxResults / Sites.url.Count)`
     * `FeedURL` into `List<string> FeedURL`
+    * Create entry in [http://code.google.com/p/mpnzb/source/browse/trunk/mpNZB/Sites/Sites.xml Sites.xml] called *Multisearch*
+
+== General ==
+  * Toggle `btnPause` if `Status` is paused
   * Add `<HTML>` support to Sites.xml
     * Using `RegEx` for most of the code
 
@@ -19,4 +21,3 @@
 
 == Sites: ==
   * [http://www.tvnzb.com/ TvNZB] (Searching)
-  * [http://mytvnzb.foechoer.be/ MyTvNZB]
