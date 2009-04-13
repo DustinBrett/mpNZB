@@ -146,25 +146,49 @@ namespace mpNZB
         if (xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item") != null)
         {
           string strSize = String.Empty;
+          double dblSize = 0;
+
           if (xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size") != null)
           {
+            NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;            
+
             switch (int.Parse(xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size").Attributes["type"].InnerText))
-            {
+            {               
               case 1:
-                strSize = ((xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size[@attribute]") != null) ? _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size").Attributes["element"].InnerText].Attributes[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size").Attributes["attribute"].InnerText].InnerText : _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size").Attributes["element"].InnerText].InnerText);
                 if (xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size/regex") != null)
                 {
-                  Match mSize = Regex.Match(strSize, xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size/regex").Attributes["input"].InnerText);
-                  if ((mSize.Success) && (mSize.Groups[1].Value.Length > 0) && (mSize.Groups[2].Value.Length > 0)) { strSize = mSize.Groups[1].Value + " " + mSize.Groups[2].Value; } else { strSize = String.Empty; }
+                  Match mSize = Regex.Match(((xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size[@attribute]") != null) ? _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size").Attributes["element"].InnerText].Attributes[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size").Attributes["attribute"].InnerText].InnerText : _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size").Attributes["element"].InnerText].InnerText), xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size/regex").Attributes["input"].InnerText);
+                  if ((mSize.Success) && (mSize.Groups[1].Value.Length > 0) && (mSize.Groups[2].Value.Length > 0))
+                  {
+                    dblSize = double.Parse(mSize.Groups[1].Value, nfi);
+                    switch (mSize.Groups[2].Value.Replace("KiB", "KB").Replace("MiB", "MB").Replace("GiB", "GB").Replace("TiB", "TB"))
+                    {
+                      case "KB":
+                        dblSize = (dblSize * 1024);
+                        break;
+                      case "MB":
+                        dblSize = ((dblSize * 1024) * 1024);
+                        break;
+                      case "GB":
+                        dblSize = (((dblSize * 1024) * 1024) * 1024);
+                        break;
+                      case "TB":
+                        dblSize = ((((dblSize * 1024) * 1024) * 1024) * 1024);
+                        break;
+                    }
+                  }
                 }
-                strSize = Regex.Replace(strSize.Replace("Byte", "B").Replace("KiB", "KB").Replace("MiB", "MB").Replace("GiB", "GB").Replace("TiB", "TB"), "[(.|,)]", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.ToCharArray()[0].ToString());
                 break;
               case 2:
-                double dblSize = ((xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size[@attribute]") != null) ? double.Parse(_Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size").Attributes["element"].InnerText].Attributes[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size").Attributes["attribute"].InnerText].InnerText) : double.Parse(_Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size").Attributes["element"].InnerText].InnerText));
-                if (dblSize > 0) { dblSize = ((dblSize / 1024) / 1024); }
-                strSize = ((dblSize < 1024) ? ((dblSize < 1) ? (dblSize * 1024).ToString("N2") + " KB" : dblSize.ToString("N2") + " MB") : (dblSize / 1024).ToString("N2") + " GB");
+                dblSize = ((xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size[@attribute]") != null) ? double.Parse(_Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size").Attributes["element"].InnerText].Attributes[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size").Attributes["attribute"].InnerText].InnerText, nfi) : double.Parse(_Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size").Attributes["element"].InnerText].InnerText, nfi));
                 break;
             }
+
+            if (dblSize < 1024) { strSize = dblSize.ToString() + " B"; }
+            if (dblSize < 1048576) { strSize = (dblSize / 1024).ToString() + " KB"; }
+            if (dblSize < 1073741824) { strSize = ((dblSize / 1024) / 1024).ToString() + " MB"; }
+            if (dblSize < 1099511627776) { strSize = (((dblSize / 1024) / 1024) / 1024).ToString() + " GB"; }
+            if (dblSize < 1125899906842624) { strSize = ((((dblSize / 1024) / 1024) / 1024) / 1024).ToString() + " TB"; }
           }
 
           string strURL = ((xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/url[@attribute]") != null) ? _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/url").Attributes["element"].InnerText].Attributes[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/url").Attributes["attribute"].InnerText].InnerText : _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/url").Attributes["element"].InnerText].InnerText);
@@ -176,9 +200,7 @@ namespace mpNZB
             }
           }
 
-          DateTime dtPubDate = DateTime.ParseExact(_Node["pubDate"].InnerText.Replace("GMT", "+0000"), "ddd, dd MMM yyyy HH:mm:ss zzz", CultureInfo.InvariantCulture);
-
-          MP.ListItem(_List, ((xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title[@attribute]") != null) ? _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["element"].InnerText].Attributes[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["attribute"].InnerText].InnerText : _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["element"].InnerText].InnerText).Replace("&quot;", "\"").Replace("&amp;", "&").Replace("&lt;", "<").Replace("&gt;", ">"), strSize, dtPubDate.Ticks.ToString(), strURL, int.Parse(xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item").Attributes["type"].InnerText));
+          MP.ListItem(_List, ((xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title[@attribute]") != null) ? _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["element"].InnerText].Attributes[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["attribute"].InnerText].InnerText : _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["element"].InnerText].InnerText).Replace("&quot;", "\"").Replace("&amp;", "&").Replace("&lt;", "<").Replace("&gt;", ">"), strSize, DateTime.ParseExact(_Node["pubDate"].InnerText.Replace("GMT", "+0000"), "ddd, dd MMM yyyy HH:mm:ss zzz", CultureInfo.InvariantCulture), (long)dblSize, strURL, int.Parse(xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item").Attributes["type"].InnerText));
         }
         else
         {
