@@ -267,8 +267,11 @@ namespace mpNZB
             case "Title":
               _List.ListItems.Sort(delegate(GUIListItem _Item1, GUIListItem _Item2) { return _Item1.Label.CompareTo(_Item2.Label); });
               break;
-            case "Date":
-              _List.ListItems.Sort(delegate(GUIListItem _Item1, GUIListItem _Item2) { return _Item1.DVDLabel.CompareTo(_Item2.DVDLabel); });
+            case "DateTime":
+              _List.ListItems.Sort(delegate(GUIListItem _Item1, GUIListItem _Item2) { return _Item1.FileInfo.CreationTime.CompareTo(_Item2.FileInfo.CreationTime); });
+              break;
+            case "Size":
+              _List.ListItems.Sort(delegate(GUIListItem _Item1, GUIListItem _Item2) { return _Item1.FileInfo.Length.CompareTo(_Item2.FileInfo.Length); });
               break;
           }
 

@@ -288,7 +288,8 @@
       this.cmbSort.Items.AddRange(new object[] {
             "Default",
             "Title",
-            "Date"});
+            "DateTime",
+            "Size"});
       this.cmbSort.Location = new System.Drawing.Point(102, 45);
       this.cmbSort.Name = "cmbSort";
       this.cmbSort.Size = new System.Drawing.Size(162, 21);
