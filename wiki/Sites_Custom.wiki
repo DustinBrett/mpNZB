@@ -6,6 +6,8 @@
 This page is were I put sites that are known to work with Sites.xml but require a special string be placed in the URL so they are not included with the default Sites.xml file. In the future this site may be not needed once I can figure out how to grab this information on the fly.
 
 == [http://www.nzbs.org/ NZBs.org] ==
+The information needed to replace `[I]` and `[H]` can be found at [http://nzbs.org/index.php?action=rss].
+
 {{{
 	<site name="NZBs">
 		<feeds>
