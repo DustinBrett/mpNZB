@@ -2,6 +2,8 @@
 #labels Phase-Requirements,Phase-Design
 
 == Important Features ==
+  * Fix sorting code (DateTime)
+  * Queue priority management
   * Search history
   * Multisearch
     * Add everything then sort by `pubDate`
