@@ -1,5 +1,5 @@
 #summary Instructions on adding a site to Sites.xml
-#labels Phase-Implementation
+#labels Phase-Implementation,Featured
 
 = Introduction =
 This document will cover the specifications for adding a site to the Sites.xml file included with mpNZB. This Sites.xml file contains everything needed to add a site that supports RSS.
