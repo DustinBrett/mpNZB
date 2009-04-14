@@ -55,6 +55,9 @@ namespace mpNZB
       // Display Dialog
       Dialog.DoModal(GUIWindowManager.ActiveWindow);
 
+      // Remove Item #
+      _Items[Dialog.SelectedLabel].Label = _Items[Dialog.SelectedLabel].Label.Substring(_Items[Dialog.SelectedLabel].Label.IndexOf(" ") + 1, _Items[Dialog.SelectedLabel].Label.Length - (_Items[Dialog.SelectedLabel].Label.IndexOf(" ") + 1));
+
       // Return Result
       return ((Dialog.SelectedLabel != -1) ? _Items[Dialog.SelectedLabel] : null);
     }
@@ -84,6 +87,7 @@ namespace mpNZB
       // Set Item Information
       Item.Label = _Label;
       Item.Label2 = _Label2;
+      Item.FileInfo = new MediaPortal.Util.FileInformation();
       Item.FileInfo.CreationTime = _CreationTime;
       Item.FileInfo.Length = _Length;
       Item.Path = _Path;

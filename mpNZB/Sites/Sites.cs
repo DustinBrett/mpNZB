@@ -17,7 +17,6 @@ namespace mpNZB
     public string SiteName = String.Empty;
     public string FeedName = String.Empty;
     public string FeedURL = String.Empty;
-    public string SortBy = String.Empty;
 
     private int MaxResults;
 
@@ -57,7 +56,7 @@ namespace mpNZB
           GUIListItem _Item = MP.Menu(_Items, "Select Site");
           if (_Item != null)
           {
-            SiteName = _Item.Label.Substring(_Item.Label.IndexOf(" ") + 1, _Item.Label.Length - (_Item.Label.IndexOf(" ") + 1));
+            SiteName = _Item.Label;
           }
         }
         else
@@ -67,7 +66,6 @@ namespace mpNZB
 
         Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
         MaxResults = mpSettings.GetValueAsInt("#Sites", "MaxResults", 50);
-        SortBy = mpSettings.GetValue("#Sites", "SortBy");
         mpSettings.Dispose();
       }
       catch (Exception e) { MP.Error(e); }
@@ -101,7 +99,7 @@ namespace mpNZB
           GUIListItem _Item = MP.Menu(_Items, "Select Feed");
           if (_Item != null)
           {
-            FeedName = _Item.Label.Substring(_Item.Label.IndexOf(" ") + 1, _Item.Label.Length - (_Item.Label.IndexOf(" ") + 1));
+            FeedName = _Item.Label;
             FeedURL = _Item.Path.Replace("[MAX]", MaxResults.ToString());
           }
         }
@@ -184,11 +182,11 @@ namespace mpNZB
                 break;
             }
 
-            if (dblSize < 1024) { strSize = dblSize.ToString() + " B"; }
-            if (dblSize < 1048576) { strSize = (dblSize / 1024).ToString() + " KB"; }
-            if (dblSize < 1073741824) { strSize = ((dblSize / 1024) / 1024).ToString() + " MB"; }
-            if (dblSize < 1099511627776) { strSize = (((dblSize / 1024) / 1024) / 1024).ToString() + " GB"; }
-            if (dblSize < 1125899906842624) { strSize = ((((dblSize / 1024) / 1024) / 1024) / 1024).ToString() + " TB"; }
+            if (dblSize < 1024) { strSize = dblSize.ToString("N2") + " B"; }
+            else if (dblSize < 1048576) { strSize = (dblSize / 1024).ToString("N2") + " KB"; }
+            else if (dblSize < 1073741824) { strSize = ((dblSize / 1024) / 1024).ToString("N2") + " MB"; }
+            else if (dblSize < 1099511627776) { strSize = (((dblSize / 1024) / 1024) / 1024).ToString("N2") + " GB"; }
+            else if (dblSize < 1125899906842624) { strSize = ((((dblSize / 1024) / 1024) / 1024) / 1024).ToString("N2") + " TB"; }
           }
 
           string strURL = ((xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/url[@attribute]") != null) ? _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/url").Attributes["element"].InnerText].Attributes[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/url").Attributes["attribute"].InnerText].InnerText : _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/url").Attributes["element"].InnerText].InnerText);
