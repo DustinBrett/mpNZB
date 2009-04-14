@@ -3,6 +3,7 @@
 
 == Important Features ==
   * Search history
+  * Double-check new `Search`/`FeedURL` code
 
 == General ==
   * Toggle `btnPause` if `Status` is paused
