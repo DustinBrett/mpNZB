@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Net;
@@ -236,6 +237,45 @@ namespace mpNZB
       Client.PluginVisible = false;
     }
 
+    protected override void OnShowContextMenu()
+    {
+      if (lstItems.Count > 1)
+      {
+        List<GUIListItem> _Items = new List<GUIListItem>();
+
+        _Items.Add(new GUIListItem("Name"));
+        _Items.Add(new GUIListItem("Date"));
+        _Items.Add(new GUIListItem("Size"));
+
+        GUIListItem _Method = MP.Menu(_Items, "Sort By");
+        if (_Method != null)
+        {
+          _Items = new List<GUIListItem>();
+
+          _Items.Add(new GUIListItem("Ascending"));
+          _Items.Add(new GUIListItem("Descending"));
+
+          GUIListItem _Order = MP.Menu(_Items, "Sort Order");
+          if (_Order != null)
+          {
+            switch (_Method.Label)
+            {
+              case "Name":
+                lstItems.ListItems.Sort(delegate(GUIListItem _Item1, GUIListItem _Item2) { return ((_Order.Label == "Ascending") ? _Item1.Label.CompareTo(_Item2.Label) : _Item2.Label.CompareTo(_Item1.Label)); });
+                break;
+              case "Date":
+                lstItems.ListItems.Sort(delegate(GUIListItem _Item1, GUIListItem _Item2) { return ((_Order.Label == "Ascending") ? _Item1.FileInfo.CreationTime.CompareTo(_Item2.FileInfo.CreationTime) : _Item2.FileInfo.CreationTime.CompareTo(_Item1.FileInfo.CreationTime)); });
+                break;
+              case "Size":
+                lstItems.ListItems.Sort(delegate(GUIListItem _Item1, GUIListItem _Item2) { return ((_Order.Label == "Ascending") ? _Item1.FileInfo.Length.CompareTo(_Item2.FileInfo.Length) : _Item2.FileInfo.Length.CompareTo(_Item1.FileInfo.Length)); });
+                break;
+            }
+            GUIPropertyManager.SetProperty("#Status", "Sorted by " + _Method.Label + " (" + _Order.Label + ")");
+          }
+        }
+      }
+    }
+
     #endregion
 
     #region Functions
@@ -260,19 +300,6 @@ namespace mpNZB
           foreach (XmlNode xmlNode in xmlNodes)
           {
             Site.AddItem(xmlNode, _List);
-          }
-
-          switch (Site.SortBy)
-          {
-            case "Title":
-              _List.ListItems.Sort(delegate(GUIListItem _Item1, GUIListItem _Item2) { return _Item1.Label.CompareTo(_Item2.Label); });
-              break;
-            case "DateTime":
-              _List.ListItems.Sort(delegate(GUIListItem _Item1, GUIListItem _Item2) { return _Item1.FileInfo.CreationTime.CompareTo(_Item2.FileInfo.CreationTime); });
-              break;
-            case "Size":
-              _List.ListItems.Sort(delegate(GUIListItem _Item1, GUIListItem _Item2) { return _Item1.FileInfo.Length.CompareTo(_Item2.FileInfo.Length); });
-              break;
           }
 
           GUIPropertyManager.SetProperty("#Status", "Found " + xmlNodes.Count.ToString() + " Items");
