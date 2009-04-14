@@ -229,13 +229,21 @@ namespace mpNZB.Clients
       if (_List.SelectedListItemIndex != 0)
       {
         _Items.Add(new GUIListItem("Move Up"));
+        if (_List.Count > 1)
+        {
+          _Items.Add(new GUIListItem("Move to Top"));
+        }
       }
-      if (_List.SelectedListItemIndex != _List.Count)
+      if (_List.SelectedListItemIndex != (_List.Count - 1))
       {
         _Items.Add(new GUIListItem("Move Down"));
+        if (_List.Count > 1)
+        {
+          _Items.Add(new GUIListItem("Move to Bottom"));
+        }
       }
       _Items.Add(new GUIListItem("Delete Job"));
-      _Items.Add(new GUIListItem("Change Categories"));
+      _Items.Add(new GUIListItem("Change Category"));
 
       GUIListItem _Option = MP.Menu(_Items, "Job Options");
       if (_Option != null)
@@ -248,10 +256,16 @@ namespace mpNZB.Clients
           case "Move Down":
             SendURL(CreateURL("queue/switch?uid1=" + _List.ListItems[_List.SelectedListItemIndex].Path + "&uid2=" + _List.ListItems[_List.SelectedListItemIndex + 1].Path, String.Empty, false));
             break;
+          case "Move to Top":
+            SendURL(CreateURL("queue/switch?uid1=" + _List.ListItems[_List.SelectedListItemIndex].Path + "&uid2=" + _List.ListItems[0].Path, String.Empty, false));
+            break;
+          case "Move to Bottom":
+            SendURL(CreateURL("queue/switch?uid1=" + _List.ListItems[_List.SelectedListItemIndex].Path + "&uid2=" + _List.ListItems[_List.Count - 1].Path, String.Empty, false));
+            break;
           case "Delete Job":
             SendURL(CreateURL("queue/delete?uid=" + _List.ListItems[_List.SelectedListItemIndex].Path, String.Empty, false));
             break;
-          case "Change Categories":
+          case "Change Category":
             SendURL(CreateURL("queue/change_cat?nzo_id=" + _List.ListItems[_List.SelectedListItemIndex].Path + "&cat=" + SelectCategory(), String.Empty, false));
             break;
         }
