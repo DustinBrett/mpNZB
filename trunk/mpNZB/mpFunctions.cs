@@ -55,11 +55,17 @@ namespace mpNZB
       // Display Dialog
       Dialog.DoModal(GUIWindowManager.ActiveWindow);
 
-      // Remove Item #
-      _Items[Dialog.SelectedLabel].Label = _Items[Dialog.SelectedLabel].Label.Substring(_Items[Dialog.SelectedLabel].Label.IndexOf(" ") + 1, _Items[Dialog.SelectedLabel].Label.Length - (_Items[Dialog.SelectedLabel].Label.IndexOf(" ") + 1));
+      // Check if Item Selected
+      if (Dialog.SelectedLabel != -1)
+      {
+        // Remove Item #
+        _Items[Dialog.SelectedLabel].Label = _Items[Dialog.SelectedLabel].Label.Substring(_Items[Dialog.SelectedLabel].Label.IndexOf(" ") + 1, _Items[Dialog.SelectedLabel].Label.Length - (_Items[Dialog.SelectedLabel].Label.IndexOf(" ") + 1));
 
-      // Return Result
-      return ((Dialog.SelectedLabel != -1) ? _Items[Dialog.SelectedLabel] : null);
+        // Return Result
+        return _Items[Dialog.SelectedLabel];
+      }
+            
+      return null;
     }
 
     public string Keyboard()
