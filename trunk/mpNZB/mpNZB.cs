@@ -182,7 +182,7 @@ namespace mpNZB
             Client.Download(lstItems.ListItems[lstItems.SelectedListItemIndex]);
             break;
           case 3:
-            Client.Delete(lstItems, this);
+            Client.QueueItem(lstItems, this);
             break;
         }
       }

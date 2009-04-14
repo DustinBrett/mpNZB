@@ -222,20 +222,40 @@ namespace mpNZB.Clients
       }
     }
 
-    public void Delete(GUIListControl _List, GUIWindow _GUI)
+    public void QueueItem(GUIListControl _List, GUIWindow _GUI)
     {
-      if (MP.YesNo("Delete file?", _List.ListItems[_List.SelectedListItemIndex].Label))
+      List<GUIListItem> _Items = new List<GUIListItem>();
+
+      if (_List.SelectedListItemIndex != 0)
       {
-        SendURL(CreateURL("queue/delete?uid=" + _List.ListItems[_List.SelectedListItemIndex].Path, String.Empty, false));
-        if (!(SendURL(CreateURL("api?mode=qstatus", "output=xml", false)).Contains(_List.ListItems[_List.SelectedListItemIndex].Label)))
+        _Items.Add(new GUIListItem("Move Up"));
+      }
+      if (_List.SelectedListItemIndex != _List.Count)
+      {
+        _Items.Add(new GUIListItem("Move Down"));
+      }
+      _Items.Add(new GUIListItem("Delete Job"));
+      _Items.Add(new GUIListItem("Change Categories"));
+
+      GUIListItem _Option = MP.Menu(_Items, "Job Options");
+      if (_Option != null)
+      {
+        switch (_Option.Label)
         {
-          Queue(_List, _GUI);
-          GUIPropertyManager.SetProperty("#Status", "Job deleted");
+          case "Move Up":
+            SendURL(CreateURL("queue/switch?uid1=" + _List.ListItems[_List.SelectedListItemIndex].Path + "&uid2=" + _List.ListItems[_List.SelectedListItemIndex - 1].Path, String.Empty, false));
+            break;
+          case "Move Down":
+            SendURL(CreateURL("queue/switch?uid1=" + _List.ListItems[_List.SelectedListItemIndex].Path + "&uid2=" + _List.ListItems[_List.SelectedListItemIndex + 1].Path, String.Empty, false));
+            break;
+          case "Delete Job":
+            SendURL(CreateURL("queue/delete?uid=" + _List.ListItems[_List.SelectedListItemIndex].Path, String.Empty, false));
+            break;
+          case "Change Categories":
+            SendURL(CreateURL("queue/change_cat?nzo_id=" + _List.ListItems[_List.SelectedListItemIndex].Path + "&cat=" + SelectCategory(), String.Empty, false));
+            break;
         }
-        else
-        {
-          GUIPropertyManager.SetProperty("#Status", "Error deleting job");
-        }
+        Queue(_List, _GUI);
       }
     }
 
