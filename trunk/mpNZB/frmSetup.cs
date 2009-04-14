@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Xml;
 
 using MediaPortal.Profile;
 
@@ -47,13 +48,24 @@ namespace mpNZB
       txtMaxResults.Text = mpSettings.GetValueAsInt("#Sites", "MaxResults", 50).ToString();
       // ##################################################
 
+            // Custom Searches
+      // ##################################################
+      XmlDocument xmlDoc = new XmlDocument();
+      xmlDoc.Load(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
+      foreach (XmlNode nodeItem in xmlDoc.SelectNodes("profile/section[@name='#Searches']/entry"))
+      {
+        lvSearches.Items.Add(nodeItem.Attributes["name"].InnerText).SubItems.Add(nodeItem.InnerText);
+        mpSettings.RemoveEntry("#Searches", nodeItem.Attributes["name"].InnerText);
+      }
+      // ##################################################
+
       mpSettings.Dispose();
     }
 
     private void fncSaveConfig()
     {
       Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
-
+      
       // Plugin Settings
       // ##################################################
       int intUpdateFreq = 1;
@@ -70,7 +82,7 @@ namespace mpNZB
       mpSettings.SetValue("#Client", "Port", txtPort.Text);
 
       mpSettings.SetValueAsBool("#Client", "CatSelect", chkCatSelect.Checked);
-
+      
       mpSettings.SetValueAsBool("#Client", "Auth", chkAuth.Checked);
       mpSettings.SetValue("#Client", "Username", txtUsername.Text);
       mpSettings.SetValue("#Client", "Password", txtPassword.Text);
@@ -83,8 +95,15 @@ namespace mpNZB
       mpSettings.SetValue("#Sites", "MaxResults", intMaxResults);
       // ##################################################
 
-      mpSettings.Dispose();
+      // Custom Searches
+      // ##################################################
+      foreach (ListViewItem Item in lvSearches.Items)
+      {
+        mpSettings.SetValue("#Searches", Item.SubItems[0].Text, Item.SubItems[1].Text);
+      }
+      // ##################################################
 
+      mpSettings.Dispose();
     }
 
     private void btnOK_Click(object sender, EventArgs e)
@@ -124,6 +143,32 @@ namespace mpNZB
           break;
       }
       // ##################################################
+    }
+
+    private void btnAdd_Click(object sender, EventArgs e)
+    {
+      if ((txtSearchName.Text.Length > 0) && (txtSearchString.Text.Length > 0))
+      {
+        lvSearches.Items.Add(txtSearchName.Text).SubItems.Add(txtSearchString.Text);
+        txtSearchName.Text = "";
+        txtSearchString.Text = "";
+      }
+      else
+      {
+        MessageBox.Show(null, "Please fill all fields.", "Status", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    private void btnDelete_Click(object sender, EventArgs e)
+    {
+      if (lvSearches.SelectedItems.Count > 0)
+      {
+        lvSearches.Items.Remove(lvSearches.SelectedItems[0]);
+      }
+      else
+      {
+        MessageBox.Show(null, "Nothing selected.", "Status", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
     }
   }
 }

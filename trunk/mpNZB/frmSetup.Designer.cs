@@ -28,7 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
-      this.tabSetup = new System.Windows.Forms.TabControl();
+      this.tabPages = new System.Windows.Forms.TabControl();
       this.tabClientSetup = new System.Windows.Forms.TabPage();
       this.grpSettings = new System.Windows.Forms.GroupBox();
       this.btnTestConn = new System.Windows.Forms.Button();
@@ -56,25 +56,43 @@
       this.lblUpdateFrequency = new System.Windows.Forms.Label();
       this.btnCancel = new System.Windows.Forms.Button();
       this.btnOK = new System.Windows.Forms.Button();
-      this.tabSetup.SuspendLayout();
+      this.tabSearch = new System.Windows.Forms.TabPage();
+      this.checkBox1 = new System.Windows.Forms.CheckBox();
+      this.comboBox1 = new System.Windows.Forms.ComboBox();
+      this.label1 = new System.Windows.Forms.Label();
+      this.groupBox2 = new System.Windows.Forms.GroupBox();
+      this.txtSearchName = new System.Windows.Forms.TextBox();
+      this.label3 = new System.Windows.Forms.Label();
+      this.txtSearchString = new System.Windows.Forms.TextBox();
+      this.label4 = new System.Windows.Forms.Label();
+      this.label5 = new System.Windows.Forms.Label();
+      this.lvSearches = new System.Windows.Forms.ListView();
+      this.clmName = new System.Windows.Forms.ColumnHeader();
+      this.clmString = new System.Windows.Forms.ColumnHeader();
+      this.btnAdd = new System.Windows.Forms.Button();
+      this.btnDelete = new System.Windows.Forms.Button();
+      this.tabPages.SuspendLayout();
       this.tabClientSetup.SuspendLayout();
       this.grpSettings.SuspendLayout();
       this.grpProgram.SuspendLayout();
       this.tabPluginSetup.SuspendLayout();
       this.groupBox1.SuspendLayout();
       this.grpVisual.SuspendLayout();
+      this.tabSearch.SuspendLayout();
+      this.groupBox2.SuspendLayout();
       this.SuspendLayout();
       // 
-      // tabSetup
+      // tabPages
       // 
-      this.tabSetup.Controls.Add(this.tabClientSetup);
-      this.tabSetup.Controls.Add(this.tabPluginSetup);
-      this.tabSetup.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tabSetup.Location = new System.Drawing.Point(12, 12);
-      this.tabSetup.Name = "tabSetup";
-      this.tabSetup.SelectedIndex = 0;
-      this.tabSetup.Size = new System.Drawing.Size(320, 299);
-      this.tabSetup.TabIndex = 1;
+      this.tabPages.Controls.Add(this.tabClientSetup);
+      this.tabPages.Controls.Add(this.tabPluginSetup);
+      this.tabPages.Controls.Add(this.tabSearch);
+      this.tabPages.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.tabPages.Location = new System.Drawing.Point(12, 12);
+      this.tabPages.Name = "tabPages";
+      this.tabPages.SelectedIndex = 0;
+      this.tabPages.Size = new System.Drawing.Size(320, 299);
+      this.tabPages.TabIndex = 1;
       // 
       // tabClientSetup
       // 
@@ -366,6 +384,158 @@
       this.btnOK.UseVisualStyleBackColor = true;
       this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
       // 
+      // tabSearch
+      // 
+      this.tabSearch.Controls.Add(this.lvSearches);
+      this.tabSearch.Controls.Add(this.groupBox2);
+      this.tabSearch.Location = new System.Drawing.Point(4, 22);
+      this.tabSearch.Name = "tabSearch";
+      this.tabSearch.Padding = new System.Windows.Forms.Padding(3);
+      this.tabSearch.Size = new System.Drawing.Size(312, 273);
+      this.tabSearch.TabIndex = 2;
+      this.tabSearch.Text = "Custom Searches";
+      this.tabSearch.UseVisualStyleBackColor = true;
+      // 
+      // checkBox1
+      // 
+      this.checkBox1.AutoSize = true;
+      this.checkBox1.Enabled = false;
+      this.checkBox1.Location = new System.Drawing.Point(68, 44);
+      this.checkBox1.Name = "checkBox1";
+      this.checkBox1.Size = new System.Drawing.Size(116, 17);
+      this.checkBox1.TabIndex = 11;
+      this.checkBox1.Text = "Save to categories";
+      this.checkBox1.UseVisualStyleBackColor = true;
+      // 
+      // comboBox1
+      // 
+      this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.comboBox1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.comboBox1.FormattingEnabled = true;
+      this.comboBox1.Items.AddRange(new object[] {
+            "SABnzbd"});
+      this.comboBox1.Location = new System.Drawing.Point(68, 17);
+      this.comboBox1.Name = "comboBox1";
+      this.comboBox1.Size = new System.Drawing.Size(196, 21);
+      this.comboBox1.TabIndex = 1;
+      // 
+      // label1
+      // 
+      this.label1.AutoSize = true;
+      this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label1.Location = new System.Drawing.Point(12, 21);
+      this.label1.Name = "label1";
+      this.label1.Size = new System.Drawing.Size(50, 13);
+      this.label1.TabIndex = 2;
+      this.label1.Text = "Grabber:";
+      // 
+      // groupBox2
+      // 
+      this.groupBox2.Controls.Add(this.btnDelete);
+      this.groupBox2.Controls.Add(this.btnAdd);
+      this.groupBox2.Controls.Add(this.label5);
+      this.groupBox2.Controls.Add(this.txtSearchString);
+      this.groupBox2.Controls.Add(this.label4);
+      this.groupBox2.Controls.Add(this.txtSearchName);
+      this.groupBox2.Controls.Add(this.label3);
+      this.groupBox2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.groupBox2.Location = new System.Drawing.Point(16, 14);
+      this.groupBox2.Name = "groupBox2";
+      this.groupBox2.Size = new System.Drawing.Size(280, 96);
+      this.groupBox2.TabIndex = 20;
+      this.groupBox2.TabStop = false;
+      this.groupBox2.Text = "Fields:";
+      // 
+      // txtSearchName
+      // 
+      this.txtSearchName.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtSearchName.Location = new System.Drawing.Point(56, 18);
+      this.txtSearchName.Name = "txtSearchName";
+      this.txtSearchName.Size = new System.Drawing.Size(150, 21);
+      this.txtSearchName.TabIndex = 18;
+      // 
+      // label3
+      // 
+      this.label3.AutoSize = true;
+      this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label3.Location = new System.Drawing.Point(12, 21);
+      this.label3.Name = "label3";
+      this.label3.Size = new System.Drawing.Size(38, 13);
+      this.label3.TabIndex = 16;
+      this.label3.Text = "Name:";
+      // 
+      // txtSearchString
+      // 
+      this.txtSearchString.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtSearchString.Location = new System.Drawing.Point(56, 45);
+      this.txtSearchString.Name = "txtSearchString";
+      this.txtSearchString.Size = new System.Drawing.Size(150, 21);
+      this.txtSearchString.TabIndex = 20;
+      // 
+      // label4
+      // 
+      this.label4.AutoSize = true;
+      this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label4.Location = new System.Drawing.Point(12, 48);
+      this.label4.Name = "label4";
+      this.label4.Size = new System.Drawing.Size(39, 13);
+      this.label4.TabIndex = 19;
+      this.label4.Text = "String:";
+      // 
+      // label5
+      // 
+      this.label5.AutoSize = true;
+      this.label5.Location = new System.Drawing.Point(45, 71);
+      this.label5.Name = "label5";
+      this.label5.Size = new System.Drawing.Size(225, 13);
+      this.label5.TabIndex = 21;
+      this.label5.Text = "Seperate search terms by using the | symbol.";
+      // 
+      // lvSearches
+      // 
+      this.lvSearches.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.clmName,
+            this.clmString});
+      this.lvSearches.FullRowSelect = true;
+      this.lvSearches.GridLines = true;
+      this.lvSearches.Location = new System.Drawing.Point(16, 116);
+      this.lvSearches.MultiSelect = false;
+      this.lvSearches.Name = "lvSearches";
+      this.lvSearches.Size = new System.Drawing.Size(280, 142);
+      this.lvSearches.TabIndex = 21;
+      this.lvSearches.UseCompatibleStateImageBehavior = false;
+      this.lvSearches.View = System.Windows.Forms.View.Details;
+      // 
+      // clmName
+      // 
+      this.clmName.Text = "Name";
+      this.clmName.Width = 90;
+      // 
+      // clmString
+      // 
+      this.clmString.Text = "String";
+      this.clmString.Width = 170;
+      // 
+      // btnAdd
+      // 
+      this.btnAdd.Location = new System.Drawing.Point(212, 18);
+      this.btnAdd.Name = "btnAdd";
+      this.btnAdd.Size = new System.Drawing.Size(55, 21);
+      this.btnAdd.TabIndex = 22;
+      this.btnAdd.Text = "Add";
+      this.btnAdd.UseVisualStyleBackColor = true;
+      this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+      // 
+      // btnDelete
+      // 
+      this.btnDelete.Location = new System.Drawing.Point(212, 45);
+      this.btnDelete.Name = "btnDelete";
+      this.btnDelete.Size = new System.Drawing.Size(55, 21);
+      this.btnDelete.TabIndex = 23;
+      this.btnDelete.Text = "Delete";
+      this.btnDelete.UseVisualStyleBackColor = true;
+      this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+      // 
       // frmSetup
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -373,13 +543,13 @@
       this.ClientSize = new System.Drawing.Size(344, 354);
       this.Controls.Add(this.btnOK);
       this.Controls.Add(this.btnCancel);
-      this.Controls.Add(this.tabSetup);
+      this.Controls.Add(this.tabPages);
       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
       this.MaximizeBox = false;
       this.Name = "frmSetup";
       this.Text = "mpNZB Setup";
       this.Load += new System.EventHandler(this.frmSetup_Load);
-      this.tabSetup.ResumeLayout(false);
+      this.tabPages.ResumeLayout(false);
       this.tabClientSetup.ResumeLayout(false);
       this.grpSettings.ResumeLayout(false);
       this.grpSettings.PerformLayout();
@@ -390,13 +560,16 @@
       this.groupBox1.PerformLayout();
       this.grpVisual.ResumeLayout(false);
       this.grpVisual.PerformLayout();
+      this.tabSearch.ResumeLayout(false);
+      this.groupBox2.ResumeLayout(false);
+      this.groupBox2.PerformLayout();
       this.ResumeLayout(false);
 
     }
 
     #endregion
 
-    private System.Windows.Forms.TabControl tabSetup;
+    private System.Windows.Forms.TabControl tabPages;
     private System.Windows.Forms.TabPage tabClientSetup;
     private System.Windows.Forms.Label lblHost;
     private System.Windows.Forms.TextBox txtPassword;
@@ -424,5 +597,20 @@
     private System.Windows.Forms.GroupBox groupBox1;
     private System.Windows.Forms.TextBox txtMaxResults;
     private System.Windows.Forms.Label label2;
+    private System.Windows.Forms.TabPage tabSearch;
+    private System.Windows.Forms.GroupBox groupBox2;
+    private System.Windows.Forms.Label label5;
+    private System.Windows.Forms.TextBox txtSearchString;
+    private System.Windows.Forms.Label label4;
+    private System.Windows.Forms.TextBox txtSearchName;
+    private System.Windows.Forms.Label label3;
+    private System.Windows.Forms.CheckBox checkBox1;
+    private System.Windows.Forms.ComboBox comboBox1;
+    private System.Windows.Forms.Label label1;
+    private System.Windows.Forms.ListView lvSearches;
+    private System.Windows.Forms.ColumnHeader clmName;
+    private System.Windows.Forms.ColumnHeader clmString;
+    private System.Windows.Forms.Button btnDelete;
+    private System.Windows.Forms.Button btnAdd;
   }
 }

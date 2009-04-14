@@ -280,33 +280,40 @@ namespace mpNZB
 
     #region Functions
 
-    private void ReadRSS(string _URL, GUIListControl _List)
+    private void ReadRSS(List<string> _URL, GUIListControl _List)
     {
       try
       {
-        HttpWebRequest webReq = (HttpWebRequest)WebRequest.Create(_URL);
-        webReq.Headers.Add(HttpRequestHeader.AcceptEncoding, "gzip");
-        HttpWebResponse webResp = (HttpWebResponse)webReq.GetResponse();
+        int intItemCount = 0;
+        _List.Clear();
 
-        XmlDocument xmlDoc = new XmlDocument();
-        xmlDoc.Load(((webResp.ContentEncoding.ToLower().Contains("gzip")) ? new GZipStream(webResp.GetResponseStream(), CompressionMode.Decompress, false) : webResp.GetResponseStream()));
-        webResp.Close();
-
-        if (xmlDoc.SelectSingleNode("rss[@version='2.0']") != null)
+        foreach (string URL in _URL)
         {
-          _List.Clear();
+          HttpWebRequest webReq = (HttpWebRequest)WebRequest.Create(URL);
+          webReq.Headers.Add(HttpRequestHeader.AcceptEncoding, "gzip");
+          HttpWebResponse webResp = (HttpWebResponse)webReq.GetResponse();
 
-          XmlNodeList xmlNodes = xmlDoc.SelectNodes("rss/channel/item");
-          foreach (XmlNode xmlNode in xmlNodes)
+          XmlDocument xmlDoc = new XmlDocument();
+          xmlDoc.Load(((webResp.ContentEncoding.ToLower().Contains("gzip")) ? new GZipStream(webResp.GetResponseStream(), CompressionMode.Decompress, false) : webResp.GetResponseStream()));
+          webResp.Close();
+
+          if (xmlDoc.SelectSingleNode("rss[@version='2.0']") != null)
           {
-            Site.AddItem(xmlNode, _List);
+            XmlNodeList xmlNodes = xmlDoc.SelectNodes("rss/channel/item");
+            foreach (XmlNode xmlNode in xmlNodes)
+            {
+              Site.AddItem(xmlNode, _List);
+              intItemCount += 1;
+            }
           }
-          GUIPropertyManager.SetProperty("#Status", "Found " + xmlNodes.Count.ToString() + " Items");
+          else
+          {
+            GUIPropertyManager.SetProperty("#Status", "Error parsing XML");
+          }
         }
-        else
-        {
-          GUIPropertyManager.SetProperty("#Status", "Error parsing XML");
-        }
+
+        _List.ListItems.Sort(delegate(GUIListItem _Item1, GUIListItem _Item2) { return _Item2.FileInfo.CreationTime.CompareTo(_Item1.FileInfo.CreationTime); });
+        GUIPropertyManager.SetProperty("#Status", "Found " + intItemCount.ToString() + " Items");
       }
       catch (Exception e) { MP.Error(e); }
       finally
@@ -336,7 +343,7 @@ namespace mpNZB
             Site.SetFeed();
           }
 
-          if (Site.FeedURL.Length > 0)
+          if (Site.FeedURL.Count > 0)
           {
             GUIPropertyManager.SetProperty("#Status", "Processing...");
             GUIWindowManager.Process();

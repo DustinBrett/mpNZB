@@ -16,7 +16,8 @@ namespace mpNZB
 
     public string SiteName = String.Empty;
     public string FeedName = String.Empty;
-    public string FeedURL = String.Empty;
+    public List<string> FeedURL = new List<string>();
+    private List<string> Searches = new List<string>();
 
     private int MaxResults;
 
@@ -100,7 +101,7 @@ namespace mpNZB
           if (_Item != null)
           {
             FeedName = _Item.Label;
-            FeedURL = _Item.Path.Replace("[MAX]", MaxResults.ToString());
+            FeedURL.Add(_Item.Path.Replace("[MAX]", MaxResults.ToString()));
           }
         }
         else
@@ -115,18 +116,51 @@ namespace mpNZB
     {
       try
       {
-        FeedName = MP.Keyboard();
-        if (FeedName.Length > 0)
+        XmlDocument xmlSettings = new XmlDocument();
+        xmlSettings.Load(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
+
+        List<GUIListItem> _Items = new List<GUIListItem>();       
+
+        _Items.Add(new GUIListItem("New Search"));
+
+        GUIListItem Item;
+
+        foreach (XmlNode nodeItem in xmlSettings.SelectNodes("profile/section[@name='#Searches']/entry"))
+        {
+          Item = new GUIListItem(nodeItem.Attributes["name"].InnerText);
+          Item.Path = nodeItem.InnerText;
+          _Items.Add(Item);
+        }
+
+        GUIListItem _Item = MP.Menu(_Items, "Select Search");
+        if (_Item != null)
         {
           XmlDocument xmlDoc = new XmlDocument();
           xmlDoc.Load(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Plugins) + @"\Windows\Sites.xml");
 
           if (xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/search/url") != null)
           {
-            foreach (XmlNode nodeItem in xmlDoc.SelectNodes("sites/site[@name='" + SiteName + "']/search/url"))
+            if (_Item.Label == "New Search")
             {
-              FeedURL = nodeItem.InnerText.Replace("[QUERY]", FeedName.Replace(" ", "+")).Replace("[MAX]", MaxResults.ToString());
-            }            
+              FeedName = MP.Keyboard();
+              FeedURL.Add(xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/search/url").InnerText.Replace("[QUERY]", FeedName.Replace(" ", "+")).Replace("[MAX]", MaxResults.ToString()));
+            }
+            else
+            {
+              FeedName = _Item.Label;
+              if (_Item.Path.Contains("|"))
+              {
+                string[] strSearches = _Item.Path.Split('|');
+                foreach (string strSearch in strSearches)
+                {
+                  FeedURL.Add(xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/search/url").InnerText.Replace("[QUERY]", strSearch.Replace(" ", "+")).Replace("[MAX]", MaxResults.ToString()));
+                }
+              }
+              else
+              {
+                FeedURL.Add(xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/search/url").InnerText.Replace("[QUERY]", _Item.Path.Replace(" ", "+")).Replace("[MAX]", MaxResults.ToString()));
+              }
+            }
           }
           else
           {
