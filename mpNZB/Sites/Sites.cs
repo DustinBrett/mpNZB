@@ -17,7 +17,6 @@ namespace mpNZB
     public string SiteName = String.Empty;
     public string FeedName = String.Empty;
     public List<string> FeedURL = new List<string>();
-    private List<string> Searches = new List<string>();
 
     private int MaxResults;
 
