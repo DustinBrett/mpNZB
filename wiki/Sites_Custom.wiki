@@ -27,7 +27,7 @@ The information needed to replace `[I]` and `[H]` can be found at [http://nzbs.o
 	<item type="1">
 		<title element="title" />
 		<size type="1" element="description">
-			<regex input="(\d+.\d+)\s(\w{2,4})" />
+			<regex input="\w{4}:\s(\d+[,|.]\d+)\s(\w{2,4})" />
 		</size>
 		<url element="link" />
 	</item>
@@ -72,7 +72,7 @@ The information needed to replace `[I]` and `[H]` can be found at [http://www.nz
 	<item type="1">
 		<title element="title" />
 		<size type="1" element="description">
-			<regex input="(\d+.\d+)\s(\w{2,4})" />
+			<regex input="\w{4}:\s(\d+[,|.]\d+)\s(\w{2,4})" />
 		</size>
 		<url element="link" />
 	</item>
