@@ -3,19 +3,6 @@
 
 == Important Features ==
   * Search history
-  * Multisearch
-    * `FeedURL` into `List<string> FeedURL`
-    * Create entry in [http://code.google.com/p/mpnzb/source/browse/trunk/mpNZB/Sites/Sites.xml Sites.xml] called *Multisearch*
-{{{
-	<site name="Multisearch">
-		<search>
-			<url site="Newzbin">http://www.newzbin.com/search/query/?q=[QUERY]&amp;searchaction=Search&amp;u_post_results_amt=[MAX]&amp;feed=rss</url>
-			<url site="Newzleech">http://www.newzleech.com/rss.php?n=[MAX]&amp;s=[QUERY]</url>
-			<url site="NZBClub">http://www.nzbclub.com/nzbfeed.aspx?ss=[QUERY]</url>
-			<url site="NZBIndex">http://www.nzbindex.com/rss/?q=[QUERY]&amp;max=[MAX]</url>
-		</search>
-	</site>
-}}}
 
 == General ==
   * Toggle `btnPause` if `Status` is paused
