@@ -10,6 +10,7 @@
     * Using `RegEx` for most of the code
 
 == Future Features: ==
+  * Change to new SABnzbd API once 0.50 is released
   * [http://code.google.com/p/mptvseries/ MP-TVSeries] integration
   * NZB streaming
     * [http://code.google.com/p/stream-unrar/ stream-unrar]
