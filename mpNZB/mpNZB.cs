@@ -301,7 +301,6 @@ namespace mpNZB
           {
             Site.AddItem(xmlNode, _List);
           }
-
           GUIPropertyManager.SetProperty("#Status", "Found " + xmlNodes.Count.ToString() + " Items");
         }
         else
@@ -337,7 +336,7 @@ namespace mpNZB
             Site.SetFeed();
           }
 
-          if (Site.FeedURL != String.Empty)
+          if (Site.FeedURL.Length > 0)
           {
             GUIPropertyManager.SetProperty("#Status", "Processing...");
             GUIWindowManager.Process();
