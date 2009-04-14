@@ -123,7 +123,10 @@ namespace mpNZB
 
           if (xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/search/url") != null)
           {
-            FeedURL = xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/search/url").InnerText.Replace("[QUERY]", FeedName.Replace(" ", "+")).Replace("[MAX]", MaxResults.ToString());
+            foreach (XmlNode nodeItem in xmlDoc.SelectNodes("sites/site[@name='" + SiteName + "']/search/url"))
+            {
+              FeedURL = nodeItem.InnerText.Replace("[QUERY]", FeedName.Replace(" ", "+")).Replace("[MAX]", MaxResults.ToString());
+            }            
           }
           else
           {
