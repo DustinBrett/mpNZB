@@ -3,6 +3,7 @@
 
 == Important Features ==
   * Search history
+  * Add a shutdown on complete option
 
 == General ==
   * Toggle `btnPause` if `Status` is paused
