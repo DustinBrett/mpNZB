@@ -1,7 +1,7 @@
 <window>
   <id>3847</id>
   <defaultcontrol>2</defaultcontrol>
-  <allowoverlay>yes</allowoverlay>
+  <allowoverlay>no</allowoverlay>
   <controls>
 
     <control>
@@ -90,7 +90,7 @@
       <type>label</type>
       <id>6</id>
       <posX>130</posX>
-      <posY>400</posY>
+      <posY>450</posY>
       <label>Paused:</label>
       <align>Right</align>
       <font>font10</font>
@@ -102,7 +102,7 @@
       <type>label</type>
       <id>7</id>
       <posX>137</posX>
-      <posY>400</posY>
+      <posY>450</posY>
       <label>#Paused</label>
       <align>Left</align>
       <font>font10</font>
@@ -114,7 +114,7 @@
       <type>label</type>
       <id>8</id>
       <posX>130</posX>
-      <posY>420</posY>
+      <posY>470</posY>
       <label>Speed:</label>
       <align>Right</align> 
       <font>font10</font>
@@ -126,7 +126,7 @@
       <type>label</type>
       <id>9</id>
       <posX>137</posX>
-      <posY>420</posY>
+      <posY>470</posY>
       <label>#KBps</label>
       <align>Left</align> 
       <font>font10</font>
@@ -138,7 +138,7 @@
       <type>label</type>
       <id>10</id>
       <posX>130</posX>
-      <posY>440</posY>
+      <posY>490</posY>
       <label>Queued:</label>
       <align>Right</align> 
       <font>font10</font>
@@ -150,7 +150,7 @@
       <type>label</type>
       <id>11</id>
       <posX>137</posX>
-      <posY>440</posY>
+      <posY>490</posY>
       <label>#MBStatus</label>
       <align>Left</align> 
       <font>font10</font>
@@ -162,7 +162,7 @@
       <type>label</type>
       <id>12</id>
       <posX>130</posX>
-      <posY>460</posY>
+      <posY>510</posY>
       <label>Count:</label>
       <align>Right</align>
       <font>font10</font>
@@ -174,7 +174,7 @@
       <type>label</type>
       <id>13</id>
       <posX>137</posX>
-      <posY>460</posY>
+      <posY>510</posY>
       <label>#JobCount</label>
       <align>Left</align>
       <font>font10</font>
@@ -186,7 +186,7 @@
       <type>label</type>
       <id>14</id>
       <posX>130</posX>
-      <posY>480</posY>
+      <posY>530</posY>
       <label>D/L DIR:</label>
       <align>Right</align>
       <font>font10</font>
@@ -198,7 +198,7 @@
       <type>label</type>
       <id>15</id>
       <posX>137</posX>
-      <posY>480</posY>
+      <posY>530</posY>
       <label>#DiskSpace1</label>
       <align>Left</align>
       <font>font10</font>
@@ -210,7 +210,7 @@
       <type>label</type>
       <id>16</id>
       <posX>130</posX>
-      <posY>500</posY>
+      <posY>550</posY>
       <label>Temp DIR:</label>
       <align>Right</align> 
       <font>font10</font>
@@ -222,7 +222,7 @@
       <type>label</type>
       <id>17</id>
       <posX>137</posX>
-      <posY>500</posY>
+      <posY>550</posY>
       <label>#DiskSpace2</label>
       <align>Left</align> 
       <font>font10</font>
@@ -234,7 +234,7 @@
       <type>label</type>
       <id>18</id>
       <posX>130</posX>
-      <posY>520</posY>
+      <posY>570</posY>
       <label>ETA:</label>
       <align>Right</align> 
       <font>font10</font>
@@ -246,7 +246,7 @@
       <type>label</type>
       <id>19</id>
       <posX>137</posX>
-      <posY>520</posY>
+      <posY>570</posY>
       <label>#TimeLeft</label>
       <align>Left</align> 
       <font>font10</font>
