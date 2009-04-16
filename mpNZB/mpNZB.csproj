@@ -85,6 +85,7 @@
   <PropertyGroup>
     <PostBuildEvent>copy "$(TargetPath)" "\\192.168.1.200\C$\Program Files\MediaPortal\plugins\Windows\mpNZB.dll" /y
 copy "C:\Users\Dustin\Desktop\mpNZB\skin\StreamedMP\mpNZB.xml" "\\192.168.1.200\C$\Program Files\MediaPortal\skin\StreamedMP\mpNZB.xml" /y
+copy "C:\Users\Dustin\Desktop\mpNZB\skin\Blue3Wide\mpNZB.xml" "\\192.168.1.200\C$\Program Files\MediaPortal\skin\Blue3Wide\mpNZB.xml" /y
 copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\Sites\Sites.xml" "\\192.168.1.200\C$\Program Files\MediaPortal\plugins\Windows\Sites.xml" /y</PostBuildEvent>
   </PropertyGroup>
 </Project>
