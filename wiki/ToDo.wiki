@@ -5,6 +5,7 @@
   * Toggle `btnPause` if `Status` is paused
   * Add RSS Watchlists to custom search (Sites.XML)
     * [http://www.tvrage.com/myrss.php?date=yesterday&hide_time=1 TVrage - Yesterday]
+    * [http://www.tvrage.com/myrss.php?hide_time=1 TVrage - Today]
 
 == API ==
   * *0.49*
