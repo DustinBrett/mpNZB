@@ -5,9 +5,9 @@
   * Toggle `btnPause` if `Status` is paused
 
 == API ==
-  * 0.49
+  * *0.49*
     * Add API Key
-  * 0.50
+  * *0.50*
     * Add History/Shutdown/Pause a Job
     * Change Delete/Move (Up/Down/Top/Bottom)/Change Category
 
