@@ -18,31 +18,34 @@ These fields will be replaced with the correct data automatically by mpNZB.
 = Example Site =
 {{{
 <site name="Newzbin">
-        <feeds>
-                <feed name="Everything">http://www.newzbin.com/browse/category/p/everything/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-                <feed name="Unknown">http://www.newzbin.com/browse/category/p/unknown/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-                <feed name="Anime">http://www.newzbin.com/browse/category/p/anime/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-                <feed name="Apps">http://www.newzbin.com/browse/category/p/apps/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-                <feed name="Books">http://www.newzbin.com/browse/category/p/books/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-                <feed name="Consoles">http://www.newzbin.com/browse/category/p/consoles/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-                <feed name="Discussions">http://www.newzbin.com/browse/category/p/discussions/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-                <feed name="Emulation">http://www.newzbin.com/browse/category/p/emulation/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-                <feed name="Games">http://www.newzbin.com/browse/category/p/games/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-                <feed name="Misc">http://www.newzbin.com/browse/category/p/misc/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-                <feed name="Movies">http://www.newzbin.com/browse/category/p/movies/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-                <feed name="Music">http://www.newzbin.com/browse/category/p/music/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-                <feed name="PDA">http://www.newzbin.com/browse/category/p/pda/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-                <feed name="Resources">http://www.newzbin.com/browse/category/p/resources/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-                <feed name="TV">http://www.newzbin.com/browse/category/p/tv/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-        </feeds>
-        <search>
-                <url>http://www.newzbin.com/search/query/?q=[QUERY]&amp;searchaction=Search&amp;u_post_results_amt=[MAX]&amp;feed=rss</url>
-        </search>
-        <item type="2">
-                <title element="title" />
-                <size type="2" element="report:size" />
-                <url element="report:id" />
-        </item>
+	<feeds>
+		<feed name="Everything">http://www.newzbin.com/browse/category/p/everything/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+		<feed name="Unknown">http://www.newzbin.com/browse/category/p/unknown/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+		<feed name="Anime">http://www.newzbin.com/browse/category/p/anime/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+		<feed name="Apps">http://www.newzbin.com/browse/category/p/apps/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+		<feed name="Books">http://www.newzbin.com/browse/category/p/books/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+		<feed name="Consoles">http://www.newzbin.com/browse/category/p/consoles/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+		<feed name="Discussions">http://www.newzbin.com/browse/category/p/discussions/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+		<feed name="Emulation">http://www.newzbin.com/browse/category/p/emulation/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+		<feed name="Games">http://www.newzbin.com/browse/category/p/games/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+		<feed name="Misc">http://www.newzbin.com/browse/category/p/misc/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+		<feed name="Movies">http://www.newzbin.com/browse/category/p/movies/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+		<feed name="Music">http://www.newzbin.com/browse/category/p/music/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+		<feed name="PDA">http://www.newzbin.com/browse/category/p/pda/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+		<feed name="Resources">http://www.newzbin.com/browse/category/p/resources/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+		<feed name="TV">http://www.newzbin.com/browse/category/p/tv/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+	</feeds>
+	<group>
+		<url>http://www.newzbin.com/browse/group/p/[GROUP]/?feed=rss&amp;u_post_results_amt=[MAX]</url>
+	</group>
+	<search>
+		<url>http://www.newzbin.com/search/query/?q=[QUERY]&amp;searchaction=Search&amp;u_post_results_amt=[MAX]&amp;feed=rss</url>
+	</search>
+	<item type="2">
+		<title element="title" />
+		<size type="2" element="report:size" />
+		<url element="report:id" />
+	</item>
 </site>
 }}}
 
@@ -60,6 +63,19 @@ This section contains the sites RSS feeds.
 
 *Note:* `<feeds>` allows more than one `<feed>`
 
+== _Group_ ==
+This section contains the sites group feeds.
+
+{{{
+<group>
+        <url>(URL)</url>
+</group>
+}}}
+
+  * *`(URL)`* = URL to the search feed.
+    * Must contain *`[GROUP]`*
+    * Optionally contain *`[MAX]`*
+
 == _Search_ ==
 This section contains the sites search feeds.
 
@@ -72,8 +88,6 @@ This section contains the sites search feeds.
   * *`(URL)`* = URL to the search feed.
     * Must contain *`[QUERY]`*
     * Optionally contain *`[MAX]`*
-
-*Note:* `<search>` will allow more than one `<url>` in a future revision
 
 == _Item_ ==
 This section contains the data needed to parse the RSS feeds.
