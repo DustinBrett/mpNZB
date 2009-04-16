@@ -4,7 +4,16 @@
 = Screenshots =
 
 == Main Interface ==
-|| [http://mpnzb.googlecode.com/svn/wiki/images/screenshots/SS2.png] ||
+|| [http://mpnzb.googlecode.com/svn/wiki/images/gallery/Listview.png] ||
 
 == Job Queue ==
-|| [http://mpnzb.googlecode.com/svn/wiki/images/screenshots/SS3.png] ||
+|| [http://mpnzb.googlecode.com/svn/wiki/images/gallery/Job Queue.png] ||
+
+== Feeds ==
+|| [http://mpnzb.googlecode.com/svn/wiki/images/gallery/Feeds.png] ||
+
+== Groups ==
+|| [http://mpnzb.googlecode.com/svn/wiki/images/gallery/Groups.png] ||
+
+== Search ==
+|| [http://mpnzb.googlecode.com/svn/wiki/images/gallery/Search.png] ||
