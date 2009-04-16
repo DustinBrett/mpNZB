@@ -23,3 +23,4 @@
 
 == Sites ==
   * [http://nzbmatrix.com/ NZBMatrix]
+  * [http://www.binsearch.info/ Binsearch]/[http://www.tvnzb.com/ TvNZB] Searching
