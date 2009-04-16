@@ -15,5 +15,3 @@
   * NZB streaming
     * [http://code.google.com/p/stream-unrar/ stream-unrar]
     * [http://www.nzbplayer.com/ NZBPlayer]
-  * Add `<HTML>` support to Sites.xml
-    * Using `RegEx` for most of the code
