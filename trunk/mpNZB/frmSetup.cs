@@ -46,6 +46,7 @@ namespace mpNZB
       // Site Settings
       // ##################################################
       txtMaxResults.Text = mpSettings.GetValueAsInt("#Sites", "MaxResults", 50).ToString();
+      chkMyTVSeries.Checked = mpSettings.GetValueAsBool("#Sites", "MyTVSeries", false);
       // ##################################################
 
             // Custom Searches
@@ -93,6 +94,7 @@ namespace mpNZB
       int intMaxResults = 50;
       int.TryParse(txtMaxResults.Text, out intMaxResults);
       mpSettings.SetValue("#Sites", "MaxResults", intMaxResults);
+      mpSettings.SetValueAsBool("#Sites", "MyTVSeries", chkMyTVSeries.Checked);
       // ##################################################
 
       // Custom Searches

@@ -351,7 +351,7 @@ namespace mpNZB
             ReadRSS(Site.FeedURL, lstItems);
 
             btnRefreshFeed.Disabled = false;
-            GUIPropertyManager.SetProperty("#PageTitle", Site.SiteName + " - " + Site.FeedName);
+            GUIPropertyManager.SetProperty("#PageTitle", Site.SiteName + " [" + Site.FeedName + "]");
           }
         }
       }
