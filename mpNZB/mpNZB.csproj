@@ -67,6 +67,7 @@
     <Compile Include="frmSetup.Designer.cs">
       <DependentUpon>frmSetup.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyTVSeries.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sites\Sites.cs" />
   </ItemGroup>

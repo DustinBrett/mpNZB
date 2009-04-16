@@ -4,8 +4,6 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Xml;
 
-using SQLite.NET;
-
 using MediaPortal.GUI.Library;
 using MediaPortal.Profile;
 
@@ -155,10 +153,11 @@ namespace mpNZB
             }
             else if (_Item.Label == "Missing Episodes")
             {
-              GUIListItem _Series = MP.Menu(MyTVSeries_SeriesNames(), "Select Series");
+              MyTVSeries MTS = new MyTVSeries();
+              GUIListItem _Series = MP.Menu(MTS.SeriesNames(), "Select Series");
               if (_Series != null)
               {
-                GUIListItem _Episode = MP.Menu(MyTVSeries_MissingEpisodes(_Series.Label), "Select Episode");
+                GUIListItem _Episode = MP.Menu(MTS.MissingEpisodes(_Series.Label), "Select Episode");
                 if (_Episode != null)
                 {
                   FeedName = _Series.Label + " - " + _Episode.Label;
@@ -263,49 +262,6 @@ namespace mpNZB
         }
       }
       catch (Exception e) { MP.Error(e); }
-    }
-
-    #endregion
-
-    #region MyTVSeries
-
-    public List<GUIListItem> MyTVSeries_SeriesNames()
-    {
-      SQLiteClient sqlClient = new SQLiteClient(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Database) + @"\TVSeriesDatabase4.db3");
-
-      SQLiteResultSet sqlResults = sqlClient.Execute("SELECT Pretty_Name FROM online_series ORDER BY Pretty_Name");
-
-      List<GUIListItem> _Results = new List<GUIListItem>();
-
-      for (int i = 0; i < sqlResults.Rows.Count; i++)
-      {
-        _Results.Add(new GUIListItem(sqlResults.Rows[i].fields[0].ToString()));
-      }
-
-      return _Results;
-    }
-
-    public List<GUIListItem> MyTVSeries_MissingEpisodes(string Pretty_Name)
-    {
-      SQLiteClient sqlClient = new SQLiteClient(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Database) + @"\TVSeriesDatabase4.db3");
-
-      SQLiteResultSet sqlResults = sqlClient.Execute("SELECT CompositeID, SeasonIndex, EpisodeIndex, EpisodeName FROM online_episodes WHERE SeriesID=\"" + sqlClient.Execute("SELECT id FROM online_series WHERE Pretty_Name=\"" + Pretty_Name + "\"").Rows[0].fields[0].ToString() + "\" ORDER BY SeasonIndex, EpisodeIndex");
-
-      List<GUIListItem> _Results = new List<GUIListItem>();
-
-      SQLiteResultSet sqlEpisodes;
-
-      for (int i = 0; i < sqlResults.Rows.Count; i++)
-      {
-        sqlEpisodes = sqlClient.Execute("SELECT CompositeID FROM local_episodes WHERE CompositeID=\"" + sqlResults.Rows[i].fields[0] + "\"");
-
-        if (sqlEpisodes.Rows.Count == 0)
-        {
-          _Results.Add(new GUIListItem(sqlResults.Rows[i].fields[1].ToString() + "x" + sqlResults.Rows[i].fields[2].ToString().PadLeft(2, '0') + " - " + sqlResults.Rows[i].fields[3].ToString()));
-        }
-      }
-
-      return _Results;
     }
 
     #endregion
