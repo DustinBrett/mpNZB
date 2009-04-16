@@ -13,6 +13,7 @@ This document will cover the specifications for adding a site to the Sites.xml f
 These fields will be replaced with the correct data automatically by mpNZB.
 
   * *`[MAX]`* = Maximum results per feed.
+  * *`[GROUP]`* = Usenet group.
   * *`[QUERY]`* = Search string.
 
 = Example Site =
