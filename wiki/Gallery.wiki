@@ -7,7 +7,7 @@
 || [http://mpnzb.googlecode.com/svn/wiki/images/gallery/Listview.png] ||
 
 == Job Queue ==
-|| [http://mpnzb.googlecode.com/svn/wiki/images/gallery/Job Queue.png] ||
+|| [http://mpnzb.googlecode.com/svn/wiki/images/gallery/Job%20Queue.png] ||
 
 == Feeds ==
 || [http://mpnzb.googlecode.com/svn/wiki/images/gallery/Feeds.png] ||
