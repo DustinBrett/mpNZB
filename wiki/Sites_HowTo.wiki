@@ -61,6 +61,7 @@ This section contains the sites RSS feeds.
 
   * *`(Name)`* = Name of RSS feed
   * *`(URL)`* = URL to the RSS feed
+    * Optionally contain *`[MAX]`*
 
 *Note:* `<feeds>` allows more than one `<feed>`
 
