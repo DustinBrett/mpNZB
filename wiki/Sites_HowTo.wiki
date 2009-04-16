@@ -79,7 +79,7 @@ This section contains the sites group feeds.
     * Optionally contain *`[MAX]`*
 
 == _Search_ ==
-This section contains the sites search feeds.
+This section contains the sites search feed.
 
 {{{
 <search>
@@ -92,7 +92,7 @@ This section contains the sites search feeds.
     * Optionally contain *`[MAX]`*
 
 == _Item_ ==
-This section contains the data needed to parse the RSS feeds.
+This section contains the data needed to parse the RSS.
 
 {{{
 <item type="(Type)">
