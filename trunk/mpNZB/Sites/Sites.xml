@@ -30,6 +30,9 @@
 			<feed name="Resources">http://www.newzbin.com/browse/category/p/resources/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
 			<feed name="TV">http://www.newzbin.com/browse/category/p/tv/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
 		</feeds>
+		<group>
+			<url>http://www.newzbin.com/browse/group/p/[GROUP]/?feed=rss&amp;u_post_results_amt=[MAX]</url>
+		</group>
 		<search>
 			<url>http://www.newzbin.com/search/query/?q=[QUERY]&amp;searchaction=Search&amp;u_post_results_amt=[MAX]&amp;feed=rss</url>
 		</search>
