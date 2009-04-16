@@ -29,7 +29,7 @@
     private void InitializeComponent()
     {
       this.tabPages = new System.Windows.Forms.TabControl();
-      this.tabClientSetup = new System.Windows.Forms.TabPage();
+      this.tabClientSettings = new System.Windows.Forms.TabPage();
       this.grpSettings = new System.Windows.Forms.GroupBox();
       this.btnTestConn = new System.Windows.Forms.Button();
       this.chkAuth = new System.Windows.Forms.CheckBox();
@@ -45,7 +45,7 @@
       this.chkCatSelect = new System.Windows.Forms.CheckBox();
       this.cmbGrabber = new System.Windows.Forms.ComboBox();
       this.lblGrabber = new System.Windows.Forms.Label();
-      this.tabPluginSetup = new System.Windows.Forms.TabPage();
+      this.tabPluginSettings = new System.Windows.Forms.TabPage();
       this.groupBox1 = new System.Windows.Forms.GroupBox();
       this.chkMyTVSeries = new System.Windows.Forms.CheckBox();
       this.txtMaxResults = new System.Windows.Forms.TextBox();
@@ -60,34 +60,45 @@
       this.clmName = new System.Windows.Forms.ColumnHeader();
       this.clmString = new System.Windows.Forms.ColumnHeader();
       this.groupBox2 = new System.Windows.Forms.GroupBox();
-      this.btnDelete = new System.Windows.Forms.Button();
-      this.btnAdd = new System.Windows.Forms.Button();
+      this.btnSearchDelete = new System.Windows.Forms.Button();
+      this.btnSearchAdd = new System.Windows.Forms.Button();
       this.label5 = new System.Windows.Forms.Label();
       this.txtSearchString = new System.Windows.Forms.TextBox();
       this.label4 = new System.Windows.Forms.Label();
       this.txtSearchName = new System.Windows.Forms.TextBox();
       this.label3 = new System.Windows.Forms.Label();
+      this.tabGroups = new System.Windows.Forms.TabPage();
+      this.lvGroups = new System.Windows.Forms.ListView();
+      this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+      this.groupBox3 = new System.Windows.Forms.GroupBox();
+      this.btnGroupAdd = new System.Windows.Forms.Button();
+      this.btnGroupDelete = new System.Windows.Forms.Button();
+      this.txtGroup = new System.Windows.Forms.TextBox();
+      this.label8 = new System.Windows.Forms.Label();
       this.btnCancel = new System.Windows.Forms.Button();
       this.btnOK = new System.Windows.Forms.Button();
       this.checkBox1 = new System.Windows.Forms.CheckBox();
       this.comboBox1 = new System.Windows.Forms.ComboBox();
       this.label1 = new System.Windows.Forms.Label();
       this.tabPages.SuspendLayout();
-      this.tabClientSetup.SuspendLayout();
+      this.tabClientSettings.SuspendLayout();
       this.grpSettings.SuspendLayout();
       this.grpProgram.SuspendLayout();
-      this.tabPluginSetup.SuspendLayout();
+      this.tabPluginSettings.SuspendLayout();
       this.groupBox1.SuspendLayout();
       this.grpVisual.SuspendLayout();
       this.tabSearch.SuspendLayout();
       this.groupBox2.SuspendLayout();
+      this.tabGroups.SuspendLayout();
+      this.groupBox3.SuspendLayout();
       this.SuspendLayout();
       // 
       // tabPages
       // 
-      this.tabPages.Controls.Add(this.tabClientSetup);
-      this.tabPages.Controls.Add(this.tabPluginSetup);
+      this.tabPages.Controls.Add(this.tabClientSettings);
+      this.tabPages.Controls.Add(this.tabPluginSettings);
       this.tabPages.Controls.Add(this.tabSearch);
+      this.tabPages.Controls.Add(this.tabGroups);
       this.tabPages.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.tabPages.Location = new System.Drawing.Point(12, 12);
       this.tabPages.Name = "tabPages";
@@ -95,18 +106,18 @@
       this.tabPages.Size = new System.Drawing.Size(320, 299);
       this.tabPages.TabIndex = 1;
       // 
-      // tabClientSetup
+      // tabClientSettings
       // 
-      this.tabClientSetup.Controls.Add(this.grpSettings);
-      this.tabClientSetup.Controls.Add(this.grpProgram);
-      this.tabClientSetup.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tabClientSetup.Location = new System.Drawing.Point(4, 22);
-      this.tabClientSetup.Name = "tabClientSetup";
-      this.tabClientSetup.Padding = new System.Windows.Forms.Padding(3);
-      this.tabClientSetup.Size = new System.Drawing.Size(312, 273);
-      this.tabClientSetup.TabIndex = 0;
-      this.tabClientSetup.Text = "Client Setup";
-      this.tabClientSetup.UseVisualStyleBackColor = true;
+      this.tabClientSettings.Controls.Add(this.grpSettings);
+      this.tabClientSettings.Controls.Add(this.grpProgram);
+      this.tabClientSettings.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.tabClientSettings.Location = new System.Drawing.Point(4, 22);
+      this.tabClientSettings.Name = "tabClientSettings";
+      this.tabClientSettings.Padding = new System.Windows.Forms.Padding(3);
+      this.tabClientSettings.Size = new System.Drawing.Size(312, 273);
+      this.tabClientSettings.TabIndex = 0;
+      this.tabClientSettings.Text = "Client Settings";
+      this.tabClientSettings.UseVisualStyleBackColor = true;
       // 
       // grpSettings
       // 
@@ -271,17 +282,17 @@
       this.lblGrabber.TabIndex = 2;
       this.lblGrabber.Text = "Grabber:";
       // 
-      // tabPluginSetup
+      // tabPluginSettings
       // 
-      this.tabPluginSetup.Controls.Add(this.groupBox1);
-      this.tabPluginSetup.Controls.Add(this.grpVisual);
-      this.tabPluginSetup.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tabPluginSetup.Location = new System.Drawing.Point(4, 22);
-      this.tabPluginSetup.Name = "tabPluginSetup";
-      this.tabPluginSetup.Size = new System.Drawing.Size(312, 273);
-      this.tabPluginSetup.TabIndex = 1;
-      this.tabPluginSetup.Text = "Plugin Setup";
-      this.tabPluginSetup.UseVisualStyleBackColor = true;
+      this.tabPluginSettings.Controls.Add(this.groupBox1);
+      this.tabPluginSettings.Controls.Add(this.grpVisual);
+      this.tabPluginSettings.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.tabPluginSettings.Location = new System.Drawing.Point(4, 22);
+      this.tabPluginSettings.Name = "tabPluginSettings";
+      this.tabPluginSettings.Size = new System.Drawing.Size(312, 273);
+      this.tabPluginSettings.TabIndex = 1;
+      this.tabPluginSettings.Text = "Plugin Settings";
+      this.tabPluginSettings.UseVisualStyleBackColor = true;
       // 
       // groupBox1
       // 
@@ -383,7 +394,7 @@
       this.tabSearch.Padding = new System.Windows.Forms.Padding(3);
       this.tabSearch.Size = new System.Drawing.Size(312, 273);
       this.tabSearch.TabIndex = 2;
-      this.tabSearch.Text = "Custom Searches";
+      this.tabSearch.Text = "Searches";
       this.tabSearch.UseVisualStyleBackColor = true;
       // 
       // lvSearches
@@ -413,8 +424,8 @@
       // 
       // groupBox2
       // 
-      this.groupBox2.Controls.Add(this.btnDelete);
-      this.groupBox2.Controls.Add(this.btnAdd);
+      this.groupBox2.Controls.Add(this.btnSearchDelete);
+      this.groupBox2.Controls.Add(this.btnSearchAdd);
       this.groupBox2.Controls.Add(this.label5);
       this.groupBox2.Controls.Add(this.txtSearchString);
       this.groupBox2.Controls.Add(this.label4);
@@ -426,27 +437,27 @@
       this.groupBox2.Size = new System.Drawing.Size(280, 96);
       this.groupBox2.TabIndex = 20;
       this.groupBox2.TabStop = false;
-      this.groupBox2.Text = "Fields:";
+      this.groupBox2.Text = "Add Search:";
       // 
-      // btnDelete
+      // btnSearchDelete
       // 
-      this.btnDelete.Location = new System.Drawing.Point(212, 45);
-      this.btnDelete.Name = "btnDelete";
-      this.btnDelete.Size = new System.Drawing.Size(55, 21);
-      this.btnDelete.TabIndex = 23;
-      this.btnDelete.Text = "Delete";
-      this.btnDelete.UseVisualStyleBackColor = true;
-      this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+      this.btnSearchDelete.Location = new System.Drawing.Point(212, 45);
+      this.btnSearchDelete.Name = "btnSearchDelete";
+      this.btnSearchDelete.Size = new System.Drawing.Size(55, 21);
+      this.btnSearchDelete.TabIndex = 23;
+      this.btnSearchDelete.Text = "Delete";
+      this.btnSearchDelete.UseVisualStyleBackColor = true;
+      this.btnSearchDelete.Click += new System.EventHandler(this.btnSearchDelete_Click);
       // 
-      // btnAdd
+      // btnSearchAdd
       // 
-      this.btnAdd.Location = new System.Drawing.Point(212, 18);
-      this.btnAdd.Name = "btnAdd";
-      this.btnAdd.Size = new System.Drawing.Size(55, 21);
-      this.btnAdd.TabIndex = 22;
-      this.btnAdd.Text = "Add";
-      this.btnAdd.UseVisualStyleBackColor = true;
-      this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+      this.btnSearchAdd.Location = new System.Drawing.Point(212, 18);
+      this.btnSearchAdd.Name = "btnSearchAdd";
+      this.btnSearchAdd.Size = new System.Drawing.Size(55, 21);
+      this.btnSearchAdd.TabIndex = 22;
+      this.btnSearchAdd.Text = "Add";
+      this.btnSearchAdd.UseVisualStyleBackColor = true;
+      this.btnSearchAdd.Click += new System.EventHandler(this.btnSearchAdd_Click);
       // 
       // label5
       // 
@@ -492,6 +503,88 @@
       this.label3.Size = new System.Drawing.Size(38, 13);
       this.label3.TabIndex = 16;
       this.label3.Text = "Name:";
+      // 
+      // tabGroups
+      // 
+      this.tabGroups.Controls.Add(this.lvGroups);
+      this.tabGroups.Controls.Add(this.groupBox3);
+      this.tabGroups.Location = new System.Drawing.Point(4, 22);
+      this.tabGroups.Name = "tabGroups";
+      this.tabGroups.Size = new System.Drawing.Size(312, 273);
+      this.tabGroups.TabIndex = 3;
+      this.tabGroups.Text = "Groups";
+      this.tabGroups.UseVisualStyleBackColor = true;
+      // 
+      // lvGroups
+      // 
+      this.lvGroups.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader2});
+      this.lvGroups.FullRowSelect = true;
+      this.lvGroups.GridLines = true;
+      this.lvGroups.Location = new System.Drawing.Point(16, 71);
+      this.lvGroups.MultiSelect = false;
+      this.lvGroups.Name = "lvGroups";
+      this.lvGroups.Size = new System.Drawing.Size(280, 187);
+      this.lvGroups.TabIndex = 23;
+      this.lvGroups.UseCompatibleStateImageBehavior = false;
+      this.lvGroups.View = System.Windows.Forms.View.Details;
+      // 
+      // columnHeader2
+      // 
+      this.columnHeader2.Text = "Group";
+      this.columnHeader2.Width = 260;
+      // 
+      // groupBox3
+      // 
+      this.groupBox3.Controls.Add(this.btnGroupAdd);
+      this.groupBox3.Controls.Add(this.btnGroupDelete);
+      this.groupBox3.Controls.Add(this.txtGroup);
+      this.groupBox3.Controls.Add(this.label8);
+      this.groupBox3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.groupBox3.Location = new System.Drawing.Point(16, 14);
+      this.groupBox3.Name = "groupBox3";
+      this.groupBox3.Size = new System.Drawing.Size(280, 51);
+      this.groupBox3.TabIndex = 22;
+      this.groupBox3.TabStop = false;
+      this.groupBox3.Text = "Add Group:";
+      // 
+      // btnGroupAdd
+      // 
+      this.btnGroupAdd.Location = new System.Drawing.Point(151, 18);
+      this.btnGroupAdd.Name = "btnGroupAdd";
+      this.btnGroupAdd.Size = new System.Drawing.Size(55, 21);
+      this.btnGroupAdd.TabIndex = 23;
+      this.btnGroupAdd.Text = "Add";
+      this.btnGroupAdd.UseVisualStyleBackColor = true;
+      this.btnGroupAdd.Click += new System.EventHandler(this.btnGroupAdd_Click);
+      // 
+      // btnGroupDelete
+      // 
+      this.btnGroupDelete.Location = new System.Drawing.Point(212, 18);
+      this.btnGroupDelete.Name = "btnGroupDelete";
+      this.btnGroupDelete.Size = new System.Drawing.Size(55, 21);
+      this.btnGroupDelete.TabIndex = 22;
+      this.btnGroupDelete.Text = "Delete";
+      this.btnGroupDelete.UseVisualStyleBackColor = true;
+      this.btnGroupDelete.Click += new System.EventHandler(this.btnGroupDelete_Click);
+      // 
+      // txtGroup
+      // 
+      this.txtGroup.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtGroup.Location = new System.Drawing.Point(58, 18);
+      this.txtGroup.Name = "txtGroup";
+      this.txtGroup.Size = new System.Drawing.Size(87, 21);
+      this.txtGroup.TabIndex = 18;
+      // 
+      // label8
+      // 
+      this.label8.AutoSize = true;
+      this.label8.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label8.Location = new System.Drawing.Point(12, 21);
+      this.label8.Name = "label8";
+      this.label8.Size = new System.Drawing.Size(40, 13);
+      this.label8.TabIndex = 16;
+      this.label8.Text = "Group:";
       // 
       // btnCancel
       // 
@@ -562,12 +655,12 @@
       this.Text = "mpNZB Setup";
       this.Load += new System.EventHandler(this.frmSetup_Load);
       this.tabPages.ResumeLayout(false);
-      this.tabClientSetup.ResumeLayout(false);
+      this.tabClientSettings.ResumeLayout(false);
       this.grpSettings.ResumeLayout(false);
       this.grpSettings.PerformLayout();
       this.grpProgram.ResumeLayout(false);
       this.grpProgram.PerformLayout();
-      this.tabPluginSetup.ResumeLayout(false);
+      this.tabPluginSettings.ResumeLayout(false);
       this.groupBox1.ResumeLayout(false);
       this.groupBox1.PerformLayout();
       this.grpVisual.ResumeLayout(false);
@@ -575,6 +668,9 @@
       this.tabSearch.ResumeLayout(false);
       this.groupBox2.ResumeLayout(false);
       this.groupBox2.PerformLayout();
+      this.tabGroups.ResumeLayout(false);
+      this.groupBox3.ResumeLayout(false);
+      this.groupBox3.PerformLayout();
       this.ResumeLayout(false);
 
     }
@@ -582,7 +678,7 @@
     #endregion
 
     private System.Windows.Forms.TabControl tabPages;
-    private System.Windows.Forms.TabPage tabClientSetup;
+    private System.Windows.Forms.TabPage tabClientSettings;
     private System.Windows.Forms.Label lblHost;
     private System.Windows.Forms.TextBox txtPassword;
     private System.Windows.Forms.TextBox txtHost;
@@ -596,7 +692,7 @@
     private System.Windows.Forms.Label lblGrabber;
     private System.Windows.Forms.GroupBox grpSettings;
     private System.Windows.Forms.CheckBox chkAuth;
-    private System.Windows.Forms.TabPage tabPluginSetup;
+    private System.Windows.Forms.TabPage tabPluginSettings;
     private System.Windows.Forms.GroupBox grpVisual;
     private System.Windows.Forms.Label lblUpdateFrequency;
     private System.Windows.Forms.TextBox txtDisplayName;
@@ -622,8 +718,16 @@
     private System.Windows.Forms.ListView lvSearches;
     private System.Windows.Forms.ColumnHeader clmName;
     private System.Windows.Forms.ColumnHeader clmString;
-    private System.Windows.Forms.Button btnDelete;
-    private System.Windows.Forms.Button btnAdd;
+    private System.Windows.Forms.Button btnSearchDelete;
+    private System.Windows.Forms.Button btnSearchAdd;
     private System.Windows.Forms.CheckBox chkMyTVSeries;
+    private System.Windows.Forms.TabPage tabGroups;
+    private System.Windows.Forms.ListView lvGroups;
+    private System.Windows.Forms.ColumnHeader columnHeader2;
+    private System.Windows.Forms.GroupBox groupBox3;
+    private System.Windows.Forms.Button btnGroupDelete;
+    private System.Windows.Forms.TextBox txtGroup;
+    private System.Windows.Forms.Label label8;
+    private System.Windows.Forms.Button btnGroupAdd;
   }
 }

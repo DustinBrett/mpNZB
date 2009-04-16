@@ -49,14 +49,24 @@ namespace mpNZB
       chkMyTVSeries.Checked = mpSettings.GetValueAsBool("#Sites", "MyTVSeries", false);
       // ##################################################
 
-            // Custom Searches
-      // ##################################################
       XmlDocument xmlDoc = new XmlDocument();
       xmlDoc.Load(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
+
+      // Searches
+      // ##################################################
       foreach (XmlNode nodeItem in xmlDoc.SelectNodes("profile/section[@name='#Searches']/entry"))
       {
         lvSearches.Items.Add(nodeItem.Attributes["name"].InnerText).SubItems.Add(nodeItem.InnerText);
         mpSettings.RemoveEntry("#Searches", nodeItem.Attributes["name"].InnerText);
+      }
+      // ##################################################
+
+      // Groups
+      // ##################################################
+      foreach (XmlNode nodeItem in xmlDoc.SelectNodes("profile/section[@name='#Groups']/entry"))
+      {
+        lvGroups.Items.Add(nodeItem.Attributes["name"].InnerText);
+        mpSettings.RemoveEntry("#Groups", nodeItem.Attributes["name"].InnerText);
       }
       // ##################################################
 
@@ -97,11 +107,19 @@ namespace mpNZB
       mpSettings.SetValueAsBool("#Sites", "MyTVSeries", chkMyTVSeries.Checked);
       // ##################################################
 
-      // Custom Searches
+      // Searches
       // ##################################################
       foreach (ListViewItem Item in lvSearches.Items)
       {
         mpSettings.SetValue("#Searches", Item.SubItems[0].Text, Item.SubItems[1].Text);
+      }
+      // ##################################################
+
+      // Groups
+      // ##################################################
+      foreach (ListViewItem Item in lvGroups.Items)
+      {
+        mpSettings.SetValue("#Groups", Item.Text, String.Empty);
       }
       // ##################################################
 
@@ -147,7 +165,7 @@ namespace mpNZB
       // ##################################################
     }
 
-    private void btnAdd_Click(object sender, EventArgs e)
+    private void btnSearchAdd_Click(object sender, EventArgs e)
     {
       if ((txtSearchName.Text.Length > 0) && (txtSearchString.Text.Length > 0))
       {
@@ -161,11 +179,36 @@ namespace mpNZB
       }
     }
 
-    private void btnDelete_Click(object sender, EventArgs e)
+    private void btnSearchDelete_Click(object sender, EventArgs e)
     {
       if (lvSearches.SelectedItems.Count > 0)
       {
         lvSearches.Items.Remove(lvSearches.SelectedItems[0]);
+      }
+      else
+      {
+        MessageBox.Show(null, "Nothing selected.", "Status", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    private void btnGroupAdd_Click(object sender, EventArgs e)
+    {
+      if (txtGroup.Text.Length > 0)
+      {
+        lvGroups.Items.Add(txtGroup.Text);
+        txtGroup.Text = "";
+      }
+      else
+      {
+        MessageBox.Show(null, "Please fill all fields.", "Status", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    private void btnGroupDelete_Click(object sender, EventArgs e)
+    {
+      if (lvGroups.SelectedItems.Count > 0)
+      {
+        lvGroups.Items.Remove(lvGroups.SelectedItems[0]);
       }
       else
       {

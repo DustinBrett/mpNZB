@@ -27,61 +27,73 @@
     </control>
 
     <control>
-      <description>Refresh Feed</description>
+      <description>Refresh</description>
       <type>button</type>
       <id>1</id>
       <posX>60</posX>
       <posY>150</posY>
-      <label>Refresh Feed</label>
+      <label>Refresh</label>
       <onright>50</onright>
       <ondown>2</ondown>
     </control>
 
     <control>
-      <description>Select Feed</description>
+      <description>Feeds</description>
       <type>button</type>
       <id>2</id>
       <posX>60</posX>
       <posY>195</posY>
-      <label>Select Feed</label>
+      <label>Feeds</label>
       <onright>50</onright>
       <onup>1</onup>
       <ondown>3</ondown>
     </control>
 
     <control>
-      <description>Search Feed</description>
+      <description>Groups</description>
       <type>button</type>
       <id>3</id>
       <posX>60</posX>
-      <posY>260</posY>
-      <label>Search Feed</label>
+      <posY>240</posY>
+      <label>Groups</label>
       <onright>50</onright>
       <onup>2</onup>
       <ondown>4</ondown>
     </control>
 
     <control>
-      <description>Job Queue</description>
+      <description>Search</description>
       <type>button</type>
       <id>4</id>
       <posX>60</posX>
-      <posY>305</posY>
-      <label>Job Queue</label>
+      <posY>285</posY>
+      <label>Search</label>
       <onright>50</onright>
       <onup>3</onup>
       <ondown>5</ondown>
     </control>
 
     <control>
-      <description>Pause Queue</description>
-      <type>togglebutton</type>
+      <description>Job Queue</description>
+      <type>button</type>
       <id>5</id>
       <posX>60</posX>
       <posY>350</posY>
-      <label>Pause Queue</label>
+      <label>Job Queue</label>
       <onright>50</onright>
       <onup>4</onup>
+      <ondown>6</ondown>
+    </control>
+
+    <control>
+      <description>Pause Queue</description>
+      <type>togglebutton</type>
+      <id>6</id>
+      <posX>60</posX>
+      <posY>395</posY>
+      <label>Pause Queue</label>
+      <onright>50</onright>
+      <onup>5</onup>
       <ondown>2</ondown>
     </control>
 
@@ -90,7 +102,7 @@
       <type>label</type>
       <id>6</id>
       <posX>130</posX>
-      <posY>450</posY>
+      <posY>470</posY>
       <label>Paused:</label>
       <align>Right</align>
       <font>font10</font>
@@ -102,7 +114,7 @@
       <type>label</type>
       <id>7</id>
       <posX>137</posX>
-      <posY>450</posY>
+      <posY>470</posY>
       <label>#Paused</label>
       <align>Left</align>
       <font>font10</font>
@@ -114,7 +126,7 @@
       <type>label</type>
       <id>8</id>
       <posX>130</posX>
-      <posY>470</posY>
+      <posY>490</posY>
       <label>Speed:</label>
       <align>Right</align> 
       <font>font10</font>
@@ -126,7 +138,7 @@
       <type>label</type>
       <id>9</id>
       <posX>137</posX>
-      <posY>470</posY>
+      <posY>490</posY>
       <label>#KBps</label>
       <align>Left</align> 
       <font>font10</font>
@@ -138,7 +150,7 @@
       <type>label</type>
       <id>10</id>
       <posX>130</posX>
-      <posY>490</posY>
+      <posY>510</posY>
       <label>Queued:</label>
       <align>Right</align> 
       <font>font10</font>
@@ -150,7 +162,7 @@
       <type>label</type>
       <id>11</id>
       <posX>137</posX>
-      <posY>490</posY>
+      <posY>510</posY>
       <label>#MBStatus</label>
       <align>Left</align> 
       <font>font10</font>
@@ -162,7 +174,7 @@
       <type>label</type>
       <id>12</id>
       <posX>130</posX>
-      <posY>510</posY>
+      <posY>530</posY>
       <label>Count:</label>
       <align>Right</align>
       <font>font10</font>
@@ -174,7 +186,7 @@
       <type>label</type>
       <id>13</id>
       <posX>137</posX>
-      <posY>510</posY>
+      <posY>530</posY>
       <label>#JobCount</label>
       <align>Left</align>
       <font>font10</font>
@@ -186,7 +198,7 @@
       <type>label</type>
       <id>14</id>
       <posX>130</posX>
-      <posY>530</posY>
+      <posY>550</posY>
       <label>D/L DIR:</label>
       <align>Right</align>
       <font>font10</font>
@@ -198,7 +210,7 @@
       <type>label</type>
       <id>15</id>
       <posX>137</posX>
-      <posY>530</posY>
+      <posY>550</posY>
       <label>#DiskSpace1</label>
       <align>Left</align>
       <font>font10</font>
@@ -210,7 +222,7 @@
       <type>label</type>
       <id>16</id>
       <posX>130</posX>
-      <posY>550</posY>
+      <posY>570</posY>
       <label>Temp DIR:</label>
       <align>Right</align> 
       <font>font10</font>
@@ -222,7 +234,7 @@
       <type>label</type>
       <id>17</id>
       <posX>137</posX>
-      <posY>550</posY>
+      <posY>570</posY>
       <label>#DiskSpace2</label>
       <align>Left</align> 
       <font>font10</font>
@@ -234,7 +246,7 @@
       <type>label</type>
       <id>18</id>
       <posX>130</posX>
-      <posY>570</posY>
+      <posY>590</posY>
       <label>ETA:</label>
       <align>Right</align> 
       <font>font10</font>
@@ -246,7 +258,7 @@
       <type>label</type>
       <id>19</id>
       <posX>137</posX>
-      <posY>570</posY>
+      <posY>590</posY>
       <label>#TimeLeft</label>
       <align>Left</align> 
       <font>font10</font>

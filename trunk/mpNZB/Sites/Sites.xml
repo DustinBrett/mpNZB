@@ -1,13 +1,9 @@
 <?xml version="1.0"?>
 <sites>
 	<site name="Binsearch">
-		<feeds>
-			<feed name="alt.binaries.dvd">http://rss.binsearch.net/rss.php?max=[MAX]&amp;g=alt.binaries.dvd</feed>
-			<feed name="alt.binaries.hdtv">http://rss.binsearch.net/rss.php?max=[MAX]&amp;g=alt.binaries.hdtv</feed>
-			<feed name="alt.binaries.movies">http://rss.binsearch.net/rss.php?max=[MAX]&amp;g=alt.binaries.movies</feed>
-			<feed name="alt.binaries.multimedia">http://rss.binsearch.net/rss.php?max=[MAX]&amp;g=alt.binaries.multimedia</feed>
-			<feed name="alt.binaries.tv">http://rss.binsearch.net/rss.php?max=[MAX]&amp;g=alt.binaries.tv</feed>
-		</feeds>
+		<group>
+			<url>http://rss.binsearch.net/rss.php?max=[MAX]&amp;g=[GROUP]</url>
+		</group>
 		<item type="1">
 			<title element="title" />
 			<size type="1" element="description">
@@ -44,13 +40,9 @@
 		</item>
 	</site>
 	<site name="Newzleech">
-		<feeds>
-			<feed name="alt.binaries.dvd">http://www.newzleech.com/rss.php?n=[MAX]&amp;g=alt.binaries.dvd</feed>
-			<feed name="alt.binaries.hdtv">http://www.newzleech.com/rss.php?n=[MAX]&amp;g=alt.binaries.hdtv</feed>
-			<feed name="alt.binaries.movies">http://www.newzleech.com/rss.php?n=[MAX]&amp;g=alt.binaries.movies</feed>
-			<feed name="alt.binaries.multimedia">http://www.newzleech.com/rss.php?n=[MAX]&amp;g=alt.binaries.multimedia</feed>
-			<feed name="alt.binaries.tv">http://www.newzleech.com/rss.php?n=[MAX]&amp;g=alt.binaries.tv</feed>
-		</feeds>
+		<group>
+			<url>http://www.newzleech.com/rss.php?n=[MAX]&amp;g=[GROUP]</url>
+		</group>
 		<search>
 			<url>http://www.newzleech.com/rss.php?n=[MAX]&amp;s=[QUERY]</url>
 		</search>
@@ -65,13 +57,6 @@
 		</item>
 	</site>
 	<site name="NZBClub">
-		<feeds>
-			<feed name="alt.binaries.dvd">http://www.nzbclub.com/nzbfeed.aspx?nid=4673</feed>
-			<feed name="alt.binaries.hdtv">http://www.nzbclub.com/nzbfeed.aspx?nid=5542</feed>
-			<feed name="alt.binaries.movies">http://www.nzbclub.com/nzbfeed.aspx?nid=5982</feed>
-			<feed name="alt.binaries.multimedia">http://www.nzbclub.com/nzbfeed.aspx?nid=6228</feed>
-			<feed name="alt.binaries.tv">http://www.nzbclub.com/nzbfeed.aspx?nid=9984</feed>
-		</feeds>
 		<search>
 			<url>http://www.nzbclub.com/nzbfeed.aspx?ss=[QUERY]</url>
 		</search>
@@ -86,13 +71,9 @@
 		</item>
 	</site>
 	<site name="NZBIndex">
-		<feeds>
-			<feed name="alt.binaries.dvd">http://www.nzbindex.com/rss/alt.binaries.dvd/?max=[MAX]</feed>
-			<feed name="alt.binaries.hdtv">http://www.nzbindex.com/rss/alt.binaries.hdtv/?max=[MAX]</feed>
-			<feed name="alt.binaries.movies">http://www.nzbindex.com/rss/alt.binaries.movies/?max=[MAX]</feed>
-			<feed name="alt.binaries.multimedia">http://www.nzbindex.com/rss/alt.binaries.multimedia/?max=[MAX]</feed>
-			<feed name="alt.binaries.tv">http://www.nzbindex.com/rss/alt.binaries.tv/?max=[MAX]</feed>
-		</feeds> 
+		<group>
+			<url>http://www.nzbindex.com/rss/[GROUP]/?max=[MAX]</url>
+		</group>
 		<search>
 			<url>http://www.nzbindex.com/rss/?q=[QUERY]&amp;max=[MAX]</url>
 		</search>
