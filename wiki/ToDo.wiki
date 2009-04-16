@@ -9,7 +9,7 @@
     * Add API Key
   * 0.50
     * Add History/Shutdown/Pause a Job
-    * Change Delete/Move (Up/Down/Top/Bottom)/Change Category to API
+    * Change Delete/Move (Up/Down/Top/Bottom)/Change Category
 
 == Future Features: ==
   * NZB streaming
