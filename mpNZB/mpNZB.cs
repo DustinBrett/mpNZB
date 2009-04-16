@@ -17,15 +17,17 @@ namespace mpNZB
     #region SkinControlAttribute
 
     [SkinControlAttribute(1)]
-    protected GUIButtonControl btnRefreshFeed = null;
+    protected GUIButtonControl btnRefresh = null;
     [SkinControlAttribute(2)]
-    protected GUIButtonControl btnSelectFeed = null;
+    protected GUIButtonControl btnFeeds = null;
     [SkinControlAttribute(3)]
-    protected GUIButtonControl btnSearch = null;
+    protected GUIButtonControl btnGroups = null;
     [SkinControlAttribute(4)]
+    protected GUIButtonControl btnSearch = null;
+    [SkinControlAttribute(5)]
     protected GUIButtonControl btnJobQueue = null;
 
-    [SkinControlAttribute(5)]
+    [SkinControlAttribute(6)]
     protected GUIToggleButtonControl btnPause = null;
 
     [SkinControlAttribute(50)]
@@ -154,17 +156,18 @@ namespace mpNZB
 
     protected override void OnClicked(int controlId, GUIControl control, Action.ActionType actionType)
     {
-      if (control == btnRefreshFeed)
+      if (control == btnRefresh)
       {
         GUIPropertyManager.SetProperty("#Status", "Processing...");
         GUIWindowManager.Process();
 
         ReadRSS(Site.FeedURL, lstItems);
       }
-      if (control == btnSelectFeed)  { SelectSite(false); }
-      if (control == btnSearch)      { SelectSite(true); }
-      if (control == btnJobQueue)    { Client.Queue(lstItems, this); }
-      if (control == btnPause)       { Client.Pause(btnPause.Selected); }
+      if (control == btnFeeds)    { SelectSite("Feeds"); }
+      if (control == btnGroups)   { SelectSite("Groups"); }
+      if (control == btnSearch)   { SelectSite("Search"); }
+      if (control == btnJobQueue) { Client.Queue(lstItems, this); }
+      if (control == btnPause)    { Client.Pause(btnPause.Selected); }
       if (control == lstItems)
       {
         switch (lstItems.ListItems[lstItems.SelectedListItemIndex].ItemId)
@@ -194,7 +197,7 @@ namespace mpNZB
       try
       {
         // Disable "Refresh Feed" button
-        btnRefreshFeed.Disabled = true;
+        btnRefresh.Disabled = true;
 
         // Load Settings
         Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
@@ -326,21 +329,25 @@ namespace mpNZB
       }
     }
 
-    private void SelectSite(bool _Search)
+    private void SelectSite(string strType)
     {
       try
       {
-        Site = new Sites(_Search);
+        Site = new Sites(strType);
 
         if (Site.SiteName.Length != 0)
         {
-          if (_Search)
+          switch (strType)
           {
-            Site.SetSearch();
-          }
-          else
-          {
-            Site.SetFeed();
+            case "Feeds":
+              Site.SetFeed();
+              break;
+            case "Groups":
+              Site.SetGroup();
+              break;
+            case "Search":
+              Site.SetSearch();
+              break;
           }
 
           if (Site.FeedURL.Count > 0)
@@ -350,7 +357,7 @@ namespace mpNZB
 
             ReadRSS(Site.FeedURL, lstItems);
 
-            btnRefreshFeed.Disabled = false;
+            btnRefresh.Disabled = false;
             GUIPropertyManager.SetProperty("#PageTitle", Site.SiteName + " [" + Site.FeedName + "]");
           }
         }

@@ -25,7 +25,7 @@ namespace mpNZB
 
     #region Init
 
-    public Sites(bool _Search)
+    public Sites(string strType)
     {
       try
       {
@@ -38,26 +38,36 @@ namespace mpNZB
 
           foreach (XmlNode nodeItem in xmlDoc.SelectNodes("sites/site"))
           {
-            if (_Search)
+            switch (strType)
             {
-              if (nodeItem.SelectSingleNode("search") != null)
-              {
-                _Items.Add(new GUIListItem(nodeItem.Attributes["name"].InnerText));
-              }
-            }
-            else
-            {
-              if (nodeItem.SelectNodes("feeds").Count != 0)
-              {
-                _Items.Add(new GUIListItem(nodeItem.Attributes["name"].InnerText));
-              }
+              case "Feeds":
+                if (nodeItem.SelectNodes("feeds").Count != 0)
+                {
+                  _Items.Add(new GUIListItem(nodeItem.Attributes["name"].InnerText));
+                }
+                break;
+              case "Groups":
+                if (nodeItem.SelectSingleNode("group/url") != null)
+                {
+                  _Items.Add(new GUIListItem(nodeItem.Attributes["name"].InnerText));
+                }
+                break;
+              case "Search":
+                if (nodeItem.SelectSingleNode("search/url") != null)
+                {
+                  _Items.Add(new GUIListItem(nodeItem.Attributes["name"].InnerText));
+                }
+                break;
             }
           }
 
-          GUIListItem _Item = MP.Menu(_Items, "Select Site");
-          if (_Item != null)
+          if (_Items.Count > 0)
           {
-            SiteName = _Item.Label;
+            GUIListItem _Item = MP.Menu(_Items, "Select Site");
+            if (_Item != null)
+            {
+              SiteName = _Item.Label;
+            }
           }
         }
         else
@@ -83,31 +93,58 @@ namespace mpNZB
     {
       try
       {
+        List<GUIListItem> _Items = new List<GUIListItem>();
+        GUIListItem Item;
+
         XmlDocument xmlDoc = new XmlDocument();
         xmlDoc.Load(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Plugins) + @"\Windows\Sites.xml");
 
-        if (xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/feeds/feed") != null)
+        foreach (XmlNode nodeItem in xmlDoc.SelectNodes("sites/site[@name='" + SiteName + "']/feeds/feed"))
         {
-          List<GUIListItem> _Items = new List<GUIListItem>();
-          GUIListItem Item;
+          Item = new GUIListItem(nodeItem.Attributes["name"].InnerText);
+          Item.Path = nodeItem.InnerText;
+          _Items.Add(Item);
+        }
 
-          foreach (XmlNode nodeItem in xmlDoc.SelectNodes("sites/site[@name='" + SiteName + "']/feeds/feed"))
-          {
-            Item = new GUIListItem(nodeItem.Attributes["name"].InnerText);
-            Item.Path = nodeItem.InnerText;
-            _Items.Add(Item);
-          }
+        GUIListItem _Item = MP.Menu(_Items, "Select Feed");
+        if (_Item != null)
+        {
+          FeedName = _Item.Label;
+          FeedURL.Add(_Item.Path.Replace("[MAX]", MaxResults.ToString()));
+        }
+      }
+      catch (Exception e) { MP.Error(e); }
+    }
 
-          GUIListItem _Item = MP.Menu(_Items, "Select Feed");
+    public void SetGroup()
+    {
+      try
+      {
+        List<GUIListItem> _Items = new List<GUIListItem>();
+
+        XmlDocument xmlSettings = new XmlDocument();
+        xmlSettings.Load(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
+
+        foreach (XmlNode nodeItem in xmlSettings.SelectNodes("profile/section[@name='#Groups']/entry"))
+        {
+          _Items.Add(new GUIListItem(nodeItem.Attributes["name"].InnerText));
+        }
+
+        if (_Items.Count > 0)
+        {
+          GUIListItem _Item = MP.Menu(_Items, "Select Group");
           if (_Item != null)
           {
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Plugins) + @"\Windows\Sites.xml");
+
             FeedName = _Item.Label;
-            FeedURL.Add(_Item.Path.Replace("[MAX]", MaxResults.ToString()));
+            FeedURL.Add(xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/group/url").InnerText.Replace("[GROUP]", FeedName.Replace(" ", "+")).Replace("[MAX]", MaxResults.ToString()));
           }
         }
         else
         {
-          GUIPropertyManager.SetProperty("#Status", "Error parsing XML");
+          GUIPropertyManager.SetProperty("#Status", "No groups added");
         }
       }
       catch (Exception e) { MP.Error(e); }
@@ -117,9 +154,6 @@ namespace mpNZB
     {
       try
       {
-        XmlDocument xmlSettings = new XmlDocument();
-        xmlSettings.Load(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
-
         List<GUIListItem> _Items = new List<GUIListItem>();       
 
         _Items.Add(new GUIListItem("New Search"));
@@ -130,6 +164,9 @@ namespace mpNZB
         }
 
         GUIListItem Item;
+
+        XmlDocument xmlSettings = new XmlDocument();
+        xmlSettings.Load(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
 
         foreach (XmlNode nodeItem in xmlSettings.SelectNodes("profile/section[@name='#Searches']/entry"))
         {
@@ -144,15 +181,13 @@ namespace mpNZB
           XmlDocument xmlDoc = new XmlDocument();
           xmlDoc.Load(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Plugins) + @"\Windows\Sites.xml");
 
-          if (xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/search/url") != null)
+          switch (_Item.Label)
           {
-            if (_Item.Label == "New Search")
-            {
+            case "New Search":
               FeedName = MP.Keyboard();
               FeedURL.Add(xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/search/url").InnerText.Replace("[QUERY]", FeedName.Replace(" ", "+")).Replace("[MAX]", MaxResults.ToString()));
-            }
-            else if (_Item.Label == "Missing Episodes")
-            {
+              break;
+            case "Missing Episodes":
               MyTVSeries MTS = new MyTVSeries();
               GUIListItem _Series = MP.Menu(MTS.SeriesNames(), "Select Series");
               if (_Series != null)
@@ -164,9 +199,8 @@ namespace mpNZB
                   FeedURL.Add(xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/search/url").InnerText.Replace("[QUERY]", FeedName.Replace(" ", "+")).Replace("[MAX]", MaxResults.ToString()));
                 }
               }
-            }
-            else
-            {
+              break;
+            default:
               FeedName = _Item.Label;
               if (_Item.Path.Contains("|"))
               {
@@ -180,11 +214,7 @@ namespace mpNZB
               {
                 FeedURL.Add(xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/search/url").InnerText.Replace("[QUERY]", _Item.Path.Replace(" ", "+")).Replace("[MAX]", MaxResults.ToString()));
               }
-            }
-          }
-          else
-          {
-            GUIPropertyManager.SetProperty("#Status", "Error parsing XML");
+              break;
           }
         }
       }
@@ -198,68 +228,61 @@ namespace mpNZB
         XmlDocument xmlDoc = new XmlDocument();
         xmlDoc.Load(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Plugins) + @"\Windows\Sites.xml");
 
-        if (xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item") != null)
-        {
-          string strSize = String.Empty;
-          double dblSize = 0;
+        string strSize = String.Empty;
+        double dblSize = 0;
 
-          if (xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size") != null)
-          {
-            switch (int.Parse(xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size").Attributes["type"].InnerText))
-            {               
-              case 1:
-                if (xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size/regex") != null)
+        if (xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size") != null)
+        {
+          switch (int.Parse(xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size").Attributes["type"].InnerText))
+          {               
+            case 1:
+              if (xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size/regex") != null)
+              {
+                Match mSize = Regex.Match(((xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size[@attribute]") != null) ? _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size").Attributes["element"].InnerText].Attributes[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size").Attributes["attribute"].InnerText].InnerText : _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size").Attributes["element"].InnerText].InnerText), xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size/regex").Attributes["input"].InnerText);
+                if ((mSize.Success) && (mSize.Groups[1].Value.Length > 0) && (mSize.Groups[2].Value.Length > 0))
                 {
-                  Match mSize = Regex.Match(((xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size[@attribute]") != null) ? _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size").Attributes["element"].InnerText].Attributes[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size").Attributes["attribute"].InnerText].InnerText : _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size").Attributes["element"].InnerText].InnerText), xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size/regex").Attributes["input"].InnerText);
-                  if ((mSize.Success) && (mSize.Groups[1].Value.Length > 0) && (mSize.Groups[2].Value.Length > 0))
+                  dblSize = double.Parse(Regex.Replace(mSize.Groups[1].Value, "[(.|,)]", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.ToCharArray()[0].ToString()));
+                  switch (mSize.Groups[2].Value.Replace("KiB", "KB").Replace("MiB", "MB").Replace("GiB", "GB").Replace("TiB", "TB"))
                   {
-                    dblSize = double.Parse(Regex.Replace(mSize.Groups[1].Value, "[(.|,)]", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.ToCharArray()[0].ToString()));
-                    switch (mSize.Groups[2].Value.Replace("KiB", "KB").Replace("MiB", "MB").Replace("GiB", "GB").Replace("TiB", "TB"))
-                    {
-                      case "KB":
-                        dblSize = (dblSize * 1024);
-                        break;
-                      case "MB":
-                        dblSize = ((dblSize * 1024) * 1024);
-                        break;
-                      case "GB":
-                        dblSize = (((dblSize * 1024) * 1024) * 1024);
-                        break;
-                      case "TB":
-                        dblSize = ((((dblSize * 1024) * 1024) * 1024) * 1024);
-                        break;
-                    }
+                    case "KB":
+                      dblSize = (dblSize * 1024);
+                      break;
+                    case "MB":
+                      dblSize = ((dblSize * 1024) * 1024);
+                      break;
+                    case "GB":
+                      dblSize = (((dblSize * 1024) * 1024) * 1024);
+                      break;
+                    case "TB":
+                      dblSize = ((((dblSize * 1024) * 1024) * 1024) * 1024);
+                      break;
                   }
                 }
-                break;
-              case 2:
-                dblSize = ((xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size[@attribute]") != null) ? double.Parse(_Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size").Attributes["element"].InnerText].Attributes[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size").Attributes["attribute"].InnerText].InnerText) : double.Parse(_Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size").Attributes["element"].InnerText].InnerText));
-                break;
-            }
-
-            if (dblSize == 0) { strSize = String.Empty; }
-            else if (dblSize < 1024) { strSize = dblSize.ToString("N2") + " B"; }
-            else if (dblSize < 1048576) { strSize = (dblSize / 1024).ToString("N2") + " KB"; }
-            else if (dblSize < 1073741824) { strSize = ((dblSize / 1024) / 1024).ToString("N2") + " MB"; }
-            else if (dblSize < 1099511627776) { strSize = (((dblSize / 1024) / 1024) / 1024).ToString("N2") + " GB"; }
-            else if (dblSize < 1125899906842624) { strSize = ((((dblSize / 1024) / 1024) / 1024) / 1024).ToString("N2") + " TB"; }
+              }
+              break;
+            case 2:
+              dblSize = ((xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size[@attribute]") != null) ? double.Parse(_Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size").Attributes["element"].InnerText].Attributes[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size").Attributes["attribute"].InnerText].InnerText) : double.Parse(_Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/size").Attributes["element"].InnerText].InnerText));
+              break;
           }
 
-          string strURL = ((xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/url[@attribute]") != null) ? _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/url").Attributes["element"].InnerText].Attributes[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/url").Attributes["attribute"].InnerText].InnerText : _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/url").Attributes["element"].InnerText].InnerText);
-          if (xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/url/regex") != null)
-          {
-            foreach (XmlNode _RegEx in xmlDoc.SelectNodes("sites/site[@name='" + SiteName + "']/item/url/regex"))
-            {
-              strURL = Regex.Replace(strURL, _RegEx.Attributes["input"].InnerText, _RegEx.Attributes["replacement"].InnerText);
-            }
-          }
-
-          MP.ListItem(_List, ((xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title[@attribute]") != null) ? _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["element"].InnerText].Attributes[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["attribute"].InnerText].InnerText : _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["element"].InnerText].InnerText).Replace("&quot;", "\"").Replace("&amp;", "&").Replace("&lt;", "<").Replace("&gt;", ">"), strSize, DateTime.ParseExact(_Node["pubDate"].InnerText.Replace("GMT", "+0000"), "ddd, dd MMM yyyy HH:mm:ss zzz", CultureInfo.InvariantCulture), (long)dblSize, strURL, int.Parse(xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item").Attributes["type"].InnerText));
+          if (dblSize == 0) { strSize = String.Empty; }
+          else if (dblSize < 1024) { strSize = dblSize.ToString("N2") + " B"; }
+          else if (dblSize < 1048576) { strSize = (dblSize / 1024).ToString("N2") + " KB"; }
+          else if (dblSize < 1073741824) { strSize = ((dblSize / 1024) / 1024).ToString("N2") + " MB"; }
+          else if (dblSize < 1099511627776) { strSize = (((dblSize / 1024) / 1024) / 1024).ToString("N2") + " GB"; }
+          else if (dblSize < 1125899906842624) { strSize = ((((dblSize / 1024) / 1024) / 1024) / 1024).ToString("N2") + " TB"; }
         }
-        else
+
+        string strURL = ((xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/url[@attribute]") != null) ? _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/url").Attributes["element"].InnerText].Attributes[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/url").Attributes["attribute"].InnerText].InnerText : _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/url").Attributes["element"].InnerText].InnerText);
+        if (xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/url/regex") != null)
         {
-          GUIPropertyManager.SetProperty("#Status", "Error parsing XML");
+          foreach (XmlNode _RegEx in xmlDoc.SelectNodes("sites/site[@name='" + SiteName + "']/item/url/regex"))
+          {
+            strURL = Regex.Replace(strURL, _RegEx.Attributes["input"].InnerText, _RegEx.Attributes["replacement"].InnerText);
+          }
         }
+
+        MP.ListItem(_List, ((xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title[@attribute]") != null) ? _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["element"].InnerText].Attributes[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["attribute"].InnerText].InnerText : _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["element"].InnerText].InnerText).Replace("&quot;", "\"").Replace("&amp;", "&").Replace("&lt;", "<").Replace("&gt;", ">"), strSize, DateTime.ParseExact(_Node["pubDate"].InnerText.Replace("GMT", "+0000"), "ddd, dd MMM yyyy HH:mm:ss zzz", CultureInfo.InvariantCulture), (long)dblSize, strURL, int.Parse(xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item").Attributes["type"].InnerText));
       }
       catch (Exception e) { MP.Error(e); }
     }
