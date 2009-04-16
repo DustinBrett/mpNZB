@@ -3,6 +3,11 @@
 
 == General ==
   * Toggle `btnPause` if `Status` is paused
+  * Rename buttons
+    * Refresh
+    * Feeds
+    * Groups
+    * Search
 
 == API ==
   * *0.49*
