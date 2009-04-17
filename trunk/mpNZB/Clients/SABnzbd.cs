@@ -49,13 +49,17 @@ namespace mpNZB.Clients
       set { _Password = value; }
     }
 
-    private bool CatSelect;
-    private bool Auth;
+    private bool CatSelect = false;
+    private bool Auth = false;
 
-    public SABnzbd(string strIP, string strPort, bool bolCatSelect, bool bolAuth, string strUsername, string strPassword, int intUpdateFreq)
+    private string APIKey = String.Empty;
+
+    public SABnzbd(string strIP, string strPort, string strAPIKey, bool bolCatSelect, bool bolAuth, string strUsername, string strPassword, int intUpdateFreq)
     {
       IP = strIP;
       Port = strPort;
+
+      APIKey = strAPIKey;
 
       Username = strUsername;
       Password = strPassword;
@@ -103,12 +107,12 @@ namespace mpNZB.Clients
     private string CreateURL(string _Mode, string _Command, bool _CatSelect)
     {
       string strResult = String.Empty;
-
+      
       try
       {
         if ((IP.Length != 0) && (Port.Length != 0))
         {
-          strResult = "http://" + IP + ":" + Port + "/sabnzbd/" + _Mode + (((Auth) && ((Username.Length != 0) && (Password.Length != 0))) ? "&" + "ma_username=" + Username + "&" + "ma_password=" + Password : String.Empty) + ((_Command.Length != 0) ? "&" + _Command : String.Empty) + ((_CatSelect) ? "&" + "cat=" + SelectCategory() : String.Empty);
+          strResult = "http://" + IP + ":" + Port + "/sabnzbd/" + _Mode + (((Auth) && ((Username.Length > 0) && (Password.Length > 0))) ? "&" + "ma_username=" + Username + "&" + "ma_password=" + Password : String.Empty) + ((APIKey.Length > 0) ? "&" + "apikey=" + APIKey : String.Empty) + ((_Command.Length > 0) ? "&" + _Command : String.Empty) + ((_CatSelect) ? "&" + "cat=" + SelectCategory() : String.Empty);
         }
       }
       catch (Exception e) { MP.Error(e); }
