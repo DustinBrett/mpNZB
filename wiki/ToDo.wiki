@@ -11,16 +11,16 @@
     * [http://www.tvrage.com/myrss.php?date=yesterday&hide_time=1 TVrage - Yesterday]
     * [http://www.tvrage.com/myrss.php?hide_time=1 TVrage - Today]
 
-== API ==
+== SABnzbd ==
   * *0.50*
     * Add History/Shutdown/Pause a Job
     * Recode Delete/Move (Up/Down/Top/Bottom)/Change Category
+    * [http://nzbmatrix.com/ NZBMatrix] support
 
 == Future Features: ==
   * NZB streaming
     * [http://code.google.com/p/stream-unrar/ stream-unrar]
     * [http://www.nzbplayer.com/ NZBPlayer]
 
-== Sites ==
-  * [http://nzbmatrix.com/ NZBMatrix]
+== Sites ==  
   * [http://www.binsearch.info/ Binsearch]/[http://www.tvnzb.com/ TvNZB] Searching
