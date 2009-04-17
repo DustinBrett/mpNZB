@@ -3,6 +3,7 @@
 
 == General ==
   * Add IO.File.Exists to config form load
+  * Add video overlay to skin
   * Toggle `btnPause` if `Status` is paused
   * Create Blue3 skin
   * Notification
