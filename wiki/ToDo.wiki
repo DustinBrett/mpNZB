@@ -4,6 +4,9 @@
 == General ==
   * Toggle `btnPause` if `Status` is paused
   * Create Blue3 skin
+  * Notification
+    * Anywhere in MP
+    * Play sound effect
   * Add RSS Watchlists to custom search
     * [http://www.tvrage.com/myrss.php?date=yesterday&hide_time=1 TVrage - Yesterday]
     * [http://www.tvrage.com/myrss.php?hide_time=1 TVrage - Today]
