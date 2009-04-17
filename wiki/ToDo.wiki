@@ -14,7 +14,7 @@
 == API ==
   * *0.50*
     * Add History/Shutdown/Pause a Job
-    * Change Delete/Move (Up/Down/Top/Bottom)/Change Category
+    * Recode Delete/Move (Up/Down/Top/Bottom)/Change Category
 
 == Future Features: ==
   * NZB streaming
