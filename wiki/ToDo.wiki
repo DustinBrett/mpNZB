@@ -11,6 +11,9 @@
   * Add RSS watchlists to searching
     * [http://www.tvrage.com/myrss.php?date=yesterday&hide_time=1 TVrage - Yesterday]
     * [http://www.tvrage.com/myrss.php?hide_time=1 TVrage - Today]
+  * More information from NZB/Job Queue
+    * NFO
+    * Video Format
 
 == SABnzbd ==
   * *0.50*
