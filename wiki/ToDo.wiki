@@ -5,9 +5,8 @@
   * Toggle `btnPause` if `Status` is paused
   * Create Blue3 skin
   * Notification
-    * Anywhere in MP
     * Play sound effect
-  * Add RSS Watchlists to custom search
+  * Add RSS watchlists to searching
     * [http://www.tvrage.com/myrss.php?date=yesterday&hide_time=1 TVrage - Yesterday]
     * [http://www.tvrage.com/myrss.php?hide_time=1 TVrage - Today]
 
@@ -21,6 +20,3 @@
   * NZB streaming
     * [http://code.google.com/p/stream-unrar/ stream-unrar]
     * [http://www.nzbplayer.com/ NZBPlayer]
-
-== Sites ==  
-  * [http://www.binsearch.info/ Binsearch]/[http://www.tvnzb.com/ TvNZB] Searching
