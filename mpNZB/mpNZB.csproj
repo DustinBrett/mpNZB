@@ -89,9 +89,9 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\mpNZB.dll" "\\HTPC\MediaPortal\plugins\Windows\mpNZB.dll" /y
-copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\Sites\Sites.xml" "\\HTPC\MediaPortal\plugins\Windows\Sites.xml" /y
-copy "C:\Users\Dustin\Desktop\mpNZB\skin\StreamedMP\mpNZB.xml" "\\HTPC\MediaPortal\skin\StreamedMP\mpNZB.xml" /y
-copy "C:\Users\Dustin\Desktop\mpNZB\skin\Blue3Wide\mpNZB.xml" "\\HTPC\MediaPortal\skin\Blue3Wide\mpNZB.xml" /y</PostBuildEvent>
+    <PostBuildEvent>rem copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\mpNZB.dll" "\\HTPC\MediaPortal\plugins\Windows\mpNZB.dll" /y
+rem copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\Sites\Sites.xml" "\\HTPC\MediaPortal\plugins\Windows\Sites.xml" /y
+rem copy "C:\Users\Dustin\Desktop\mpNZB\skin\StreamedMP\mpNZB.xml" "\\HTPC\MediaPortal\skin\StreamedMP\mpNZB.xml" /y
+rem copy "C:\Users\Dustin\Desktop\mpNZB\skin\Blue3Wide\mpNZB.xml" "\\HTPC\MediaPortal\skin\Blue3Wide\mpNZB.xml" /y</PostBuildEvent>
   </PropertyGroup>
 </Project>

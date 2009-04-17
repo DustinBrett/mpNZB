@@ -80,6 +80,8 @@
       this.checkBox1 = new System.Windows.Forms.CheckBox();
       this.comboBox1 = new System.Windows.Forms.ComboBox();
       this.label1 = new System.Windows.Forms.Label();
+      this.label6 = new System.Windows.Forms.Label();
+      this.txtAPIKey = new System.Windows.Forms.TextBox();
       this.tabPages.SuspendLayout();
       this.tabClientSettings.SuspendLayout();
       this.grpSettings.SuspendLayout();
@@ -103,7 +105,7 @@
       this.tabPages.Location = new System.Drawing.Point(12, 12);
       this.tabPages.Name = "tabPages";
       this.tabPages.SelectedIndex = 0;
-      this.tabPages.Size = new System.Drawing.Size(320, 299);
+      this.tabPages.Size = new System.Drawing.Size(320, 317);
       this.tabPages.TabIndex = 1;
       // 
       // tabClientSettings
@@ -114,13 +116,15 @@
       this.tabClientSettings.Location = new System.Drawing.Point(4, 22);
       this.tabClientSettings.Name = "tabClientSettings";
       this.tabClientSettings.Padding = new System.Windows.Forms.Padding(3);
-      this.tabClientSettings.Size = new System.Drawing.Size(312, 273);
+      this.tabClientSettings.Size = new System.Drawing.Size(312, 291);
       this.tabClientSettings.TabIndex = 0;
       this.tabClientSettings.Text = "Client Settings";
       this.tabClientSettings.UseVisualStyleBackColor = true;
       // 
       // grpSettings
       // 
+      this.grpSettings.Controls.Add(this.label6);
+      this.grpSettings.Controls.Add(this.txtAPIKey);
       this.grpSettings.Controls.Add(this.btnTestConn);
       this.grpSettings.Controls.Add(this.chkAuth);
       this.grpSettings.Controls.Add(this.txtUsername);
@@ -134,14 +138,14 @@
       this.grpSettings.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.grpSettings.Location = new System.Drawing.Point(16, 95);
       this.grpSettings.Name = "grpSettings";
-      this.grpSettings.Size = new System.Drawing.Size(280, 160);
+      this.grpSettings.Size = new System.Drawing.Size(280, 178);
       this.grpSettings.TabIndex = 10;
       this.grpSettings.TabStop = false;
       this.grpSettings.Text = "Settings:";
       // 
       // btnTestConn
       // 
-      this.btnTestConn.Location = new System.Drawing.Point(160, 47);
+      this.btnTestConn.Location = new System.Drawing.Point(160, 44);
       this.btnTestConn.Name = "btnTestConn";
       this.btnTestConn.Size = new System.Drawing.Size(104, 21);
       this.btnTestConn.TabIndex = 8;
@@ -153,7 +157,7 @@
       // 
       this.chkAuth.AutoSize = true;
       this.chkAuth.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.chkAuth.Location = new System.Drawing.Point(77, 74);
+      this.chkAuth.Location = new System.Drawing.Point(77, 96);
       this.chkAuth.Name = "chkAuth";
       this.chkAuth.Size = new System.Drawing.Size(141, 17);
       this.chkAuth.TabIndex = 5;
@@ -165,7 +169,7 @@
       // 
       this.txtUsername.Enabled = false;
       this.txtUsername.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtUsername.Location = new System.Drawing.Point(77, 97);
+      this.txtUsername.Location = new System.Drawing.Point(77, 117);
       this.txtUsername.Name = "txtUsername";
       this.txtUsername.Size = new System.Drawing.Size(187, 21);
       this.txtUsername.TabIndex = 6;
@@ -174,7 +178,7 @@
       // 
       this.lblUsername.AutoSize = true;
       this.lblUsername.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblUsername.Location = new System.Drawing.Point(12, 100);
+      this.lblUsername.Location = new System.Drawing.Point(12, 120);
       this.lblUsername.Name = "lblUsername";
       this.lblUsername.Size = new System.Drawing.Size(59, 13);
       this.lblUsername.TabIndex = 4;
@@ -184,7 +188,7 @@
       // 
       this.txtPassword.Enabled = false;
       this.txtPassword.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtPassword.Location = new System.Drawing.Point(77, 124);
+      this.txtPassword.Location = new System.Drawing.Point(77, 144);
       this.txtPassword.Name = "txtPassword";
       this.txtPassword.Size = new System.Drawing.Size(187, 21);
       this.txtPassword.TabIndex = 7;
@@ -194,7 +198,7 @@
       // 
       this.lblPort.AutoSize = true;
       this.lblPort.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblPort.Location = new System.Drawing.Point(40, 50);
+      this.lblPort.Location = new System.Drawing.Point(40, 47);
       this.lblPort.Name = "lblPort";
       this.lblPort.Size = new System.Drawing.Size(31, 13);
       this.lblPort.TabIndex = 2;
@@ -213,7 +217,7 @@
       // txtPort
       // 
       this.txtPort.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtPort.Location = new System.Drawing.Point(77, 47);
+      this.txtPort.Location = new System.Drawing.Point(77, 44);
       this.txtPort.Name = "txtPort";
       this.txtPort.Size = new System.Drawing.Size(77, 21);
       this.txtPort.TabIndex = 4;
@@ -222,7 +226,7 @@
       // 
       this.lblPassword.AutoSize = true;
       this.lblPassword.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblPassword.Location = new System.Drawing.Point(14, 127);
+      this.lblPassword.Location = new System.Drawing.Point(14, 147);
       this.lblPassword.Name = "lblPassword";
       this.lblPassword.Size = new System.Drawing.Size(57, 13);
       this.lblPassword.TabIndex = 6;
@@ -289,7 +293,7 @@
       this.tabPluginSettings.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.tabPluginSettings.Location = new System.Drawing.Point(4, 22);
       this.tabPluginSettings.Name = "tabPluginSettings";
-      this.tabPluginSettings.Size = new System.Drawing.Size(312, 273);
+      this.tabPluginSettings.Size = new System.Drawing.Size(312, 291);
       this.tabPluginSettings.TabIndex = 1;
       this.tabPluginSettings.Text = "Plugin Settings";
       this.tabPluginSettings.UseVisualStyleBackColor = true;
@@ -392,7 +396,7 @@
       this.tabSearch.Location = new System.Drawing.Point(4, 22);
       this.tabSearch.Name = "tabSearch";
       this.tabSearch.Padding = new System.Windows.Forms.Padding(3);
-      this.tabSearch.Size = new System.Drawing.Size(312, 273);
+      this.tabSearch.Size = new System.Drawing.Size(312, 291);
       this.tabSearch.TabIndex = 2;
       this.tabSearch.Text = "Searches";
       this.tabSearch.UseVisualStyleBackColor = true;
@@ -407,7 +411,7 @@
       this.lvSearches.Location = new System.Drawing.Point(16, 116);
       this.lvSearches.MultiSelect = false;
       this.lvSearches.Name = "lvSearches";
-      this.lvSearches.Size = new System.Drawing.Size(280, 142);
+      this.lvSearches.Size = new System.Drawing.Size(280, 160);
       this.lvSearches.TabIndex = 21;
       this.lvSearches.UseCompatibleStateImageBehavior = false;
       this.lvSearches.View = System.Windows.Forms.View.Details;
@@ -510,7 +514,7 @@
       this.tabGroups.Controls.Add(this.groupBox3);
       this.tabGroups.Location = new System.Drawing.Point(4, 22);
       this.tabGroups.Name = "tabGroups";
-      this.tabGroups.Size = new System.Drawing.Size(312, 273);
+      this.tabGroups.Size = new System.Drawing.Size(312, 291);
       this.tabGroups.TabIndex = 3;
       this.tabGroups.Text = "Groups";
       this.tabGroups.UseVisualStyleBackColor = true;
@@ -524,7 +528,7 @@
       this.lvGroups.Location = new System.Drawing.Point(16, 71);
       this.lvGroups.MultiSelect = false;
       this.lvGroups.Name = "lvGroups";
-      this.lvGroups.Size = new System.Drawing.Size(280, 187);
+      this.lvGroups.Size = new System.Drawing.Size(280, 205);
       this.lvGroups.TabIndex = 23;
       this.lvGroups.UseCompatibleStateImageBehavior = false;
       this.lvGroups.View = System.Windows.Forms.View.Details;
@@ -589,7 +593,7 @@
       // btnCancel
       // 
       this.btnCancel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnCancel.Location = new System.Drawing.Point(257, 321);
+      this.btnCancel.Location = new System.Drawing.Point(257, 339);
       this.btnCancel.Name = "btnCancel";
       this.btnCancel.Size = new System.Drawing.Size(75, 23);
       this.btnCancel.TabIndex = 2;
@@ -600,7 +604,7 @@
       // btnOK
       // 
       this.btnOK.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnOK.Location = new System.Drawing.Point(176, 321);
+      this.btnOK.Location = new System.Drawing.Point(176, 339);
       this.btnOK.Name = "btnOK";
       this.btnOK.Size = new System.Drawing.Size(75, 23);
       this.btnOK.TabIndex = 3;
@@ -641,11 +645,29 @@
       this.label1.TabIndex = 2;
       this.label1.Text = "Grabber:";
       // 
+      // label6
+      // 
+      this.label6.AutoSize = true;
+      this.label6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label6.Location = new System.Drawing.Point(22, 71);
+      this.label6.Name = "label6";
+      this.label6.Size = new System.Drawing.Size(49, 13);
+      this.label6.TabIndex = 9;
+      this.label6.Text = "API Key:";
+      // 
+      // txtAPIKey
+      // 
+      this.txtAPIKey.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtAPIKey.Location = new System.Drawing.Point(77, 68);
+      this.txtAPIKey.Name = "txtAPIKey";
+      this.txtAPIKey.Size = new System.Drawing.Size(187, 21);
+      this.txtAPIKey.TabIndex = 10;
+      // 
       // frmSetup
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(344, 354);
+      this.ClientSize = new System.Drawing.Size(344, 372);
       this.Controls.Add(this.btnOK);
       this.Controls.Add(this.btnCancel);
       this.Controls.Add(this.tabPages);
@@ -729,5 +751,7 @@
     private System.Windows.Forms.TextBox txtGroup;
     private System.Windows.Forms.Label label8;
     private System.Windows.Forms.Button btnGroupAdd;
+    private System.Windows.Forms.Label label6;
+    private System.Windows.Forms.TextBox txtAPIKey;
   }
 }
