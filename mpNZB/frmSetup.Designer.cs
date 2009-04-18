@@ -31,6 +31,8 @@
       this.tabPages = new System.Windows.Forms.TabControl();
       this.tabClientSettings = new System.Windows.Forms.TabPage();
       this.grpSettings = new System.Windows.Forms.GroupBox();
+      this.label6 = new System.Windows.Forms.Label();
+      this.txtAPIKey = new System.Windows.Forms.TextBox();
       this.btnTestConn = new System.Windows.Forms.Button();
       this.chkAuth = new System.Windows.Forms.CheckBox();
       this.txtUsername = new System.Windows.Forms.TextBox();
@@ -80,8 +82,6 @@
       this.checkBox1 = new System.Windows.Forms.CheckBox();
       this.comboBox1 = new System.Windows.Forms.ComboBox();
       this.label1 = new System.Windows.Forms.Label();
-      this.label6 = new System.Windows.Forms.Label();
-      this.txtAPIKey = new System.Windows.Forms.TextBox();
       this.tabPages.SuspendLayout();
       this.tabClientSettings.SuspendLayout();
       this.grpSettings.SuspendLayout();
@@ -142,6 +142,26 @@
       this.grpSettings.TabIndex = 10;
       this.grpSettings.TabStop = false;
       this.grpSettings.Text = "Settings:";
+      // 
+      // label6
+      // 
+      this.label6.AutoSize = true;
+      this.label6.Enabled = false;
+      this.label6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label6.Location = new System.Drawing.Point(22, 71);
+      this.label6.Name = "label6";
+      this.label6.Size = new System.Drawing.Size(49, 13);
+      this.label6.TabIndex = 9;
+      this.label6.Text = "API Key:";
+      // 
+      // txtAPIKey
+      // 
+      this.txtAPIKey.Enabled = false;
+      this.txtAPIKey.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtAPIKey.Location = new System.Drawing.Point(77, 68);
+      this.txtAPIKey.Name = "txtAPIKey";
+      this.txtAPIKey.Size = new System.Drawing.Size(187, 21);
+      this.txtAPIKey.TabIndex = 10;
       // 
       // btnTestConn
       // 
@@ -644,24 +664,6 @@
       this.label1.Size = new System.Drawing.Size(50, 13);
       this.label1.TabIndex = 2;
       this.label1.Text = "Grabber:";
-      // 
-      // label6
-      // 
-      this.label6.AutoSize = true;
-      this.label6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label6.Location = new System.Drawing.Point(22, 71);
-      this.label6.Name = "label6";
-      this.label6.Size = new System.Drawing.Size(49, 13);
-      this.label6.TabIndex = 9;
-      this.label6.Text = "API Key:";
-      // 
-      // txtAPIKey
-      // 
-      this.txtAPIKey.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtAPIKey.Location = new System.Drawing.Point(77, 68);
-      this.txtAPIKey.Name = "txtAPIKey";
-      this.txtAPIKey.Size = new System.Drawing.Size(187, 21);
-      this.txtAPIKey.TabIndex = 10;
       // 
       // frmSetup
       // 
