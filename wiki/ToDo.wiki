@@ -8,8 +8,8 @@
     * [http://www.tvrage.com/myrss.php?hide_time=1 TVrage - Today]
 
 == Skin ==
-  * Add video overlay to Blue3Wide
-  * Create Blue3 skin
+  * Add video overlay to `Blue3Wide`
+  * Create `Blue3` skin
   * Toggle `btnPause` if `Status` is paused
 
 == SABnzbd ==
