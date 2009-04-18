@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -15,63 +16,72 @@ namespace mpNZB
 
     private void frmSetup_Load(object sender, EventArgs e)
     {
-      Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
+      // Set Defaults
+      cmbGrabber.Text = "SABnzbd";
+      chkCatSelect.Enabled = true;
+      txtHost.Text = "127.0.0.1";
+      txtPort.Text = "8080";      
 
-      // Plugin Settings
-      // ##################################################
-      txtUpdateFreq.Text = mpSettings.GetValueAsInt("#Plugin", "UpdateFrequency", 1).ToString();
-      txtDisplayName.Text = mpSettings.GetValue("#Plugin", "DisplayName");
-      // ##################################################
-
-      // Client Settings
-      // ##################################################
-      string strGrabber = mpSettings.GetValue("#Client", "Grabber");
-      cmbGrabber.Text = ((strGrabber.Length > 0) ? strGrabber : "SABnzbd");
-
-      string strHost = mpSettings.GetValue("#Client", "Host");
-      string strPort = mpSettings.GetValue("#Client", "Port");
-      txtHost.Text = ((strHost.Length > 0) ? strHost : "127.0.0.1");
-      txtPort.Text = ((strPort.Length > 0) ? strPort : "8080");
-      txtAPIKey.Text = mpSettings.GetValue("#Client", "APIKey");
-
-      chkCatSelect.Enabled = (cmbGrabber.Text == "SABnzbd");
-      chkCatSelect.Checked = mpSettings.GetValueAsBool("#Client", "CatSelect", false);
-
-      chkAuth.Checked = mpSettings.GetValueAsBool("#Client", "Auth", false);
-      txtUsername.Enabled = chkAuth.Checked;
-      txtPassword.Enabled = chkAuth.Checked;
-      txtUsername.Text = mpSettings.GetValue("#Client", "Username");
-      txtPassword.Text = mpSettings.GetValue("#Client", "Password");
-      // ##################################################
-
-      // Site Settings
-      // ##################################################
-      txtMaxResults.Text = mpSettings.GetValueAsInt("#Sites", "MaxResults", 50).ToString();
-      chkMyTVSeries.Checked = mpSettings.GetValueAsBool("#Sites", "MyTVSeries", false);
-      // ##################################################
-
-      XmlDocument xmlDoc = new XmlDocument();
-      xmlDoc.Load(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
-
-      // Searches
-      // ##################################################
-      foreach (XmlNode nodeItem in xmlDoc.SelectNodes("profile/section[@name='#Searches']/entry"))
+      if (File.Exists(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml"))
       {
-        lvSearches.Items.Add(nodeItem.Attributes["name"].InnerText).SubItems.Add(nodeItem.InnerText);
-        mpSettings.RemoveEntry("#Searches", nodeItem.Attributes["name"].InnerText);
-      }
-      // ##################################################
+        Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
 
-      // Groups
-      // ##################################################
-      foreach (XmlNode nodeItem in xmlDoc.SelectNodes("profile/section[@name='#Groups']/entry"))
-      {
-        lvGroups.Items.Add(nodeItem.Attributes["name"].InnerText);
-        mpSettings.RemoveEntry("#Groups", nodeItem.Attributes["name"].InnerText);
-      }
-      // ##################################################
+        // Plugin Settings
+        // ##################################################
+        txtUpdateFreq.Text = mpSettings.GetValueAsInt("#Plugin", "UpdateFrequency", 1).ToString();
+        txtDisplayName.Text = mpSettings.GetValue("#Plugin", "DisplayName");
+        // ##################################################
 
-      mpSettings.Dispose();
+        // Client Settings
+        // ##################################################
+        string strGrabber = mpSettings.GetValue("#Client", "Grabber");
+        if (strGrabber.Length > 0) { cmbGrabber.Text = strGrabber; }
+
+        string strHost = mpSettings.GetValue("#Client", "Host");
+        if (strHost.Length > 0) { txtHost.Text = strHost; }
+        string strPort = mpSettings.GetValue("#Client", "Port");
+        if (strPort.Length > 0) { txtPort.Text = strPort; }
+        txtAPIKey.Text = mpSettings.GetValue("#Client", "APIKey");
+
+        chkCatSelect.Enabled = (cmbGrabber.Text == "SABnzbd");
+        chkCatSelect.Checked = mpSettings.GetValueAsBool("#Client", "CatSelect", false);
+
+        chkAuth.Checked = mpSettings.GetValueAsBool("#Client", "Auth", false);
+        txtUsername.Enabled = chkAuth.Checked;
+        txtPassword.Enabled = chkAuth.Checked;
+        txtUsername.Text = mpSettings.GetValue("#Client", "Username");
+        txtPassword.Text = mpSettings.GetValue("#Client", "Password");
+        // ##################################################
+
+        // Site Settings
+        // ##################################################
+        txtMaxResults.Text = mpSettings.GetValueAsInt("#Sites", "MaxResults", 50).ToString();
+        chkMyTVSeries.Checked = mpSettings.GetValueAsBool("#Sites", "MyTVSeries", false);
+        // ##################################################
+
+        XmlDocument xmlDoc = new XmlDocument();
+        xmlDoc.Load(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
+
+        // Searches
+        // ##################################################
+        foreach (XmlNode nodeItem in xmlDoc.SelectNodes("profile/section[@name='#Searches']/entry"))
+        {
+          lvSearches.Items.Add(nodeItem.Attributes["name"].InnerText).SubItems.Add(nodeItem.InnerText);
+          mpSettings.RemoveEntry("#Searches", nodeItem.Attributes["name"].InnerText);
+        }
+        // ##################################################
+
+        // Groups
+        // ##################################################
+        foreach (XmlNode nodeItem in xmlDoc.SelectNodes("profile/section[@name='#Groups']/entry"))
+        {
+          lvGroups.Items.Add(nodeItem.Attributes["name"].InnerText);
+          mpSettings.RemoveEntry("#Groups", nodeItem.Attributes["name"].InnerText);
+        }
+        // ##################################################
+
+        mpSettings.Dispose();
+      }
     }
 
     private void fncSaveConfig()

@@ -318,6 +318,7 @@
     </control>
 
     <import>common.time.xml</import>
+    <import>common.overlays.xml</import>
 
   </controls>
 </window>
