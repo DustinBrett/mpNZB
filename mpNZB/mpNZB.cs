@@ -217,7 +217,7 @@ namespace mpNZB
               Client = new Clients.SABnzbd(mpSettings.GetValue("#Client", "Host"), mpSettings.GetValue("#Client", "Port"), mpSettings.GetValue("#Client", "APIKey"), mpSettings.GetValueAsBool("#Client", "CatSelect", false), mpSettings.GetValueAsBool("#Client", "Auth", false), mpSettings.GetValue("#Client", "Username"), mpSettings.GetValue("#Client", "Password"), mpSettings.GetValueAsInt("#Plugin", "UpdateFrequency", 1));
               if (Client.Version().Length == 0)
               {
-                MP.OK("SABnzbd connection failed.", "Client Status");
+                MP.Notify("SABnzbd connection failed.", "Client Status");
                 return;
               }
               break;

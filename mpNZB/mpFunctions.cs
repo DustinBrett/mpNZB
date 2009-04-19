@@ -11,18 +11,18 @@ namespace mpNZB
 
     #region Dialog
 
-    public void OK(string _Line, string _Heading)
+    public void Notify(string _Text, string _Heading)
     {
       // Init Dialog
-      GUIDialogOK Dialog = (GUIDialogOK)GUIWindowManager.GetWindow((int)GUIWindow.Window.WINDOW_DIALOG_OK);
-      Dialog.Reset();
+      GUIDialogNotify Notify = (GUIDialogNotify)GUIWindowManager.GetWindow((int)GUIWindow.Window.WINDOW_DIALOG_NOTIFY);
+      Notify.Reset();
 
       // Set Dialog Information
-      Dialog.SetHeading(_Heading);
-      Dialog.SetLine(1, _Line);
+      Notify.SetHeading(_Heading);
+      Notify.SetText(_Text);
 
       // Display Dialog
-      Dialog.DoModal(GUIWindowManager.ActiveWindow);
+      Notify.DoModal(GUIWindowManager.ActiveWindow);
     }
 
     public bool YesNo(string _Line, string _Heading)
