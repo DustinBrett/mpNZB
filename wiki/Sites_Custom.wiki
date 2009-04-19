@@ -10,7 +10,7 @@ This page is were I put sites that are known to work with Sites.xml but require 
   * `GZIP` compressed RSS feeds are supported
   * `<feeds>`, `<search>` and `<size>` can be removed when not needed
 
-== [http://www.nzbs.org/ NZBs] ==
+== [http://www.nzbs.org/]NZBs ==
 The information needed to replace `[I]` and `[H]` can be found at [http://nzbs.org/index.php?action=rss] once you are logged in.
 
 {{{
