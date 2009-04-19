@@ -237,7 +237,6 @@ namespace mpNZB
     protected override void OnPageDestroy(int newWindowId)
     {
       base.OnPageDestroy(newWindowId);
-      Client.PluginVisible = false;
     }
 
     protected override void OnShowContextMenu()

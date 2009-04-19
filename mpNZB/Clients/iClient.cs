@@ -4,12 +4,6 @@ namespace mpNZB.Clients
 {
   interface iClient
   {
-    bool PluginVisible
-    {
-      get;
-      set;
-    }
-
     string IP
     {
       get;
