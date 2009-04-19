@@ -10,7 +10,8 @@ This page is were I put sites that are known to work with Sites.xml but require 
   * `GZIP` compressed RSS feeds are supported
   * `<feeds>`, `<search>` and `<size>` can be removed when not needed
 
-== [http://www.nzbs.org/]NZBs ==
+== NZBs ==
+
 The information needed to replace `[I]` and `[H]` can be found at [http://nzbs.org/index.php?action=rss] once you are logged in.
 
 {{{
@@ -34,7 +35,7 @@ The information needed to replace `[I]` and `[H]` can be found at [http://nzbs.o
 </site>
 }}}
 
-== [http://www.nzbsrus.com/ NZBsRus] ==
+== NZBsRus ==
 The information needed to replace `[I]` and `[H]` can be found at [http://www.nzbsrus.com/rss.php] once you are logged in.
 
 {{{
@@ -79,7 +80,7 @@ The information needed to replace `[I]` and `[H]` can be found at [http://www.nz
 </site>
 }}}
 
-== [http://mytvnzb.foechoer.be/ MyTvNZB] ==
+== MyTvNZB ==
 The information needed to replace `[ID]` can be found at [http://mytvnzb.foechoer.be/] once you select the check boxes of the sites you want to monitor and press `[Generate Feed]`.
 
 {{{
