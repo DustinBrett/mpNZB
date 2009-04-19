@@ -147,9 +147,6 @@ namespace mpNZB
 
     public override bool Init()
     {
-      // Set "Status" label
-      GUIPropertyManager.SetProperty("#Status", "Idle");
-
       // Load skin
       return Load(GUIGraphicsContext.Skin + @"\mpNZB.xml");
     }
@@ -196,6 +193,9 @@ namespace mpNZB
     {
       try
       {
+        // Set "Status" label
+        GUIPropertyManager.SetProperty("#Status", "Idle");
+
         // Disable "Refresh Feed" button
         btnRefresh.Disabled = true;
 
@@ -217,7 +217,7 @@ namespace mpNZB
               Client = new Clients.SABnzbd(mpSettings.GetValue("#Client", "Host"), mpSettings.GetValue("#Client", "Port"), mpSettings.GetValue("#Client", "APIKey"), mpSettings.GetValueAsBool("#Client", "CatSelect", false), mpSettings.GetValueAsBool("#Client", "Auth", false), mpSettings.GetValue("#Client", "Username"), mpSettings.GetValue("#Client", "Password"), mpSettings.GetValueAsInt("#Plugin", "UpdateFrequency", 1));
               if (Client.Version().Length == 0)
               {
-                MP.Notify("SABnzbd connection failed.", "Client Status");
+                MP.OK("SABnzbd connection failed.", "Client Status");
                 return;
               }
               break;
