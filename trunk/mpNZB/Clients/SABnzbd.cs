@@ -186,7 +186,7 @@ namespace mpNZB.Clients
                 {                  
                   if (nodeItem.SelectSingleNode("id").InnerText == Job)
                   {
-                    MP.OK(nodeItem.SelectSingleNode("filename").InnerText, "Download Complete");
+                    MP.Notify(nodeItem.SelectSingleNode("filename").InnerText, "Download Complete");
                     break;
                   }
                 }
