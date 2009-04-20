@@ -149,6 +149,37 @@ namespace mpNZB.Clients
 
     #endregion
 
+    #region Jobs
+
+    List<string> Jobs = new List<string>();
+
+    private void JobCompare(XmlDocument xmlDoc)
+    {
+      List<string> _Jobs = new List<string>();
+
+      foreach (XmlNode nodeItem in xmlDoc.SelectNodes("queue/jobs/job"))
+      {
+        _Jobs.Add(nodeItem.SelectSingleNode("filename").InnerText + " (" + nodeItem.SelectSingleNode("id").InnerText + ")");
+      }
+
+      if (_Jobs.Count < Jobs.Count)
+      {
+        foreach (string Job in Jobs)
+        {
+          if (!(_Jobs.Contains(Job)))
+          {
+            Jobs.Remove(Job);
+            MP.OK(Job, "Download Complete");
+            return;
+          }
+        }
+      }
+
+      Jobs = _Jobs;
+    }
+
+    #endregion
+
     #region Commands
 
     public void Status()
@@ -174,6 +205,8 @@ namespace mpNZB.Clients
           GUIPropertyManager.SetProperty("#DiskSpace1", double.Parse(xmlDoc.SelectSingleNode("queue/diskspace1").InnerText, nfi).ToString("N2") + " GB");
           GUIPropertyManager.SetProperty("#DiskSpace2", double.Parse(xmlDoc.SelectSingleNode("queue/diskspace2").InnerText, nfi).ToString("N2") + " GB");
           GUIPropertyManager.SetProperty("#TimeLeft", xmlDoc.SelectSingleNode("queue/timeleft").InnerText + " S");
+
+          JobCompare(xmlDoc);
         }
         else
         {
