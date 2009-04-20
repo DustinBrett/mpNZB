@@ -145,13 +145,11 @@ namespace mpNZB.Clients
       catch (Exception e) { MP.Error(e); }
 
       return strResult;
-    }
+    }    
 
     #endregion
 
     #region Commands
-
-    List<string> Jobs = new List<string>();
 
     public void Status()
     {
@@ -168,33 +166,6 @@ namespace mpNZB.Clients
           if ((intJobCount == 0) || (strPause == "True")) { tmrStatus.Enabled = false; }
 
           NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
-
-          // Job Checker
-          // ##################################################
-          List<string> _Jobs = new List<string>();
-          foreach(XmlNode nodeItem in xmlDoc.SelectNodes("queue/jobs/job"))
-          {
-            _Jobs.Add(nodeItem.SelectSingleNode("id").InnerText);
-          }
-          if (_Jobs.Count < Jobs.Count)
-          {
-            foreach (string Job in Jobs)
-            {
-              if (!(_Jobs.Contains(Job)))
-              {
-                foreach (XmlNode nodeItem in xmlDoc.SelectNodes("queue/jobs/job"))
-                {                  
-                  if (nodeItem.SelectSingleNode("id").InnerText == Job)
-                  {
-                    MP.OK(nodeItem.SelectSingleNode("filename").InnerText, "Download Complete");
-                    break;
-                  }
-                }
-              }
-            }
-          }
-          Jobs = _Jobs;
-          // ##################################################
 
           GUIPropertyManager.SetProperty("#Paused", strPause);
           GUIPropertyManager.SetProperty("#KBps", ((intJobCount != 0) ? double.Parse(xmlDoc.SelectSingleNode("queue/kbpersec").InnerText, nfi).ToString("N2") : (0.0).ToString("N2")) + " KB/s");
@@ -290,7 +261,6 @@ namespace mpNZB.Clients
             break;
           case "Delete Job":
             SendURL(CreateURL("queue/delete?uid=" + _List.ListItems[_List.SelectedListItemIndex].Path, String.Empty, false));
-            Jobs.Remove(_List.ListItems[_List.SelectedListItemIndex].Path);
             break;
           case "Change Category":
             SendURL(CreateURL("queue/change_cat?nzo_id=" + _List.ListItems[_List.SelectedListItemIndex].Path + "&cat=" + SelectCategory(), String.Empty, false));
