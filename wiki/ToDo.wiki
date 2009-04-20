@@ -2,7 +2,8 @@
 #labels Phase-Requirements,Phase-Design
 
 == General ==
-  * Test completion notification (GUI_NOTIFY + SOUND EFFECT)
+  * Completion notification
+    * Add a Watch Now button maybe
   * Add RSS watchlists to searching
     * [http://www.tvrage.com/myrss.php?date=yesterday&hide_time=1 TVrage - Yesterday]
     * [http://www.tvrage.com/myrss.php?hide_time=1 TVrage - Today]
