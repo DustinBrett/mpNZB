@@ -94,9 +94,14 @@ rem copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\Sites\Sites.xml" "\\HTPC\Med
 rem copy "C:\Users\Dustin\Desktop\mpNZB\skin\StreamedMP\mpNZB.xml" "\\HTPC\MediaPortal\skin\StreamedMP\mpNZB.xml" /y
 rem copy "C:\Users\Dustin\Desktop\mpNZB\skin\Blue3Wide\mpNZB.xml" "\\HTPC\MediaPortal\skin\Blue3Wide\mpNZB.xml" /y
 
-copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\mpNZB.dll" "\\DUSTIN-LAPTOP\MediaPortal\plugins\Windows\mpNZB.dll" /y
-copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\Sites\Sites.xml" "\\DUSTIN-LAPTOP\MediaPortal\plugins\Windows\Sites.xml" /y
-copy "C:\Users\Dustin\Desktop\mpNZB\skin\StreamedMP\mpNZB.xml" "\\DUSTIN-LAPTOP\MediaPortal\skin\StreamedMP\mpNZB.xml" /y
-copy "C:\Users\Dustin\Desktop\mpNZB\skin\Blue3Wide\mpNZB.xml" "\\DUSTIN-LAPTOP\MediaPortal\skin\Blue3Wide\mpNZB.xml" /y</PostBuildEvent>
+rem copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\mpNZB.dll" "\\DUSTIN-LAPTOP\MediaPortal\plugins\Windows\mpNZB.dll" /y
+rem copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\Sites\Sites.xml" "\\DUSTIN-LAPTOP\MediaPortal\plugins\Windows\Sites.xml" /y
+rem copy "C:\Users\Dustin\Desktop\mpNZB\skin\StreamedMP\mpNZB.xml" "\\DUSTIN-LAPTOP\MediaPortal\skin\StreamedMP\mpNZB.xml" /y
+rem copy "C:\Users\Dustin\Desktop\mpNZB\skin\Blue3Wide\mpNZB.xml" "\\DUSTIN-LAPTOP\MediaPortal\skin\Blue3Wide\mpNZB.xml" /y
+
+copy "C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\mpNZB.dll" "C:\Program Files\MediaPortal\plugins\Windows\mpNZB.dll" /y
+copy "C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\Sites\Sites.xml" "C:\Program Files\MediaPortal\plugins\Windows\Sites.xml" /y
+copy "C:\Documents and Settings\Dustin\Desktop\mpNZB\skin\StreamedMP\mpNZB.xml" "C:\Program Files\MediaPortal\skin\StreamedMP\mpNZB.xml" /y
+copy "C:\Documents and Settings\Dustin\Desktop\mpNZB\skin\Blue3Wide\mpNZB.xml" "C:\Program Files\MediaPortal\skin\Blue3Wide\mpNZB.xml" /y</PostBuildEvent>
   </PropertyGroup>
 </Project>

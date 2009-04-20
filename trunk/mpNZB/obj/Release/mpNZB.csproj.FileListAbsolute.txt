@@ -65,3 +65,11 @@ C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\Bass.Net.dll
 C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\AxInterop.WMPLib.dll
 C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\taglib-sharp.dll
 C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\ICSharpCode.SharpZipLib.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\BassRegistration.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\Interop.WMPLib.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\CSScriptLibrary.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\edtftpnet-1.2.2.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\DirectShowLib.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\Bass.Net.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\AxInterop.WMPLib.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\taglib-sharp.dll
