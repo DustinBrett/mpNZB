@@ -3,10 +3,6 @@
 
 == General ==
   * Completion notification (WINDOW_DIALOG_NOTIFY)
-    * Add a Watch Now button maybe
-  * Add RSS watchlists to searching
-    * [http://www.tvrage.com/myrss.php?date=yesterday&hide_time=1 TVrage - Yesterday]
-    * [http://www.tvrage.com/myrss.php?hide_time=1 TVrage - Today]
 
 == Skin ==
   * Add video overlay to `Blue3Wide`
@@ -23,3 +19,6 @@
   * NZB streaming
     * [http://code.google.com/p/stream-unrar/ stream-unrar]
     * [http://www.nzbplayer.com/ NZBPlayer]
+  * Watchlists for searching
+    * [http://www.tvrage.com/myrss.php?date=yesterday&hide_time=1 TVrage - Yesterday]
+    * [http://www.tvrage.com/myrss.php?hide_time=1 TVrage - Today]
