@@ -380,6 +380,7 @@
       this.txtUpdateFreq.Name = "txtUpdateFreq";
       this.txtUpdateFreq.Size = new System.Drawing.Size(55, 21);
       this.txtUpdateFreq.TabIndex = 18;
+      this.txtUpdateFreq.TextChanged += new System.EventHandler(this.txtUpdateFreq_TextChanged);
       // 
       // txtDisplayName
       // 
