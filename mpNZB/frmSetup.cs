@@ -43,7 +43,6 @@ namespace mpNZB
         if (strHost.Length > 0) { txtHost.Text = strHost; }
         string strPort = mpSettings.GetValue("#Client", "Port");
         if (strPort.Length > 0) { txtPort.Text = strPort; }
-        txtAPIKey.Text = mpSettings.GetValue("#Client", "APIKey");
 
         chkCatSelect.Enabled = (cmbGrabber.Text == "SABnzbd");
         chkCatSelect.Checked = mpSettings.GetValueAsBool("#Client", "CatSelect", false);
@@ -105,7 +104,6 @@ namespace mpNZB
 
       mpSettings.SetValue("#Client", "Host", txtHost.Text);
       mpSettings.SetValue("#Client", "Port", txtPort.Text);
-      mpSettings.SetValue("#Client", "APIKey", txtAPIKey.Text);
 
       mpSettings.SetValueAsBool("#Client", "CatSelect", chkCatSelect.Checked);
       
@@ -166,7 +164,7 @@ namespace mpNZB
       switch (cmbGrabber.Text)
       {
         case "SABnzbd":
-          Client = new Clients.SABnzbd(txtHost.Text, txtPort.Text, txtAPIKey.Text, false, chkAuth.Checked, txtUsername.Text, txtPassword.Text, 1);
+          Client = new Clients.SABnzbd(txtHost.Text, txtPort.Text, false, chkAuth.Checked, txtUsername.Text, txtPassword.Text, 1);
           if (Client.Version().Length != 0)
           {
             MessageBox.Show(null, "Connection: OK", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
