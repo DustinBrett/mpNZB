@@ -10,9 +10,16 @@
 == SABnzbd ==
   * *0.50*
     * Replace *ma_username*/*ma_password* with *apikey*
-    * Add History/Shutdown/Pause a Job
-    * Recode Delete/Move (Up/Down/Top/Bottom)/Change Category
-    * [http://nzbmatrix.com/ NZBMatrix] support
+    * Add
+      * History
+      * Shutdown
+      * Pause
+    * Rewrite
+      * Delete
+      * Pause
+      * Move (Up/Down/Top/Bottom)
+      * Change Category
+    * Add [http://nzbmatrix.com/ NZBMatrix] support
 
 == Future Features: ==
   * NZB streaming
