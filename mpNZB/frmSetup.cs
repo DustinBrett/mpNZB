@@ -20,7 +20,8 @@ namespace mpNZB
       cmbGrabber.Text = "SABnzbd";
       chkCatSelect.Enabled = true;
       txtHost.Text = "127.0.0.1";
-      txtPort.Text = "8080";      
+      txtPort.Text = "8080";
+      txtUpdateFreq.Text = "1";
 
       if (File.Exists(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml"))
       {
@@ -28,7 +29,8 @@ namespace mpNZB
 
         // Plugin Settings
         // ##################################################
-        txtUpdateFreq.Text = mpSettings.GetValueAsInt("#Plugin", "UpdateFrequency", 1).ToString();
+        int intUpdate = mpSettings.GetValueAsInt("#Plugin", "UpdateFrequency", 1);
+        if (intUpdate > 0) { txtUpdateFreq.Text = intUpdate.ToString(); }
         txtDisplayName.Text = mpSettings.GetValue("#Plugin", "DisplayName");
         // ##################################################
 
@@ -92,6 +94,7 @@ namespace mpNZB
       // ##################################################
       int intUpdateFreq = 1;
       int.TryParse(txtUpdateFreq.Text, out intUpdateFreq);
+      if (intUpdateFreq < 1) { intUpdateFreq = 1; }
       mpSettings.SetValue("#Plugin", "UpdateFrequency", intUpdateFreq);
       mpSettings.SetValue("#Plugin", "DisplayName", txtDisplayName.Text);
       // ##################################################
@@ -225,6 +228,15 @@ namespace mpNZB
       else
       {
         MessageBox.Show(null, "Nothing selected.", "Status", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    private void txtUpdateFreq_TextChanged(object sender, EventArgs e)
+    {
+      if (txtUpdateFreq.Text == "0")
+      {
+        MessageBox.Show(null, "Must be greater than 0.", "Status", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        txtUpdateFreq.Text = "1";
       }
     }
   }
