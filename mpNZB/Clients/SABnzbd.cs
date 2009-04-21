@@ -14,33 +14,10 @@ namespace mpNZB.Clients
 
     #region Init
 
-    private string _IP = String.Empty;
-    public string IP
-    {
-      get { return _IP; }
-      set { _IP = value; }
-    }
-
-    private string _Port = String.Empty;
-    public string Port
-    {
-      get { return _Port; }
-      set { _Port = value; }
-    }
-
-    private string _Username = String.Empty;
-    public string Username
-    {
-      get { return _Username; }
-      set { _Username = value; }
-    }
-
-    private string _Password = String.Empty;
-    public string Password
-    {
-      get { return _Password; }
-      set { _Password = value; }
-    }
+    private string IP = String.Empty;
+    private string Port = String.Empty;
+    private string Username = String.Empty;
+    private string Password = String.Empty;
 
     private bool CatSelect = false;
     private bool Auth = false;
