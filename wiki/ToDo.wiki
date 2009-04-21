@@ -1,6 +1,9 @@
 #summary To-Do list for project
 #labels Phase-Requirements,Phase-Design
 
+== General ==
+  * More information for NZB's in pop-up
+
 == Skin ==
   * Add video overlay to `Blue3Wide`
   * Create `Blue3` skin
