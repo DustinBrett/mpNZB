@@ -9,7 +9,7 @@
 
 == SABnzbd ==
   * *0.50*
-    * Replace `ma_username`/`ma_password` with `apikey`
+    * Replace *ma_username*/*ma_password* with *apikey*
     * Add History/Shutdown/Pause a Job
     * Recode Delete/Move (Up/Down/Top/Bottom)/Change Category
     * [http://nzbmatrix.com/ NZBMatrix] support
