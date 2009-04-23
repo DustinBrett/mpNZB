@@ -31,3 +31,11 @@
   * Watchlists for searching
     * [http://www.tvrage.com/myrss.php?date=yesterday&hide_time=1 TVrage - Yesterday]
     * [http://www.tvrage.com/myrss.php?hide_time=1 TVrage - Today]
+
+== Notes ==
+  * Things I fixed for next release
+    * Code clean-up (Removed APIKey & Client stuff)
+    * Can't put 0 in Status Update Interval
+    * Download notification
+    * Added searching to NZBs (Sites_Custom)
+    * Fixed status "Idle" message
