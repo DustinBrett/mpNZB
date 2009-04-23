@@ -11,6 +11,17 @@
   * Toggle `btnPause` if `Status` is paused
     * How can I elegantly reference skin controls in another class?
 
+== Unsupported Sites ==
+  * Fully
+    * Yabse
+    * NZBMatrix
+    * aEton
+  * Partial
+    * Binsearch (Search)
+    * NZBClub (Groups)
+    * NZBsRus (Search)
+    * TvNZB (Search)
+
 == SABnzbd ==
   * *0.50*
     * Replace *ma_username*/*ma_password* with *apikey*
