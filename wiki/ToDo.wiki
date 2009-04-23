@@ -37,5 +37,5 @@
     * Code clean-up (Removed APIKey & Client stuff)
     * Can't put 0 in Status Update Interval
     * Download notification
-    * Added searching to NZBs (Sites_Custom)
-    * Fixed status "Idle" message
+    * Added searching to NZBs.org (Sites_Custom)
+    * Fixed status "Idle" message on start
