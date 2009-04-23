@@ -3,6 +3,7 @@
 
 == General ==
   * More information for NZB's in pop-up
+  * Allow notifications to be turned off
 
 == Skin ==
   * Add video overlay to `Blue3Wide`
