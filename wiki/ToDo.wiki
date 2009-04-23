@@ -32,6 +32,7 @@
   * Watchlists for searching
     * [http://www.tvrage.com/myrss.php?date=yesterday&hide_time=1 TVrage - Yesterday]
     * [http://www.tvrage.com/myrss.php?hide_time=1 TVrage - Today]
+  * Store settings in database
 
 == Notes ==
   * Things I fixed for next release
