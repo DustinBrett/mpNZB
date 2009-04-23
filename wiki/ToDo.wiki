@@ -34,8 +34,8 @@
 
 == Notes ==
   * Things I fixed for next release
-    * Code clean-up (Removed APIKey & Client stuff)
-    * Can't put 0 in Status Update Interval
-    * Download notification
-    * Added searching to NZBs.org (Sites_Custom)
+    * Removed APIKey
+    * Removed useless client code
+    * Can no longer put 0 in Status Update Interval
+    * Download notification (In/Out of plug-in)
     * Fixed status "Idle" message on start
