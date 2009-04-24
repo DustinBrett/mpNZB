@@ -2,7 +2,6 @@
 #labels Phase-Requirements,Phase-Design
 
 == General ==
-  * Don't allow blank search
   * Toggle `btnPause` if `Status` is paused
 
 == Unsupported Sites ==
