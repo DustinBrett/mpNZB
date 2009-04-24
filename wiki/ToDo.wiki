@@ -7,7 +7,7 @@
 
 == Skin ==
   * Add video overlay to `Blue3Wide`
-  * Create `Blue3` skin
+  * Create `Blue3`/`Monochrome` skin
   * Toggle `btnPause` if `Status` is paused
     * How can I elegantly reference skin controls in another class?
 
