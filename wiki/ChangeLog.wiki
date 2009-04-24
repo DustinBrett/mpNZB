@@ -4,6 +4,7 @@
 == 1.05 ==
   * Removed APIKey code
   * Removed unnecessary SABnzbd code
+  * Blank searches not allowed
   * Error checking if Status Update Interval = 0
   * Download notification (Inside/Outside plug-in)
     * Can be turned on/off
