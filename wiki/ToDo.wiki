@@ -3,13 +3,9 @@
 
 == General ==
   * Create ChangeLog wiki
-  * More information for NZB's in pop-up
   * Allow notifications to be turned off
-
-== Skin ==
-  * Create `Blue3` skin
+  * Don't allow blank search
   * Toggle `btnPause` if `Status` is paused
-    * How can I elegantly reference skin controls in another class?
 
 == Unsupported Sites ==
   * Fully
