@@ -14,9 +14,7 @@
     * `Black & White 1080`
     * `BleazleWide`
     * `Blue3`
-    * `Blue3wide`
     * `Indigo`
     * `MediaStream`
     * `Monochrome`
     * `PureVisionHD`
-    * `StreamedMP`
