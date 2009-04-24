@@ -17,7 +17,8 @@ The information needed to replace `[I]` and `[H]` can be found at [http://nzbs.o
 {{{
 <site name="NZBs">
 	<feeds>
-		<feed name="My Searches Feed">http://www.nzbs.org/rss.php?action=mynzbs&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
+		<feed name="My Searches Feed">http://www.nzbs.org/rss.php?action=mysearches&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
+		<feed name="My NZBs Feed">http://www.nzbs.org/rss.php?action=mynzbs&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
 		<feed name="Console">http://www.nzbs.org/rss.php?type=6&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
 		<feed name="Movies">http://www.nzbs.org/rss.php?type=2&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
 		<feed name="Music">http://www.nzbs.org/rss.php?type=3&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
