@@ -80,6 +80,7 @@
       this.checkBox1 = new System.Windows.Forms.CheckBox();
       this.comboBox1 = new System.Windows.Forms.ComboBox();
       this.label1 = new System.Windows.Forms.Label();
+      this.chkNotifications = new System.Windows.Forms.CheckBox();
       this.tabPages.SuspendLayout();
       this.tabClientSettings.SuspendLayout();
       this.grpSettings.SuspendLayout();
@@ -300,7 +301,7 @@
       this.groupBox1.Controls.Add(this.txtMaxResults);
       this.groupBox1.Controls.Add(this.label2);
       this.groupBox1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.groupBox1.Location = new System.Drawing.Point(16, 95);
+      this.groupBox1.Location = new System.Drawing.Point(16, 118);
       this.groupBox1.Name = "groupBox1";
       this.groupBox1.Size = new System.Drawing.Size(280, 74);
       this.groupBox1.TabIndex = 19;
@@ -337,6 +338,7 @@
       // 
       // grpVisual
       // 
+      this.grpVisual.Controls.Add(this.chkNotifications);
       this.grpVisual.Controls.Add(this.txtUpdateFreq);
       this.grpVisual.Controls.Add(this.txtDisplayName);
       this.grpVisual.Controls.Add(this.lblDisplayName);
@@ -344,7 +346,7 @@
       this.grpVisual.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.grpVisual.Location = new System.Drawing.Point(16, 14);
       this.grpVisual.Name = "grpVisual";
-      this.grpVisual.Size = new System.Drawing.Size(280, 75);
+      this.grpVisual.Size = new System.Drawing.Size(280, 98);
       this.grpVisual.TabIndex = 17;
       this.grpVisual.TabStop = false;
       this.grpVisual.Text = "Visual:";
@@ -642,6 +644,16 @@
       this.label1.TabIndex = 2;
       this.label1.Text = "Grabber:";
       // 
+      // chkNotifications
+      // 
+      this.chkNotifications.AutoSize = true;
+      this.chkNotifications.Location = new System.Drawing.Point(15, 71);
+      this.chkNotifications.Name = "chkNotifications";
+      this.chkNotifications.Size = new System.Drawing.Size(223, 17);
+      this.chkNotifications.TabIndex = 20;
+      this.chkNotifications.Text = "Show \"Download Complete\" notifications.";
+      this.chkNotifications.UseVisualStyleBackColor = true;
+      // 
       // frmSetup
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -730,5 +742,6 @@
     private System.Windows.Forms.TextBox txtGroup;
     private System.Windows.Forms.Label label8;
     private System.Windows.Forms.Button btnGroupAdd;
+    private System.Windows.Forms.CheckBox chkNotifications;
   }
 }

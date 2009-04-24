@@ -32,6 +32,7 @@ namespace mpNZB
         int intUpdate = mpSettings.GetValueAsInt("#Plugin", "UpdateFrequency", 1);
         if (intUpdate > 0) { txtUpdateFreq.Text = intUpdate.ToString(); }
         txtDisplayName.Text = mpSettings.GetValue("#Plugin", "DisplayName");
+        chkNotifications.Checked = mpSettings.GetValueAsBool("#Plugin", "Notifications", false);
         // ##################################################
 
         // Client Settings
@@ -96,6 +97,7 @@ namespace mpNZB
       if (intUpdateFreq < 1) { intUpdateFreq = 1; }
       mpSettings.SetValue("#Plugin", "UpdateFrequency", intUpdateFreq);
       mpSettings.SetValue("#Plugin", "DisplayName", txtDisplayName.Text);
+      mpSettings.SetValueAsBool("#Plugin", "Notifications", chkNotifications.Checked);
       // ##################################################
 
       // Client Settings
@@ -164,7 +166,7 @@ namespace mpNZB
       switch (cmbGrabber.Text)
       {
         case "SABnzbd":
-          Client = new Clients.SABnzbd(txtHost.Text, txtPort.Text, false, chkAuth.Checked, txtUsername.Text, txtPassword.Text, 1);
+          Client = new Clients.SABnzbd(txtHost.Text, txtPort.Text, false, chkAuth.Checked, txtUsername.Text, txtPassword.Text, 1, false);
           if (Client.Version().Length != 0)
           {
             MessageBox.Show(null, "Connection: OK", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);

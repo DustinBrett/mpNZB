@@ -185,7 +185,14 @@ namespace mpNZB
           {
             case "New Search":
               FeedName = MP.Keyboard();
-              FeedURL.Add(xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/search/url").InnerText.Replace("[QUERY]", FeedName.Replace(" ", "+")).Replace("[MAX]", MaxResults.ToString()));
+              if (FeedName.Length > 0)
+              {
+                FeedURL.Add(xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/search/url").InnerText.Replace("[QUERY]", FeedName.Replace(" ", "+")).Replace("[MAX]", MaxResults.ToString()));
+              }
+              else
+              {
+                GUIPropertyManager.SetProperty("#Status", "Search field is blank");
+              }
               break;
             case "Missing Episodes":
               MyTVSeries MTS = new MyTVSeries();

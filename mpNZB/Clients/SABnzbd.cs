@@ -21,8 +21,9 @@ namespace mpNZB.Clients
 
     private bool CatSelect = false;
     private bool Auth = false;
+    private bool Notifications = false;
 
-    public SABnzbd(string strIP, string strPort, bool bolCatSelect, bool bolAuth, string strUsername, string strPassword, int intUpdateFreq)
+    public SABnzbd(string strIP, string strPort, bool bolCatSelect, bool bolAuth, string strUsername, string strPassword, int intUpdateFreq, bool bolNotifications)
     {
       IP = strIP;
       Port = strPort;
@@ -32,6 +33,8 @@ namespace mpNZB.Clients
 
       CatSelect = bolCatSelect;
       Auth = bolAuth;
+
+      Notifications = bolNotifications;
 
       tmrStatus = new Timer();
       tmrStatus.Elapsed += new System.Timers.ElapsedEventHandler(OnTimer);
@@ -142,7 +145,7 @@ namespace mpNZB.Clients
           if (!(_Jobs.Contains(Job)))
           {
             Jobs.Remove(Job);
-            MP.OK(Job, "Download Complete");
+            if (Notifications) { MP.OK(Job, "Download Complete"); }
             return;
           }
         }
@@ -266,6 +269,7 @@ namespace mpNZB.Clients
             SendURL(CreateURL("queue/switch?uid1=" + _List.ListItems[_List.SelectedListItemIndex].Path + "&uid2=" + _List.ListItems[_List.Count - 1].Path, String.Empty, false));
             break;
           case "Delete Job":
+            Jobs.Remove(_List.ListItems[_List.SelectedListItemIndex].Label + " (" + _List.ListItems[_List.SelectedListItemIndex].Path + ")");
             SendURL(CreateURL("queue/delete?uid=" + _List.ListItems[_List.SelectedListItemIndex].Path, String.Empty, false));
             break;
           case "Change Category":

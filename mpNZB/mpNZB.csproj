@@ -91,10 +91,10 @@
   <PropertyGroup>
     <PostBuildEvent>REM Send to HTPC
 REM ####################
-copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\mpNZB.dll" "\\HTPC\MediaPortal\plugins\Windows\mpNZB.dll" /y
-copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\Sites\Sites.xml" "\\HTPC\MediaPortal\plugins\Windows\Sites.xml" /y
-copy "C:\Users\Dustin\Desktop\mpNZB\skin\StreamedMP\mpNZB.xml" "\\HTPC\MediaPortal\skin\StreamedMP\mpNZB.xml" /y
-copy "C:\Users\Dustin\Desktop\mpNZB\skin\Blue3Wide\mpNZB.xml" "\\HTPC\MediaPortal\skin\Blue3Wide\mpNZB.xml" /y
+REM copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\mpNZB.dll" "\\HTPC\MediaPortal\plugins\Windows\mpNZB.dll" /y
+REM copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\Sites\Sites.xml" "\\HTPC\MediaPortal\plugins\Windows\Sites.xml" /y
+REM copy "C:\Users\Dustin\Desktop\mpNZB\skin\StreamedMP\mpNZB.xml" "\\HTPC\MediaPortal\skin\StreamedMP\mpNZB.xml" /y
+REM copy "C:\Users\Dustin\Desktop\mpNZB\skin\Blue3Wide\mpNZB.xml" "\\HTPC\MediaPortal\skin\Blue3Wide\mpNZB.xml" /y
 
 REM Send to Home Laptop
 REM ####################
