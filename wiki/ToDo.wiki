@@ -2,7 +2,6 @@
 #labels Phase-Requirements,Phase-Design
 
 == General ==
-  * Create ChangeLog wiki
   * Allow notifications to be turned off
   * Don't allow blank search
   * Toggle `btnPause` if `Status` is paused
