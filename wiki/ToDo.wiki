@@ -40,12 +40,3 @@
     * [http://www.tvrage.com/myrss.php?date=yesterday&hide_time=1 TVrage - Yesterday]
     * [http://www.tvrage.com/myrss.php?hide_time=1 TVrage - Today]
   * Store settings in database
-
-== Notes ==
-  * Things I fixed for next release
-    * Removed APIKey
-    * Removed useless client code
-    * Can no longer put 0 in Status Update Interval
-    * Download notification (In/Out of plug-in)
-    * Fixed status "Idle" message on start
-    * Added a bunch of skins
