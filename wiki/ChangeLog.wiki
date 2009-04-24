@@ -6,6 +6,7 @@
   * Removed unnecessary SABnzbd code
   * Error checking if Status Update Interval = 0
   * Download notification (Inside/Outside plug-in)
+    * Can be turned on/off
   * Fixed status "Idle" message on start
   * Added skins
     * `Black & White 1080`
