@@ -1,4 +1,5 @@
-﻿using MediaPortal.GUI.Library;
+﻿using System.Timers;
+using MediaPortal.GUI.Library;
 
 namespace mpNZB.Clients
 {
