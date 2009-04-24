@@ -1,0 +1,334 @@
+<window>
+	<id>3847</id>
+	<defaultcontrol>2</defaultcontrol>
+	<allowoverlay>no</allowoverlay>
+	<define>#category:Usenet</define>
+	<define>#subcategory:#PageTitle</define>
+	<controls>
+		<import>common.window.xml</import>
+		<import>common.panel600.xml</import>
+		
+		<!-- *********************** Menu *********************** -->
+		
+		<control>
+			<description>Home</description>
+			<type>button</type>
+			<id>901</id>
+			<posX>40</posX>
+			<posY>260</posY>
+			<hyperlink>35</hyperlink>
+			<label>2143</label>
+			<onright>50</onright>
+			<onup>21</onup>
+			<ondown>1</ondown>
+		</control>
+		<control>
+			<type>image</type>
+			<id>0</id>
+			<posX>40</posX>
+			<posY>260</posY>
+			<width>40</width>
+			<height>40</height>
+			<texture>menu_home.png</texture>
+		</control>
+		<control>
+			<description>Divider</description>
+			<type>image</type>
+			<id>0</id>
+			<posX>40</posX>
+			<posY>300</posY>
+			<width>320</width>
+			<height>20</height>
+			<texture>menu_divider.png</texture>
+		</control>
+		<control>
+			<description>Refresh</description>
+			<type>button</type>
+			<id>1</id>
+			<posX>40</posX>
+			<posY>320</posY>
+			<label>Refresh</label>
+			<onright>50</onright>
+			<onup>901</onup>
+			<ondown>2</ondown>
+		</control>
+		<control>
+			<type>image</type>
+			<id>0</id>
+			<posX>40</posX>
+			<posY>320</posY>
+			<width>40</width>
+			<height>40</height>
+			<texture>menu_refresh.png</texture>
+		</control>
+		<control>
+			<description>Feeds</description>
+			<type>button</type>
+			<id>2</id>
+			<posX>40</posX>
+			<posY>360</posY>
+			<label>Feeds</label>
+			<onright>50</onright>
+			<onup>1</onup>
+			<ondown>3</ondown>
+		</control>
+		<control>
+			<type>image</type>
+			<id>0</id>
+			<posX>40</posX>
+			<posY>360</posY>
+			<width>40</width>
+			<height>40</height>
+			<texture>menu_favorites.png</texture>
+		</control>
+		<control>
+			<description>Groups</description>
+			<type>button</type>
+			<id>3</id>
+			<posX>40</posX>
+			<posY>400</posY>
+			<label>Groups</label>
+			<onright>50</onright>
+			<onup>2</onup>
+			<ondown>4</ondown>
+		</control>
+		<control>
+			<type>image</type>
+			<id>0</id>
+			<posX>40</posX>
+			<posY>400</posY>
+			<width>40</width>
+			<height>40</height>
+			<texture>menu_playlist.png</texture>
+		</control>
+		<control>
+			<description>Search</description>
+			<type>button</type>
+			<id>4</id>
+			<posX>40</posX>
+			<posY>440</posY>
+			<label>Search</label>
+			<onright>50</onright>
+			<onup>3</onup>
+			<ondown>5</ondown>
+		</control>
+		<control>
+			<type>image</type>
+			<id>0</id>
+			<posX>40</posX>
+			<posY>440</posY>
+			<width>40</width>
+			<height>40</height>
+			<texture>menu_search.png</texture>
+		</control>
+		<control>
+			<description>Job Queue</description>
+			<type>button</type>
+			<id>5</id>
+			<posX>40</posX>
+			<posY>480</posY>
+			<label>Job Queue</label>
+			<onright>50</onright>
+			<onup>4</onup>
+			<ondown>6</ondown>
+		</control>
+		<control>
+			<type>image</type>
+			<id>0</id>
+			<posX>40</posX>
+			<posY>480</posY>
+			<width>40</width>
+			<height>40</height>
+			<texture>menu_fields.png</texture>
+		</control>
+		<control>
+			<description>Pause Queue</description>
+			<type>togglebutton</type>
+			<id>6</id>
+			<posX>40</posX>
+			<posY>520</posY>
+			<label>Pause Queue</label>
+			<onright>50</onright>
+			<onup>5</onup>
+			<ondown>901</ondown>
+		</control>
+		
+		<!-- *********************** Status *********************** -->
+		
+		<control>
+			<description>Paused</description>
+			<type>label</type>
+			<id>6</id>
+			<posX>40</posX>
+			<posY>600</posY>
+			<label>Paused:</label>
+			<font>font11</font>
+		</control>
+		<control>
+			<description>Paused</description>
+			<type>label</type>
+			<id>7</id>
+			<posX>170</posX>
+			<posY>600</posY>
+			<width>190</width>
+			<label>#Paused</label>
+			<font>font11</font>
+		</control>
+		
+		<control>
+			<description>Speed</description>
+			<type>label</type>
+			<id>8</id>
+			<posX>40</posX>
+			<posY>630</posY>
+			<label>Speed:</label>
+			<font>font11</font>
+		</control>
+		<control>
+			<description>Speed</description>
+			<type>label</type>
+			<id>9</id>
+			<posX>170</posX>
+			<posY>630</posY>
+			<width>190</width>
+			<label>#KBps</label>
+			<font>font11</font>
+		</control>
+		
+		<control>
+			<description>Queued</description>
+			<type>label</type>
+			<id>10</id>
+			<posX>40</posX>
+			<posY>660</posY>
+			<label>Queued:</label>
+			<font>font11</font>
+		</control>
+		<control>
+			<description>Queued</description>
+			<type>label</type>
+			<id>11</id>
+			<posX>170</posX>
+			<posY>660</posY>
+			<width>190</width>
+			<label>#MBStatus</label>
+			<font>font11</font>
+		</control>
+
+		<control>
+			<description>Job Count</description>
+			<type>label</type>
+			<id>12</id>
+			<posX>40</posX>
+			<posY>690</posY>
+			<label>Count:</label>
+			<font>font11</font>
+		</control>
+		<control>
+			<description>Job Count</description>
+			<type>label</type>
+			<id>13</id>
+			<posX>170</posX>
+			<posY>690</posY>
+			<width>190</width>
+			<label>#JobCount</label>
+			<font>font11</font>
+		</control>
+		
+		<control>
+			<description>Disk Space 1</description>
+			<type>label</type>
+			<id>14</id>
+			<posX>40</posX>
+			<posY>720</posY>
+			<label>D/L DIR:</label>
+			<font>font11</font>
+		</control>
+		<control>
+			<description>Disk Space 1</description>
+			<type>label</type>
+			<id>15</id>
+			<posX>170</posX>
+			<posY>720</posY>
+			<width>190</width>
+			<label>#DiskSpace1</label>
+			<font>font11</font>
+		</control>
+		
+		<control>
+			<description>Disk Space 2</description>
+			<type>label</type>
+			<id>16</id>
+			<posX>40</posX>
+			<posY>750</posY>
+			<label>TEMP DIR:</label>
+			<font>font11</font>
+		</control>
+		<control>
+			<description>Disk Space 2</description>
+			<type>label</type>
+			<id>17</id>
+			<posX>170</posX>
+			<posY>750</posY>
+			<width>190</width>
+			<label>#DiskSpace2</label>
+			<font>font11</font>
+		</control>
+		
+		<control>
+			<description>Time Left</description>
+			<type>label</type>
+			<id>18</id>
+			<posX>40</posX>
+			<posY>780</posY>
+			<label>ETA:</label>
+			<font>font11</font>
+		</control>
+		<control>
+			<description>Time Left</description>
+			<type>label</type>
+			<id>19</id>
+			<posX>170</posX>
+			<posY>780</posY>
+			<width>190</width>
+			<label>#TimeLeft</label>
+			<font>font11</font>
+		</control>
+		
+		<!-- *********************** Status *********************** -->
+		
+		<control>
+			<description>Status</description>
+			<type>label</type>
+			<id>51</id>
+			<posX>40</posX>
+			<posY>880</posY>
+			<label>Status:</label>
+			<textcolor>ffffffff</textcolor>
+		</control>
+		<control>
+			<description>Status</description>
+			<type>label</type>
+			<id>52</id>
+			<posX>160</posX>
+			<posY>880</posY>
+			<label>#Status</label>
+			<textcolor>ffffffff</textcolor>
+		</control>
+		
+		<!-- *********************** Facade *********************** -->
+		
+		<control>
+			<type>group</type>
+			<description>Content</description>
+			<control>
+				<description>Title</description>
+				<type>listcontrol</type>
+				<id>50</id>
+				<onleft>2</onleft>
+				<onright>2</onright>
+			</control>
+		</control>
+		
+	</controls>
+</window>
