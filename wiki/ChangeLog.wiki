@@ -1,12 +1,19 @@
 #summary A record of changes made in each release.
 #labels Phase-Design
 
-== SVN ==
-
-== 1.04 ==
-
-== 1.03 ==
-
-== 1.02 ==
-
-== 1.01 ==
+== 1.05 ==
+  * Removed APIKey code
+  * Removed unnecessary SABnzbd code
+  * Error checking if Status Update Interval = 0
+  * Download notification (Inside/Outside plug-in)
+  * Fixed status "Idle" message on start
+  * Added skins
+    * `Black & White 1080`
+    * `BleazleWide`
+    * `Blue3`
+    * `Blue3wide`
+    * `Indigo`
+    * `MediaStream`
+    * `Monochrome`
+    * `PureVisionHD`
+    * `StreamedMP`
