@@ -2,14 +2,14 @@
 #labels Phase-Design
 
 = 1.05 =
-|| *Fixes* ||
+*Fixes*
   * Removed APIKey code
   * Removed unnecessary SABnzbd code
   * Blank searches not allowed
   * Error checking if Status Update Interval = 0
-  * Fixed status "Idle" message on start
+  * Fixed status "Idle" message on start ||
 
-=== Additions ===
+*Additions*
   * Download notification
   * Added skins
     * `Black & White 1080`
