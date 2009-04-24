@@ -1,7 +1,7 @@
 #summary A record of changes made in each release.
 #labels Phase-Design
 
-== 1.05 ==
+= _1.05_ =
 === Fixes ===
   * Removed APIKey code
   * Removed unnecessary SABnzbd code
