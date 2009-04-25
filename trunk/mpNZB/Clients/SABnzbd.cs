@@ -14,6 +14,13 @@ namespace mpNZB.Clients
 
     #region Init
 
+    private bool _InPlugin;
+    public bool InPlugin
+    {
+      get { return _InPlugin; }
+      set { _InPlugin = value; }
+    }
+
     private string IP = String.Empty;
     private string Port = String.Empty;
     private string Username = String.Empty;
@@ -27,7 +34,7 @@ namespace mpNZB.Clients
     {
       IP = strIP;
       Port = strPort;
-
+      
       Username = strUsername;
       Password = strPassword;
 
@@ -172,15 +179,18 @@ namespace mpNZB.Clients
 
           if ((intJobCount == 0) || (strPause == "True")) { tmrStatus.Enabled = false; }
 
-          NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
+          if (InPlugin)
+          {
+            NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
 
-          GUIPropertyManager.SetProperty("#Paused", strPause);
-          GUIPropertyManager.SetProperty("#KBps", ((intJobCount != 0) ? double.Parse(xmlDoc.SelectSingleNode("queue/kbpersec").InnerText, nfi).ToString("N2") : (0.0).ToString("N2")) + " KB/s");
-          GUIPropertyManager.SetProperty("#MBStatus", double.Parse(xmlDoc.SelectSingleNode("queue/mbleft").InnerText, nfi).ToString("N2") + " / " + double.Parse(xmlDoc.SelectSingleNode("queue/mb").InnerText, nfi).ToString("N2") + " MB");
-          GUIPropertyManager.SetProperty("#JobCount", intJobCount.ToString());
-          GUIPropertyManager.SetProperty("#DiskSpace1", double.Parse(xmlDoc.SelectSingleNode("queue/diskspace1").InnerText, nfi).ToString("N2") + " GB");
-          GUIPropertyManager.SetProperty("#DiskSpace2", double.Parse(xmlDoc.SelectSingleNode("queue/diskspace2").InnerText, nfi).ToString("N2") + " GB");
-          GUIPropertyManager.SetProperty("#TimeLeft", xmlDoc.SelectSingleNode("queue/timeleft").InnerText + " S");
+            GUIPropertyManager.SetProperty("#Paused", strPause);
+            GUIPropertyManager.SetProperty("#KBps", ((intJobCount != 0) ? double.Parse(xmlDoc.SelectSingleNode("queue/kbpersec").InnerText, nfi).ToString("N2") : (0.0).ToString("N2")) + " KB/s");
+            GUIPropertyManager.SetProperty("#MBStatus", double.Parse(xmlDoc.SelectSingleNode("queue/mbleft").InnerText, nfi).ToString("N2") + " / " + double.Parse(xmlDoc.SelectSingleNode("queue/mb").InnerText, nfi).ToString("N2") + " MB");
+            GUIPropertyManager.SetProperty("#JobCount", intJobCount.ToString());
+            GUIPropertyManager.SetProperty("#DiskSpace1", double.Parse(xmlDoc.SelectSingleNode("queue/diskspace1").InnerText, nfi).ToString("N2") + " GB");
+            GUIPropertyManager.SetProperty("#DiskSpace2", double.Parse(xmlDoc.SelectSingleNode("queue/diskspace2").InnerText, nfi).ToString("N2") + " GB");
+            GUIPropertyManager.SetProperty("#TimeLeft", xmlDoc.SelectSingleNode("queue/timeleft").InnerText + " S");
+          }
 
           JobCompare(xmlDoc);
         }

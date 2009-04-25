@@ -229,6 +229,7 @@ namespace mpNZB
         mpSettings.Dispose();
 
         // Update Status
+        Client.InPlugin = true;
         Client.Status();
       }
       catch (Exception e) { MP.Error(e); }
@@ -237,6 +238,7 @@ namespace mpNZB
     protected override void OnPageDestroy(int newWindowId)
     {
       base.OnPageDestroy(newWindowId);
+      Client.InPlugin = false;
     }
 
     protected override void OnShowContextMenu()

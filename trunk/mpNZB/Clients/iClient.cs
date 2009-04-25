@@ -5,6 +5,12 @@ namespace mpNZB.Clients
 {
   interface iClient
   {
+    bool InPlugin
+    {
+      get;
+      set;
+    }
+
     void Status();
     void Queue(GUIListControl _List, GUIWindow _GUI);
     void QueueItem(GUIListControl _List, GUIWindow _GUI);
