@@ -8,7 +8,6 @@
   * Fully
     * Yabse
     * NZBMatrix
-    * aEton
   * Partial
     * Binsearch (Search)
     * NZBClub (Groups)
