@@ -4,15 +4,11 @@
 == General ==
   * Toggle `btnPause` if `Status` is paused
 
-== Unsupported Sites ==
-  * Fully
-    * Yabse
-    * NZBMatrix
-  * Partial
-    * Binsearch (Search)
-    * NZBClub (Groups)
-    * NZBsRus (Search)
-    * TvNZB (Search)
+== Sites ==
+  * Binsearch (Search)
+  * NZBClub (Groups)
+  * NZBsRus (Search)
+  * TvNZB (Search)
 
 == SABnzbd ==
   * *0.50*
