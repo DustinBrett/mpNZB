@@ -5,10 +5,10 @@
   * Toggle `btnPause` if `Status` is paused
 
 == Sites ==
-  * Binsearch (Search)
-  * NZBClub (Groups)
-  * NZBsRus (Search)
-  * TvNZB (Search)
+  * [http://www.binsearch.info/ Binsearch] (Search)
+  * [http://www.nzbclub.com/ NZBClub] (Groups)
+  * [http://www.nzbsrus.com/index.php NZBsRus] (Search)
+  * [http://www.tvnzb.com/ TvNZB] (Search)
 
 == SABnzbd ==
   * *0.50*
