@@ -177,7 +177,7 @@ namespace mpNZB.Clients
           int intJobCount = int.Parse(xmlDoc.SelectSingleNode("queue/noofslots").InnerText);
           string strPause = xmlDoc.SelectSingleNode("queue/paused").InnerText;
 
-          if ((intJobCount == 0) || (strPause == "True")) { tmrStatus.Enabled = false; }
+          if ((intJobCount == 0) || (strPause == "True") || ((InPlugin == false) && (Notifications == false))) { tmrStatus.Enabled = false; }
 
           if (InPlugin)
           {
