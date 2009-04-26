@@ -6,8 +6,8 @@
   * Add more information on NZB's in the "Download?" dialog
   * Notification glitchy when deleting items
   * Format the MyTVSeries different ways
-    * Title [S]x[E]
-    * Title S[S]E[E]
+    * `Title [S]x[E]`
+    * `Title S[S]E[E]`
 
 == Sites ==
   * [http://www.binsearch.info/ Binsearch] (Search)
