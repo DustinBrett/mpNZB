@@ -3,6 +3,7 @@
 
 == General ==
   * Toggle `btnPause` if `Status` is paused
+  * Add more information on NZB's in the "Download?" dialog
 
 == Sites ==
   * [http://www.binsearch.info/ Binsearch] (Search)
