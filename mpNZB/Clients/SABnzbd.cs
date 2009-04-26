@@ -292,7 +292,11 @@ namespace mpNZB.Clients
 
     public void Download(GUIListItem _Item)
     {
-      if (MP.YesNo("Download file?", _Item.Label))
+      List<string> NZB = new List<string>();
+
+      NZB.Add("Title: " + _Item.Label);
+
+      if (MP.YesNo(NZB, "Download file?"))
       {
         string strResult = String.Empty;
 

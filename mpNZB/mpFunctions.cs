@@ -25,7 +25,21 @@ namespace mpNZB
       Dialog.DoModal(GUIWindowManager.ActiveWindow);
     }
 
-    public bool YesNo(string _Line, string _Heading)
+    public void Text(string _Text, string _Heading)
+    {
+      // Init Dialog
+      GUIDialogText Dialog = (GUIDialogText)GUIWindowManager.GetWindow((int)GUIWindow.Window.WINDOW_DIALOG_TEXT);
+      Dialog.Reset();
+
+      // Set Dialog Information
+      Dialog.SetHeading(_Heading);
+      Dialog.SetText(_Text);
+
+      // Display Dialog
+      Dialog.DoModal(GUIWindowManager.ActiveWindow);
+    }
+
+    public bool YesNo(List<string> _Lines, string _Heading)
     {
       // Init Dialog
       GUIDialogYesNo Dialog = (GUIDialogYesNo)GUIWindowManager.GetWindow((int)GUIWindow.Window.WINDOW_DIALOG_YES_NO);
@@ -33,7 +47,10 @@ namespace mpNZB
 
       // Set Dialog Information
       Dialog.SetHeading(_Heading);
-      Dialog.SetLine(1, _Line);
+      for (int i = 0; i < _Lines.Count; i++)
+      {
+        Dialog.SetLine(i + 1, _Lines[i]);
+      }
 
       // Display Dialog
       Dialog.DoModal(GUIWindowManager.ActiveWindow);
