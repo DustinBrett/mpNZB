@@ -2,12 +2,15 @@
 #labels Phase-Requirements,Phase-Design
 
 == General ==
-  * Toggle `btnPause` if `Status` is paused
   * Add more information on NZB's in the "Download?" dialog
-  * Notification glitchy when deleting items
   * Format the MyTVSeries different ways
     * `Title [S]x[EE] (Smallville 06x14)`
     * `Title S[SS]E[EE] (Smallville S06E14)`
+
+== Issues ==
+  * MyTVSeries had some odd results
+  * Notification glitchy when deleting items
+  * Toggle `btnPause` if `Status` is paused
 
 == Sites ==
   * [http://www.binsearch.info/ Binsearch] (Search)
