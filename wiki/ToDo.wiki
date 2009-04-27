@@ -8,7 +8,7 @@
     * `Title S[SS]E[EE] (Smallville S06E14)`
 
 == Issues ==
-  * MyTVSeries had some odd results
+  * Missing episodes option had some odd entries
   * Notification glitchy when deleting items
   * Toggle `btnPause` if `Status` is paused
 
