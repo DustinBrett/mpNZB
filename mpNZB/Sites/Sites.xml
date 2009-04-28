@@ -40,6 +40,11 @@
 			<title element="title" />
 			<size type="2" element="report:size" />
 			<url element="report:id" />
+			<information>
+				<line element="report:attributes/report:attribute[@type='Source']">Video Source</line>
+				<line element="report:attributes/report:attribute[@type='Video Fmt']">Video Format</line>
+				<line element="report:attributes/report:attribute[@type='Language']">Language</line>
+			</information>
 		</item>
 	</site>
 	<site name="Newzleech">
@@ -95,6 +100,10 @@
 		<item type="1">
 			<title element="title" />
 			<url element="link" />
+			<information>
+				<line element="season">Season</line>
+				<line element="episode">Episode</line>
+			</information>
 		</item>
 	</site>
 </sites>
