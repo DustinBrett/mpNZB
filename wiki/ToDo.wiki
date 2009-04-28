@@ -7,17 +7,16 @@
   * Format the MyTVSeries search different ways
     * `Show Name - [S]x[EE] - Episode Name (Smallville - 06x14 - Trespass)`
     * `Show Name - S[SS]E[EE] - Episode Name (Smallville - S06E14 - Trespass)`
+  * Toggle `btnPause` if `Status` is paused
 
 == Issues ==
-  * Missing episodes option had some odd entries
-  * Notification glitchy when deleting items
-  * Toggle `btnPause` if `Status` is paused
+  * Missing episodes option has some odd entries (Possible MyTVSeries issue)
+    * Redo database as a test
+  * Notification comes up when deleting items sometimes
 
 == Sites ==
   * [http://www.binsearch.info/ Binsearch] (Search)
   * [http://www.nzbclub.com/ NZBClub] (Groups)
-  * [http://www.nzbsrus.com/index.php NZBsRus] (Search)
-  * [http://www.tvnzb.com/ TvNZB] (Search)
 
 == SABnzbd ==
   * *0.50*
