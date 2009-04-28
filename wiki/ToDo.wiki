@@ -2,10 +2,10 @@
 #labels Phase-Requirements,Phase-Design
 
 == General ==
-  * Add more information on NZB's in the "Download?" dialog
-  * Format the MyTVSeries different ways
-    * `Title [S]x[EE] (Smallville 06x14)`
-    * `Title S[SS]E[EE] (Smallville S06E14)`
+  * Add more information for Newzbin in the "Download File?" dialog
+  * Format the MyTVSeries search different ways
+    * `Show Name - [S]x[EE] - Episode Name (Smallville - 06x14 - Trespass)`
+    * `Show Name - S[SS]E[EE] - Episode Name (Smallville - S06E14 - Trespass)`
 
 == Issues ==
   * Missing episodes option had some odd entries
