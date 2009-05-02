@@ -3,7 +3,7 @@
 
 = 1.06 =
 *Fixes*
-  * pubDate is now TryParseExact instead of ParseExact
+  * pubDate is now `TryParseExact` instead of `ParseExact`
   * NZBs and NZBsRus were wrong in Sites_Custom
 
 = 1.05 =
