@@ -12,6 +12,7 @@
   * Missing episodes option has some odd entries (Possible MyTVSeries issue)
     * Redo database as a test
   * Notification comes up when deleting items sometimes
+  * Update queue moves cursor to top
 
 == Sites ==
   * [http://www.binsearch.info/ Binsearch] (Search)
