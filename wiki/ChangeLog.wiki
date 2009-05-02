@@ -1,6 +1,11 @@
 #summary A record of changes made in each release.
 #labels Phase-Design
 
+= 1.06 =
+*Fixes*
+  * pubDate is now TryParseExact instead of ParseExact
+  * NZBs and NZBsRus were wrong in Sites_Custom
+
 = 1.05 =
 *Fixes*
   * Removed unnecessary SABnzbd code
