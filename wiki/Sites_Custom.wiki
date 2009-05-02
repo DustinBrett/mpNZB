@@ -45,34 +45,34 @@ The information needed to replace `[I]` and `[H]` can be found at [http://www.nz
 {{{
 <site name="NZBsRus">
 	<feeds>
-		<feed name="Anime">http://www.nzbsrus.com/rss.php?cat=3&amp;i=[I]&amp;h=[H]</feed>
-		<feed name="Apps - 0-Day">http://www.nzbsrus.com/rss.php?cat=6&amp;i=[I]&amp;h=[H]</feed>
-		<feed name="Apps - MAC">http://www.nzbsrus.com/rss.php?cat=93&amp;i=[I]&amp;h=[H]</feed>
-		<feed name="Apps - Misc">http://www.nzbsrus.com/rss.php?cat=9&amp;i=[I]&amp;h=[H]</feed>
-		<feed name="Apps - PC iSO">http://www.nzbsrus.com/rss.php?cat=12&amp;i=[I]&amp;h=[H]</feed>
-		<feed name="Console - Gamecube">http://www.nzbsrus.com/rss.php?cat=87&amp;i=[I]&amp;h=[H]</feed>
-		<feed name="Console - PS2">http://www.nzbsrus.com/rss.php?cat=30&amp;i=[I]&amp;h=[H]</feed>
-		<feed name="Console - PS3">http://www.nzbsrus.com/rss.php?cat=89&amp;i=[I]&amp;h=[H]</feed>
-		<feed name="Console - Wii">http://www.nzbsrus.com/rss.php?cat=92&amp;i=[I]&amp;h=[H]</feed>
-		<feed name="Console - XBOX">http://www.nzbsrus.com/rss.php?cat=39&amp;i=[I]&amp;h=[H]</feed>
-		<feed name="Console - XBOX 360">http://www.nzbsrus.com/rss.php?cat=88&amp;i=[I]&amp;h=[H]</feed>
-		<feed name="eBooks/ Tutorials">http://www.nzbsrus.com/rss.php?cat=15&amp;i=[I]&amp;h=[H]</feed>
-		<feed name="Games - Misc">http://www.nzbsrus.com/rss.php?cat=24&amp;i=[I]&amp;h=[H]</feed>
-		<feed name="Games - PC DOX">http://www.nzbsrus.com/rss.php?cat=96&amp;i=[I]&amp;h=[H]</feed>
-		<feed name="Games - PC iSO">http://www.nzbsrus.com/rss.php?cat=27&amp;i=[I]&amp;h=[H]</feed>
-		<feed name="Handheld - DS">http://www.nzbsrus.com/rss.php?cat=21&amp;i=[I]&amp;h=[H]</feed>
-		<feed name="Handheld - PSP">http://www.nzbsrus.com/rss.php?cat=33&amp;i=[I]&amp;h=[H]</feed>
-		<feed name="Movies - DVDr">http://www.nzbsrus.com/rss.php?cat=45&amp;i=[I]&amp;h=[H]</feed>
-		<feed name="Movies - HD">http://www.nzbsrus.com/rss.php?cat=90&amp;i=[I]&amp;h=[H]</feed>
-		<feed name="Movies - Misc">http://www.nzbsrus.com/rss.php?cat=48&amp;i=[I]&amp;h=[H]</feed>
-		<feed name="Movies - XviD">http://www.nzbsrus.com/rss.php?cat=51&amp;i=[I]&amp;h=[H]</feed>
-		<feed name="Music - MP3">http://www.nzbsrus.com/rss.php?cat=54&amp;i=[I]&amp;h=[H]</feed>
-		<feed name="Music - Video">http://www.nzbsrus.com/rss.php?cat=60&amp;i=[I]&amp;h=[H]</feed>
-		<feed name="Phone">http://www.nzbsrus.com/rss.php?cat=99&amp;i=[I]&amp;h=[H]</feed>
-		<feed name="TV - DVDr">http://www.nzbsrus.com/rss.php?cat=69&amp;i=[I]&amp;h=[H]</feed>
-		<feed name="TV - HD">http://www.nzbsrus.com/rss.php?cat=91&amp;i=[I]&amp;h=[H]</feed>
-		<feed name="TV - Misc">http://www.nzbsrus.com/rss.php?cat=72&amp;i=[I]&amp;h=[H]</feed>
-		<feed name="TV - XviD">http://www.nzbsrus.com/rss.php?cat=75&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="Anime">http://www.nzbsrus.com/rssfeed.php?cat=3&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="Apps - 0-Day">http://www.nzbsrus.com/rssfeed.php?cat=6&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="Apps - MAC">http://www.nzbsrus.com/rssfeed.php?cat=93&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="Apps - Misc">http://www.nzbsrus.com/rssfeed.php?cat=9&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="Apps - PC iSO">http://www.nzbsrus.com/rssfeed.php?cat=12&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="Console - Gamecube">http://www.nzbsrus.com/rssfeed.php?cat=87&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="Console - PS2">http://www.nzbsrus.com/rssfeed.php?cat=30&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="Console - PS3">http://www.nzbsrus.com/rssfeed.php?cat=89&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="Console - Wii">http://www.nzbsrus.com/rssfeed.php?cat=92&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="Console - XBOX">http://www.nzbsrus.com/rssfeed.php?cat=39&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="Console - XBOX 360">http://www.nzbsrus.com/rssfeed.php?cat=88&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="eBooks/ Tutorials">http://www.nzbsrus.com/rssfeed.php?cat=15&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="Games - Misc">http://www.nzbsrus.com/rssfeed.php?cat=24&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="Games - PC DOX">http://www.nzbsrus.com/rssfeed.php?cat=96&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="Games - PC iSO">http://www.nzbsrus.com/rssfeed.php?cat=27&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="Handheld - DS">http://www.nzbsrus.com/rssfeed.php?cat=21&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="Handheld - PSP">http://www.nzbsrus.com/rssfeed.php?cat=33&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="Movies - DVDr">http://www.nzbsrus.com/rssfeed.php?cat=45&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="Movies - HD">http://www.nzbsrus.com/rssfeed.php?cat=90&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="Movies - Misc">http://www.nzbsrus.com/rssfeed.php?cat=48&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="Movies - XviD">http://www.nzbsrus.com/rssfeed.php?cat=51&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="Music - MP3">http://www.nzbsrus.com/rssfeed.php?cat=54&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="Music - Video">http://www.nzbsrus.com/rssfeed.php?cat=60&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="Phone">http://www.nzbsrus.com/rssfeed.php?cat=99&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="TV - DVDr">http://www.nzbsrus.com/rssfeed.php?cat=69&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="TV - HD">http://www.nzbsrus.com/rssfeed.php?cat=91&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="TV - Misc">http://www.nzbsrus.com/rssfeed.php?cat=72&amp;i=[I]&amp;h=[H]</feed>
+		<feed name="TV - XviD">http://www.nzbsrus.com/rssfeed.php?cat=75&amp;i=[I]&amp;h=[H]</feed>
 	</feeds>
 	<item type="1">
 		<title element="title" />
