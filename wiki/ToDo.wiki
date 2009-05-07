@@ -15,7 +15,6 @@
   * Update queue moves cursor to top
 
 == Sites ==
-  * [http://nzbserien.org/serien.xml NZBSerien]
   * [http://www.binsearch.info/ Binsearch] (Search)
   * [http://www.nzbclub.com/ NZBClub] (Groups)
 
