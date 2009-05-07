@@ -59,6 +59,8 @@ namespace mpNZB
         // ##################################################
         txtMaxResults.Text = mpSettings.GetValueAsInt("#Sites", "MaxResults", 50).ToString();
         chkMyTVSeries.Checked = mpSettings.GetValueAsBool("#Sites", "MyTVSeries", false);
+        rdoFormat1.Checked = mpSettings.GetValueAsBool("#Sites", "MyTVSeries_Format", true);
+        if (rdoFormat1.Checked == false) { rdoFormat2.Checked = true; }
         // ##################################################
 
         XmlDocument xmlDoc = new XmlDocument();
@@ -120,6 +122,7 @@ namespace mpNZB
       int.TryParse(txtMaxResults.Text, out intMaxResults);
       mpSettings.SetValue("#Sites", "MaxResults", intMaxResults);
       mpSettings.SetValueAsBool("#Sites", "MyTVSeries", chkMyTVSeries.Checked);
+      mpSettings.SetValueAsBool("#Sites", "MyTVSeries_Format", rdoFormat1.Checked);
       // ##################################################
 
       // Searches
