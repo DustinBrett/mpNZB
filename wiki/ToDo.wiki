@@ -4,6 +4,7 @@
 == General ==
   * Add [http://forum.team-mediaportal.com/plugins-47/mpnzb-v1-05-nzb-downloader-updated-24-04-2009-a-57265/index15.html#post412690 custom search strings questions]
   * Toggle `btnPause` if `Status` is paused
+  * More NZB information from Newzbin
 
 == Sites ==
   * [http://www.binsearch.info/ Binsearch] (Search)
