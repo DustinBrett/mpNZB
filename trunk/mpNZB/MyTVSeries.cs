@@ -3,6 +3,7 @@
 using SQLite.NET;
 
 using MediaPortal.GUI.Library;
+using MediaPortal.Profile;
 
 namespace mpNZB
 {
@@ -32,13 +33,24 @@ namespace mpNZB
 
       SQLiteResultSet sqlEpisodes;
 
+      Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
+      bool bolFormat = mpSettings.GetValueAsBool("#Sites", "MyTVSeries_Format", true);
+      mpSettings.Dispose();
+
       for (int i = 0; i < sqlResults.Rows.Count; i++)
       {
         sqlEpisodes = sqlClient.Execute("SELECT CompositeID FROM local_episodes WHERE CompositeID=\"" + sqlResults.Rows[i].fields[0] + "\"");
 
         if (sqlEpisodes.Rows.Count == 0)
         {
-          _Results.Add(new GUIListItem(sqlResults.Rows[i].fields[1].ToString() + "x" + sqlResults.Rows[i].fields[2].ToString().PadLeft(2, '0') + " - " + sqlResults.Rows[i].fields[3].ToString()));
+          if (bolFormat)
+          {
+            _Results.Add(new GUIListItem(sqlResults.Rows[i].fields[1].ToString() + "x" + sqlResults.Rows[i].fields[2].ToString().PadLeft(2, '0') + " - " + sqlResults.Rows[i].fields[3].ToString()));
+          }
+          else
+          {
+            _Results.Add(new GUIListItem("S" + sqlResults.Rows[i].fields[1].ToString().PadLeft(2, '0') + "E" + sqlResults.Rows[i].fields[2].ToString().PadLeft(2, '0') + " - " + sqlResults.Rows[i].fields[3].ToString()));
+          }
         }
       }
 

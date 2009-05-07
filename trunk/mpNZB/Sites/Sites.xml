@@ -60,6 +60,9 @@
 		</item>
 	</site>
 	<site name="NZBClub">
+		<group>
+			<url>http://www.nzbclub.com/nzbfeed.aspx?us=[GROUP]</url>
+		</group>
 		<search>
 			<url>http://www.nzbclub.com/nzbfeed.aspx?ss=[QUERY]</url>
 		</search>
@@ -80,6 +83,16 @@
 		<search>
 			<url>http://www.nzbindex.com/rss/?q=[QUERY]&amp;max=[MAX]</url>
 		</search>
+		<item type="1">
+			<title element="title" />
+			<size type="2" element="enclosure" attribute="length" />
+			<url element="enclosure" attribute="url" />
+		</item>
+	</site>
+	<site name="NZBSerien">
+		<feeds>
+			<feed name="RSS Feed">http://nzbserien.org/serien.xml</feed>
+		</feeds>
 		<item type="1">
 			<title element="title" />
 			<size type="2" element="enclosure" attribute="length" />

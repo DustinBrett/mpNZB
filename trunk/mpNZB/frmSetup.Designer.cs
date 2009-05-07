@@ -46,11 +46,18 @@
       this.cmbGrabber = new System.Windows.Forms.ComboBox();
       this.lblGrabber = new System.Windows.Forms.Label();
       this.tabPluginSettings = new System.Windows.Forms.TabPage();
+      this.groupBox4 = new System.Windows.Forms.GroupBox();
+      this.label9 = new System.Windows.Forms.Label();
+      this.label7 = new System.Windows.Forms.Label();
+      this.label6 = new System.Windows.Forms.Label();
+      this.rdoFormat2 = new System.Windows.Forms.RadioButton();
+      this.rdoFormat1 = new System.Windows.Forms.RadioButton();
       this.groupBox1 = new System.Windows.Forms.GroupBox();
       this.chkMyTVSeries = new System.Windows.Forms.CheckBox();
       this.txtMaxResults = new System.Windows.Forms.TextBox();
       this.label2 = new System.Windows.Forms.Label();
       this.grpVisual = new System.Windows.Forms.GroupBox();
+      this.chkNotifications = new System.Windows.Forms.CheckBox();
       this.txtUpdateFreq = new System.Windows.Forms.TextBox();
       this.txtDisplayName = new System.Windows.Forms.TextBox();
       this.lblDisplayName = new System.Windows.Forms.Label();
@@ -80,12 +87,12 @@
       this.checkBox1 = new System.Windows.Forms.CheckBox();
       this.comboBox1 = new System.Windows.Forms.ComboBox();
       this.label1 = new System.Windows.Forms.Label();
-      this.chkNotifications = new System.Windows.Forms.CheckBox();
       this.tabPages.SuspendLayout();
       this.tabClientSettings.SuspendLayout();
       this.grpSettings.SuspendLayout();
       this.grpProgram.SuspendLayout();
       this.tabPluginSettings.SuspendLayout();
+      this.groupBox4.SuspendLayout();
       this.groupBox1.SuspendLayout();
       this.grpVisual.SuspendLayout();
       this.tabSearch.SuspendLayout();
@@ -285,6 +292,7 @@
       // 
       // tabPluginSettings
       // 
+      this.tabPluginSettings.Controls.Add(this.groupBox4);
       this.tabPluginSettings.Controls.Add(this.groupBox1);
       this.tabPluginSettings.Controls.Add(this.grpVisual);
       this.tabPluginSettings.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -295,6 +303,68 @@
       this.tabPluginSettings.Text = "Plugin Settings";
       this.tabPluginSettings.UseVisualStyleBackColor = true;
       // 
+      // groupBox4
+      // 
+      this.groupBox4.Controls.Add(this.label9);
+      this.groupBox4.Controls.Add(this.label7);
+      this.groupBox4.Controls.Add(this.label6);
+      this.groupBox4.Controls.Add(this.rdoFormat2);
+      this.groupBox4.Controls.Add(this.rdoFormat1);
+      this.groupBox4.Location = new System.Drawing.Point(16, 202);
+      this.groupBox4.Name = "groupBox4";
+      this.groupBox4.Size = new System.Drawing.Size(280, 74);
+      this.groupBox4.TabIndex = 24;
+      this.groupBox4.TabStop = false;
+      this.groupBox4.Text = "MyTVSeries Formatting";
+      // 
+      // label9
+      // 
+      this.label9.Location = new System.Drawing.Point(171, 20);
+      this.label9.Name = "label9";
+      this.label9.Size = new System.Drawing.Size(103, 40);
+      this.label9.TabIndex = 28;
+      this.label9.Text = "This setting decides the format of the search string.";
+      // 
+      // label7
+      // 
+      this.label7.AutoSize = true;
+      this.label7.Location = new System.Drawing.Point(95, 45);
+      this.label7.Name = "label7";
+      this.label7.Size = new System.Drawing.Size(72, 13);
+      this.label7.TabIndex = 27;
+      this.label7.Text = "[E] = Episode";
+      // 
+      // label6
+      // 
+      this.label6.AutoSize = true;
+      this.label6.Location = new System.Drawing.Point(95, 24);
+      this.label6.Name = "label6";
+      this.label6.Size = new System.Drawing.Size(70, 13);
+      this.label6.TabIndex = 26;
+      this.label6.Text = "[S] = Season";
+      // 
+      // rdoFormat2
+      // 
+      this.rdoFormat2.AutoSize = true;
+      this.rdoFormat2.Location = new System.Drawing.Point(15, 43);
+      this.rdoFormat2.Name = "rdoFormat2";
+      this.rdoFormat2.Size = new System.Drawing.Size(77, 17);
+      this.rdoFormat2.TabIndex = 25;
+      this.rdoFormat2.Text = "S[SS]E[EE]";
+      this.rdoFormat2.UseVisualStyleBackColor = true;
+      // 
+      // rdoFormat1
+      // 
+      this.rdoFormat1.AutoSize = true;
+      this.rdoFormat1.Checked = true;
+      this.rdoFormat1.Location = new System.Drawing.Point(15, 20);
+      this.rdoFormat1.Name = "rdoFormat1";
+      this.rdoFormat1.Size = new System.Drawing.Size(65, 17);
+      this.rdoFormat1.TabIndex = 24;
+      this.rdoFormat1.TabStop = true;
+      this.rdoFormat1.Text = "[S]x[EE]";
+      this.rdoFormat1.UseVisualStyleBackColor = true;
+      // 
       // groupBox1
       // 
       this.groupBox1.Controls.Add(this.chkMyTVSeries);
@@ -303,7 +373,7 @@
       this.groupBox1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.groupBox1.Location = new System.Drawing.Point(16, 118);
       this.groupBox1.Name = "groupBox1";
-      this.groupBox1.Size = new System.Drawing.Size(280, 74);
+      this.groupBox1.Size = new System.Drawing.Size(280, 78);
       this.groupBox1.TabIndex = 19;
       this.groupBox1.TabStop = false;
       this.groupBox1.Text = "Feeds:";
@@ -350,6 +420,16 @@
       this.grpVisual.TabIndex = 17;
       this.grpVisual.TabStop = false;
       this.grpVisual.Text = "Visual:";
+      // 
+      // chkNotifications
+      // 
+      this.chkNotifications.AutoSize = true;
+      this.chkNotifications.Location = new System.Drawing.Point(15, 71);
+      this.chkNotifications.Name = "chkNotifications";
+      this.chkNotifications.Size = new System.Drawing.Size(223, 17);
+      this.chkNotifications.TabIndex = 20;
+      this.chkNotifications.Text = "Show \"Download Complete\" notifications.";
+      this.chkNotifications.UseVisualStyleBackColor = true;
       // 
       // txtUpdateFreq
       // 
@@ -644,16 +724,6 @@
       this.label1.TabIndex = 2;
       this.label1.Text = "Grabber:";
       // 
-      // chkNotifications
-      // 
-      this.chkNotifications.AutoSize = true;
-      this.chkNotifications.Location = new System.Drawing.Point(15, 71);
-      this.chkNotifications.Name = "chkNotifications";
-      this.chkNotifications.Size = new System.Drawing.Size(223, 17);
-      this.chkNotifications.TabIndex = 20;
-      this.chkNotifications.Text = "Show \"Download Complete\" notifications.";
-      this.chkNotifications.UseVisualStyleBackColor = true;
-      // 
       // frmSetup
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -674,6 +744,8 @@
       this.grpProgram.ResumeLayout(false);
       this.grpProgram.PerformLayout();
       this.tabPluginSettings.ResumeLayout(false);
+      this.groupBox4.ResumeLayout(false);
+      this.groupBox4.PerformLayout();
       this.groupBox1.ResumeLayout(false);
       this.groupBox1.PerformLayout();
       this.grpVisual.ResumeLayout(false);
@@ -743,5 +815,11 @@
     private System.Windows.Forms.Label label8;
     private System.Windows.Forms.Button btnGroupAdd;
     private System.Windows.Forms.CheckBox chkNotifications;
+    private System.Windows.Forms.GroupBox groupBox4;
+    private System.Windows.Forms.Label label7;
+    private System.Windows.Forms.Label label6;
+    private System.Windows.Forms.RadioButton rdoFormat2;
+    private System.Windows.Forms.RadioButton rdoFormat1;
+    private System.Windows.Forms.Label label9;
   }
 }
