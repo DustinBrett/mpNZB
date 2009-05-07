@@ -7,8 +7,8 @@
   * NZBs and NZBsRus were wrong in Sites_Custom
 
 *Additions*
-  * Added NZBSerien Feed
-  * Added NZBClub Groups
+  * NZBSerien Feed
+  * NZBClub Groups
 
 = 1.05 =
 *Fixes*
