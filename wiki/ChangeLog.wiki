@@ -6,6 +6,10 @@
   * pubDate is now `TryParseExact` instead of `ParseExact`
   * NZBs and NZBsRus were wrong in Sites_Custom
 
+*Additions*
+  * Added NZBSerien Feed
+  * Added NZBClub Groups
+
 = 1.05 =
 *Fixes*
   * Removed unnecessary SABnzbd code
