@@ -3,9 +3,6 @@
 
 == General ==
   * Add [http://forum.team-mediaportal.com/plugins-47/mpnzb-v1-05-nzb-downloader-updated-24-04-2009-a-57265/index15.html#post412690 custom search strings questions]
-  * Format the MyTVSeries search different ways
-    * `Show Name - [S]x[EE] - Episode Name (Smallville - 06x14 - Trespass)`
-    * `Show Name - S[SS]E[EE] - Episode Name (Smallville - S06E14 - Trespass)`
   * Toggle `btnPause` if `Status` is paused
 
 == Sites ==
