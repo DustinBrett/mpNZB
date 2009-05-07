@@ -7,10 +7,10 @@
     * `Show Name - [S]x[EE] - Episode Name (Smallville - 06x14 - Trespass)`
     * `Show Name - S[SS]E[EE] - Episode Name (Smallville - S06E14 - Trespass)`
   * Toggle `btnPause` if `Status` is paused
+  * Auto refresh queue if that's what's being viewed
+    * Cursor can't move
 
 == Issues ==
-  * Missing episodes option has some odd entries (Possible MyTVSeries issue)
-    * Redo database as a test
   * Notification comes up when deleting items sometimes
   * Update queue moves cursor to top
 
