@@ -7,6 +7,7 @@
     * `Show Name - [S]x[EE] - Episode Name (Smallville - 06x14 - Trespass)`
     * `Show Name - S[SS]E[EE] - Episode Name (Smallville - S06E14 - Trespass)`
   * Toggle `btnPause` if `Status` is paused
+  * Add http://nzbserien.org/serien.xml
 
 == Issues ==
   * Missing episodes option has some odd entries (Possible MyTVSeries issue)
