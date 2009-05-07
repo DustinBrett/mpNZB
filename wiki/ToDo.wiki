@@ -16,7 +16,6 @@
 
 == Sites ==
   * [http://www.binsearch.info/ Binsearch] (Search)
-  * [http://www.nzbclub.com/ NZBClub] (Groups)
 
 == SABnzbd ==
   * *0.50*
