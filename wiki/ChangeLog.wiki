@@ -19,7 +19,7 @@
 
 *Additions*
   * Download notification
-  * Added skins
+  * New Skins
     * `Black & White 1080`
     * `BleazleWide`
     * `Blue3`
