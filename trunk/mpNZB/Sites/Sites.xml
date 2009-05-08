@@ -36,6 +36,16 @@
 		<search>
 			<url>http://www.newzbin.com/search/query/?q=[QUERY]&amp;searchaction=Search&amp;u_post_results_amt=[MAX]&amp;feed=rss</url>
 		</search>
+		<login>
+			<url>http://www.newzbin.com/account/login/</url>
+			<check regex="My Account">http://www.newzbin.com/account/</check>
+			<username name="username"></username>
+			<password name="password"></password>
+			<cookies>
+				<cookie>NzbSmoke</cookie>
+				<cookie>NzbSessionID</cookie>
+			</cookies>
+		</login>
 		<item type="2">
 			<title element="title" />
 			<size type="2" element="report:size" />
