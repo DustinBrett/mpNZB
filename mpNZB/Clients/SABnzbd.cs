@@ -217,7 +217,7 @@ namespace mpNZB.Clients
 
           foreach (XmlNode nodeItem in xmlDoc.SelectNodes("queue/jobs/job"))
           {
-            MP.ListItem(_List, nodeItem.SelectSingleNode("filename").InnerText, double.Parse(nodeItem.SelectSingleNode("mbleft").InnerText, nfi).ToString("N2") + " / " + double.Parse(nodeItem.SelectSingleNode("mb").InnerText, nfi).ToString("N2") + " MB", String.Empty, DateTime.Now, 0, nodeItem.SelectSingleNode("id").InnerText, 3);
+            MP.ListItem(_List, nodeItem.SelectSingleNode("filename").InnerText, double.Parse(nodeItem.SelectSingleNode("mbleft").InnerText, nfi).ToString("N2") + " / " + double.Parse(nodeItem.SelectSingleNode("mb").InnerText, nfi).ToString("N2") + " MB", DateTime.Now, 0, nodeItem.SelectSingleNode("id").InnerText, 3);
           }
 
           GUIPropertyManager.SetProperty("#Status", "Queue Loaded");
@@ -292,12 +292,7 @@ namespace mpNZB.Clients
 
     public void Download(GUIListItem _Item)
     {
-      List<string> NZB = new List<string>();
-
-      NZB.Add("Title: " + _Item.Label);
-      if (_Item.DVDLabel.Length > 0) { NZB.Add(_Item.DVDLabel); }
-
-      if (MP.YesNo(NZB, "Download file?"))
+      if (MP.YesNo("Title: " + _Item.Label, "Download file?"))
       {
         string strResult = String.Empty;
 

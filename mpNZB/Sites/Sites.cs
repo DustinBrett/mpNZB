@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
+using System.Net;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 
@@ -16,6 +19,7 @@ namespace mpNZB
 
     public string SiteName = String.Empty;
     public string FeedName = String.Empty;
+    public string Cookies = String.Empty;
     public List<string> FeedURL = new List<string>();
 
     private int MaxResults;
@@ -67,6 +71,21 @@ namespace mpNZB
             if (_Item != null)
             {
               SiteName = _Item.Label;
+
+              if (xmlDoc.SelectSingleNode("sites/site/login") != null)
+              {
+                Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
+
+                string CookieCache = mpSettings.GetValue("#Sites", SiteName + "_Cookie");
+                if (CookieCache.Length > 0)
+                {
+                  CheckCookie(xmlDoc.SelectSingleNode("sites/site/login"), CookieCache);
+                }
+                else
+                {
+                  GetCookies(xmlDoc.SelectSingleNode("sites/site/login"));
+                }
+              }
             }
           }
         }
@@ -290,9 +309,67 @@ namespace mpNZB
         }
 
         string strNZBInfo = String.Empty;
-        // Add NZB Information Code
+        if ((SiteName == "Newzbin") && (_Node["report:attributes"].ChildNodes.Count > 0))
+        {
+          XmlNodeList Nodes = _Node["report:attributes"].ChildNodes;
 
-        MP.ListItem(_List, ((xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title[@attribute]") != null) ? _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["element"].InnerText].Attributes[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["attribute"].InnerText].InnerText : _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["element"].InnerText].InnerText).Replace("&quot;", "\"").Replace("&amp;", "&").Replace("&lt;", "<").Replace("&gt;", ">"), strSize, strNZBInfo, DateTime.ParseExact(_Node["pubDate"].InnerText.Replace("GMT", "+0000"), "ddd, dd MMM yyyy HH:mm:ss zzz", CultureInfo.InvariantCulture), (long)dblSize, strURL, int.Parse(xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item").Attributes["type"].InnerText));
+          string Source = String.Empty;
+          string Format = String.Empty;
+          string Language = String.Empty;
+
+          foreach (XmlNode Node in Nodes)
+          {
+            switch (Node.Attributes[0].InnerText)
+            {
+              case "Source":
+                Source += ((Source.Length > 0) ? ", " + Node.InnerText : Node.InnerText);
+                break;
+              case "Video Fmt":
+                Format += ((Format.Length > 0) ? ", " + Node.InnerText : Node.InnerText);
+                break;
+              case "Language":
+                Language += ((Language.Length > 0) ? ", " + Node.InnerText : Node.InnerText);
+                break;
+            }
+          }
+
+          strNZBInfo = " [Language: " + ((Language.Length > 0) ? Language : "Unknown") + "] " + "[Format: " + ((Format.Length > 0) ? Format : "Unknown") + "] " + "[Source: " + ((Source.Length > 0) ? Source : "Unknown") + "]";
+        }
+
+        MP.ListItem(_List, ((xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title[@attribute]") != null) ? _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["element"].InnerText].Attributes[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["attribute"].InnerText].InnerText : _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["element"].InnerText].InnerText).Replace("&quot;", "\"").Replace("&amp;", "&").Replace("&lt;", "<").Replace("&gt;", ">") + strNZBInfo, strSize, DateTime.ParseExact(_Node["pubDate"].InnerText.Replace("GMT", "+0000"), "ddd, dd MMM yyyy HH:mm:ss zzz", CultureInfo.InvariantCulture), (long)dblSize, strURL, int.Parse(xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item").Attributes["type"].InnerText));
+      }
+      catch (Exception e) { MP.Error(e); }
+    }
+
+    void GetCookies(XmlNode Credentials)
+    {
+      try
+      {
+        HttpWebRequest Request = (HttpWebRequest)HttpWebRequest.Create(Credentials["url"].InnerText);
+
+        ASCIIEncoding Encoding = new ASCIIEncoding();
+        byte[] Content = Encoding.GetBytes(Credentials["username"].Attributes["name"].InnerText + "=" + Credentials["username"].InnerText + "&" + Credentials["password"].Attributes["name"].InnerText + "=" + Credentials["password"].InnerText);
+
+        Request.Method = "POST";
+        Request.ContentType = "application/x-www-form-urlencoded";
+        Request.ContentLength = Content.Length;
+        Request.AllowAutoRedirect = false;
+
+        Stream reqStream = Request.GetRequestStream();
+        reqStream.Write(Content, 0, Content.Length);
+        reqStream.Close();
+
+        HttpWebResponse Response = (HttpWebResponse)Request.GetResponse();
+
+        foreach (XmlNode Cookie in Credentials["cookies"].ChildNodes)
+        {
+          if (Response.Cookies[Cookie.InnerText] != null)
+          {
+            Cookies += ((Cookies.Length > 0) ? "; " : String.Empty) + Cookie.InnerText + "=" + Response.Cookies[Cookie.InnerText].Value;
+          }
+        }
+
+        Response.Close();
       }
       catch (Exception e) { MP.Error(e); }
     }

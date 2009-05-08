@@ -39,7 +39,7 @@ namespace mpNZB
       Dialog.DoModal(GUIWindowManager.ActiveWindow);
     }
 
-    public bool YesNo(List<string> _Lines, string _Heading)
+    public bool YesNo(string _Text, string _Heading)
     {
       // Init Dialog
       GUIDialogYesNo Dialog = (GUIDialogYesNo)GUIWindowManager.GetWindow((int)GUIWindow.Window.WINDOW_DIALOG_YES_NO);
@@ -47,10 +47,7 @@ namespace mpNZB
 
       // Set Dialog Information
       Dialog.SetHeading(_Heading);
-      for (int i = 0; i < _Lines.Count; i++)
-      {
-        Dialog.SetLine(i + 1, _Lines[i]);
-      }
+      Dialog.SetLine(1, _Text);
 
       // Display Dialog
       Dialog.DoModal(GUIWindowManager.ActiveWindow);
@@ -102,7 +99,7 @@ namespace mpNZB
 
     #region Control
 
-    public void ListItem(GUIListControl _List, string _Label, string _Label2, string _DVDLabel, DateTime _CreationTime, long _Length, string _Path, int _ItemId)
+    public void ListItem(GUIListControl _List, string _Label, string _Label2, DateTime _CreationTime, long _Length, string _Path, int _ItemId)
     {
       // Init Item
       GUIListItem Item = new GUIListItem();
@@ -110,7 +107,6 @@ namespace mpNZB
       // Set Item Information
       Item.Label = _Label;
       Item.Label2 = _Label2;
-      Item.DVDLabel = _DVDLabel;
       Item.Path = _Path;
       Item.ItemId = _ItemId;
 
