@@ -7,6 +7,12 @@
   * More NZB information from Newzbin
   * Test new MyTVSeries string format feature
 
+== Newzbin ==
+  * Make plug-in more compatible with Newzbin
+  * Redo skin so it previews information about the NZB
+  * If its Newzbin then have shrink the listview and display info
+  * Parse imdb link into cover-art
+
 == Sites ==
   * [http://www.binsearch.info/ Binsearch] (Search)
 
