@@ -1,0 +1,30 @@
+#summary Idea for entire mpNZB redo
+
+- Skin controls need to be global in all classes.
+- Cookie code with cookie checking
+- Better error logging
+
+mpNZB.cs
+	SkinControlAttribute
+	Timer
+	ISetupForm
+	Init
+	OnClicked
+	OnPageLoad
+	OnPageDestroy
+	OnShowContextMenu
+SABnzbd.cs
+	SABnzbd 0.4.8 API (http://sabnzbd.wikidot.com/automation-support)
+Sites.cs
+	ReadRSS(List<Feed> Feeds)
+		Feeds
+			URL = String
+			Cookie = CookieContainer		
+	SelectSite
+mpFunctions.cs
+	Dialogs
+	Controls
+	Errors
+MyTVSeries.cs
+	SeriesNames
+	MissingEpisodes
