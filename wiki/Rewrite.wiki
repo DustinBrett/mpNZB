@@ -1,5 +1,5 @@
 #summary Idea for entire mpNZB redo
-
+{{{
 - Skin controls need to be global in all classes.
 - Cookie code with cookie checking
 - Better error logging
@@ -28,3 +28,4 @@ mpFunctions.cs
 MyTVSeries.cs
 	SeriesNames
 	MissingEpisodes
+}}}
