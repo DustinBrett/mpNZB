@@ -1,0 +1,34 @@
+C:\Documents and Settings\Dustin\Desktop\mpNZB\bin\Release\mpNZB.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\bin\Release\mpNZB.pdb
+C:\Documents and Settings\Dustin\Desktop\mpNZB\bin\Release\Core.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\bin\Release\Dialogs.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\bin\Release\Utils.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\bin\Release\DirectShowLib.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\bin\Release\edtftpnet-1.2.2.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\bin\Release\Interop.WMPLib.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\bin\Release\taglib-sharp.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\bin\Release\ICSharpCode.SharpZipLib.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\bin\Release\BassRegistration.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\bin\Release\Bass.Net.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\bin\Release\AxInterop.WMPLib.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\bin\Release\MediaPortal.Support.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\Dustin\Desktop\mpNZB\obj\Release\mpNZB.dll
+C:\Documents and Settings\Dustin\Desktop\mpNZB\obj\Release\mpNZB.pdb
+C:\Documents and Settings\Dustin\My Documents\mpNZB - New\bin\Release\mpNZB.dll
+C:\Documents and Settings\Dustin\My Documents\mpNZB - New\bin\Release\mpNZB.pdb
+C:\Documents and Settings\Dustin\My Documents\mpNZB - New\bin\Release\Core.dll
+C:\Documents and Settings\Dustin\My Documents\mpNZB - New\bin\Release\Dialogs.dll
+C:\Documents and Settings\Dustin\My Documents\mpNZB - New\bin\Release\Utils.dll
+C:\Documents and Settings\Dustin\My Documents\mpNZB - New\bin\Release\DirectShowLib.dll
+C:\Documents and Settings\Dustin\My Documents\mpNZB - New\bin\Release\edtftpnet-1.2.2.dll
+C:\Documents and Settings\Dustin\My Documents\mpNZB - New\bin\Release\Interop.WMPLib.dll
+C:\Documents and Settings\Dustin\My Documents\mpNZB - New\bin\Release\taglib-sharp.dll
+C:\Documents and Settings\Dustin\My Documents\mpNZB - New\bin\Release\ICSharpCode.SharpZipLib.dll
+C:\Documents and Settings\Dustin\My Documents\mpNZB - New\bin\Release\BassRegistration.dll
+C:\Documents and Settings\Dustin\My Documents\mpNZB - New\bin\Release\Bass.Net.dll
+C:\Documents and Settings\Dustin\My Documents\mpNZB - New\bin\Release\AxInterop.WMPLib.dll
+C:\Documents and Settings\Dustin\My Documents\mpNZB - New\bin\Release\MediaPortal.Support.dll
+C:\Documents and Settings\Dustin\My Documents\mpNZB - New\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\Dustin\My Documents\mpNZB - New\obj\Release\mpNZB.dll
+C:\Documents and Settings\Dustin\My Documents\mpNZB - New\obj\Release\mpNZB.pdb

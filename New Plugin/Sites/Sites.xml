@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<sites>
+	<site id="Binsearch">
+		<groups>http://rss.binsearch.net/rss.php?max=[MAX]&amp;g=[GROUP]</groups>
+		<item type="1">
+			<title element="title" />
+			<size element="description" type="1" />
+			<url element="link" />
+		</item>
+	</site>
+	<site id="Newzbin">
+		<feeds>
+			<feed name="Everything">http://www.newzbin.com/browse/category/p/everything/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="Unknown">http://www.newzbin.com/browse/category/p/unknown/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="Anime">http://www.newzbin.com/browse/category/p/anime/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="Apps">http://www.newzbin.com/browse/category/p/apps/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="Books">http://www.newzbin.com/browse/category/p/books/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="Consoles">http://www.newzbin.com/browse/category/p/consoles/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="Discussions">http://www.newzbin.com/browse/category/p/discussions/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="Emulation">http://www.newzbin.com/browse/category/p/emulation/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="Games">http://www.newzbin.com/browse/category/p/games/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="Misc">http://www.newzbin.com/browse/category/p/misc/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="Movies">http://www.newzbin.com/browse/category/p/movies/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="Music">http://www.newzbin.com/browse/category/p/music/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="PDA">http://www.newzbin.com/browse/category/p/pda/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="Resources">http://www.newzbin.com/browse/category/p/resources/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="TV">http://www.newzbin.com/browse/category/p/tv/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+		</feeds>
+		<groups>http://www.newzbin.com/browse/group/p/[GROUP]/?feed=rss&amp;u_post_results_amt=[MAX]</groups>
+		<search>http://www.newzbin.com/search/query/?q=[QUERY]&amp;searchaction=Search&amp;u_post_results_amt=[MAX]&amp;feed=rss</search>
+		<item type="2">
+			<title element="title" />
+			<size element="report:size" type="2" />
+			<url element="report:id" />
+		</item>
+	</site>
+	<site id="Newzleech">
+		<groups>http://www.newzleech.com/rss.php?n=[MAX]&amp;g=[GROUP]</groups>
+		<search>http://www.newzleech.com/rss.php?n=[MAX]&amp;s=[QUERY]</search>
+		<item type="1">
+			<title element="title" />
+			<size element="description" type="1" />
+			<url element="link">
+				<replace old="p=" new="m=gen&amp;dl=1&amp;post=" />
+			</url>
+		</item>
+	</site>
+	<site id="NZBClub">
+		<groups>http://www.nzbclub.com/nzbfeed.aspx?us=[GROUP]</groups>
+		<search>http://www.nzbclub.com/nzbfeed.aspx?ss=[QUERY]</search>
+		<item type="1">
+			<title element="title" />
+			<size element="description" type="1" />
+			<url element="link">
+				<replace old="nzbcollection" new="nzbdownload" />
+			</url>
+		</item>
+	</site>
+	<site id="NZBIndex">
+		<group>http://www.nzbindex.com/rss/[GROUP]/?max=[MAX]</group>
+		<search>http://www.nzbindex.com/rss/?q=[QUERY]&amp;max=[MAX]</search>
+		<item type="1">
+			<title element="title" />
+			<size element="enclosure" attribute="length" type="2" />
+			<url element="enclosure" attribute="url" />
+		</item>
+	</site>
+	<site id="NZBSerien">
+		<feeds>
+			<feed name="RSS Feed">http://nzbserien.org/serien.xml</feed>
+		</feeds>
+		<item type="1">
+			<title element="title" />
+			<size element="enclosure" attribute="length" type="2" />
+			<url element="enclosure" attribute="url" />
+		</item>
+	</site>
+	<site id="TvNZB">
+		<feeds>
+			<feed name="New Files">http://www.tvnzb.com/tvnzb_new.rss</feed>
+			<feed name="All Files">http://www.tvnzb.com/tvnzb.rss</feed>
+			<feed name="Old Files">http://www.tvnzb.com/tvnzb_old.rss</feed>
+		</feeds>
+		<item type="1">
+			<title element="title" />
+			<url element="link" />
+		</item>
+	</site>
+</sites>
