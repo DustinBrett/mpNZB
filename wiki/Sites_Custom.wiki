@@ -10,6 +10,71 @@ This page is were I put sites that are known to work with Sites.xml but require 
   * `GZIP` compressed RSS feeds are supported
   * `<feeds>`, `<search>` and `<size>` can be removed when not needed
 
+== NZBsRus ==
+The information needed to replace `[USER]` and `[API]` can be found at [http://nzbmatrix.com/api-info.php] once you are logged in.
+
+{{{
+<site name="NZBMatrix">
+	<feeds>
+		<feed name="Anime - All">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=28</feed>
+		<feed name="Apps - Linux">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=20</feed>
+		<feed name="Apps - Mac">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=19</feed>
+		<feed name="Apps - Other">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=21</feed>
+		<feed name="Apps - PC">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=18</feed>
+		<feed name="Apps - Portable">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=52</feed>
+		<feed name="Documentaries - HD">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=53</feed>
+		<feed name="Documentaries - STD">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=9</feed>
+		<feed name="Games - Dreamcast">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=16</feed>
+		<feed name="Games - DS">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=45</feed>
+		<feed name="Games - GameCube">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=46</feed>
+		<feed name="Games - Other">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=17</feed>
+		<feed name="Games - PC">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=10</feed>
+		<feed name="Games - PS1">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=15</feed>
+		<feed name="Games - PS2">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=11</feed>
+		<feed name="Games - PS3">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=43</feed>
+		<feed name="Games - PSP">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=12</feed>
+		<feed name="Games - Wii">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=44</feed>
+		<feed name="Games - Wii VC">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=51</feed>
+		<feed name="Games - Xbox">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=13</feed>
+		<feed name="Games - Xbox360">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=14</feed>
+		<feed name="Movies - Divx/Xvid">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=2</feed>
+		<feed name="Movies - DVD">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=1</feed>
+		<feed name="Movies - HD (Blu-Ray)">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=50</feed>
+		<feed name="Movies - HD (x264)">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=42</feed>
+		<feed name="Movies - Other">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=4</feed>
+		<feed name="Movies - SVCD/VCD">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=3</feed>
+		<feed name="Movies - WMV-HD">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=48</feed>
+		<feed name="Music - DVD">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=24</feed>
+		<feed name="Music - Lossless">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=23</feed>
+		<feed name="Music - MP3 Albums">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=22</feed>
+		<feed name="Music - MP3 Singles">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=47</feed>
+		<feed name="Music - Other">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=27</feed>
+		<feed name="Music - Video">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=25</feed>
+		<feed name="Other - Audio Books">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=49</feed>
+		<feed name="Other - E-Books">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=36</feed>
+		<feed name="Other - Emulation">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=33</feed>
+		<feed name="Other - Extra Pars/Fills">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=39</feed>
+		<feed name="Other - Images">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=37</feed>
+		<feed name="Other - Mobile Phone">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=38</feed>
+		<feed name="Other - Other">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=40</feed>
+		<feed name="Other - PPC/PDA">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=34</feed>
+		<feed name="Other - Radio">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=26</feed>
+		<feed name="TV - Divx/Xvid">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=6</feed>
+		<feed name="TV - DVD">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=5</feed>
+		<feed name="TV - HD">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=41</feed>
+		<feed name="TV - Other">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=8</feed>
+		<feed name="TV - Sport/Ent">http://rss.nzbmatrix.com/rss.php?page=download&amp;username=[USER]&amp;apikey=[API]&amp;subcat=7</feed>
+	</feeds>
+	<item type="1">
+		<title element="title" />
+		<size type="1" element="description">
+			<regex input="&gt;\s(\d+[,|.]\d+)(\w{2,4})" />
+		</size>
+		<url element="link" />
+	</item>
+</site>
+}}}
+
 == NZBs ==
 
 The information needed to replace `[I]` and `[H]` can be found at [http://nzbs.org/index.php?action=rss] once you are logged in.
