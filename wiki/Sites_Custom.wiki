@@ -10,7 +10,7 @@ This page is were I put sites that are known to work with Sites.xml but require 
   * `GZIP` compressed RSS feeds are supported
   * `<feeds>`, `<search>` and `<size>` can be removed when not needed
 
-== NZBsRus ==
+== NZBMatrix ==
 The information needed to replace `[USER]` and `[API]` can be found at [http://nzbmatrix.com/api-info.php] once you are logged in.
 
 {{{
