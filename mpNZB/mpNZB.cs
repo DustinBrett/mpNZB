@@ -295,7 +295,6 @@ namespace mpNZB
         {
           HttpWebRequest webReq = (HttpWebRequest)WebRequest.Create(URL);
 
-          webReq.Headers.Add(HttpRequestHeader.Cookie, Site.Cookies);
           webReq.Headers.Add(HttpRequestHeader.AcceptEncoding, "gzip");
           HttpWebResponse webResp = (HttpWebResponse)webReq.GetResponse();
 

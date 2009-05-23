@@ -1,14 +1,10 @@
 <?xml version="1.0"?>
 <sites>
 	<site name="Binsearch">
-		<group>
-			<url>http://rss.binsearch.net/rss.php?max=[MAX]&amp;g=[GROUP]</url>
-		</group>
+		<groups>http://rss.binsearch.net/rss.php?max=[MAX]&amp;g=[GROUP]</groups>
 		<item type="1">
 			<title element="title" />
-			<size type="1" element="description">
-				<regex input="\w{4}:\s(\d+[,|.]\d+)\s(\w{2,4})" />
-			</size>
+			<size type="1" element="description" />
 			<url element="link" />
 		</item>
 	</site>
@@ -30,22 +26,8 @@
 			<feed name="Resources">http://www.newzbin.com/browse/category/p/resources/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
 			<feed name="TV">http://www.newzbin.com/browse/category/p/tv/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
 		</feeds>
-		<group>
-			<url>http://www.newzbin.com/browse/group/p/[GROUP]/?feed=rss&amp;u_post_results_amt=[MAX]</url>
-		</group>
-		<search>
-			<url>http://www.newzbin.com/search/query/?q=[QUERY]&amp;searchaction=Search&amp;u_post_results_amt=[MAX]&amp;feed=rss</url>
-		</search>
-		<login>
-			<url>http://www.newzbin.com/account/login/</url>
-			<check regex="My Account">http://www.newzbin.com/account/</check>
-			<username name="username"></username>
-			<password name="password"></password>
-			<cookies>
-				<cookie>NzbSmoke</cookie>
-				<cookie>NzbSessionID</cookie>
-			</cookies>
-		</login>
+		<groups>http://www.newzbin.com/browse/group/p/[GROUP]/?feed=rss&amp;u_post_results_amt=[MAX]</groups>
+		<search>http://www.newzbin.com/search/query/?q=[QUERY]&amp;searchaction=Search&amp;u_post_results_amt=[MAX]&amp;feed=rss</search>
 		<item type="2">
 			<title element="title" />
 			<size type="2" element="report:size" />
@@ -53,46 +35,30 @@
 		</item>
 	</site>
 	<site name="Newzleech">
-		<group>
-			<url>http://www.newzleech.com/rss.php?n=[MAX]&amp;g=[GROUP]</url>
-		</group>
-		<search>
-			<url>http://www.newzleech.com/rss.php?n=[MAX]&amp;s=[QUERY]</url>
-		</search>
+		<groups>http://www.newzleech.com/rss.php?n=[MAX]&amp;g=[GROUP]</groups>
+		<search>http://www.newzleech.com/rss.php?n=[MAX]&amp;s=[QUERY]</search>
 		<item type="1">
 			<title element="title" />
-			<size type="1" element="description">
-				<regex input="\w{4}:\s(\d+[,|.]\d+)\s(\w{2,4})" />
-			</size>
+			<size type="1" element="description" />
 			<url element="link">
 				<regex input="\?p=" replacement="?m=gen&amp;dl=1&amp;post=" />
 			</url>
 		</item>
 	</site>
 	<site name="NZBClub">
-		<group>
-			<url>http://www.nzbclub.com/nzbfeed.aspx?us=[GROUP]</url>
-		</group>
-		<search>
-			<url>http://www.nzbclub.com/nzbfeed.aspx?ss=[QUERY]</url>
-		</search>
+		<groups>http://www.nzbclub.com/nzbfeed.aspx?us=[GROUP]</groups>
+		<search>http://www.nzbclub.com/nzbfeed.aspx?ss=[QUERY]</search>
 		<item type="1">
 			<title element="title" />
-			<size type="1" element="description">
-				<regex input="\w{4}:\s(\d+[,|.]\d+)\s(\w{2,4})" />
-			</size>
+			<size type="1" element="description" />
 			<url element="link">
 				<regex input="nzbcollection" replacement="nzbdownload" />
 			</url>
 		</item>
 	</site>
 	<site name="NZBIndex">
-		<group>
-			<url>http://www.nzbindex.com/rss/[GROUP]/?max=[MAX]</url>
-		</group>
-		<search>
-			<url>http://www.nzbindex.com/rss/?q=[QUERY]&amp;max=[MAX]</url>
-		</search>
+		<groups>http://www.nzbindex.com/rss/[GROUP]/?max=[MAX]</groups>
+		<search>http://www.nzbindex.com/rss/?q=[QUERY]&amp;max=[MAX]</search>
 		<item type="1">
 			<title element="title" />
 			<size type="2" element="enclosure" attribute="length" />
@@ -105,7 +71,6 @@
 		</feeds>
 		<item type="1">
 			<title element="title" />
-			<size type="2" element="enclosure" attribute="length" />
 			<url element="enclosure" attribute="url" />
 		</item>
 	</site>
