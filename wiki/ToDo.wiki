@@ -1,27 +1,11 @@
 #summary To-Do list for project
 #labels Phase-Requirements,Phase-Design
 
-== Rewrite ==
-  * Might be time for complete re-write (2.0)
-  * Build it around Newzbin & SABnzbd
-  * Replace Sites.XML with something user friendly (Maybe just built in)
-  * Have multi-page skins
-  * Have picture look-up if imdb link is present
-
 == General ==
-  * Add [http://forum.team-mediaportal.com/plugins-47/mpnzb-v1-05-nzb-downloader-updated-24-04-2009-a-57265/index15.html#post412690 custom search strings questions]
   * Toggle `btnPause` if `Status` is paused
   * More NZB information from Newzbin
-  * Test new MyTVSeries string format feature
-
-== Newzbin ==
-  * Make plug-in more compatible with Newzbin
-  * Redo skin so it previews information about the NZB
-  * If its Newzbin then have shrink the listview and display info
-  * Parse imdb link into cover-art
-
-== Sites ==
-  * [http://www.binsearch.info/ Binsearch] (Search)
+  * Add login (username/password) to Sites.xml
+  * Display extra NZB information in Menu/Info Button
 
 == SABnzbd ==
   * *0.50*
