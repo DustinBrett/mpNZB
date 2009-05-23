@@ -9,7 +9,7 @@
 *Additions*
   * NZBClub Groups
   * NZBMatrix Feeds
-  * NZBSerien Feeds
+  * NZBSerien Feed
   * Season/Episode search string formatting for MyTVSeries
 
 = 1.05 =
