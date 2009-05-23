@@ -61,7 +61,7 @@ namespace mpNZB
       // Init Dialog
       GUIDialogMenu Dialog = (GUIDialogMenu)GUIWindowManager.GetWindow((int)GUIWindow.Window.WINDOW_DIALOG_MENU);
       Dialog.Reset();
-      
+
       // Set Dialog Information
       Dialog.SetHeading(_Heading);
       _Items.ForEach(Dialog.Add);
@@ -69,16 +69,12 @@ namespace mpNZB
       // Display Dialog
       Dialog.DoModal(GUIWindowManager.ActiveWindow);
 
-      // Check if Item Selected
+      // Return Result
       if (Dialog.SelectedLabel != -1)
       {
-        // Remove Item #
-        _Items[Dialog.SelectedLabel].Label = _Items[Dialog.SelectedLabel].Label.Substring(_Items[Dialog.SelectedLabel].Label.IndexOf(" ") + 1, _Items[Dialog.SelectedLabel].Label.Length - (_Items[Dialog.SelectedLabel].Label.IndexOf(" ") + 1));
-
-        // Return Result
+        _Items[Dialog.SelectedLabel].Label = Dialog.SelectedLabelText;
         return _Items[Dialog.SelectedLabel];
       }
-            
       return null;
     }
 
@@ -123,13 +119,12 @@ namespace mpNZB
 
     #region Error
 
-    private string strAppName = "mpNZB";
-
     public void Error(Exception e)
     {
       // Log Error
-      Log.Error("[" + strAppName + "] " + "Message: " + e.Message);      
-      Log.Error("[" + strAppName + "] " + "TargetSite: " + e.TargetSite);
+      Log.Error("[mpNZB]" + " Message: " + e.Message);
+      Log.Error("[mpNZB]" + " Source: " + e.Source);
+      Log.Error("[mpNZB]" + " TargetSite: " + e.TargetSite);
 
       // Update Status
       GUIPropertyManager.SetProperty("#Status", "Error occured");

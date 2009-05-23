@@ -32,29 +32,28 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Core, Version=1.0.0.29788, Culture=neutral, processorArchitecture=x86">
+    <Reference Include="Core, Version=1.0.2.42465, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files\MediaPortal\Core.dll</HintPath>
+      <HintPath>\\htpc\MediaPortal\Core.dll</HintPath>
     </Reference>
-    <Reference Include="Databases, Version=1.0.1.40028, Culture=neutral, processorArchitecture=x86">
+    <Reference Include="Databases, Version=1.0.2.42467, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>\\htpc\MediaPortal\Databases.dll</HintPath>
+      <HintPath>\\htpc\mediaportal\Databases.dll</HintPath>
     </Reference>
-    <Reference Include="Dialogs, Version=1.0.0.29798, Culture=neutral, processorArchitecture=x86">
+    <Reference Include="Dialogs, Version=1.0.2.42469, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files\MediaPortal\plugins\Windows\Dialogs.dll</HintPath>
+      <HintPath>\\htpc\mediaportal\plugins\Windows\Dialogs.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.XML" />
-    <Reference Include="Utils, Version=2.2.6.29782, Culture=neutral, processorArchitecture=x86">
+    <Reference Include="Utils, Version=2.2.7.42464, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>\\dustin-laptop\c$\Program Files\MediaPortal\Utils.dll</HintPath>
+      <HintPath>\\htpc\mediaportal\Utils.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -91,8 +90,8 @@
   <PropertyGroup>
     <PostBuildEvent>REM Send to HTPC
 REM ####################
-REM copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\mpNZB.dll" "\\HTPC\MediaPortal\plugins\Windows\mpNZB.dll" /y
-REM copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\Sites\Sites.xml" "\\HTPC\MediaPortal\plugins\Windows\Sites.xml" /y
+copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\mpNZB.dll" "\\HTPC\MediaPortal\plugins\Windows\mpNZB.dll" /y
+copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\Sites\Sites.xml" "\\HTPC\MediaPortal\plugins\Windows\Sites.xml" /y
 
 REM Send to Home Laptop
 REM ####################
@@ -101,7 +100,7 @@ REM copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\Sites\Sites.xml" "\\DUSTIN-L
 
 REM Send to Work Laptop
 REM ####################
-copy "C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\mpNZB.dll" "C:\Program Files\MediaPortal\plugins\Windows\mpNZB.dll" /y
-copy "C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\Sites\Sites.xml" "C:\Program Files\MediaPortal\plugins\Windows\Sites.xml" /y</PostBuildEvent>
+REM copy "C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\mpNZB.dll" "C:\Program Files\MediaPortal\plugins\Windows\mpNZB.dll" /y
+REM copy "C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\Sites\Sites.xml" "C:\Program Files\MediaPortal\plugins\Windows\Sites.xml" /y</PostBuildEvent>
   </PropertyGroup>
 </Project>
