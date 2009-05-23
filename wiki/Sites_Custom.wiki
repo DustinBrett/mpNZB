@@ -67,9 +67,7 @@ The information needed to replace `[USER]` and `[API]` can be found at [http://n
 	</feeds>
 	<item type="1">
 		<title element="title" />
-		<size type="1" element="description">
-			<regex input="&gt;\s(\d+[,|.]\d+)\s?(\w{2,4})" />
-		</size>
+		<size type="1" element="description" />
 		<url element="link" />
 	</item>
 </site>
@@ -96,9 +94,7 @@ The information needed to replace `[I]` and `[H]` can be found at [http://nzbs.o
         </search>
 	<item type="1">
 		<title element="title" />
-		<size type="1" element="description">
-			<regex input="&gt;(\d+[,|.]\d+)\s?(\w{2,4})&lt;" />
-		</size>
+		<size type="1" element="description" />
 		<url element="link" />
 	</item>
 </site>
@@ -141,9 +137,7 @@ The information needed to replace `[I]` and `[H]` can be found at [http://www.nz
 	</feeds>
 	<item type="1">
 		<title element="title" />
-		<size type="1" element="description">
-			<regex input="&gt;\s(\d+[,|.]\d+)\s?(\w{2,4})" />
-		</size>
+		<size type="1" element="description" />
 		<url element="link" />
 	</item>
 </site>
