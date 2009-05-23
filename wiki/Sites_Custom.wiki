@@ -89,9 +89,7 @@ The information needed to replace `[I]` and `[H]` can be found at [http://nzbs.o
 		<feed name="TV">http://www.nzbs.org/rss.php?type=1&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
 		<feed name="XXX">http://www.nzbs.org/rss.php?type=4&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
 	</feeds>
-        <search>
-                <url>http://www.nzbs.org/rss.php?q=[QUERY]&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</url>
-        </search>
+        <search>http://www.nzbs.org/rss.php?q=[QUERY]&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</search>
 	<item type="1">
 		<title element="title" />
 		<size type="1" element="description" />
