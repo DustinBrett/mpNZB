@@ -5,7 +5,7 @@
 *Fixes*
   * pubDate is now `TryParseExact` instead of `ParseExact`
   * NZBs and NZBsRus were wrong in Sites_Custom
-  * Removed `RegEx` from size type 1
+  * Removed `RegEx` from size type 1 (Using "(\d+[,|.]\d+)\s?(\w{2,4})" for all sites)
 
 *Additions*
   * NZBClub Groups
