@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Timers;
 using System.Xml;
 
@@ -218,12 +219,59 @@ namespace mpNZB.Clients
 
           foreach (XmlNode nodeItem in xmlDoc.SelectNodes("queue/jobs/job"))
           {
-            strJobInfo = "ID: " + nodeItem.SelectSingleNode("id").InnerText + Environment.NewLine + "Filename: " + nodeItem.SelectSingleNode("filename").InnerText + Environment.NewLine + "Message ID: " + nodeItem.SelectSingleNode("msgid").InnerText;
+            strJobInfo = ((nodeItem["id"].InnerText.Length > 0) ? "ID: " + nodeItem["id"].InnerText + Environment.NewLine : String.Empty) + ((nodeItem["filename"].InnerText.Length > 0) ? "Filename: " + nodeItem["filename"].InnerText + Environment.NewLine : String.Empty) + ((nodeItem["msgid"].InnerText.Length > 0) ? "Message ID: " + nodeItem["msgid"].InnerText : String.Empty);
 
-            MP.ListItem(_List, nodeItem.SelectSingleNode("filename").InnerText, double.Parse(nodeItem.SelectSingleNode("mbleft").InnerText, nfi).ToString("N2") + " / " + double.Parse(nodeItem.SelectSingleNode("mb").InnerText, nfi).ToString("N2") + " MB", strJobInfo, DateTime.Now, 0, nodeItem.SelectSingleNode("id").InnerText, 3);
+            MP.ListItem(_List, nodeItem["filename"].InnerText, double.Parse(nodeItem["mbleft"].InnerText, nfi).ToString("N2") + " / " + double.Parse(nodeItem["mb"].InnerText, nfi).ToString("N2") + " MB", strJobInfo, DateTime.Now, 0, nodeItem["id"].InnerText, 3);
           }
 
           GUIPropertyManager.SetProperty("#Status", "Queue Loaded");
+        }
+        else
+        {
+          GUIPropertyManager.SetProperty("#Status", "Error parsing XML");
+        }
+      }
+      catch (Exception e) { MP.Error(e); }
+      finally
+      {
+        if (_List.Count > 0)
+        {
+          _GUI.LooseFocus();
+          _List.Focus = true;
+        }
+      }
+    }
+
+    public void History(GUIListControl _List, GUIWindow _GUI)
+    {
+      try
+      {
+        XmlDocument xmlDoc = new XmlDocument();
+        xmlDoc.Load(new XmlTextReader(CreateURL("rss?mode=history", String.Empty, false)));
+
+        if (xmlDoc.SelectSingleNode("rss/channel") != null)
+        {
+          _List.Clear();
+
+          string strJobInfo;
+
+          foreach (XmlNode nodeItem in xmlDoc.SelectNodes("rss/channel/item"))
+          {
+            strJobInfo = nodeItem["description"].InnerText;
+            strJobInfo = Regex.Replace(strJobInfo, "<tr><dt>", Environment.NewLine + Environment.NewLine);
+            strJobInfo = Regex.Replace(strJobInfo, "</d[d,t]><dd>", Environment.NewLine);
+            strJobInfo = Regex.Replace(strJobInfo, "</dd></tr>", String.Empty);
+
+            DateTime dtPubDate = new DateTime();
+            if (nodeItem.SelectSingleNode("pubDate") != null)
+            {
+              DateTime.TryParseExact(nodeItem["pubDate"].InnerText.Replace("GMT", "+0000"), "ddd, dd MMM yyyy HH:mm:ss zzz", CultureInfo.InvariantCulture, DateTimeStyles.None, out dtPubDate);
+            }
+
+            MP.ListItem(_List, nodeItem["title"].InnerText, ((nodeItem["description"].InnerText.Contains("[Completed]")) ? "Completed" : String.Empty), strJobInfo, dtPubDate, 0, String.Empty, 4);
+          }
+
+          GUIPropertyManager.SetProperty("#Status", "History Loaded");
         }
         else
         {

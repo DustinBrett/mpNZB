@@ -13,6 +13,7 @@ namespace mpNZB.Clients
 
     void Status();
     void Queue(GUIListControl _List, GUIWindow _GUI);
+    void History(GUIListControl _List, GUIWindow _GUI);
     void QueueItem(GUIListControl _List, GUIWindow _GUI);
     void Download(GUIListItem _Item);
     void Pause(bool _Pause);
