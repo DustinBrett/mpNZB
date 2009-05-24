@@ -9,7 +9,6 @@ This page is were I put sites that are known to work with Sites.xml but require 
   * `&` has to be replaced with `&amp;`
   * `GZIP` compressed RSS feeds are supported
   * `<feeds>`, `<groups>`, `<search>` and `<size>` can be removed when not needed
-  * Replace the characters `[` & `]` also
 
 == NZBMatrix ==
 The information needed to replace `[USER]` and `[API]` can be found at [http://nzbmatrix.com/api-info.php] once you are logged in.
