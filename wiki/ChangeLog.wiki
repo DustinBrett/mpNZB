@@ -1,6 +1,12 @@
 #summary A record of changes made in each release.
 #labels Phase-Design
 
+= 1.07 =
+*Additions*
+  * SABnzbd History View
+  * Subtitles added to Newzbin information
+  * MyTvNZB has same information as TvNZB now
+
 = 1.06 =
 *Fixes*
   * pubDate is now `TryParseExact` instead of `ParseExact`
