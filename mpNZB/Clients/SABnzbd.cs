@@ -214,10 +214,13 @@ namespace mpNZB.Clients
           _List.Clear();
 
           NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
+          string strJobInfo;
 
           foreach (XmlNode nodeItem in xmlDoc.SelectNodes("queue/jobs/job"))
           {
-            MP.ListItem(_List, nodeItem.SelectSingleNode("filename").InnerText, double.Parse(nodeItem.SelectSingleNode("mbleft").InnerText, nfi).ToString("N2") + " / " + double.Parse(nodeItem.SelectSingleNode("mb").InnerText, nfi).ToString("N2") + " MB", DateTime.Now, 0, nodeItem.SelectSingleNode("id").InnerText, 3);
+            strJobInfo = "ID: " + nodeItem.SelectSingleNode("id").InnerText + Environment.NewLine + "Filename: " + nodeItem.SelectSingleNode("filename").InnerText + Environment.NewLine + "Message ID: " + nodeItem.SelectSingleNode("msgid").InnerText;
+
+            MP.ListItem(_List, nodeItem.SelectSingleNode("filename").InnerText, double.Parse(nodeItem.SelectSingleNode("mbleft").InnerText, nfi).ToString("N2") + " / " + double.Parse(nodeItem.SelectSingleNode("mb").InnerText, nfi).ToString("N2") + " MB", strJobInfo, DateTime.Now, 0, nodeItem.SelectSingleNode("id").InnerText, 3);
           }
 
           GUIPropertyManager.SetProperty("#Status", "Queue Loaded");

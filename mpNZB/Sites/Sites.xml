@@ -9,6 +9,7 @@
 		</item>
 	</site>
 	<site name="Newzbin">
+		<login username="" password=""/>
 		<feeds>
 			<feed name="Everything">http://www.newzbin.com/browse/category/p/everything/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
 			<feed name="Unknown">http://www.newzbin.com/browse/category/p/unknown/?feed=rss&amp;u_post_results_amt=[MAX]</feed>

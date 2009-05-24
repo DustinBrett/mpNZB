@@ -247,34 +247,55 @@ namespace mpNZB
       {
         List<GUIListItem> _Items = new List<GUIListItem>();
 
-        _Items.Add(new GUIListItem("Name"));
-        _Items.Add(new GUIListItem("Date"));
-        _Items.Add(new GUIListItem("Size"));
+        _Items.Add(new GUIListItem("Sort By"));
 
-        GUIListItem _Method = MP.Menu(_Items, "Sort By");
-        if (_Method != null)
+        if (lstItems.ListItems[lstItems.SelectedListItemIndex].DVDLabel.Length > 0)
         {
-          _Items = new List<GUIListItem>();
+          _Items.Add(new GUIListItem("Information"));
+        }
 
-          _Items.Add(new GUIListItem("Ascending"));
-          _Items.Add(new GUIListItem("Descending"));
-
-          GUIListItem _Order = MP.Menu(_Items, "Sort Order");
-          if (_Order != null)
+        GUIListItem _Menu = MP.Menu(_Items, "Menu");
+        if (_Menu != null)
+        {
+          switch (_Menu.Label)
           {
-            switch (_Method.Label)
-            {
-              case "Name":
-                lstItems.ListItems.Sort(delegate(GUIListItem _Item1, GUIListItem _Item2) { return ((_Order.Label == "Ascending") ? _Item1.Label.CompareTo(_Item2.Label) : _Item2.Label.CompareTo(_Item1.Label)); });
-                break;
-              case "Date":
-                lstItems.ListItems.Sort(delegate(GUIListItem _Item1, GUIListItem _Item2) { return ((_Order.Label == "Ascending") ? _Item1.FileInfo.CreationTime.CompareTo(_Item2.FileInfo.CreationTime) : _Item2.FileInfo.CreationTime.CompareTo(_Item1.FileInfo.CreationTime)); });
-                break;
-              case "Size":
-                lstItems.ListItems.Sort(delegate(GUIListItem _Item1, GUIListItem _Item2) { return ((_Order.Label == "Ascending") ? _Item1.FileInfo.Length.CompareTo(_Item2.FileInfo.Length) : _Item2.FileInfo.Length.CompareTo(_Item1.FileInfo.Length)); });
-                break;
-            }
-            GUIPropertyManager.SetProperty("#Status", "Sorted by " + _Method.Label + " (" + _Order.Label + ")");
+            case "Sort By":
+              List<GUIListItem> _NDS = new List<GUIListItem>();
+
+              _NDS.Add(new GUIListItem("Name"));
+              _NDS.Add(new GUIListItem("Date"));
+              _NDS.Add(new GUIListItem("Size"));
+
+              GUIListItem _Method = MP.Menu(_NDS, "Sort By");
+              if (_Method != null)
+              {
+                List<GUIListItem> _AscDes = new List<GUIListItem>();
+
+                _AscDes.Add(new GUIListItem("Ascending"));
+                _AscDes.Add(new GUIListItem("Descending"));
+
+                GUIListItem _Order = MP.Menu(_AscDes, "Sort Order");
+                if (_Order != null)
+                {
+                  switch (_Method.Label)
+                  {
+                    case "Name":
+                      lstItems.ListItems.Sort(delegate(GUIListItem _Item1, GUIListItem _Item2) { return ((_Order.Label == "Ascending") ? _Item1.Label.CompareTo(_Item2.Label) : _Item2.Label.CompareTo(_Item1.Label)); });
+                      break;
+                    case "Date":
+                      lstItems.ListItems.Sort(delegate(GUIListItem _Item1, GUIListItem _Item2) { return ((_Order.Label == "Ascending") ? _Item1.FileInfo.CreationTime.CompareTo(_Item2.FileInfo.CreationTime) : _Item2.FileInfo.CreationTime.CompareTo(_Item1.FileInfo.CreationTime)); });
+                      break;
+                    case "Size":
+                      lstItems.ListItems.Sort(delegate(GUIListItem _Item1, GUIListItem _Item2) { return ((_Order.Label == "Ascending") ? _Item1.FileInfo.Length.CompareTo(_Item2.FileInfo.Length) : _Item2.FileInfo.Length.CompareTo(_Item1.FileInfo.Length)); });
+                      break;
+                  }
+                  GUIPropertyManager.SetProperty("#Status", "Sorted by " + _Method.Label + " (" + _Order.Label + ")");
+                }
+              }
+              break;
+            case "Information":
+              MP.Text(lstItems.ListItems[lstItems.SelectedListItemIndex].DVDLabel, ((lstItems.ListItems[lstItems.SelectedListItemIndex].ItemId == 3) ? "Job Information" : "NZB Information"));
+              break;
           }
         }
       }
@@ -294,8 +315,12 @@ namespace mpNZB
         foreach (string URL in _URL)
         {
           HttpWebRequest webReq = (HttpWebRequest)WebRequest.Create(URL);
-
           webReq.Headers.Add(HttpRequestHeader.AcceptEncoding, "gzip");
+          if (Site.SiteCookie.Length > 0)
+          {
+            webReq.Headers.Add(HttpRequestHeader.Cookie, Site.SiteCookie);
+          }
+
           HttpWebResponse webResp = (HttpWebResponse)webReq.GetResponse();
 
           XmlDocument xmlDoc = new XmlDocument();
