@@ -3,6 +3,7 @@
 
 == General ==
   * Toggle `btnPause` if `Status` is paused
+  * NFO viewer for Newzbin using the NFO pictures
   * NZBs/Newzbin IMDb Coverart
     * GUIDialogNotify allows picture (How many lines?) (I need 5)
 
