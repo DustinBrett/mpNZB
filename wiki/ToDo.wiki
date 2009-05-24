@@ -3,21 +3,18 @@
 
 == General ==
   * Toggle `btnPause` if `Status` is paused
-  * NFO viewer for Newzbin using the NFO pictures
-  * NZBs/Newzbin IMDb Coverart
-    * GUIDialogNotify allows picture (How many lines?) (I need 5)
 
 == SABnzbd ==
   * *0.50*
     * Replace *ma_username*/*ma_password* with *[http://sabnzbd.wikidot.com/api#toc3 apikey]*
-    * Add
-      * [http://sabnzbd.wikidot.com/api#toc9 History]      
     * Rewrite
+      * [http://sabnzbd.wikidot.com/api#toc9 History]
       * [http://sabnzbd.wikidot.com/api#toc23 Delete]
       * [http://sabnzbd.wikidot.com/api#toc35 Pause]
       * [http://sabnzbd.wikidot.com/api#toc24 Move] (Up/Down/Top/Bottom)
       * [http://sabnzbd.wikidot.com/api#toc31 Change Category]
-    * Add [http://nzbmatrix.com/ NZBMatrix] support
+    * Add
+      * [http://nzbmatrix.com/ NZBMatrix] support
 
 == Future Features: ==
   * NZB streaming
