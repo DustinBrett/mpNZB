@@ -3,7 +3,6 @@
 
 == General ==
   * Toggle `btnPause` if `Status` is paused
-    * Way harder than it should be
 
 == SABnzbd ==
   * *0.50*
