@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
+using System.Net;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 
@@ -15,6 +18,7 @@ namespace mpNZB
     #region Definitions
 
     public string SiteName = String.Empty;
+    public string SiteCookie = String.Empty;
     public string FeedName = String.Empty;
     public List<string> FeedURL = new List<string>();
 
@@ -67,6 +71,21 @@ namespace mpNZB
             if (_Item != null)
             {
               SiteName = _Item.Label;
+
+              if (xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/login") != null)
+              {
+                string strUsername = xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/login").Attributes["username"].InnerText;
+                string strPassword = xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/login").Attributes["password"].InnerText;
+
+                if ((strUsername.Length > 0) && (strUsername.Length > 0))
+                {
+                  SiteCookie = SiteLogin(SiteName, strUsername, strPassword);
+                  if (SiteCookie.Length == 0)
+                  {
+                    GUIPropertyManager.SetProperty("#Status", "Login failure");
+                  }
+                }
+              }
             }
           }
         }
@@ -292,9 +311,146 @@ namespace mpNZB
           DateTime.TryParseExact(_Node["pubDate"].InnerText.Replace("GMT", "+0000"), "ddd, dd MMM yyyy HH:mm:ss zzz", CultureInfo.InvariantCulture, DateTimeStyles.None, out dtPubDate);
         }
 
-        MP.ListItem(_List, ((xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title[@attribute]") != null) ? _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["element"].InnerText].Attributes[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["attribute"].InnerText].InnerText : _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["element"].InnerText].InnerText).Replace("&quot;", "\"").Replace("&amp;", "&").Replace("&lt;", "<").Replace("&gt;", ">"), strSize, dtPubDate, (long)dblSize, strURL, int.Parse(xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item").Attributes["type"].InnerText));
+        string strNZBInfo = String.Empty;
+        switch (SiteName)
+        {
+          case "Newzbin":
+            if (SiteCookie.Length > 0)
+            {
+              string Source = String.Empty;
+              string VideoFmt = String.Empty;
+              string VideoGenre = String.Empty;
+              string Language = String.Empty;
+
+              if (_Node["report:attributes"] != null)
+              {
+                XmlNodeList Attributes = _Node["report:attributes"].ChildNodes;
+                if (Attributes.Count > 0)
+                {
+                  foreach (XmlNode Attribute in Attributes)
+                  {
+                    switch (Attribute.Attributes[0].InnerText)
+                    {
+                      case "Source":
+                        Source += ((Source.Length > 0) ? ", " : String.Empty) + Attribute.InnerText;
+                        break;
+                      case "Video Fmt":
+                        VideoFmt += ((VideoFmt.Length > 0) ? ", " : String.Empty) + Attribute.InnerText;
+                        break;
+                      case "Video Genre":
+                        VideoGenre += ((VideoGenre.Length > 0) ? ", " : String.Empty) + Attribute.InnerText;
+                        break;
+                      case "Language":
+                        Language += ((Language.Length > 0) ? ", " : String.Empty) + Attribute.InnerText;
+                        break;
+                    }
+                  }
+                }
+              }
+
+              strNZBInfo = ((Source.Length > 0) ? "Source: " + Source + Environment.NewLine : String.Empty) + ((VideoFmt.Length > 0) ? "Video Format: " + VideoFmt + Environment.NewLine : String.Empty) + "Video Genre: " + ((VideoGenre.Length > 0) ? VideoGenre + Environment.NewLine : String.Empty) + ((Language.Length > 0) ? "Language: " + Language : String.Empty);
+            }
+            break;
+          case "TvNZB":
+            if ((_Node["season"] != null) && (_Node["episode"] != null))
+            {
+              string Season = _Node["season"].InnerText;
+              string Episode = _Node["episode"].InnerText;
+
+              strNZBInfo = ((Season.Length > 0) ? "Season: " + Season + Environment.NewLine : String.Empty) + ((Season.Length > 0) ? "Episode: " + Episode : String.Empty);
+            }
+            break;
+        }
+
+        MP.ListItem(_List, ((xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title[@attribute]") != null) ? _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["element"].InnerText].Attributes[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["attribute"].InnerText].InnerText : _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["element"].InnerText].InnerText).Replace("&quot;", "\"").Replace("&amp;", "&").Replace("&lt;", "<").Replace("&gt;", ">"), strSize, strNZBInfo, dtPubDate, (long)dblSize, strURL, int.Parse(xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item").Attributes["type"].InnerText));
       }
       catch (Exception e) { MP.Error(e); }
+    }
+
+    #endregion
+
+    #region Functions
+
+    string SiteLogin(string _Site, string _Username, string _Password)
+    {
+      string strResult = String.Empty;
+      string strURL = String.Empty;
+
+      try
+      {       
+        switch (_Site)
+        {
+          case "Newzbin":
+            strURL = "http://www.newzbin.com/account/login/";
+            break;
+        }
+
+        if (strURL.Length > 0)
+        {
+          Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
+
+          string strLogin = mpSettings.GetValueAsString("#Sites", _Site + "_Login", String.Empty);
+          if (strLogin.Length > 0)
+          {
+            HttpWebRequest cookieReq = (HttpWebRequest)WebRequest.Create(strURL);
+            cookieReq.Headers.Add(HttpRequestHeader.Cookie, strLogin);
+
+            HttpWebResponse cookieResp = (HttpWebResponse)cookieReq.GetResponse();
+            string strCookies = cookieResp.Headers[HttpResponseHeader.SetCookie];
+            if (strCookies.Length > 0)
+            {
+              strResult = strLogin;
+            }
+            cookieResp.Close();
+          }
+
+          if (strResult.Length == 0)
+          {
+            string postString = "username=" + _Username + "&" + "password=" + _Password;
+
+            ASCIIEncoding Encoding = new ASCIIEncoding();
+            byte[] postData = Encoding.GetBytes(postString);
+
+            HttpWebRequest cookieReq = (HttpWebRequest)WebRequest.Create(strURL);
+            cookieReq.Method = "POST";
+            cookieReq.ContentType = "application/x-www-form-urlencoded";
+            cookieReq.ContentLength = postData.Length;
+            cookieReq.AllowAutoRedirect = false;
+
+            Stream postStream = cookieReq.GetRequestStream();
+            postStream.Write(postData, 0, postData.Length);
+            postStream.Close();
+
+            HttpWebResponse cookieResp = (HttpWebResponse)cookieReq.GetResponse();
+            string strCookies = cookieResp.Headers[HttpResponseHeader.SetCookie];
+            if (strCookies.Length > 0)
+            {
+              switch (_Site)
+              {
+                case "Newzbin":
+                  int NzbSessionID_POS = strCookies.IndexOf("NzbSessionID=") + "NzbSessionID=".Length;
+                  string NzbSessionID = strCookies.Substring(NzbSessionID_POS, strCookies.IndexOf(";", NzbSessionID_POS) - NzbSessionID_POS);
+
+                  int NzbSmoke_POS = strCookies.IndexOf("NzbSmoke=") + "NzbSmoke=".Length;
+                  string NzbSmoke = strCookies.Substring(NzbSmoke_POS, strCookies.IndexOf(";", NzbSmoke_POS) - NzbSmoke_POS);
+
+                  if ((NzbSessionID.Length > 0) && (NzbSmoke.Length > 0))
+                  {
+                    strResult = "NzbSessionID=" + NzbSessionID + ";" + "NzbSmoke=" + NzbSmoke;
+                    mpSettings.SetValue("#Sites", _Site + "_Login", strResult);
+                  }
+                  break;
+              }
+            }
+            cookieResp.Close();
+          }
+
+          mpSettings.Dispose();
+        }
+      }
+      catch (Exception e) { MP.Error(e); }
+
+      return strResult;
     }
 
     #endregion
