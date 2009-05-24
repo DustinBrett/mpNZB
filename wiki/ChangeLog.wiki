@@ -6,11 +6,14 @@
   * pubDate is now `TryParseExact` instead of `ParseExact`
   * NZBs and NZBsRus were wrong in Sites_Custom
   * Removed `RegEx` from size type 1 (Using `"(\d+[,|.]\d+)\s?(\w{2,4})"` for all sites)
+  * Menu only showed up with 2 items (Now shows with just 1)
 
 *Additions*
   * NZBClub Groups
   * NZBMatrix Feeds
   * NZBSerien Feed
+  * Generic login support using Sites.xml (Newzbin only currently)
+  * NZB Information for Newzbin & TvNZB
   * Season/Episode search string formatting for MyTVSeries
 
 = 1.05 =
