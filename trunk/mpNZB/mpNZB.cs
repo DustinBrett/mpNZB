@@ -26,6 +26,8 @@ namespace mpNZB
     protected GUIButtonControl btnSearch = null;
     [SkinControlAttribute(5)]
     protected GUIButtonControl btnJobQueue = null;
+    [SkinControlAttribute(7)]
+    protected GUIButtonControl btnHistory = null;    
 
     [SkinControlAttribute(6)]
     protected GUIToggleButtonControl btnPause = null;
@@ -164,6 +166,7 @@ namespace mpNZB
       if (control == btnGroups)   { SelectSite("Groups"); }
       if (control == btnSearch)   { SelectSite("Search"); }
       if (control == btnJobQueue) { Client.Queue(lstItems, this); }
+      if (control == btnHistory)  { Client.History(lstItems, this); }      
       if (control == btnPause)    { Client.Pause(btnPause.Selected); }
       if (control == lstItems)
       {
@@ -183,6 +186,9 @@ namespace mpNZB
             break;
           case 3:
             Client.QueueItem(lstItems, this);
+            break;
+          case 4:
+            MP.Text(lstItems.ListItems[lstItems.SelectedListItemIndex].DVDLabel, "Job History");
             break;
         }
       }
@@ -243,7 +249,7 @@ namespace mpNZB
 
     protected override void OnShowContextMenu()
     {
-      if (lstItems.Count > 0)
+      if ((lstItems.Count > 0) && (lstItems.ListItems[lstItems.SelectedListItemIndex].ItemId <= 3))
       {
         List<GUIListItem> _Items = new List<GUIListItem>();
 
