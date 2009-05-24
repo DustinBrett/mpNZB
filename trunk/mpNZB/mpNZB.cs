@@ -243,7 +243,7 @@ namespace mpNZB
 
     protected override void OnShowContextMenu()
     {
-      if (lstItems.Count > 1)
+      if (lstItems.Count > 0)
       {
         List<GUIListItem> _Items = new List<GUIListItem>();
 
