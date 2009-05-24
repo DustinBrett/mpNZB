@@ -7,7 +7,7 @@ This document will cover the specifications for adding a site to the Sites.xml f
 = Notes =
   * `&` has to be replaced with `&amp;`
   * `GZIP` compressed RSS feeds are supported
-  * `<feeds>`, `<search>` and `<size>` can be removed when not needed
+  * `<feeds>`, `<groups>`, `<search>` and `<size>` can be removed when not needed
 
 = Replacement Fields =
 These fields will be replaced with the correct data automatically by mpNZB.
@@ -36,12 +36,8 @@ These fields will be replaced with the correct data automatically by mpNZB.
 		<feed name="Resources">http://www.newzbin.com/browse/category/p/resources/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
 		<feed name="TV">http://www.newzbin.com/browse/category/p/tv/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
 	</feeds>
-	<group>
-		<url>http://www.newzbin.com/browse/group/p/[GROUP]/?feed=rss&amp;u_post_results_amt=[MAX]</url>
-	</group>
-	<search>
-		<url>http://www.newzbin.com/search/query/?q=[QUERY]&amp;searchaction=Search&amp;u_post_results_amt=[MAX]&amp;feed=rss</url>
-	</search>
+	<groups>http://www.newzbin.com/browse/group/p/[GROUP]/?feed=rss&amp;u_post_results_amt=[MAX]</groups>
+	<search>http://www.newzbin.com/search/query/?q=[QUERY]&amp;searchaction=Search&amp;u_post_results_amt=[MAX]&amp;feed=rss</search>
 	<item type="2">
 		<title element="title" />
 		<size type="2" element="report:size" />
@@ -69,9 +65,7 @@ This section contains the sites RSS feeds.
 This section contains the sites group feeds.
 
 {{{
-<group>
-        <url>(URL)</url>
-</group>
+<groups>(URL)</groups>
 }}}
 
   * *`(URL)`* = URL to the search feed.
@@ -82,9 +76,7 @@ This section contains the sites group feeds.
 This section contains the sites search feed.
 
 {{{
-<search>
-        <url>(URL)</url>
-</search>
+<search>(URL)</search>
 }}}
 
   * *`(URL)`* = URL to the search feed.
