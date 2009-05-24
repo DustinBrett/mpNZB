@@ -3,9 +3,7 @@
 
 == General ==
   * Toggle `btnPause` if `Status` is paused
-  * More NZB information from Newzbin
-  * Add login (username/password) to Sites.xml
-  * Display extra NZB information in Menu/Info Button
+    * Way harder than it should be
 
 == SABnzbd ==
   * *0.50*
