@@ -130,7 +130,7 @@
 			<label>Job Queue</label>
 			<onright>50</onright>
 			<onup>4</onup>
-			<ondown>6</ondown>
+			<ondown>7</ondown>
 		</control>
 		<control>
 			<type>image</type>
@@ -148,9 +148,9 @@
 			<id>7</id>
 			<posX>40</posX>
 			<posY>520</posY>
-			<label>Job Queue</label>
+			<label>History</label>
 			<onright>50</onright>
-			<onup>4</onup>
+			<onup>5</onup>
 			<ondown>6</ondown>
 		</control>
 		<control>
@@ -170,7 +170,7 @@
 			<posY>560</posY>
 			<label>Pause Queue</label>
 			<onright>50</onright>
-			<onup>5</onup>
+			<onup>7</onup>
 			<ondown>901</ondown>
 		</control>
 		
@@ -181,7 +181,7 @@
 			<type>label</type>
 			<id>6</id>
 			<posX>40</posX>
-			<posY>600</posY>
+			<posY>630</posY>
 			<label>Paused:</label>
 			<font>font11</font>
 		</control>
@@ -190,7 +190,7 @@
 			<type>label</type>
 			<id>7</id>
 			<posX>170</posX>
-			<posY>600</posY>
+			<posY>630</posY>
 			<width>190</width>
 			<label>#Paused</label>
 			<font>font11</font>
@@ -201,7 +201,7 @@
 			<type>label</type>
 			<id>8</id>
 			<posX>40</posX>
-			<posY>630</posY>
+			<posY>660</posY>
 			<label>Speed:</label>
 			<font>font11</font>
 		</control>
@@ -210,7 +210,7 @@
 			<type>label</type>
 			<id>9</id>
 			<posX>170</posX>
-			<posY>630</posY>
+			<posY>660</posY>
 			<width>190</width>
 			<label>#KBps</label>
 			<font>font11</font>
@@ -221,7 +221,7 @@
 			<type>label</type>
 			<id>10</id>
 			<posX>40</posX>
-			<posY>660</posY>
+			<posY>690</posY>
 			<label>Queued:</label>
 			<font>font11</font>
 		</control>
@@ -230,7 +230,7 @@
 			<type>label</type>
 			<id>11</id>
 			<posX>170</posX>
-			<posY>660</posY>
+			<posY>690</posY>
 			<width>190</width>
 			<label>#MBStatus</label>
 			<font>font11</font>
@@ -241,7 +241,7 @@
 			<type>label</type>
 			<id>12</id>
 			<posX>40</posX>
-			<posY>690</posY>
+			<posY>720</posY>
 			<label>Count:</label>
 			<font>font11</font>
 		</control>
@@ -250,7 +250,7 @@
 			<type>label</type>
 			<id>13</id>
 			<posX>170</posX>
-			<posY>690</posY>
+			<posY>720</posY>
 			<width>190</width>
 			<label>#JobCount</label>
 			<font>font11</font>
@@ -261,7 +261,7 @@
 			<type>label</type>
 			<id>14</id>
 			<posX>40</posX>
-			<posY>720</posY>
+			<posY>750</posY>
 			<label>D/L DIR:</label>
 			<font>font11</font>
 		</control>
@@ -270,7 +270,7 @@
 			<type>label</type>
 			<id>15</id>
 			<posX>170</posX>
-			<posY>720</posY>
+			<posY>750</posY>
 			<width>190</width>
 			<label>#DiskSpace1</label>
 			<font>font11</font>
@@ -281,7 +281,7 @@
 			<type>label</type>
 			<id>16</id>
 			<posX>40</posX>
-			<posY>750</posY>
+			<posY>780</posY>
 			<label>TEMP DIR:</label>
 			<font>font11</font>
 		</control>
@@ -290,7 +290,7 @@
 			<type>label</type>
 			<id>17</id>
 			<posX>170</posX>
-			<posY>750</posY>
+			<posY>780</posY>
 			<width>190</width>
 			<label>#DiskSpace2</label>
 			<font>font11</font>
@@ -301,7 +301,7 @@
 			<type>label</type>
 			<id>18</id>
 			<posX>40</posX>
-			<posY>780</posY>
+			<posY>810</posY>
 			<label>ETA:</label>
 			<font>font11</font>
 		</control>
@@ -310,7 +310,7 @@
 			<type>label</type>
 			<id>19</id>
 			<posX>170</posX>
-			<posY>780</posY>
+			<posY>810</posY>
 			<width>190</width>
 			<label>#TimeLeft</label>
 			<font>font11</font>
