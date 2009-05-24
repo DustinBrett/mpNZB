@@ -7,6 +7,9 @@
   * NZBs/Newzbin IMDb Coverart
     * GUIDialogNotify allows picture (How many lines?) (I need 5)
   * Add History view
+    * Replace HTML with NewLine
+    * Replace "[" with "    ["
+    * If contains "[Completed]" put that at right of Listview
     * http://htpc:8080/sabnzbd/rss?mode=history
     * I didn't know there was an RSS feed for this till now
 
