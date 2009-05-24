@@ -3,6 +3,7 @@
 
 == General ==
   * Toggle `btnPause` if `Status` is paused
+  * Look for more NZB sites to support
 
 == SABnzbd ==
   * *0.50*
