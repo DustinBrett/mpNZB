@@ -7,7 +7,7 @@
 == SABnzbd ==
   * *0.50*
     * Replace
-      * `ma_username`/`ma_password` with *[http://sabnzbd.wikidot.com/api#toc3 apikey]*
+      * `ma_username` & `ma_password` with *[http://sabnzbd.wikidot.com/api#toc3 apikey]*
     * Rewrite
       * [http://sabnzbd.wikidot.com/api#toc9 History]
       * [http://sabnzbd.wikidot.com/api#toc23 Delete]
