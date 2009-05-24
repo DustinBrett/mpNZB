@@ -4,6 +4,8 @@
 == General ==
   * Toggle `btnPause` if `Status` is paused
   * Look for more NZB sites to support
+  * NZBs/Newzbin IMDb Coverart
+    * GUIDialogNotify allows picture (How many lines?)
 
 == SABnzbd ==
   * *0.50*
