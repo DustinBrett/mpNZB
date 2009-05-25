@@ -6,6 +6,7 @@
   * Remove sorting if not download item
 
 *Additions*
+  * Added more feeds to NZBs in Sites_Custom
   * SABnzbd History View
   * Subtitles added to Newzbin information
   * MyTvNZB has same information as TvNZB now
