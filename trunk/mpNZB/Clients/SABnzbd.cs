@@ -274,6 +274,10 @@ namespace mpNZB.Clients
             {
               strStatus = "Completed";
             }
+            else if (nodeItem["description"].InnerText.Contains("[Failed]"))
+            {
+              strStatus = "Failed";
+            }
             else if (nodeItem["description"].InnerText.Contains("Post-processing active."))
             {
               if (nodeItem["description"].InnerText.Contains("[Verifying...]"))
