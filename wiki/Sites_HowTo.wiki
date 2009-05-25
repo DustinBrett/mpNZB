@@ -51,7 +51,7 @@ This section contains the sites RSS feeds.
 
 {{{
 <feeds>
-        <feed name="(Name)">*URL*</feed>
+        <feed name="(Name)">(URL)</feed>
 </feeds>
 }}}
 
