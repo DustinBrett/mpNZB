@@ -96,7 +96,7 @@ This section contains the data needed to parse the RSS.
 </item>
 }}}
 
-  * *`(Type)`* = This identifies what method of downloading should be used
+  * *`(Type)`* = This identifies what type of item it is
     * *item*
       * 1 = Link to NZB/ZIP
       * 2 = Newzbin ID
