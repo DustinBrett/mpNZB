@@ -178,6 +178,7 @@ namespace mpNZB
           // 1 = NZB
           // 2 = Newzbin ID
           // 3 = Queue Item
+          // 4 = History Item
           // ====================
 
           case 1:
@@ -253,7 +254,10 @@ namespace mpNZB
       {
         List<GUIListItem> _Items = new List<GUIListItem>();
 
-        _Items.Add(new GUIListItem("Sort By"));
+        if ((lstItems.ListItems[lstItems.SelectedListItemIndex].ItemId == 1) || (lstItems.ListItems[lstItems.SelectedListItemIndex].ItemId == 2))
+        {
+          _Items.Add(new GUIListItem("Sort By"));
+        }
 
         if (lstItems.ListItems[lstItems.SelectedListItemIndex].DVDLabel.Length > 0)
         {
