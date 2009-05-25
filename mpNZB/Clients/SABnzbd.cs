@@ -270,10 +270,27 @@ namespace mpNZB.Clients
             }
 
             string strStatus = String.Empty;
-            if (nodeItem["description"].InnerText.Contains("[Completed]")) { strStatus = "Completed"; }
-            if (nodeItem["description"].InnerText.Contains("[Verifying]")) { strStatus = "Verifying"; }
+            if (nodeItem["description"].InnerText.Contains("[Completed]"))
+            {
+              strStatus = "Completed";
+            }
+            else if (nodeItem["description"].InnerText.Contains("Post-processing active."))
+            {
+              if (nodeItem["description"].InnerText.Contains("[Verifying...]"))
+              {
+                strStatus = "Verifying";
+              }
+              else if (nodeItem["description"].InnerText.Contains("[Extracting...]"))
+              {
+                strStatus = "Extracting";
+              }
+              else
+              {
+                strStatus = "Waiting";
+              }
+            }
 
-            MP.ListItem(_List, nodeItem["title"].InnerText, ((nodeItem["description"].InnerText.Contains("[Completed]")) ? "Completed" : String.Empty), strJobInfo, dtPubDate, 0, String.Empty, 4);
+            MP.ListItem(_List, nodeItem["title"].InnerText, strStatus, strJobInfo, dtPubDate, 0, String.Empty, 4);
           }
 
           GUIPropertyManager.SetProperty("#Status", "History Loaded");
