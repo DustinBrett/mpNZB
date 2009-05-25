@@ -4,20 +4,8 @@
 == General ==
   * Toggle `btnPause` if `Status` is paused
 
-== SABnzbd ==
-  * *0.50*
-    * Replace
-      * `ma_username` / `ma_password` with *[http://sabnzbd.wikidot.com/api#toc3 apikey]*
-    * Rewrite
-      * [http://sabnzbd.wikidot.com/api#toc9 History]
-      * [http://sabnzbd.wikidot.com/api#toc23 Delete]
-      * [http://sabnzbd.wikidot.com/api#toc35 Pause]
-      * [http://sabnzbd.wikidot.com/api#toc24 Move] (Up/Down/Top/Bottom)
-      * [http://sabnzbd.wikidot.com/api#toc31 Change Category]
-    * Add
-      * [http://nzbmatrix.com/ NZBMatrix] support
-
 == Future Features: ==
+  * SABnzbd 0.50 support
   * NZB streaming
     * [http://code.google.com/p/stream-unrar/ stream-unrar]
     * [http://www.nzbplayer.com/ NZBPlayer]
