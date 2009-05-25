@@ -2,6 +2,9 @@
 #labels Phase-Design
 
 = 1.07 =
+*Fixes*
+  * Remove sorting if not download item
+
 *Additions*
   * SABnzbd History View
   * Subtitles added to Newzbin information
