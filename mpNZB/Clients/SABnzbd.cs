@@ -269,6 +269,10 @@ namespace mpNZB.Clients
               DateTime.TryParseExact(nodeItem["pubDate"].InnerText.Replace("GMT", "+0000"), "ddd, dd MMM yyyy HH:mm:ss zzz", CultureInfo.InvariantCulture, DateTimeStyles.None, out dtPubDate);
             }
 
+            string strStatus = String.Empty;
+            if (nodeItem["description"].InnerText.Contains("[Completed]")) { strStatus = "Completed"; }
+            if (nodeItem["description"].InnerText.Contains("[Verifying]")) { strStatus = "Verifying"; }
+
             MP.ListItem(_List, nodeItem["title"].InnerText, ((nodeItem["description"].InnerText.Contains("[Completed]")) ? "Completed" : String.Empty), strJobInfo, dtPubDate, 0, String.Empty, 4);
           }
 
