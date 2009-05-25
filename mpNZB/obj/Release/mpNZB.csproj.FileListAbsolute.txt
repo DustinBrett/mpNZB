@@ -44,7 +44,6 @@ C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\obj\Release\mpNZB.csproj.GenerateResou
 C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\obj\Release\mpNZB.dll
 C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\mpNZB.dll
 C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\mpNZB.pdb
-C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\Utils.dll
 C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\obj\Release\mpNZB.pdb
 C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\obj\Release\ResolveAssemblyReference.cache
 C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\obj\Release\mpNZB.frmSetup.resources
@@ -54,7 +53,6 @@ C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\obj\Release\mpNZB.pdb
 C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\mpNZB.dll
 C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\mpNZB.pdb
 C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\Utils.dll
-C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\Databases.dll
 C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\BassRegistration.dll
 C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\Interop.WMPLib.dll
 C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\CSScriptLibrary.dll
@@ -74,4 +72,6 @@ C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\Bass.Net.
 C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\AxInterop.WMPLib.dll
 C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\taglib-sharp.dll
 C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\Core.dll
+C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\Databases.dll
 C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\Dialogs.dll
+C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\Utils.dll

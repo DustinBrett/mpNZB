@@ -260,6 +260,7 @@ namespace mpNZB.Clients
             strJobInfo = nodeItem["description"].InnerText;
             strJobInfo = Regex.Replace(strJobInfo, "<tr><dt>", Environment.NewLine + Environment.NewLine);
             strJobInfo = Regex.Replace(strJobInfo, "</d[d,t]><dd>", Environment.NewLine);
+            strJobInfo = Regex.Replace(strJobInfo, "<br>", Environment.NewLine);
             strJobInfo = Regex.Replace(strJobInfo, "</dd></tr>", String.Empty);
 
             DateTime dtPubDate = new DateTime();
