@@ -2,7 +2,7 @@
 #labels Phase-Implementation,Featured
 
 = Introduction =
-This document will cover the specifications for adding a site to the Sites.xml file included with mpNZB. This [http://mpnzb.googlecode.com/svn/trunk/mpNZB/Sites/Sites.xml Sites.xml] file contains everything needed to add a site that supports RSS. This document isn't perfect but it's enough to get started if you find a site that you want to be supported. For further examples check the [http://mpnzb.googlecode.com/svn/trunk/mpNZB/Sites/Sites.xml Sites.xml] file.
+This document will cover the specifications for adding a site to the Sites.xml file included with mpNZB. This [http://mpnzb.googlecode.com/svn/trunk/mpNZB/Sites/Sites.xml Sites.xml] file contains everything needed to add a site that supports RSS. This document isn't perfect but it's enough to get started if you find a site that you want to be supported. For further examples check the [http://mpnzb.googlecode.com/svn/trunk/mpNZB/Sites/Sites.xml Sites.xml] file or some of the custom ones at the [http://code.google.com/p/mpnzb/wiki/Sites_Custom Sites_Custom] wiki.
 
 = Notes =
   * `&` has to be replaced with `&amp;`
