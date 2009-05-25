@@ -89,10 +89,10 @@ This section contains the data needed to parse the RSS.
 {{{
 <item type="(Type)">
         <title element="(Element)" />
-        <size type="(Type)" element="(Element)">
+        <size type="(Type)" element="(Element)" />
+        <url element="(Element)">
                 <regex input="(RegEx)" replacement="(RegEx)"/>
-        </size>
-        <url element="(Element)" />
+        </url>
 </item>
 }}}
 
