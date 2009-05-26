@@ -3,7 +3,7 @@
 
 = 1.08 =
 *Additions*
-  * Added [Failed] as an event type in History
+  * Added `[Failed]` as an event type in History
 
 = 1.07 =
 *Fixes*
