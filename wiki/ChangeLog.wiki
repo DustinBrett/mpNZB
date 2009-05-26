@@ -1,6 +1,10 @@
 #summary A record of changes made in each release.
 #labels Phase-Design
 
+= 1.08 =
+*Additions*
+  * Added FAILED as an event type in History
+
 = 1.07 =
 *Fixes*
   * Remove sorting if not download item
