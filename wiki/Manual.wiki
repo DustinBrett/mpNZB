@@ -1,4 +1,5 @@
-#summary mpNZB Complete Manual - Under Construction
+#summary mpNZB Complete Manual
+#labels Phase-Deploy,Featured
 
 = Introduction =
 
