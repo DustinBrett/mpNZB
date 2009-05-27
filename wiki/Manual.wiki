@@ -9,6 +9,14 @@ mpNZB was created to allow downloading of NZB's from within [http://www.team-med
   * [http://www.team-mediaportal.com/ MediaPortal] (>= 1.0)
   * [http://www.sabnzbd.org/ SABnzbd] ([http://sourceforge.net/project/showfiles.php?group_id=207766&package_id=248837&release_id=671171 0.4.8])
 
-= Current Version / Download =
+= Installation =
 
-[http://mpnzb.googlecode.com/files/mpNZB%201.07.mpi 1.07]
+Run the MPI file and follow its instructions.
+
+= Configuration =
+
+== Plugin ==
+
+Open the mpNZB plugin configuration page in the "MediaPortal - Configuration" area. It should look something like this:
+
+== Sites ==
