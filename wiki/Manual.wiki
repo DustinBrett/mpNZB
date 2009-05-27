@@ -1,9 +1,9 @@
 #summary mpNZB Complete Manual
 #labels Phase-Deploy,Featured
 
-= Table of Contents =
+*Table of Contents*
 
-<wiki:toc max_depth="3" />
+<wiki:toc max_depth="2" />
 
 = Introduction =
 
