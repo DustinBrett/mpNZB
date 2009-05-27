@@ -3,8 +3,6 @@
 
 == General ==
   * Toggle `btnPause` if `Status` is paused
-  * Write a detailed instruction manual with screenshots
-    * Add to this Wiki and to [http://www.team-mediaportal.com/manual/ MP's Wiki]
   * Download Complete
     * Read History RSS for `[Completed]`/`[Failure]` and `<title>`
   * Rename MyTVSeries to MP-TVSeries
