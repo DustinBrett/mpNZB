@@ -96,13 +96,13 @@ This is what mpNZB looks like using the Blue3 skin:
 
   * *Refresh* - Refreshes the currently selected feed.
     * Disabled if no feed has been selected yet.
-  * *Feeds* - Shows a list of feeds based on the site you select.
-  * *Groups* - Shows a list of groups based on the site you select.
+  * *Feeds* - Shows a dialog list of feeds based on the site you select.
+  * *Groups* - Shows a dialog list of groups based on the site you select.
     * List is generated from the groups you enter in the Groups tab in the mpNZB configuration.
-  * *Search* - Searches the site you select.
+  * *Search* - Shows a dialog list of the following items to search on the site you select.
     * *New Search* - Manually typed keyboard search.
     * *Missing Episodes* - [http://code.google.com/p/mptvseries/ MP-TVSeries] database of missing episodes.
     * Also lists any custom searches created in the Searches tab in the mpNZB configuration.
-  * *Job Queue* -
-  * *History* -
-  * *Pause Queue* -
+  * *Job Queue* - Shows a list of items in the [http://www.sabnzbd.org/ SABnzbd] queue.
+  * *History* - Shows a list of items in the [http://www.sabnzbd.org/ SABnzbd] history.
+  * *Pause Queue* - Pauses the [http://www.sabnzbd.org/ SABnzbd] queue.
