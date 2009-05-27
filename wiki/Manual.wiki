@@ -42,12 +42,14 @@ Right click mpNZB from the [http://www.team-mediaportal.com/ MediaPortal] plugin
 
   * _Visual_
     * *Update Frequency* - How often the status area (Paused/Speed/etc.) in the plug-in is refreshed.
+      * Set this higher than 0.
     * *Display Name* - Allows you to change what name is shown for this plug-in on the [http://www.team-mediaportal.com/ MediaPortal] GUI.
     * *Show "Download Complete" notifications.* - Will pop-up a "Download Complete" dialog box whenever an item leaves the [http://www.sabnzbd.org/ SABnzbd] queue.
 
   * _Feeds_
     * *Max Results (per feed)* - Sets the maximum possible results that will be returned from an RSS feed that allows setting maximum values.
       * The results may be less than this number if the RSS feed has a maximum number of results lower than this number.
+      * Set this higher than 0.
     * *Add [http://code.google.com/p/mptvseries/ MP-TVSeries] missing episodes to search* - Checking this box will add an extra option called "Missing Episodes" to the search dialog when you select a site to search. This option contains a list of all episodes that you are missing from your MP-TVSeries shows database.
       * This feature will only work if you have [http://code.google.com/p/mptvseries/ MP-TVSeries] plug-in and checked the "Download Episode information for the whole series" checkbox in [http://code.google.com/p/mptvseries/ MP-TVSeries] configuration.
 
