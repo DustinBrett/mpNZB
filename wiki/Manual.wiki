@@ -74,6 +74,6 @@ Right click mpNZB from the [http://www.team-mediaportal.com/ MediaPortal] plugin
 
 == Sites ==
 
-There is a detailed wiki about this process at Sites_HowTo and some examples at Sites_Custom.
+There is a detailed wiki at Sites_HowTo and examples at Sites_Custom.
 
 = Navigation =
