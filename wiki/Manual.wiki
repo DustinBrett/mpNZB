@@ -92,6 +92,10 @@ This is what mpNZB looks like using the Blue3 skin:
 
 [http://mpnzb.googlecode.com/svn/wiki/images/manual/Nav_Main.PNG]
 
+== Title ==
+
+When you first start the program this will say the name of the plugin. Once you have clicked on any of the Feeds/Groups/Search it will change to show what type of data you requested.
+
 == Main Buttons ==
 
   * *Refresh* - Refreshes the currently selected feed.
