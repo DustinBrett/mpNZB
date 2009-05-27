@@ -6,5 +6,5 @@ mpNZB was created to allow downloading of NZB's from within MediaPortal. It grab
 
 = Requirements =
 
-  * [http://www.team-mediaportal.com/ MediaPortal] 1.0 or higher
-  * [http://www.sabnzbd.org/ SABnzbd] 0.4.8
+  * [http://www.team-mediaportal.com/ MediaPortal] (=> 1.0)
+  * [http://www.sabnzbd.org/ SABnzbd] (0.4.8)
