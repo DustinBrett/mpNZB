@@ -35,4 +35,9 @@ Right click mpNZB from the [http://www.team-mediaportal.com/ MediaPortal] plugin
 
 [http://mpnzb.googlecode.com/svn/wiki/images/manual/mpNZB_Plugin_Settings.PNG]
 
+  * _Visual_
+    * *Update Frequency* - How often the status area (Paused/Speed/etc.) in the plug-in is refreshed.
+    * *Display Name* - Allows you to change what name is shown for this plug-in on the [http://www.team-mediaportal.com/ MediaPortal] GUI.
+    * *Show "Download Complete" notifications.* - Will pop-up a "Download Complete" dialog box whenever an item leaves the SABnzbd queue.
+
 == Sites ==
