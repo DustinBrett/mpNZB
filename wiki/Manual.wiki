@@ -50,4 +50,8 @@ Right click mpNZB from the [http://www.team-mediaportal.com/ MediaPortal] plugin
     * *`[S]x[EE]`* - 1x01
     * *`S[SS]E[EE]`* - !S01E01
 
+[http://mpnzb.googlecode.com/svn/wiki/images/manual/mpNZB_Searches.PNG]
+
 == Sites ==
+
+There is a detailed wiki about this process at Sites_Custom.
