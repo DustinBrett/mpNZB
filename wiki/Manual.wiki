@@ -21,4 +21,8 @@ Open the mpNZB plugin configuration page in the [http://www.team-mediaportal.com
 
 [http://mpnzb.googlecode.com/svn/wiki/images/manual/mpNZB_Client_Settings.PNG]
 
+  * Program
+    * Grabber: This setting is mostly for future use as it currently only supports SABnzbd. This may never change because SABnzbd is so much better than other Usenet clients when it comes to integrating with other programs.
+    * Save to categories: Checking this box will show a pop-up everytime you go to download something asking you what SABnzbd category you want to download it to. These categories are setup within SABnzbd.
+
 == Sites ==
