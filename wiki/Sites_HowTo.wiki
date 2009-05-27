@@ -84,7 +84,7 @@ This section contains the sites search feed.
     * Optionally contain *`[MAX]`*
 
 == _Item_ ==
-This section contains the data needed to parse the RSS.
+This section contains the data needed to parse the RSS items.
 
 {{{
 <item type="(Type)">
