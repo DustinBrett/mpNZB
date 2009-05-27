@@ -40,4 +40,7 @@ Right click mpNZB from the [http://www.team-mediaportal.com/ MediaPortal] plugin
     * *Display Name* - Allows you to change what name is shown for this plug-in on the [http://www.team-mediaportal.com/ MediaPortal] GUI.
     * *Show "Download Complete" notifications.* - Will pop-up a "Download Complete" dialog box whenever an item leaves the [http://www.sabnzbd.org/ SABnzbd] queue.
 
+  * _Feeds_
+    * *Max Results (per feed)* - Sets the maximum possible results that will be returned from an RSS feed that allows setting maximum values. The results may be less than this number if the sites feed has a maximum number of results lower than this number.
+
 == Sites ==
