@@ -9,7 +9,9 @@
 
 mpNZB was created to allow downloading of NZB's from within [http://www.team-mediaportal.com/ MediaPortal]. It grabs lists of NZB's 3 different ways. Feeds that were created by the sites, Searching the site for specific items or Groups such as alt.binaries.multimedia. It gets this data from RSS feeds that the sites provide.
 
-= Supported Sites =
+= Supported =
+
+== Sites ==
 
 Currently mpNZB supports 11 different sites and can support most sites with RSS feeds.
 
@@ -28,7 +30,7 @@ Currently mpNZB supports 11 different sites and can support most sites with RSS 
 `*` ,,Requires account with site.,,<br>
 `**` ,,Requires paid account with site.,,
 
-= Supported Sites =
+== Skins ==
 
   * Black & White 1080
   * !BleazleWide
