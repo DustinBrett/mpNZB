@@ -31,11 +31,11 @@ Currently mpNZB supports 11 different sites and can support most sites with RSS 
 = Supported Sites =
 
   * Black & White 1080
-  * BleazleWide
+  * !BleazleWide
   * Blue3
   * Blue3wide
   * Indigo
-  * MediaStream
+  * !MediaStream
   * Monochrome
   * PureVisionHD
   * StreamedMP 
