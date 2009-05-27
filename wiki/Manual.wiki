@@ -25,6 +25,9 @@ Currently mpNZB supports 11 different sites and can support most sites with RSS 
   * [http://www.nzbsrus.com/ NZBsRus]`*` ([http://code.google.com/p/mpnzb/wiki/Sites_Custom#NZBsRus Feeds])
   * [http://www.tvnzb.com/ TvNZB] (Feeds)
 
+`*` ,,Requires account with site.,,<br>
+`**` ,,Requires paid account with site.,,
+
 = Changelog ==
 
 There is a detailed wiki at ChangeLog.
