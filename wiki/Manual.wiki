@@ -2,7 +2,7 @@
 
 = Introduction =
 
-mpNZB was created to allow downloading of NZB's from within [http://www.team-mediaportal.com/ MediaPortal]. It grabs lists of NZB's 3 different ways. Feeds that were created by the sites, Searching the site for specific items or Groups such as alt.binaries.mutlimedia. It gets this data from RSS feeds that the sites provide. mpNZB currently supports 11 different sites and can support most sites with RSS feeds.
+mpNZB was created to allow downloading of NZB's from within [http://www.team-mediaportal.com/ MediaPortal]. It grabs lists of NZB's 3 different ways. Feeds that were created by the sites, Searching the site for specific items or Groups such as alt.binaries.multimedia. It gets this data from RSS feeds that the sites provide. mpNZB currently supports 11 different sites and can support most sites with RSS feeds.
 
 = Requirements =
 
@@ -21,8 +21,16 @@ Open the mpNZB plugin configuration page in the [http://www.team-mediaportal.com
 
 [http://mpnzb.googlecode.com/svn/wiki/images/manual/mpNZB_Client_Settings.PNG]
 
-  * Program
+  * _Program_
     * *Grabber* - This setting is mostly for future use as it currently only supports SABnzbd. This may never change because SABnzbd is so much better than other Usenet clients when it comes to integrating with other programs.
-    * *Save to categories* - Checking this box will show a pop-up everytime you go to download a NZB. It asks which SABnzbd category you want to download it to. These categories are setup within SABnzbd.
+    * *Save to categories* - Checking this box will show a pop-up every time you go to download a NZB. It asks which SABnzbd category you want to download it to. These categories are setup within SABnzbd.
+
+  * _Settings_
+    * *Address* - IP/Hostname of the SABnzbd server.
+    * *Port* - Port number of the SABnzbd server.
+    * *Test Connection* - Tests if the plugin will be able to connect using the given information. This includes the Username/Password also if they are required.
+    * *Requires Authentication* - Check this box if your SABnzbd server has a Username/Password set.
+    * *Username* - Username of the SABnzbd server.
+    * *Password* - Password of the SABnzbd server.
 
 == Sites ==
