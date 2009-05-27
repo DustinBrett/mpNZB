@@ -111,6 +111,6 @@ This is what mpNZB looks like using the Blue3 skin:
 
 This list changes depending on the section you are in. The formatting for each list item is also different depending on the section you are in.
 
-  * Feeds/Groups/Search = {Title} {Size (MB)}
-  * Job Queue = {Title} {Remaining (MB) / Total (MB)}
-  * History = {Title} {Status}
+  * *Feeds/Groups/Search* = {Title} {Size (MB)}
+  * *Job Queue* = {Title} {Remaining (MB) / Total (MB)}
+  * *History* = {Title} {Status}
