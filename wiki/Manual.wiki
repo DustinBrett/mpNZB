@@ -141,7 +141,11 @@ Clicking a list item has different effects depending on the section you are in.
 
 This refers to the menu/info button on your remote/keyboard in [http://www.team-mediaportal.com/ MediaPortal]. The options change depending on the type of list item you have selected.
 
-
+  * *Feeds/Groups/Search*
+      * Sort By - Sorts the items currently in the listview based on the options you select. The options are Name/Date/Size in Ascending or Descending order.
+      * Information - If the site you are listing has extra information in its RSS feeds then this option will appear. For sites such as [http://www.newzbin.com/ Newzbin] it will list Source, Video Format, Video Genre, Language and Subtitle Language.
+  * *Job Queue*
+      * Information - Lists information related to the [http://www.sabnzbd.org/ SABnzbd] job.
 
 == Status Bar ==
 
