@@ -92,7 +92,7 @@ This is what mpNZB looks like using the Blue3 skin:
 
 [http://mpnzb.googlecode.com/svn/wiki/images/manual/Nav_Main.PNG]
 
-== Buttons ==
+== Main Buttons ==
 
   * *Refresh* - Refreshes the currently selected feed.
     * Disabled if no feed has been selected yet.
@@ -106,3 +106,11 @@ This is what mpNZB looks like using the Blue3 skin:
   * *Job Queue* - Shows a list of items in the [http://www.sabnzbd.org/ SABnzbd] queue.
   * *History* - Shows a list of items in the [http://www.sabnzbd.org/ SABnzbd] history.
   * *Pause Queue* - Pauses the [http://www.sabnzbd.org/ SABnzbd] queue.
+
+== Listview ==
+
+This list changes depending on the section you are in. The formatting for each list item is also different depending on the section you are in.
+
+  * Feeds/Groups/Search = [Title] [Size (MB)]
+  * Job Queue = [Title] [Remaining (MB) / Total (MB)]
+  * History = [Title] [Status]
