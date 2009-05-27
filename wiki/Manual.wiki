@@ -42,13 +42,23 @@ Currently mpNZB supports 11 different sites and can support most sites with RSS 
   * PureVisionHD
   * StreamedMP 
 
-= Changelog ==
+= Updates =
+
+== Changelog ==
 
 There is a detailed wiki at ChangeLog.
 
-= To-Do ==
+== To-Do ==
 
 There is a detailed wiki at ToDo.
+
+== Forum ==
+
+There is a forum topic started [http://forum.team-mediaportal.com/plugins-47/mpnzb-nzb-downloader-57265/ here].
+
+== Issues ==
+
+All issues should be posted [http://code.google.com/p/mpnzb/issues/list here].
 
 = Requirements =
 
