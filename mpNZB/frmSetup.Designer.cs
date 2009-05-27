@@ -53,7 +53,7 @@
       this.rdoFormat2 = new System.Windows.Forms.RadioButton();
       this.rdoFormat1 = new System.Windows.Forms.RadioButton();
       this.groupBox1 = new System.Windows.Forms.GroupBox();
-      this.chkMyTVSeries = new System.Windows.Forms.CheckBox();
+      this.chkMPTVSeries = new System.Windows.Forms.CheckBox();
       this.txtMaxResults = new System.Windows.Forms.TextBox();
       this.label2 = new System.Windows.Forms.Label();
       this.grpVisual = new System.Windows.Forms.GroupBox();
@@ -315,7 +315,7 @@
       this.groupBox4.Size = new System.Drawing.Size(280, 74);
       this.groupBox4.TabIndex = 24;
       this.groupBox4.TabStop = false;
-      this.groupBox4.Text = "MyTVSeries Formatting";
+      this.groupBox4.Text = "MP-TVSeries Formatting";
       // 
       // label9
       // 
@@ -367,7 +367,7 @@
       // 
       // groupBox1
       // 
-      this.groupBox1.Controls.Add(this.chkMyTVSeries);
+      this.groupBox1.Controls.Add(this.chkMPTVSeries);
       this.groupBox1.Controls.Add(this.txtMaxResults);
       this.groupBox1.Controls.Add(this.label2);
       this.groupBox1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -378,15 +378,16 @@
       this.groupBox1.TabStop = false;
       this.groupBox1.Text = "Feeds:";
       // 
-      // chkMyTVSeries
+      // chkMPTVSeries
       // 
-      this.chkMyTVSeries.AutoSize = true;
-      this.chkMyTVSeries.Location = new System.Drawing.Point(15, 45);
-      this.chkMyTVSeries.Name = "chkMyTVSeries";
-      this.chkMyTVSeries.Size = new System.Drawing.Size(233, 17);
-      this.chkMyTVSeries.TabIndex = 19;
-      this.chkMyTVSeries.Text = "Add MyTVSeries missing episodes to search";
-      this.chkMyTVSeries.UseVisualStyleBackColor = true;
+      this.chkMPTVSeries.AutoSize = true;
+      this.chkMPTVSeries.Location = new System.Drawing.Point(15, 45);
+      this.chkMPTVSeries.Name = "chkMPTVSeries";
+      this.chkMPTVSeries.Size = new System.Drawing.Size(237, 17);
+      this.chkMPTVSeries.TabIndex = 19;
+      this.chkMPTVSeries.Text = "Add MP-TVSeries missing episodes to search";
+      this.chkMPTVSeries.UseVisualStyleBackColor = true;
+      this.chkMPTVSeries.CheckedChanged += new System.EventHandler(this.chkMPTVSeries_CheckedChanged);
       // 
       // txtMaxResults
       // 
@@ -805,7 +806,7 @@
     private System.Windows.Forms.ColumnHeader clmString;
     private System.Windows.Forms.Button btnSearchDelete;
     private System.Windows.Forms.Button btnSearchAdd;
-    private System.Windows.Forms.CheckBox chkMyTVSeries;
+    private System.Windows.Forms.CheckBox chkMPTVSeries;
     private System.Windows.Forms.TabPage tabGroups;
     private System.Windows.Forms.ListView lvGroups;
     private System.Windows.Forms.ColumnHeader columnHeader2;

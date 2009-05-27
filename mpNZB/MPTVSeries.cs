@@ -7,7 +7,7 @@ using MediaPortal.Profile;
 
 namespace mpNZB
 {
-  class MyTVSeries
+  class MPTVSeries
   {
     SQLiteClient sqlClient = new SQLiteClient(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Database) + @"\TVSeriesDatabase4.db3");
 
@@ -34,7 +34,7 @@ namespace mpNZB
       SQLiteResultSet sqlEpisodes;
 
       Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
-      bool bolFormat = mpSettings.GetValueAsBool("#Sites", "MyTVSeries_Format", true);
+      bool bolFormat = mpSettings.GetValueAsBool("#Sites", "MPTVSeries_Format", true);
       mpSettings.Dispose();
 
       for (int i = 0; i < sqlResults.Rows.Count; i++)

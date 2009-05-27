@@ -58,9 +58,14 @@ namespace mpNZB
         // Site Settings
         // ##################################################
         txtMaxResults.Text = mpSettings.GetValueAsInt("#Sites", "MaxResults", 50).ToString();
-        chkMyTVSeries.Checked = mpSettings.GetValueAsBool("#Sites", "MyTVSeries", false);
-        rdoFormat1.Checked = mpSettings.GetValueAsBool("#Sites", "MyTVSeries_Format", true);
+        chkMPTVSeries.Checked = mpSettings.GetValueAsBool("#Sites", "MPTVSeries", false);
+        rdoFormat1.Checked = mpSettings.GetValueAsBool("#Sites", "MPTVSeries_Format", true);
         if (rdoFormat1.Checked == false) { rdoFormat2.Checked = true; }
+        if (chkMPTVSeries.Checked == false)
+        {
+          rdoFormat1.Enabled = false;
+          rdoFormat2.Enabled = false;
+        }
         // ##################################################
 
         XmlDocument xmlDoc = new XmlDocument();
@@ -121,8 +126,8 @@ namespace mpNZB
       int intMaxResults = 50;
       int.TryParse(txtMaxResults.Text, out intMaxResults);
       mpSettings.SetValue("#Sites", "MaxResults", intMaxResults);
-      mpSettings.SetValueAsBool("#Sites", "MyTVSeries", chkMyTVSeries.Checked);
-      mpSettings.SetValueAsBool("#Sites", "MyTVSeries_Format", rdoFormat1.Checked);
+      mpSettings.SetValueAsBool("#Sites", "MPTVSeries", chkMPTVSeries.Checked);
+      mpSettings.SetValueAsBool("#Sites", "MPTVSeries_Format", rdoFormat1.Checked);
       // ##################################################
 
       // Searches
@@ -240,6 +245,20 @@ namespace mpNZB
       {
         MessageBox.Show(null, "Must be greater than 0.", "Status", MessageBoxButtons.OK, MessageBoxIcon.Error);
         txtUpdateFreq.Text = "1";
+      }
+    }
+
+    private void chkMPTVSeries_CheckedChanged(object sender, EventArgs e)
+    {
+      if (chkMPTVSeries.Checked == false)
+      {
+        rdoFormat1.Enabled = false;
+        rdoFormat2.Enabled = false;
+      }
+      else
+      {
+        rdoFormat1.Enabled = true;
+        rdoFormat2.Enabled = true;
       }
     }
   }
