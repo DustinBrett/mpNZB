@@ -17,6 +17,6 @@ Run the MPI file and follow its instructions.
 
 == Plugin ==
 
-Open the mpNZB plugin configuration page in the "MediaPortal - Configuration" area. It should look something like this:
+Open the mpNZB plugin configuration page in the [http://www.team-mediaportal.com/ MediaPortal] configuration area. It should look something like this:
 
 == Sites ==
