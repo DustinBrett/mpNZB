@@ -56,8 +56,17 @@ Right click mpNZB from the [http://www.team-mediaportal.com/ MediaPortal] plugin
     * *Name* - The name for the search string that will appear in the pop-up search dialog inside the plugin.
     * *String* - Here you put the things you want to search for separated by an "|" symbol.
       * *Example* - `Smallville|Buffy the Vampire Slayer|Lost`
-    * *Add* - Once you have fille out Name/String you press this to add it to the list.
+    * *Add* - Once you have filled out Name/String you press this to add it to the list.
     * *Delete* - You select an item from the list and press this to delete that item.
+
+[http://mpnzb.googlecode.com/svn/wiki/images/manual/mpNZB_Groups.PNG]
+
+  * _Add Group_ - Here you define the groups that can be searched in the Groups section of the plugin.
+    * *Group* - The name of the Usenet group.
+      * *Example* - `alt.binaries.multimedia`
+    * *Add* - Once you have filled out Group you press this to add it to the list.
+    * *Delete* - You select an item from the list and press this to delete that item.
+
 == Sites ==
 
 There is a detailed wiki about this process at Sites_HowTo and some examples at Sites_Custom.
