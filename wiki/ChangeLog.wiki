@@ -2,6 +2,10 @@
 #labels Phase-Design
 
 = 1.08 =
+*Fixes*
+  * All references to MyTVSeries have been changed to MP-TVSeries
+    * Not sure why I thought it was My.
+
 *Additions*
   * Added `[Failed]` as an event type in History
 
