@@ -46,4 +46,6 @@ Right click mpNZB from the [http://www.team-mediaportal.com/ MediaPortal] plugin
     * *Add [http://code.google.com/p/mptvseries/ MP-TVSeries] missing episodes to search * - Checking this box will add an extra option called "Missing Episodes" to the search dialog when you select a site to search. This option contains a list of all episodes that you are missing from your MP-TVSeries shows database.
       * This feature will only work if you have [http://code.google.com/p/mptvseries/ MP-TVSeries] plug-in and checked the "Download Episode information for the whole series" checkbox in [http://code.google.com/p/mptvseries/ MP-TVSeries] configuration.
 
+  * _[http://code.google.com/p/mptvseries/ MP-TVSeries] Formating_
+
 == Sites ==
