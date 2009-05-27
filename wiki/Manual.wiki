@@ -137,6 +137,12 @@ Clicking a list item has different effects depending on the section you are in.
     * Change Category
   * *History* - Shows the entire [http://www.sabnzbd.org/ SABnzbd] history for that item.
 
+== Menu/Info Button ==
+
+This refers to the menu/info button on your remote/keyboard in [http://www.team-mediaportal.com/ MediaPortal]. The options change depending on the type of list item you have selected.
+
+
+
 == Status Bar ==
 
 This status bar message changes all the time depending on what your doing. If there is an error with the program it will mention it here. It also mentions any actions you take and how [http://www.sabnzbd.org/ SABnzbd] responded to them.
