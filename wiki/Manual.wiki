@@ -2,7 +2,7 @@
 
 = Introduction =
 
-mpNZB was created to allow downloading of NZB's from within MediaPortal. It grabs lists of NZB's 3 different ways. Feeds that were created by the sites, Searching the site for specific items or Groups such as alt.binaries.mutlimedia. It gets this data from RSS feeds that the sites provide. mpNZB currently supports 11 different sites and can support most sites with RSS feeds.
+mpNZB was created to allow downloading of NZB's from within [http://www.team-mediaportal.com/ MediaPortal]. It grabs lists of NZB's 3 different ways. Feeds that were created by the sites, Searching the site for specific items or Groups such as alt.binaries.mutlimedia. It gets this data from RSS feeds that the sites provide. mpNZB currently supports 11 different sites and can support most sites with RSS feeds.
 
 = Requirements =
 
