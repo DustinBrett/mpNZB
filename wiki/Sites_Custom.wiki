@@ -83,31 +83,31 @@ The information needed to replace `[I]` and `[H]` can be found at [http://nzbs.o
                   <feed name="My Searches Feed">http://www.nzbs.org/rss.php?action=mysearches&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
                   <feed name="My NZBs Feed">http://www.nzbs.org/rss.php?action=mynzbs&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
                   <feed name="Console">http://www.nzbs.org/rss.php?type=6&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
-                  <feed name="Console – NDS">http://www.nzbs.org/rss.php?catid=19&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
-                  <feed name="Console – PSP">http://www.nzbs.org/rss.php?catid=16&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
-                  <feed name="Console – Wii">http://www.nzbs.org/rss.php?catid=17&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
-                  <feed name="Console – XBox">http://www.nzbs.org/rss.php?catid=8&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
-                  <feed name="Console – XBox360">http://www.nzbs.org/rss.php?catid=20&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
+                  <feed name="Console - NDS">http://www.nzbs.org/rss.php?catid=19&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
+                  <feed name="Console - PSP">http://www.nzbs.org/rss.php?catid=16&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
+                  <feed name="Console - Wii">http://www.nzbs.org/rss.php?catid=17&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
+                  <feed name="Console - XBox">http://www.nzbs.org/rss.php?catid=8&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
+                  <feed name="Console - XBox360">http://www.nzbs.org/rss.php?catid=20&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
                   <feed name="Movies">http://www.nzbs.org/rss.php?type=2&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
-                  <feed name="Movies – DVD">http://www.nzbs.org/rss.php?catid=9&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
-                  <feed name="Movies – XviD">http://www.nzbs.org/rss.php?catid=2&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
-                  <feed name="Movies – x264">http://www.nzbs.org/rss.php?catid=4&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
+                  <feed name="Movies - DVD">http://www.nzbs.org/rss.php?catid=9&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
+                  <feed name="Movies - XviD">http://www.nzbs.org/rss.php?catid=2&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
+                  <feed name="Movies - x264">http://www.nzbs.org/rss.php?catid=4&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
                   <feed name="Music">http://www.nzbs.org/rss.php?type=3&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
-                  <feed name="Music – MP3">http://www.nzbs.org/rss.php?catid=5&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
-                  <feed name="Music – Video">http://www.nzbs.org/rss.php?catid=10&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
+                  <feed name="Music - MP3">http://www.nzbs.org/rss.php?catid=5&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
+                  <feed name="Music - Video">http://www.nzbs.org/rss.php?catid=10&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
                   <feed name="PC">http://www.nzbs.org/rss.php?type=5&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
-                  <feed name="PC – 0day">http://www.nzbs.org/rss.php?catid=7&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
-                  <feed name="PC – ISO">http://www.nzbs.org/rss.php?catid=6&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
-                  <feed name="PC – Mac">http://www.nzbs.org/rss.php?catid=15&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
+                  <feed name="PC - 0day">http://www.nzbs.org/rss.php?catid=7&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
+                  <feed name="PC - ISO">http://www.nzbs.org/rss.php?catid=6&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
+                  <feed name="PC - Mac">http://www.nzbs.org/rss.php?catid=15&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
                   <feed name="TV">http://www.nzbs.org/rss.php?type=1&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
-                  <feed name="TV – DVD">http://www.nzbs.org/rss.php?catid=11&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
-                  <feed name="TV – H264">http://www.nzbs.org/rss.php?catid=22&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
-                  <feed name="TV – XviD">http://www.nzbs.org/rss.php?catid=1&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
-                  <feed name="TV – x264">http://www.nzbs.org/rss.php?catid=14&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
+                  <feed name="TV - DVD">http://www.nzbs.org/rss.php?catid=11&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
+                  <feed name="TV - H264">http://www.nzbs.org/rss.php?catid=22&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
+                  <feed name="TV - XviD">http://www.nzbs.org/rss.php?catid=1&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
+                  <feed name="TV - x264">http://www.nzbs.org/rss.php?catid=14&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
                   <feed name="XXX">http://www.nzbs.org/rss.php?type=4&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
-                  <feed name="XXX – DVD">http://www.nzbs.org/rss.php?catid=13&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
-                  <feed name="XXX – WMV">http://www.nzbs.org/rss.php?catid=21&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
-                  <feed name="XXX – XviD">http://www.nzbs.org/rss.php?catid=3&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
+                  <feed name="XXX - DVD">http://www.nzbs.org/rss.php?catid=13&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
+                  <feed name="XXX - WMV">http://www.nzbs.org/rss.php?catid=21&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
+                  <feed name="XXX - XviD">http://www.nzbs.org/rss.php?catid=3&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</feed>
             </feeds>
             <search>http://www.nzbs.org/rss.php?q=[QUERY]&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</search>
             <item type="1">
