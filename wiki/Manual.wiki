@@ -19,6 +19,6 @@ Run the MPI file and follow its instructions.
 
 Open the mpNZB plugin configuration page in the [http://www.team-mediaportal.com/ MediaPortal] configuration area. It should look something like this:
 
-[http://mpnzb.googlecode.com/svn/wiki/images/manual/mpNZB_Client_Settings.png]
+[http://mpnzb.googlecode.com/svn/wiki/images/manual/mpNZB_Client_Settings.PNG]
 
 == Sites ==
