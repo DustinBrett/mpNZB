@@ -3,8 +3,9 @@
 
 == General ==
   * Toggle `btnPause` if `Status` is paused
-  * Download Complete
-    * Read History RSS for `[Completed]`/`[Failure]` and `<title>`
+  * Download Complete Redo
+    * Read History RSS for `[Completed]`/`[Failure]` and match to `<title>`
+  * IMDb coverart (Is it worth it?)
 
 == Future Features: ==
   * SABnzbd 0.50 support
