@@ -115,15 +115,27 @@ When you first start the program this will say the name of the plugin. Once you 
 
 This list changes depending on the section you are in. The formatting for each list item is also different depending on the section you are in.
 
-  * *Feeds/Groups/Search* = {Title} {Size (MB)}
-  * *Job Queue* = {Title} {Remaining (MB) / Total (MB)}
-  * *History* = {Title} {Status}
+  * *Feeds/Groups/Search* - {Title} {Size (MB)}
+  * *Job Queue* - {Title} {Remaining (MB) / Total (MB)}
+  * *History* - {Title} {Status}
     * *Status* - There are several different types of status messages depending on what SABnzbd did or is doing to the item.
       * Completed
       * Extracting
       * Failed
       * Verifying
       * Waiting
+
+Clicking a list item has different effects depending on the section you are in.
+
+  * *Feeds/Groups/Search* - Asks if you want to download the NZB.
+  * *Job Queue* - Several different options related to the queue item.
+    * Move Up
+    * Move to Top
+    * Move Down
+    * Move to Bottom
+    * Delete Job
+    * Change Category
+  * *History* - Shows the entire [http://www.sabnzbd.org/ SABnzbd] history for that item.
 
 == Status Bar ==
 
