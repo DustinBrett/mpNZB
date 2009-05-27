@@ -118,6 +118,12 @@ This list changes depending on the section you are in. The formatting for each l
   * *Feeds/Groups/Search* = {Title} {Size (MB)}
   * *Job Queue* = {Title} {Remaining (MB) / Total (MB)}
   * *History* = {Title} {Status}
+    * *Status* - There are several different types of status messages depending on what SABnzbd did or is doing to the item.
+      * Completed
+      * Extracting
+      * Failed
+      * Verifying
+      * Waiting
 
 == Status Bar ==
 
