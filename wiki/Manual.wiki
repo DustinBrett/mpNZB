@@ -48,7 +48,7 @@ Right click mpNZB from the [http://www.team-mediaportal.com/ MediaPortal] plugin
 
   * _[http://code.google.com/p/mptvseries/ MP-TVSeries] Formating_
       * If *Add [http://code.google.com/p/mptvseries/ MP-TVSeries] missing episodes to search* is checked then this decides how to format the search string.
-    * *`[S]x[EE]`* - Buffy the Vampire Slayer - 5x13
+    * *`[`S`]`x`[`EE`]`* - Buffy the Vampire Slayer - 5x13
     * *`S[SS]E[EE]`* - Buffy the Vampire Slayer - S05E13
 
 == Sites ==
