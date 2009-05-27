@@ -52,6 +52,12 @@ Right click mpNZB from the [http://www.team-mediaportal.com/ MediaPortal] plugin
 
 [http://mpnzb.googlecode.com/svn/wiki/images/manual/mpNZB_Searches.PNG]
 
+  * _Add Search_ - This section is if you want to search multiple items at once on a site.
+    * *Name* - The name for the search string that will appear in the pop-up search dialog inside the plugin.
+    * *String* - Here you put the things you want to search for separated by an "|" symbol.
+      * Example: Smallville|Buffy the Vampire Slayer|Lost
+    * *Add* - Once you have fille out Name/String you press this to add it to the list.
+    * *Delete* - You select an item from the list and press this to delete that item.
 == Sites ==
 
 There is a detailed wiki about this process at Sites_HowTo and some examples at Sites_Custom.
