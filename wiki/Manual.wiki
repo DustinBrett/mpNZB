@@ -114,3 +114,7 @@ This list changes depending on the section you are in. The formatting for each l
   * *Feeds/Groups/Search* = {Title} {Size (MB)}
   * *Job Queue* = {Title} {Remaining (MB) / Total (MB)}
   * *History* = {Title} {Status}
+
+== Status Bar ==
+
+This status bar message changes all the time depending on what your doing. If there is an error with the program it will mention it here. It also mentions any actions you take and how [http://www.sabnzbd.org/ SABnzbd] responded to them.
