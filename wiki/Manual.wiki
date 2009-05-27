@@ -43,7 +43,7 @@ There is a detailed wiki at ToDo.
 
 = Installation =
 
-Run the MPI file and follow its instructions.
+Download the latest release from [http://code.google.com/p/mpnzb/downloads/list here]. Then run the MPI file and follow the instructions.
 
 = Configuration =
 
