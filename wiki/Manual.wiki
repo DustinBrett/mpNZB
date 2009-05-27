@@ -9,6 +9,20 @@
 
 mpNZB was created to allow downloading of NZB's from within [http://www.team-mediaportal.com/ MediaPortal]. It grabs lists of NZB's 3 different ways. Feeds that were created by the sites, Searching the site for specific items or Groups such as alt.binaries.multimedia. It gets this data from RSS feeds that the sites provide. mpNZB currently supports 11 different sites and can support most sites with RSS feeds.
 
+= Supported Sites =
+
+  * [http://binsearch.info/ Binsearch] (Groups)
+  * [http://mytvnzb.foechoer.be/ MyTvNZB] ([http://code.google.com/p/mpnzb/wiki/Sites_Custom#MyTvNZB Feeds])
+  * [http://www.newzbin.com/ Newzbin]`**` (Feeds/Groups/Search)
+  * [http://www.newzleech.com/ Newzleech] (Groups/Search)
+  * [http://www.nzbclub.com/ NZBClub] (Groups/Search)
+  * [http://www.nzbindex.com/ NZBIndex] (Groups/Search)
+  * [http://nzbmatrix.com/ NZBMatrix]`**` ([http://code.google.com/p/mpnzb/wiki/Sites_Custom#NZBMatrix Feeds])
+  * [http://www.nzbs.org/ NZBs]`*` ([http://code.google.com/p/mpnzb/wiki/Sites_Custom#NZBs Feeds/Search])
+  * [http://nzbserien.org/ NZBSerien] (Feeds)
+  * [http://www.nzbsrus.com/ NZBsRus]`*` ([http://code.google.com/p/mpnzb/wiki/Sites_Custom#NZBsRus Feeds])
+  * [http://www.tvnzb.com/ TvNZB] (Feeds)
+
 = Changelog ==
 
 There is a detailed wiki at ChangeLog.
