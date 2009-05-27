@@ -33,4 +33,6 @@ Open the mpNZB plugin configuration page in the [http://www.team-mediaportal.com
     * *Username* - Username of the SABnzbd server.
     * *Password* - Password of the SABnzbd server.
 
+[http://mpnzb.googlecode.com/svn/wiki/images/manual/mpNZB_Plugin_Settings.PNG]
+
 == Sites ==
