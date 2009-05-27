@@ -13,7 +13,7 @@ mpNZB was created to allow downloading of NZB's from within [http://www.team-med
 
 There is a detailed wiki at ChangeLog.
 
-= !ToDo ==
+= !To-Do ==
 
 There is a detailed wiki at ToDo.
 
