@@ -87,3 +87,5 @@ Right click mpNZB from the [http://www.team-mediaportal.com/ MediaPortal] plugin
 There is a detailed wiki at Sites_HowTo and examples at Sites_Custom.
 
 = Navigation =
+
+[http://mpnzb.googlecode.com/svn/wiki/images/manual/Nav_Main.PNG]
