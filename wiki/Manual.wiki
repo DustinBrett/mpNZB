@@ -1,4 +1,4 @@
-#summary mpNZB Complete Manual
+#summary mpNZB Manual
 #labels Phase-Deploy,Featured
 
 <h1>Table of Contents</h1>
