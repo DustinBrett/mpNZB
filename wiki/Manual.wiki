@@ -22,22 +22,22 @@ Right click mpNZB from the [http://www.team-mediaportal.com/ MediaPortal] plugin
 [http://mpnzb.googlecode.com/svn/wiki/images/manual/mpNZB_Client_Settings.PNG]
 
   * _Program_
-    * *Grabber* - This setting is mostly for future use as it currently only supports SABnzbd. This may never change because SABnzbd is so much better than other Usenet clients when it comes to integrating with other programs.
-    * *Save to categories* - Checking this box will show a pop-up every time you go to download a NZB. It asks which SABnzbd category you want to download it to. These categories are setup within SABnzbd.
+    * *Grabber* - This setting is mostly for future use as it currently only supports [http://www.sabnzbd.org/ SABnzbd]. This may never change because [http://www.sabnzbd.org/ SABnzbd] is so much better than other Usenet clients when it comes to integrating with other programs.
+    * *Save to categories* - Checking this box will show a pop-up every time you go to download a NZB. It asks which [http://www.sabnzbd.org/ SABnzbd] category you want to download it to. These categories are setup within [http://www.sabnzbd.org/ SABnzbd].
 
   * _Settings_
-    * *Address* - IP/Hostname of the SABnzbd server.
-    * *Port* - Port number of the SABnzbd server.
+    * *Address* - IP/Hostname of the [http://www.sabnzbd.org/ SABnzbd] server.
+    * *Port* - Port number of the [http://www.sabnzbd.org/ SABnzbd] server.
     * *Test Connection* - Tests if the plugin will be able to connect using the given information. This includes the Username/Password also if they are required.
-    * *Requires Authentication* - Check this box if your SABnzbd server has a Username/Password set.
-    * *Username* - Username of the SABnzbd server.
-    * *Password* - Password of the SABnzbd server.
+    * *Requires Authentication* - Check this box if your [http://www.sabnzbd.org/ SABnzbd] server has a Username/Password set.
+    * *Username* - Username of the [http://www.sabnzbd.org/ SABnzbd] server.
+    * *Password* - Password of the [http://www.sabnzbd.org/ SABnzbd] server.
 
 [http://mpnzb.googlecode.com/svn/wiki/images/manual/mpNZB_Plugin_Settings.PNG]
 
   * _Visual_
     * *Update Frequency* - How often the status area (Paused/Speed/etc.) in the plug-in is refreshed.
     * *Display Name* - Allows you to change what name is shown for this plug-in on the [http://www.team-mediaportal.com/ MediaPortal] GUI.
-    * *Show "Download Complete" notifications.* - Will pop-up a "Download Complete" dialog box whenever an item leaves the SABnzbd queue.
+    * *Show "Download Complete" notifications.* - Will pop-up a "Download Complete" dialog box whenever an item leaves the [http://www.sabnzbd.org/ SABnzbd] queue.
 
 == Sites ==
