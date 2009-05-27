@@ -7,6 +7,7 @@
     * Add to this Wiki and to [http://www.team-mediaportal.com/manual/ MP's Wiki]
   * Download Complete
     * Read History RSS for `[Completed]`/`[Failure]` and `<title>`
+  * Rename MyTVSeries to MP-TVSeries
 
 == Future Features: ==
   * SABnzbd 0.50 support
