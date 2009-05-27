@@ -98,6 +98,7 @@ This is what mpNZB looks like using the Blue3 skin:
     * Disabled if no feed has been selected yet.
   * *Feeds* - Shows a list of feeds based on the site you select.
   * *Groups* - Shows a list of groups based on the site you select.
+    * List is generated from the groups you enter in the Groups tab in the mpNZB configuration.
   * *Search* - Searches the site you select.
     * *New Search* - Manually typed keyboard search.
     * *Missing Episodes* - [http://code.google.com/p/mptvseries/ MP-TVSeries] database of missing episodes.
