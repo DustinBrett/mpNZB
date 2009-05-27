@@ -23,7 +23,7 @@ namespace mpNZB
     public List<string> FeedURL = new List<string>();
 
     private int MaxResults;
-    private bool MyTVSeries;
+    private bool MPTVSeries;
 
     #endregion    
 
@@ -96,7 +96,7 @@ namespace mpNZB
 
         Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
         MaxResults = mpSettings.GetValueAsInt("#Sites", "MaxResults", 50);
-        MyTVSeries = mpSettings.GetValueAsBool("#Sites", "MyTVSeries", false);
+        MPTVSeries = mpSettings.GetValueAsBool("#Sites", "MPTVSeries", false);
         mpSettings.Dispose();
       }
       catch (Exception e) { MP.Error(e); }
@@ -177,7 +177,7 @@ namespace mpNZB
 
         _Items.Add(new GUIListItem("New Search"));
 
-        if (MyTVSeries)
+        if (MPTVSeries)
         {
           _Items.Add(new GUIListItem("Missing Episodes"));
         }
@@ -214,7 +214,7 @@ namespace mpNZB
               }
               break;
             case "Missing Episodes":
-              MyTVSeries MTS = new MyTVSeries();
+              MPTVSeries MTS = new MPTVSeries();
               GUIListItem _Series = MP.Menu(MTS.SeriesNames(), "Select Series");
               if (_Series != null)
               {
