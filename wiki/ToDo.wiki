@@ -8,7 +8,7 @@
   * IMDb/TVRage coverart/information
     * Coverart icons on left of list items
     * Menu item for "IMDb/TVRage Information"
-  * Change default for Download to Yes
+  * Change default for "Download NZB?" to Yes
 
 == Future Features: ==
   * SABnzbd 0.50 support
