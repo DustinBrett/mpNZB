@@ -369,7 +369,7 @@ namespace mpNZB.Clients
 
     public void Download(GUIListItem _Item)
     {
-      if (MP.YesNo("Title: " + _Item.Label, "Download file?"))
+      if (MP.YesNo("Title: " + _Item.Label, "Download file?", true))
       {
         string strResult = String.Empty;
 

@@ -39,7 +39,7 @@ namespace mpNZB
       Dialog.DoModal(GUIWindowManager.ActiveWindow);
     }
 
-    public bool YesNo(string _Text, string _Heading)
+    public bool YesNo(string _Text, string _Heading, bool _Default)
     {
       // Init Dialog
       GUIDialogYesNo Dialog = (GUIDialogYesNo)GUIWindowManager.GetWindow((int)GUIWindow.Window.WINDOW_DIALOG_YES_NO);
@@ -48,6 +48,7 @@ namespace mpNZB
       // Set Dialog Information
       Dialog.SetHeading(_Heading);
       Dialog.SetLine(1, _Text);
+      Dialog.SetDefaultToYes(_Default);
 
       // Display Dialog
       Dialog.DoModal(GUIWindowManager.ActiveWindow);
