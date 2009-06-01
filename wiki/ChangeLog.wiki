@@ -6,6 +6,7 @@
   * All references to MyTVSeries have been changed to MP-TVSeries
     * Not sure why I thought it was My.
   * Disabled MP-TVSeries formatting options if its not checked.
+  * Changed default for "Download NZB?" to Yes
 
 *Additions*
   * Added `[Failed]` as an event type in History
