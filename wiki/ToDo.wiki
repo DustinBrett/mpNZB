@@ -3,11 +3,13 @@
 
 == General ==
   * Toggle `btnPause` if `Status` is paused
+  * Change <search> to <searches> and make it act like <feeds> does
   * Download Complete Redo
     * Read History RSS for `[Completed]`/`[Failure]` and match to `<title>`
   * IMDb/TVRage coverart/information
     * Coverart icons on left of list items
     * Menu item for "IMDb/TVRage Information"
+    * Parsing IMDb is kinda tough, may take a bit more time, 1.09/1.1 release.
 
 == Future Features: ==
   * SABnzbd 0.50 support
