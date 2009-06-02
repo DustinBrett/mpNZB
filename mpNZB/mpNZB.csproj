@@ -91,7 +91,7 @@
     <PostBuildEvent>REM Send to HTPC
 REM ####################
 copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\mpNZB.dll" "\\HTPC\MediaPortal\plugins\Windows\mpNZB.dll" /y
-REM copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\Sites\Sites.xml" "\\HTPC\MediaPortal\plugins\Windows\Sites.xml" /y
+copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\Sites\Sites.xml" "\\HTPC\MediaPortal\plugins\Windows\Sites.xml" /y
 
 REM Send to Home Laptop
 REM ####################

@@ -28,7 +28,9 @@
 			<feed name="TV">http://www.newzbin.com/browse/category/p/tv/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
 		</feeds>
 		<groups>http://www.newzbin.com/browse/group/p/[GROUP]/?feed=rss&amp;u_post_results_amt=[MAX]</groups>
-		<search>http://www.newzbin.com/search/query/?q=[QUERY]&amp;searchaction=Search&amp;u_post_results_amt=[MAX]&amp;feed=rss</search>
+		<searches>
+			<search name="Default">http://www.newzbin.com/search/query/?q=[QUERY]&amp;searchaction=Search&amp;u_post_results_amt=[MAX]&amp;feed=rss</search>
+		</searches>
 		<item type="2">
 			<title element="title" />
 			<size type="2" element="report:size" />
@@ -37,7 +39,9 @@
 	</site>
 	<site name="Newzleech">
 		<groups>http://www.newzleech.com/rss.php?n=[MAX]&amp;g=[GROUP]</groups>
-		<search>http://www.newzleech.com/rss.php?n=[MAX]&amp;s=[QUERY]</search>
+		<searches>
+			<search name="Default">http://www.newzleech.com/rss.php?n=[MAX]&amp;s=[QUERY]</search>
+		</searches>
 		<item type="1">
 			<title element="title" />
 			<size type="1" element="description" />
@@ -48,7 +52,9 @@
 	</site>
 	<site name="NZBClub">
 		<groups>http://www.nzbclub.com/nzbfeed.aspx?us=[GROUP]</groups>
-		<search>http://www.nzbclub.com/nzbfeed.aspx?ss=[QUERY]</search>
+		<searches>
+			<search name="Default">http://www.nzbclub.com/nzbfeed.aspx?ss=[QUERY]</search>
+		</searches>
 		<item type="1">
 			<title element="title" />
 			<size type="1" element="description" />
@@ -59,7 +65,9 @@
 	</site>
 	<site name="NZBIndex">
 		<groups>http://www.nzbindex.com/rss/[GROUP]/?max=[MAX]</groups>
-		<search>http://www.nzbindex.com/rss/?q=[QUERY]&amp;max=[MAX]</search>
+		<searches>
+			<search name="Default">http://www.nzbindex.com/rss/?q=[QUERY]&amp;max=[MAX]</search>
+		</searches>
 		<item type="1">
 			<title element="title" />
 			<size type="2" element="enclosure" attribute="length" />
