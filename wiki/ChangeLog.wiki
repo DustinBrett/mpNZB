@@ -10,6 +10,7 @@
 
 *Additions*
   * Added `[Failed]` as an event type in History
+  * Added custom <searches> instead of just 1 <search>
 
 = 1.07 =
 *Fixes*
