@@ -3,7 +3,6 @@
 
 == General ==
   * Toggle `btnPause` if `Status` is paused
-  * Change `<search>` to `<searches>` and make it act like `<feeds>` does
   * Download Complete Redo
     * Read History RSS for `[Completed]`/`[Failure]` and match to `<title>`
   * IMDb/TVRage coverart/information
