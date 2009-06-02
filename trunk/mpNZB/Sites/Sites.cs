@@ -50,14 +50,14 @@ namespace mpNZB
                   _Items.Add(new GUIListItem(nodeItem.Attributes["name"].InnerText));
                 }
                 break;
-              case "Groups":
-                if (nodeItem.SelectSingleNode("groups") != null)
+              case "Search":
+                if (nodeItem.SelectNodes("searches").Count != 0)
                 {
                   _Items.Add(new GUIListItem(nodeItem.Attributes["name"].InnerText));
                 }
                 break;
-              case "Search":
-                if (nodeItem.SelectSingleNode("search") != null)
+              case "Groups":
+                if (nodeItem.SelectSingleNode("groups") != null)
                 {
                   _Items.Add(new GUIListItem(nodeItem.Attributes["name"].InnerText));
                 }
@@ -113,6 +113,7 @@ namespace mpNZB
       try
       {
         List<GUIListItem> _Items = new List<GUIListItem>();
+
         GUIListItem Item;
 
         XmlDocument xmlDoc = new XmlDocument();
@@ -130,6 +131,99 @@ namespace mpNZB
         {
           FeedName = _Item.Label;
           FeedURL.Add(_Item.Path.Replace("[MAX]", MaxResults.ToString()));
+        }
+      }
+      catch (Exception e) { MP.Error(e); }
+    }
+
+    public void SetSearch()
+    {
+      try
+      {
+        List<GUIListItem> _Items = new List<GUIListItem>();
+
+        _Items.Add(new GUIListItem("New Search"));
+
+        if (MPTVSeries)
+        {
+          _Items.Add(new GUIListItem("Missing Episodes"));
+        }
+
+        GUIListItem Item;
+
+        XmlDocument xmlSettings = new XmlDocument();
+        xmlSettings.Load(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
+
+        foreach (XmlNode nodeItem in xmlSettings.SelectNodes("profile/section[@name='#Searches']/entry"))
+        {
+          Item = new GUIListItem(nodeItem.Attributes["name"].InnerText);
+          Item.Path = nodeItem.InnerText;
+          _Items.Add(Item);
+        }
+
+        GUIListItem _Item = MP.Menu(_Items, "Select Search");
+        if (_Item != null)
+        {
+          XmlDocument xmlDoc = new XmlDocument();
+          xmlDoc.Load(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Plugins) + @"\Windows\Sites.xml");
+
+          _Items = new List<GUIListItem>();
+
+          foreach (XmlNode searchItem in xmlDoc.SelectNodes("sites/site[@name='" + SiteName + "']/searches/search"))
+          {
+            Item = new GUIListItem(searchItem.Attributes["name"].InnerText);
+            Item.Path = searchItem.InnerText;
+            _Items.Add(Item);
+          }
+
+          GUIListItem _Search = MP.Menu(_Items, "Select Specific Search");
+          if (_Search != null)
+          {
+            string strSearchURL = _Search.Path;
+
+            switch (_Item.Label)
+            {
+              case "New Search":
+                FeedName = MP.Keyboard();
+                if (FeedName.Length > 0)
+                {
+                  FeedURL.Add(strSearchURL.Replace("[QUERY]", FeedName.Replace(" ", "+")).Replace("[MAX]", MaxResults.ToString()));
+                }
+                else
+                {
+                  GUIPropertyManager.SetProperty("#Status", "Search field is blank");
+                }
+                break;
+              case "Missing Episodes":
+                MPTVSeries MTS = new MPTVSeries();
+                GUIListItem _Series = MP.Menu(MTS.SeriesNames(), "Select Series");
+                if (_Series != null)
+                {
+                  GUIListItem _Episode = MP.Menu(MTS.MissingEpisodes(_Series.Label), "Select Episode");
+                  if (_Episode != null)
+                  {
+                    FeedName = _Series.Label + " - " + _Episode.Label;
+                    FeedURL.Add(strSearchURL.Replace("[QUERY]", FeedName.Replace(" ", "+")).Replace("[MAX]", MaxResults.ToString()));
+                  }
+                }
+                break;
+              default:
+                FeedName = _Item.Label;
+                if (_Item.Path.Contains("|"))
+                {
+                  string[] strSearches = _Item.Path.Split('|');
+                  foreach (string strSearch in strSearches)
+                  {
+                    FeedURL.Add(strSearchURL.Replace("[QUERY]", strSearch.Replace(" ", "+")).Replace("[MAX]", MaxResults.ToString()));
+                  }
+                }
+                else
+                {
+                  FeedURL.Add(strSearchURL.Replace("[QUERY]", _Item.Path.Replace(" ", "+")).Replace("[MAX]", MaxResults.ToString()));
+                }
+                break;
+            }
+          }
         }
       }
       catch (Exception e) { MP.Error(e); }
@@ -164,84 +258,6 @@ namespace mpNZB
         else
         {
           GUIPropertyManager.SetProperty("#Status", "No groups added");
-        }
-      }
-      catch (Exception e) { MP.Error(e); }
-    }
-
-    public void SetSearch()
-    {
-      try
-      {
-        List<GUIListItem> _Items = new List<GUIListItem>();       
-
-        _Items.Add(new GUIListItem("New Search"));
-
-        if (MPTVSeries)
-        {
-          _Items.Add(new GUIListItem("Missing Episodes"));
-        }
-
-        GUIListItem Item;
-
-        XmlDocument xmlSettings = new XmlDocument();
-        xmlSettings.Load(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
-
-        foreach (XmlNode nodeItem in xmlSettings.SelectNodes("profile/section[@name='#Searches']/entry"))
-        {
-          Item = new GUIListItem(nodeItem.Attributes["name"].InnerText);
-          Item.Path = nodeItem.InnerText;
-          _Items.Add(Item);
-        }
-
-        GUIListItem _Item = MP.Menu(_Items, "Select Search");
-        if (_Item != null)
-        {
-          XmlDocument xmlDoc = new XmlDocument();
-          xmlDoc.Load(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Plugins) + @"\Windows\Sites.xml");
-
-          switch (_Item.Label)
-          {
-            case "New Search":
-              FeedName = MP.Keyboard();
-              if (FeedName.Length > 0)
-              {
-                FeedURL.Add(xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/search").InnerText.Replace("[QUERY]", FeedName.Replace(" ", "+")).Replace("[MAX]", MaxResults.ToString()));
-              }
-              else
-              {
-                GUIPropertyManager.SetProperty("#Status", "Search field is blank");
-              }
-              break;
-            case "Missing Episodes":
-              MPTVSeries MTS = new MPTVSeries();
-              GUIListItem _Series = MP.Menu(MTS.SeriesNames(), "Select Series");
-              if (_Series != null)
-              {
-                GUIListItem _Episode = MP.Menu(MTS.MissingEpisodes(_Series.Label), "Select Episode");
-                if (_Episode != null)
-                {
-                  FeedName = _Series.Label + " - " + _Episode.Label;
-                  FeedURL.Add(xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/search").InnerText.Replace("[QUERY]", FeedName.Replace(" ", "+")).Replace("[MAX]", MaxResults.ToString()));
-                }
-              }
-              break;
-            default:
-              FeedName = _Item.Label;
-              if (_Item.Path.Contains("|"))
-              {
-                string[] strSearches = _Item.Path.Split('|');
-                foreach (string strSearch in strSearches)
-                {
-                  FeedURL.Add(xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/search").InnerText.Replace("[QUERY]", strSearch.Replace(" ", "+")).Replace("[MAX]", MaxResults.ToString()));
-                }
-              }
-              else
-              {
-                FeedURL.Add(xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/search").InnerText.Replace("[QUERY]", _Item.Path.Replace(" ", "+")).Replace("[MAX]", MaxResults.ToString()));
-              }
-              break;
-          }
         }
       }
       catch (Exception e) { MP.Error(e); }
