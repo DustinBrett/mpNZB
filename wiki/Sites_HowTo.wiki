@@ -83,7 +83,7 @@ This section contains the sites search feeds.
 </searches>
 }}}
 
-  * *`(Name)`* = Name of RSS feed
+  * *`(Name)`* = Name of RSS search feed
   * *`(URL)`* = URL to the search feed.
     * Must contain *`[QUERY]`*
     * Optionally contain *`[MAX]`*
