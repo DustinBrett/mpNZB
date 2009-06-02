@@ -75,12 +75,15 @@ This section contains the sites group feeds.
     * Optionally contain *`[MAX]`*
 
 == _Search_ ==
-This section contains the sites search feed.
+This section contains the sites search feeds.
 
 {{{
-<search>(URL)</search>
+<searches>
+        <search name="(Name)">(URL)</search>
+</searches>
 }}}
 
+  * *`(Name)`* = Name of RSS feed
   * *`(URL)`* = URL to the search feed.
     * Must contain *`[QUERY]`*
     * Optionally contain *`[MAX]`*
