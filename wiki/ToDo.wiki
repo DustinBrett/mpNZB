@@ -12,3 +12,6 @@
 
 == Not even possible currently ==
   * NZB streaming
+
+== I'm lazy ==
+  * Update manual to show APIKey
