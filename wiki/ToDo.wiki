@@ -3,23 +3,11 @@
 
 == General ==
   * Toggle `btnPause` if `Status` is paused
-  * Download Complete Redo
-    * Read History RSS for `[Completed]`/`[Failure]` and match to `<title>`
-  * IMDb/TVRage coverart/information
-    * Coverart icons on left of list items
-    * Menu item for "IMDb/TVRage Information"
-    * Parsing IMDb is kinda tough, may take a bit more time, 1.09/1.1 release.
-  * If 1 search option just do it and don't ask
+  * Download Complete pop-up *after* extraction
 
-  * SABnzbd .11+ support
   * Save to folder
-  * API Key support
 
 == Future Features: ==
-  * SABnzbd 0.50 support
   * NZB streaming
     * [http://code.google.com/p/stream-unrar/ stream-unrar]
     * [http://www.nzbplayer.com/ NZBPlayer]
-  * Watchlists for searching
-    * [http://www.tvrage.com/myrss.php?date=yesterday&hide_time=1 TVrage - Yesterday]
-    * [http://www.tvrage.com/myrss.php?hide_time=1 TVrage - Today]
