@@ -5,10 +5,12 @@
 *Fixes*
   * All references to MyTVSeries have been changed to MP-TVSeries
     * Not sure why I thought it was My.
-  * Disabled MP-TVSeries formatting options if its not checked.
+  * Disabled MP-TVSeries formatting options if its not checked
   * Changed default for "Download NZB?" to Yes
 
 *Additions*
+  * SABnzbd 0.4.11 support
+  * APIKey support
   * Added `[Failed]` as an event type in History
   * Added custom `<searches>` instead of just 1 `<search>`
 
