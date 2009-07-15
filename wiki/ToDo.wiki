@@ -5,8 +5,6 @@
   * Toggle `btnPause` if `Status` is paused
   * Download Complete pop-up *after* extraction
 
-  * Save to folder
-
 == Future Features: ==
   * NZB streaming
     * [http://code.google.com/p/stream-unrar/ stream-unrar]
