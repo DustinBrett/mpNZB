@@ -26,18 +26,20 @@ namespace mpNZB.Clients
     private string Port = String.Empty;
     private string Username = String.Empty;
     private string Password = String.Empty;
+    private string APIKey = String.Empty;
 
     private bool CatSelect = false;
     private bool Auth = false;
     private bool Notifications = false;
 
-    public SABnzbd(string strIP, string strPort, bool bolCatSelect, bool bolAuth, string strUsername, string strPassword, int intUpdateFreq, bool bolNotifications)
+    public SABnzbd(string strIP, string strPort, bool bolCatSelect, bool bolAuth, string strUsername, string strPassword, string strAPIKey, int intUpdateFreq, bool bolNotifications)
     {
       IP = strIP;
       Port = strPort;
       
       Username = strUsername;
       Password = strPassword;
+      APIKey = strAPIKey;
 
       CatSelect = bolCatSelect;
       Auth = bolAuth;
@@ -89,7 +91,7 @@ namespace mpNZB.Clients
       {
         if ((IP.Length != 0) && (Port.Length != 0))
         {
-          strResult = "http://" + IP + ":" + Port + "/sabnzbd/" + _Mode + (((Auth) && ((Username.Length > 0) && (Password.Length > 0))) ? "&" + "ma_username=" + Username + "&" + "ma_password=" + Password : String.Empty) + ((_Command.Length > 0) ? "&" + _Command : String.Empty) + ((_CatSelect) ? "&" + "cat=" + SelectCategory() : String.Empty);
+            strResult = "http://" + IP + ":" + Port + "/sabnzbd/" + _Mode + ((APIKey.Length > 0) ? "&" + ((_Mode.Contains("queue") || _Mode.Contains("history")) ? "session=" : "apikey=") + APIKey : String.Empty) + (((Auth) && ((Username.Length > 0) && (Password.Length > 0))) ? "&" + "ma_username=" + Username + "&" + "ma_password=" + Password : String.Empty) + ((_Command.Length > 0) ? "&" + _Command : String.Empty) + ((_CatSelect) ? "&" + "cat=" + SelectCategory() : String.Empty);
         }
       }
       catch (Exception e) { MP.Error(e); }
