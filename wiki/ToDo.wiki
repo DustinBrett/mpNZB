@@ -4,7 +4,7 @@
 == Not sure how to fix ==
   * Toggle `btnPause` if `Status` is paused
 
-== Might be possible ==
+== Probably possible ==
   * Download Complete pop-up *after* extraction
 
 == Requires a bunch of changes ==
