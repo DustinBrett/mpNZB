@@ -11,6 +11,10 @@
     * Parsing IMDb is kinda tough, may take a bit more time, 1.09/1.1 release.
   * If 1 search option just do it and don't ask
 
+  * SABnzbd .11+ support
+  * Save to folder
+  * API Key support
+
 == Future Features: ==
   * SABnzbd 0.50 support
   * NZB streaming
