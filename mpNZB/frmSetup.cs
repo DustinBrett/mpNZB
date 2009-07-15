@@ -53,6 +53,7 @@ namespace mpNZB
         txtPassword.Enabled = chkAuth.Checked;
         txtUsername.Text = mpSettings.GetValue("#Client", "Username");
         txtPassword.Text = mpSettings.GetValue("#Client", "Password");
+        txtAPIKey.Text = mpSettings.GetValue("#Client", "APIKey");
         // ##################################################
 
         // Site Settings
@@ -119,6 +120,7 @@ namespace mpNZB
       mpSettings.SetValueAsBool("#Client", "Auth", chkAuth.Checked);
       mpSettings.SetValue("#Client", "Username", txtUsername.Text);
       mpSettings.SetValue("#Client", "Password", txtPassword.Text);
+      mpSettings.SetValue("#Client", "APIKey", txtAPIKey.Text);
       // ##################################################
 
       // Site Settings
@@ -174,7 +176,7 @@ namespace mpNZB
       switch (cmbGrabber.Text)
       {
         case "SABnzbd":
-          Client = new Clients.SABnzbd(txtHost.Text, txtPort.Text, false, chkAuth.Checked, txtUsername.Text, txtPassword.Text, 1, false);
+          Client = new Clients.SABnzbd(txtHost.Text, txtPort.Text, false, chkAuth.Checked, txtUsername.Text, txtPassword.Text, txtAPIKey.Text, 1, false);
           if (Client.Version().Length != 0)
           {
             MessageBox.Show(null, "Connection: OK", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);

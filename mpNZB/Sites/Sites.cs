@@ -176,7 +176,7 @@ namespace mpNZB
             _Items.Add(Item);
           }
 
-          GUIListItem _Search = MP.Menu(_Items, "Select Specific Search");
+          GUIListItem _Search = ((_Items.Count == 1) ? _Items[0] : MP.Menu(_Items, "Select Specific Search"));
           if (_Search != null)
           {
             string strSearchURL = _Search.Path;
