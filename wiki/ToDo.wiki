@@ -12,5 +12,3 @@
 
 == Not even possible currently ==
   * NZB streaming
-    * [http://code.google.com/p/stream-unrar/ stream-unrar]
-    * [http://www.nzbplayer.com/ NZBPlayer]
