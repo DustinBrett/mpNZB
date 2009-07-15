@@ -1,12 +1,16 @@
 #summary To-Do list for project
 #labels Phase-Design
 
-== General ==
+== Not sure how to fix ==
   * Toggle `btnPause` if `Status` is paused
+
+== Might be possible ==
   * Download Complete pop-up *after* extraction
+
+== Requires a bunch of changes ==
   * Save to folder support
 
-== Future Features: ==
+== Not even possible currently ==
   * NZB streaming
     * [http://code.google.com/p/stream-unrar/ stream-unrar]
     * [http://www.nzbplayer.com/ NZBPlayer]
