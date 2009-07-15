@@ -4,6 +4,7 @@
 == General ==
   * Toggle `btnPause` if `Status` is paused
   * Download Complete pop-up *after* extraction
+  * Save to folder support
 
 == Future Features: ==
   * NZB streaming
