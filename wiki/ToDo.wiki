@@ -1,6 +1,14 @@
 #summary To-Do list for project
 #labels Phase-Design
 
+== mpNZB 2.0 ==
+  * Complete Redo
+    * XML Parser
+    * RSS Parser `(I know RSS uses XML but I want a more specialized function)`
+    * GUI Controller
+    * HTTP Requester
+  * Only SABnzbd Support (0.5 +)
+
 == Not sure how to fix ==
   * Toggle `btnPause` if `Status` is paused
 
