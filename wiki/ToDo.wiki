@@ -2,7 +2,7 @@
 #labels Phase-Design
 
 == mpNZB 2.0 ==
-  * Complete Redo
+  * Re-code
     * XML Parser
     * RSS Parser `(I know RSS uses XML but I want a more specialized function)`
     * GUI Controller
