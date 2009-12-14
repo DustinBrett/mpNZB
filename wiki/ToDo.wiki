@@ -1,22 +1,11 @@
 #summary To-Do list for project
 #labels Phase-Design
 
-= 1.1 =
-=== Add ===
-  * IMDB/TVRAGE Info
-    * Never mind Coverart
-  * Missing episodes searchs `[s]x[ee]` and `s[ss]e[ee]`
-    * Remove the options and just always do both
-
-=== Fix ===
-  * Download complete displays when a job is canceled
-    * Does download complete show up outside mpNZB
-    * Use extract complete instead?
-
 = Future =
-  * NZB streaming
-  * Toggle `btnPause` if `Status` is paused
-  * Save to folder support
+  * NZB Streaming
+  * Toggle `btnPause` if `Status` is Paused
+  * Better Download Complete Notification
+  * IMDb/TVRage Information
 
 = General =
   * Update documentation
