@@ -1,0 +1,214 @@
+﻿<MPinstaler>
+	<ver>1.00.000</ver>
+	<FileList>
+		<File>
+			<FileName>mpNZB.dll</FileName>
+			<Type>Plugin</Type>
+			<SubType>Window</SubType>
+			<Source>trunk\mpNZB\bin\Release\mpNZB.dll</Source>
+			<Id>01010</Id>
+			<Option />
+			<Guid>7b0f4a5f-d26b-402c-93a9-e5e954f28411</Guid>
+		</File>
+		<File>
+			<FileName>mpNZB.xml</FileName>
+			<Type>Skin</Type>
+			<SubType>Blue3</SubType>
+			<Source>skin\Blue3\mpNZB.xml</Source>
+			<Id>02010</Id>
+			<Option />
+			<Guid>aa9e8af2-8ce4-46fd-a215-6235fbf8373f</Guid>
+		</File>
+		<File>
+			<FileName>mpNZB.xml</FileName>
+			<Type>Skin</Type>
+			<SubType>Blue3wide</SubType>
+			<Source>skin\Blue3wide\mpNZB.xml</Source>
+			<Id>02010</Id>
+			<Option />
+			<Guid>a734dda2-8b69-4ede-bccd-ff4692d78340</Guid>
+		</File>
+		<File>
+			<FileName>mpNZB.xml</FileName>
+			<Type>Skin</Type>
+			<SubType>Indigo</SubType>
+			<Source>skin\Indigo\mpNZB.xml</Source>
+			<Id>02010</Id>
+			<Option />
+			<Guid>817e6faf-cfb4-48d9-aa14-fd1b554681f1</Guid>
+		</File>
+		<File>
+			<FileName>mpNZB.xml</FileName>
+			<Type>Skin</Type>
+			<SubType>MediaStream</SubType>
+			<Source>skin\MediaStream\mpNZB.xml</Source>
+			<Id>02010</Id>
+			<Option />
+			<Guid>3adcf448-2b11-4379-ac0a-300a0fbdf215</Guid>
+		</File>
+		<File>
+			<FileName>mpNZB.xml</FileName>
+			<Type>Skin</Type>
+			<SubType>Monochrome</SubType>
+			<Source>skin\Monochrome\mpNZB.xml</Source>
+			<Id>02010</Id>
+			<Option />
+			<Guid>52b156a2-4af9-478b-87ab-91f13d82d9ef</Guid>
+		</File>
+		<File>
+			<FileName>mpNZB.xml</FileName>
+			<Type>Skin</Type>
+			<SubType>PureVisionHD</SubType>
+			<Source>skin\PureVisionHD\mpNZB.xml</Source>
+			<Id>02010</Id>
+			<Option />
+			<Guid>46923af2-9df1-4251-a1ee-f92544578cc3</Guid>
+		</File>
+		<File>
+			<FileName>mpNZB.xml</FileName>
+			<Type>Skin</Type>
+			<SubType>StreamedMP</SubType>
+			<Source>skin\StreamedMP\mpNZB.xml</Source>
+			<Id>02010</Id>
+			<Option />
+			<Guid>f42dde7d-cbd1-4f21-b07d-c337861e3992</Guid>
+		</File>
+		<File>
+			<FileName>mpNZB.xml</FileName>
+			<Type>Skin</Type>
+			<SubType>BleazleWide</SubType>
+			<Source>skin\BleazleWide\mpNZB.xml</Source>
+			<Id>02010</Id>
+			<Option />
+			<Guid>9e302fcf-755e-4fbb-a147-8729f70883ec</Guid>
+		</File>
+		<File>
+			<FileName>mpNZB.xml</FileName>
+			<Type>Skin</Type>
+			<SubType>Black &amp; White 1080</SubType>
+			<Source>skin\Black &amp; White 1080\mpNZB.xml</Source>
+			<Id>02010</Id>
+			<Option />
+			<Guid>6ac2e68e-2c8d-4d17-aa59-dc3cd3c4f5ad</Guid>
+		</File>
+		<File>
+			<FileName>Sites.xml</FileName>
+			<Type>Plugin</Type>
+			<SubType>Window</SubType>
+			<Source>trunk\mpNZB\Sites\Sites.xml</Source>
+			<Id>01010</Id>
+			<Option />
+			<Guid>52431f80-893d-4e02-a5ae-a595fcbfb651</Guid>
+		</File>
+	</FileList>
+	<StringList />
+	<Actions />
+	<SetupGroups />
+	<SetupGroupMappings />
+	<Option>
+		<BuildFileName />
+		<ProiectFileName>C:\Documents and Settings\Dustin\Desktop\mpNZB\mpNZB.xmp</ProiectFileName>
+		<ProiectName>mpNZB 1.1</ProiectName>
+		<Author>Dustin Brett</Author>
+		<UpdateURL>http://code.google.com/p/mpnzb/</UpdateURL>
+		<Version>1.1</Version>
+		<Description>mpNZB is a plug-in for MediaPortal that allows you to download NZB's from multiple sources (Feeds/Groups/Search). Then using SABnzbd it downloads those files from a Usenet provider such as Supernews.</Description>
+		<Group>Web</Group>
+		<Release>Stable </Release>
+		<Script>//css_reference "core.dll";
+//css_reference "Databases.dll";
+//css_reference "utils.dll";
+//css_reference "MPInstaller.Library.dll";
+//css_reference "plugins\Windows\Dialogs.dll";
+
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Windows.Forms;
+using System.Text;
+
+using MediaPortal.Dialogs;
+using MediaPortal.GUI.Library;
+using MediaPortal.MPInstaller;
+
+class InstallScript : MPInstallerScript
+  {
+    /// &lt;summary&gt;
+    /// Execute when the package is downloaded via GUI 
+    /// &lt;/summary&gt;
+    public override void GUI_GetOptions()
+    {
+      base.GUI_GetOptions();
+    }
+
+    /// &lt;summary&gt;
+    /// Test if version is compatible and show warning
+    /// This use when installing via GUI
+    /// &lt;/summary&gt;
+    /// &lt;returns&gt;&lt;/returns&gt;
+    public override bool GUI_Warning()
+    {
+      return base.GUI_Warning();
+    }
+
+    /// &lt;summary&gt;
+    /// Test if version is compatible and show warning
+    /// &lt;/summary&gt;
+    /// &lt;returns&gt;&lt;/returns&gt;
+    public override bool Warning()
+    {
+      return base.Warning();
+    }
+    /// &lt;summary&gt;
+    /// Inits this instance.
+    /// executed when the package it is loaded
+    /// &lt;/summary&gt;
+    public override void Init()
+    {
+      base.Init();
+    }
+
+    /// &lt;summary&gt;
+    /// Installs the current package.
+    /// &lt;/summary&gt;
+    /// &lt;param name="pb"&gt;ProgressBar for overall progress (can bee null) &lt;/param&gt;
+    /// &lt;param name="pb1"&gt;ProgressBar for current copied file (can bee null)&lt;/param&gt;
+    /// &lt;param name="listbox"&gt;Listbox for file listing(can bee null) &lt;/param&gt;
+    public override void Install(ProgressBar pb, ProgressBar pb1, ListBox listbox)
+    {
+      base.Install(pb, pb1, listbox);
+    }
+
+    /// &lt;summary&gt;
+    /// Called when [install file procesed].
+    /// &lt;/summary&gt;
+    /// &lt;param name="mpiFileInfo"&gt;The mpi file info.&lt;/param&gt;
+    public override void OnInstallFileProcesed(MPIFileList mpiFileInfo)
+    {
+
+    }
+
+    /// &lt;summary&gt;
+    /// Called when [install done].
+    /// &lt;/summary&gt;
+    public override void OnInstallDone()
+    {
+
+    }
+
+ }</Script>
+	</Option>
+	<Properties>
+		<MPMaxVersion>0.00.00.00</MPMaxVersion>
+		<MPMinVersion>0.00.00.00</MPMinVersion>
+		<MinExtensionVersion />
+		<MaxExtensionVersion />
+		<ForumURL>http://forum.team-mediaportal.com/plugins-47/mpnzb-nzb-downloader-57265/</ForumURL>
+		<WebURL>http://code.google.com/p/mpnzb/</WebURL>
+		<WikiURL>http://code.google.com/p/mpnzb/wiki/Manual</WikiURL>
+		<CreationDate>14-12-09</CreationDate>
+		<SingleGroupSelect>False</SingleGroupSelect>
+		<ClearSkinCache>False</ClearSkinCache>
+		<UseRealPathInPackage>False</UseRealPathInPackage>
+	</Properties>
+</MPinstaler>
