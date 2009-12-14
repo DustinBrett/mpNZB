@@ -1,18 +1,22 @@
 #summary A record of changes made in each release.
 #labels Phase-Design
 
-= 1.08 =
-*Fixes*
-  * All references to MyTVSeries have been changed to MP-TVSeries
-    * Not sure why I thought it was My.
-  * Disabled MP-TVSeries formatting options if its not checked
-  * Changed default for "Download NZB?" to Yes
-
+= 1.1 =
 *Additions*
-  * SABnzbd 0.4.11 support
-  * APIKey support
-  * Added `[Failed]` as an event type in History
-  * Added custom `<searches>` instead of just 1 `<search>`
+  * SABnzbd 0.5+ Support
+  * API Key support
+  * Custom `<searches>` instead of a single `<search>`
+  * Version displayed on startup in status bar
+
+*Fixes*
+  * References to MyTVSeries have been changed to MP-TVSeries
+  * Empty Max Results caused error
+  * Removed sites in list when required login information was missing
+
+*Modifications*
+  * Event types in History view
+  * Queue commands updated to new API
+  * Changed default for `Download NZB?` to `Yes`
 
 = 1.07 =
 *Fixes*
