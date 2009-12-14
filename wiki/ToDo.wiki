@@ -3,12 +3,12 @@
 
 = 1.2 =
   * Extraction/Download Complete
-    * Use History Data
-  * Better History Data
+    * Use [http://wiki.sabnzbd.org/api#toc10 History Data]
+  * Better [http://wiki.sabnzbd.org/api#toc10 History Data]
     * `api?mode=history&output=xml`
-  * Pause individual download
+  * [http://wiki.sabnzbd.org/api#toc35 Pause individual download]
     * `api?mode=queue&name=pause&value=[ID]`
-  * Resume individual download
+  * [http://wiki.sabnzbd.org/api#toc36 Resume individual download]
     * `api?mode=queue&name=resume&value=[ID]`
   * IMDb/TVRage Information
   * Toggle `btnPause` if `Status` is Paused
