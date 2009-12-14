@@ -11,6 +11,7 @@
   * IMDb/TVRage Information
   * Toggle `btnPause` if `Status` is Paused
   * Status off if outside plugin and all history is complete
+    * Make sure it starts back up on entering plug-in
 
 = Future =
   * NZB Streaming  
