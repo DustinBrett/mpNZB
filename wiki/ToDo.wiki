@@ -4,9 +4,9 @@
 = 1.2 =
   * Extraction/Download Complete
     * Use History Data
-  * Better History Data (api?mode=history&output=xml)
-  * Pause individual download (api?mode=queue&name=pause&value=[ID])
-  * Resume individual download (api?mode=queue&name=resume&value=SABnzbd_nzo_zt2syz)
+  * Better History Data (`api?mode=history&output=xml`)
+  * Pause individual download (`api?mode=queue&name=pause&value=[ID]`)
+  * Resume individual download (`api?mode=queue&name=resume&value=[ID]`)
   * IMDb/TVRage Information
   * Toggle `btnPause` if `Status` is Paused
 
