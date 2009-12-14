@@ -4,8 +4,6 @@
 = 1.2 =
   * Extraction/Download Complete
     * Use [http://wiki.sabnzbd.org/api#toc10 History Data]
-  * Better [http://wiki.sabnzbd.org/api#toc10 History Data]
-    * `api?mode=history&output=xml`
   * [http://wiki.sabnzbd.org/api#toc35 Pause individual download]
     * `api?mode=queue&name=pause&value=[ID]`
   * [http://wiki.sabnzbd.org/api#toc36 Resume individual download]
