@@ -170,6 +170,8 @@ namespace mpNZB
 
     private void btnTestConn_Click(object sender, EventArgs e)
     {
+      
+      
       // Setup Client
       // ##################################################
       Clients.iClient Client;
@@ -177,9 +179,12 @@ namespace mpNZB
       {
         case "SABnzbd":
           Client = new Clients.SABnzbd(txtHost.Text, txtPort.Text, false, chkAuth.Checked, txtUsername.Text, txtPassword.Text, txtAPIKey.Text, 1, false);
-          if (Client.Version().Length != 0)
+
+          string strVersion = Client.Version();
+
+          if (strVersion.Length != 0)
           {
-            MessageBox.Show(null, "Connection: OK", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(null, "Connection: OK" + Environment.NewLine + "Version: " + strVersion, "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
           }
           else
           {

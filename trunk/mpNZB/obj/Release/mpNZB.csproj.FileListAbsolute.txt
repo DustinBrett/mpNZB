@@ -70,9 +70,5 @@ C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\DirectSho
 C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\Bass.Net.dll
 C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\AxInterop.WMPLib.dll
 C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\taglib-sharp.dll
-C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\Core.dll
-C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\Databases.dll
-C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\Dialogs.dll
-C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\Utils.dll
 C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\ICSharpCode.SharpZipLib.dll
 C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\MediaPortal.Support.dll

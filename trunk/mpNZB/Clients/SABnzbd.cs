@@ -91,7 +91,7 @@ namespace mpNZB.Clients
       {
         if ((IP.Length != 0) && (Port.Length != 0))
         {
-            strResult = "http://" + IP + ":" + Port + "/sabnzbd/" + _Mode + ((APIKey.Length > 0) ? "&" + ((_Mode.Contains("queue") || _Mode.Contains("history")) ? "session=" : "apikey=") + APIKey : String.Empty) + (((Auth) && ((Username.Length > 0) && (Password.Length > 0))) ? "&" + "ma_username=" + Username + "&" + "ma_password=" + Password : String.Empty) + ((_Command.Length > 0) ? "&" + _Command : String.Empty) + ((_CatSelect) ? "&" + "cat=" + SelectCategory() : String.Empty);
+            strResult = "http://" + IP + ":" + Port + "/sabnzbd/" + _Mode + ((APIKey.Length > 0) ? "&apikey=" + APIKey : String.Empty) + (((Auth) && ((Username.Length > 0) && (Password.Length > 0))) ? "&" + "ma_username=" + Username + "&" + "ma_password=" + Password : String.Empty) + ((_Command.Length > 0) ? "&" + _Command : String.Empty) + ((_CatSelect) ? "&" + "cat=" + SelectCategory() : String.Empty);
         }
       }
       catch (Exception e) { MP.Error(e); }
@@ -272,27 +272,27 @@ namespace mpNZB.Clients
             }
 
             string strStatus = String.Empty;
+
+            // Version 0.4
             if (nodeItem["description"].InnerText.Contains("[Completed]"))
             {
-              strStatus = "Completed";
+              strStatus = "Success";
             }
             else if (nodeItem["description"].InnerText.Contains("[Failed]"))
             {
-              strStatus = "Failed";
+              strStatus = "Failure";
             }
-            else if (nodeItem["description"].InnerText.Contains("Post-processing active."))
+
+            // Version 0.5
+            else if (nodeItem["description"].InnerText.Contains("Stage Unpack"))
             {
-              if (nodeItem["description"].InnerText.Contains("[Verifying...]"))
+              if (nodeItem["description"].InnerText.Contains("Unpacked"))
               {
-                strStatus = "Verifying";
+                strStatus = "Success";
               }
-              else if (nodeItem["description"].InnerText.Contains("[Extracting...]"))
+              else if (nodeItem["description"].InnerText.Contains("Failed"))
               {
-                strStatus = "Extracting";
-              }
-              else
-              {
-                strStatus = "Waiting";
+                strStatus = "Failure";
               }
             }
 
@@ -346,23 +346,23 @@ namespace mpNZB.Clients
         switch (_Option.Label)
         {
           case "Move Up":
-            SendURL(CreateURL("queue/switch?uid1=" + _List.ListItems[_List.SelectedListItemIndex].Path + "&uid2=" + _List.ListItems[_List.SelectedListItemIndex - 1].Path, String.Empty, false));
+            SendURL(CreateURL("api?mode=switch&value=" + _List.ListItems[_List.SelectedListItemIndex].Path + "&value2=" + _List.ListItems[_List.SelectedListItemIndex - 1].Path, String.Empty, false));
             break;
           case "Move Down":
-            SendURL(CreateURL("queue/switch?uid1=" + _List.ListItems[_List.SelectedListItemIndex].Path + "&uid2=" + _List.ListItems[_List.SelectedListItemIndex + 1].Path, String.Empty, false));
+            SendURL(CreateURL("api?mode=switch&value=" + _List.ListItems[_List.SelectedListItemIndex].Path + "&value2=" + _List.ListItems[_List.SelectedListItemIndex + 1].Path, String.Empty, false));
             break;
           case "Move to Top":
-            SendURL(CreateURL("queue/switch?uid1=" + _List.ListItems[_List.SelectedListItemIndex].Path + "&uid2=" + _List.ListItems[0].Path, String.Empty, false));
+            SendURL(CreateURL("api?mode=switch&value=" + _List.ListItems[_List.SelectedListItemIndex].Path + "&value2=" + _List.ListItems[0].Path, String.Empty, false));
             break;
           case "Move to Bottom":
-            SendURL(CreateURL("queue/switch?uid1=" + _List.ListItems[_List.SelectedListItemIndex].Path + "&uid2=" + _List.ListItems[_List.Count - 1].Path, String.Empty, false));
+            SendURL(CreateURL("api?mode=switch&value=" + _List.ListItems[_List.SelectedListItemIndex].Path + "&value2=" + _List.ListItems[_List.Count - 1].Path, String.Empty, false));
             break;
           case "Delete Job":
             Jobs.Remove(_List.ListItems[_List.SelectedListItemIndex].Label + " (" + _List.ListItems[_List.SelectedListItemIndex].Path + ")");
-            SendURL(CreateURL("queue/delete?uid=" + _List.ListItems[_List.SelectedListItemIndex].Path, String.Empty, false));
+            SendURL(CreateURL("api?mode=queue&name=delete&value=" + _List.ListItems[_List.SelectedListItemIndex].Path, String.Empty, false));
             break;
           case "Change Category":
-            SendURL(CreateURL("queue/change_cat?nzo_id=" + _List.ListItems[_List.SelectedListItemIndex].Path + "&cat=" + SelectCategory(), String.Empty, false));
+            SendURL(CreateURL("api?mode=change_cat&value=" + _List.ListItems[_List.SelectedListItemIndex].Path + "&value2=" + SelectCategory(), String.Empty, false));
             break;
         }
         Queue(_List, _GUI);
@@ -436,6 +436,11 @@ namespace mpNZB.Clients
         if (xmlDoc.SelectSingleNode("versions/version") != null)
         {
           strResult = xmlDoc.SelectSingleNode("versions/version").InnerText;
+        }
+
+        if (xmlDoc.SelectSingleNode("version") != null)
+        {
+          strResult = xmlDoc.SelectSingleNode("version").InnerText;
         }
       }
       catch (Exception e) { MP.Error(e); }
