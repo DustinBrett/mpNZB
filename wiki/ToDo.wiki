@@ -13,13 +13,6 @@
     * Does download complete show up outside mpNZB
     * Use extract complete instead?
 
-=== Test ===
-  * Newzleech
-    * Site is currently offline
-  * Custom `<searches>` instead of a single `<search>`
-    * How does this work?
-    * Does this work at all?
-
 = Future =
   * NZB streaming
   * Toggle `btnPause` if `Status` is paused
