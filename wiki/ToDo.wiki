@@ -27,7 +27,7 @@
     * Site is currently offline
   * Display Name
     * Test with different skin
-  * Custom <searches> instead of a single <search>
+  * Custom `<searches>` instead of a single `<search>`
     * How does this work?
     * Does this work at all?
 
