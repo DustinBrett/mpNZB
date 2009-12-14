@@ -6,6 +6,7 @@
   * Toggle `btnPause` if `Status` is Paused
   * Better Download Complete Notification
   * IMDb/TVRage Information
+  * SABnzbd information on `Basic Home`
 
 = General =
   * Update documentation
