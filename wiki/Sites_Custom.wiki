@@ -111,7 +111,7 @@ The information needed to replace `[I]` and `[H]` can be found at [http://nzbs.o
             </feeds>
             <searches>
                   <search name="Default">http://www.nzbs.org/rss.php?q=[QUERY]&amp;i=[I]&amp;h=[H]&amp;dl=1&amp;num=[MAX]</search>
-            <searches>
+            </searches>
             <item type="1">
                   <title element="title" />
                   <size type="1" element="description" />
