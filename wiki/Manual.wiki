@@ -66,7 +66,7 @@ All issues should be posted [http://code.google.com/p/mpnzb/issues/list here].
 == Requirements ==
 
   * [http://www.team-mediaportal.com/ MediaPortal] (>= 1.0)
-  * [http://www.sabnzbd.org/ SABnzbd] ([http://sourceforge.net/project/showfiles.php?group_id=207766&package_id=248837&release_id=671171 0.4.8])
+  * [http://www.sabnzbd.org/ SABnzbd] ([http://sourceforge.net/project/showfiles.php?group_id=207766&package_id=248837&release_id=671171 0.4.8] or higher)
 
 == Instructions ==
 
