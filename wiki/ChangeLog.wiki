@@ -3,7 +3,7 @@
 
 = 1.2 =
 *Modifications*
-  * Download Complete uses History Data
+  * Download Complete uses History Data (Much more accurate/responsive)
   * More accurate History Data
   * This version is for SABnzbd 0.5+
 
