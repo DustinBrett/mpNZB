@@ -2,7 +2,7 @@
 #labels Phase-Design
 
 = 1.1 =
-== Add ==
+=== Add ===
   * NZB Matrix support
     * Need VIP Account
     * Free service also?
@@ -11,7 +11,7 @@
   * Missing episodes searchs `[s]x[ee]` and `s[ss]e[ee]`
     * Remove the options and just always do both
 
-== Fix ==
+=== Fix ===
   * Download complete displays when a job is canceled
     * Does download complete show up outside mpNZB
     * Use extract complete instead?
@@ -22,7 +22,7 @@
   * NZBClub size data does not display
     * Might not be fixable
 
-== Test ==
+=== Test ===
   * Newzleech
     * Site is currently offline
   * Display Name
