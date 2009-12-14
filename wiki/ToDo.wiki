@@ -12,10 +12,6 @@
   * Download complete displays when a job is canceled
     * Does download complete show up outside mpNZB
     * Use extract complete instead?
-  * Database location for MPTVSeries is hard coded
-    * Can the path be read?
-  * MPTVSeries show #1 is blank
-    * This may just be my PC
   * NZBClub size data does not display
     * Might not be fixable
 
