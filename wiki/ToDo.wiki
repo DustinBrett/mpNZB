@@ -8,7 +8,7 @@
     * Free service also?
   * IMDB/TVRAGE Info
     * Nevermind Coverart
-  * Missing episodes searchs [s]x[ee] and s[ss]e[ee]
+  * Missing episodes searchs `[s]x[ee]` and `s[ss]e[ee]`
     * Remove the options and just always do both
 
 == Fix ==
