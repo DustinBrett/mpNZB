@@ -1,26 +1,41 @@
 #summary To-Do list for project
 #labels Phase-Design
 
-== mpNZB 2.0 ==
-  * Re-code
-    * XML Parser
-    * RSS Parser `(I know RSS uses XML but I want a more specialized function)`
-    * GUI Controller
-    * HTTP Requester
-  * Only SABnzbd Support (0.5 +)
+= 1.1 =
+== Add ==
+  * NZB Matrix support
+    * Need VIP Account
+    * Free service also?
+  * IMDB/TVRAGE Info
+    * Nevermind Coverart
+  * Missing episodes searchs [s]x[ee] and s[ss]e[ee]
+    * Remove the options and just always do both
 
-== Not sure how to fix ==
+== Fix ==
+  * Download complete displays when a job is canceled
+    * Does download complete show up outside mpNZB
+    * Use extract complete instead?
+  * Database location for MPTVSeries is hard coded
+    * Can the path be read?
+  * MPTVSeries show #1 is blank
+    * This may just be my PC
+  * NZBClub size data does not display
+    * Might not be fixable
+
+== Test ==
+  * Newzleech
+    * Site is currently offline
+  * Display Name
+    * Test with different skin
+  * Custom <searches> instead of a single <search>
+    * How does this work?
+    * Does this work at all?
+
+= Future =
+  * NZB streaming
   * Toggle `btnPause` if `Status` is paused
-
-== Probably possible ==
-  * Download Complete pop-up *after* extraction
-
-== Requires a bunch of changes ==
   * Save to folder support
 
-== Not even possible currently ==
-  * NZB streaming
-
-== I'm lazy ==
+= General =
   * Update manual to show APIKey
   * Update gallery to show new stuff
