@@ -4,7 +4,7 @@
 = 1.2 =
 *Modifications*
   * More accurate History data
-  * This version is meant only for SABnzbd 0.5+
+  * This version is only for SABnzbd 0.5+
 
 = 1.1 =
 *Additions*
