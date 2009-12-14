@@ -8,7 +8,7 @@
 			<Source>trunk\mpNZB\bin\Release\mpNZB.dll</Source>
 			<Id>01010</Id>
 			<Option />
-			<Guid>7b0f4a5f-d26b-402c-93a9-e5e954f28411</Guid>
+			<Guid>a924b1a4-bda5-4761-81df-56cab0a51a05</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -17,7 +17,7 @@
 			<Source>skin\Blue3\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>aa9e8af2-8ce4-46fd-a215-6235fbf8373f</Guid>
+			<Guid>09c5b1c3-5266-4019-a296-6cabaa337f8f</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -26,7 +26,7 @@
 			<Source>skin\Blue3wide\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>a734dda2-8b69-4ede-bccd-ff4692d78340</Guid>
+			<Guid>4c1b7c7d-447c-41f2-a8cd-9b271ad430d3</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -35,7 +35,7 @@
 			<Source>skin\Indigo\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>817e6faf-cfb4-48d9-aa14-fd1b554681f1</Guid>
+			<Guid>2be5cf7d-9e0f-4362-99a6-8a51e6785b85</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -44,7 +44,7 @@
 			<Source>skin\MediaStream\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>3adcf448-2b11-4379-ac0a-300a0fbdf215</Guid>
+			<Guid>0bb9d02a-5e17-42bd-8cab-b48fdab9161f</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -53,7 +53,7 @@
 			<Source>skin\Monochrome\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>52b156a2-4af9-478b-87ab-91f13d82d9ef</Guid>
+			<Guid>7d3f45e7-699c-4a19-98df-0f2f953b936b</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -62,7 +62,7 @@
 			<Source>skin\PureVisionHD\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>46923af2-9df1-4251-a1ee-f92544578cc3</Guid>
+			<Guid>b610a5a0-2df1-4115-9ca2-aa37db9c97db</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -71,7 +71,7 @@
 			<Source>skin\StreamedMP\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>f42dde7d-cbd1-4f21-b07d-c337861e3992</Guid>
+			<Guid>c9f1800e-e3a4-49fa-b6d4-3119d6d2238e</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -80,7 +80,7 @@
 			<Source>skin\BleazleWide\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>9e302fcf-755e-4fbb-a147-8729f70883ec</Guid>
+			<Guid>b7f797e8-1062-4d67-bd82-f8ed52a72697</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -89,7 +89,7 @@
 			<Source>skin\Black &amp; White 1080\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>6ac2e68e-2c8d-4d17-aa59-dc3cd3c4f5ad</Guid>
+			<Guid>224dbf17-d50b-4970-8607-f0fc673cf5c6</Guid>
 		</File>
 		<File>
 			<FileName>Sites.xml</FileName>
@@ -98,7 +98,7 @@
 			<Source>trunk\mpNZB\Sites\Sites.xml</Source>
 			<Id>01010</Id>
 			<Option />
-			<Guid>52431f80-893d-4e02-a5ae-a595fcbfb651</Guid>
+			<Guid>c9fb5849-48bf-40d8-8027-ab7f915fa805</Guid>
 		</File>
 	</FileList>
 	<StringList />
