@@ -33,6 +33,7 @@ Currently mpNZB supports 11 different sites and can support most sites with RSS 
 == Skins ==
 
   * Black & White 1080
+  * Black Glass
   * !BleazleWide
   * Blue3
   * Blue3wide
