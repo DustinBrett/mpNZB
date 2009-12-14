@@ -47,19 +47,49 @@ namespace mpNZB
               case "Feeds":
                 if (nodeItem.SelectNodes("feeds").Count != 0)
                 {
-                  _Items.Add(new GUIListItem(nodeItem.Attributes["name"].InnerText));
+                  if (nodeItem.SelectSingleNode("login") != null)
+                  {
+                    if ((nodeItem["login"].Attributes["username"].InnerText.Length != 0) && (nodeItem["login"].Attributes["password"].InnerText.Length != 0))
+                    {
+                      _Items.Add(new GUIListItem(nodeItem.Attributes["name"].InnerText));
+                    }
+                  }
+                  else
+                  {
+                    _Items.Add(new GUIListItem(nodeItem.Attributes["name"].InnerText));
+                  }
                 }
                 break;
               case "Search":
                 if (nodeItem.SelectNodes("searches").Count != 0)
                 {
-                  _Items.Add(new GUIListItem(nodeItem.Attributes["name"].InnerText));
+                  if (nodeItem.SelectSingleNode("login") != null)
+                  {
+                    if ((nodeItem["login"].Attributes["username"].InnerText.Length != 0) && (nodeItem["login"].Attributes["password"].InnerText.Length != 0))
+                    {
+                      _Items.Add(new GUIListItem(nodeItem.Attributes["name"].InnerText));
+                    }
+                  }
+                  else
+                  {
+                    _Items.Add(new GUIListItem(nodeItem.Attributes["name"].InnerText));
+                  }
                 }
                 break;
               case "Groups":
                 if (nodeItem.SelectSingleNode("groups") != null)
                 {
-                  _Items.Add(new GUIListItem(nodeItem.Attributes["name"].InnerText));
+                  if (nodeItem.SelectSingleNode("login") != null)
+                  {
+                    if ((nodeItem["login"].Attributes["username"].InnerText.Length != 0) && (nodeItem["login"].Attributes["password"].InnerText.Length != 0))
+                    {
+                      _Items.Add(new GUIListItem(nodeItem.Attributes["name"].InnerText));
+                    }
+                  }
+                  else
+                  {
+                    _Items.Add(new GUIListItem(nodeItem.Attributes["name"].InnerText));
+                  }
                 }
                 break;
             }
@@ -96,6 +126,7 @@ namespace mpNZB
 
         Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
         MaxResults = mpSettings.GetValueAsInt("#Sites", "MaxResults", 50);
+        if (MaxResults == 0) { MaxResults = 50; }
         MPTVSeries = mpSettings.GetValueAsBool("#Sites", "MPTVSeries", false);
         mpSettings.Dispose();
       }

@@ -222,11 +222,19 @@ namespace mpNZB
           case "SABnzbd":
             {
               Client = new Clients.SABnzbd(mpSettings.GetValue("#Client", "Host"), mpSettings.GetValue("#Client", "Port"), mpSettings.GetValueAsBool("#Client", "CatSelect", false), mpSettings.GetValueAsBool("#Client", "Auth", false), mpSettings.GetValue("#Client", "Username"), mpSettings.GetValue("#Client", "Password"), mpSettings.GetValue("#Client", "APIKey"), mpSettings.GetValueAsInt("#Plugin", "UpdateFrequency", 1), mpSettings.GetValueAsBool("#Plugin", "Notifications", false));
-              if (Client.Version().Length == 0)
+
+              string strVersion = Client.Version();
+
+              if (strVersion.Length != 0)
               {
-                MP.OK("SABnzbd connection failed.", "Client Status");
+                GUIPropertyManager.SetProperty("#Status", "Idle (" + strVersion + ")");
+              }
+              else
+              {
+                GUIPropertyManager.SetProperty("#Status", "SABnzbd connection failed");
                 return;
               }
+
               break;
             }
         }
@@ -332,7 +340,6 @@ namespace mpNZB
           }
 
           HttpWebResponse webResp = (HttpWebResponse)webReq.GetResponse();
-
           XmlDocument xmlDoc = new XmlDocument();
           xmlDoc.Load(((webResp.ContentEncoding.ToLower().Contains("gzip")) ? new GZipStream(webResp.GetResponseStream(), CompressionMode.Decompress, false) : webResp.GetResponseStream()));
           webResp.Close();
