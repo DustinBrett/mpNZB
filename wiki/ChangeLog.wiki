@@ -12,11 +12,13 @@
   * References to MyTVSeries have been changed to MP-TVSeries
   * Empty Max Results caused error
   * Removed sites in list when required login information was missing
+  * NZBClub size data was not showing
 
 *Modifications*
   * Event types in History view
   * Queue commands updated to new API
   * Changed default for `Download NZB?` to `Yes`
+  * Missing episodes now searches using `S01E01` & `1x01`
 
 = 1.07 =
 *Fixes*
