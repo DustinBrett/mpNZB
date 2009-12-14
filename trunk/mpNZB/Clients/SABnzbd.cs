@@ -249,54 +249,31 @@ namespace mpNZB.Clients
       try
       {
         XmlDocument xmlDoc = new XmlDocument();
-        xmlDoc.Load(new XmlTextReader(CreateURL("rss?mode=history", String.Empty, false)));
+        xmlDoc.Load(new XmlTextReader(CreateURL("api?mode=history", "output=xml", false)));
 
-        if (xmlDoc.SelectSingleNode("rss/channel") != null)
+        if (xmlDoc.SelectSingleNode("history/slots") != null)
         {
           _List.Clear();
 
-          string strJobInfo;
+          string strItemInfo = String.Empty;
 
-          foreach (XmlNode nodeItem in xmlDoc.SelectNodes("rss/channel/item"))
+          foreach (XmlNode nodeItem in xmlDoc.SelectNodes("history/slots/slot"))
           {
-            strJobInfo = nodeItem["description"].InnerText;
-            strJobInfo = Regex.Replace(strJobInfo, "<tr><dt>", Environment.NewLine + Environment.NewLine);
-            strJobInfo = Regex.Replace(strJobInfo, "</d[d,t]><dd>", Environment.NewLine);
-            strJobInfo = Regex.Replace(strJobInfo, "<br>", Environment.NewLine);
-            strJobInfo = Regex.Replace(strJobInfo, "</dd></tr>", String.Empty);
+            DateTime dtPubDate = new DateTime(1970, 1, 1, 0, 0, 0, 0).AddSeconds(double.Parse(nodeItem["completed"].InnerText));
 
-            DateTime dtPubDate = new DateTime();
-            if (nodeItem.SelectSingleNode("pubDate") != null)
-            {
-              DateTime.TryParseExact(nodeItem["pubDate"].InnerText.Replace("GMT", "+0000"), "ddd, dd MMM yyyy HH:mm:ss zzz", CultureInfo.InvariantCulture, DateTimeStyles.None, out dtPubDate);
-            }
+            strItemInfo = String.Empty;
 
-            string strStatus = String.Empty;
+            foreach (XmlNode nodeInfo in nodeItem.SelectNodes("stage_log/slot"))
+            {
+              strItemInfo += ((strItemInfo.Length > 0) ? Environment.NewLine : String.Empty) + nodeInfo["name"].InnerText + ":" + Environment.NewLine;
 
-            // Version 0.4
-            if (nodeItem["description"].InnerText.Contains("[Completed]"))
-            {
-              strStatus = "Success";
-            }
-            else if (nodeItem["description"].InnerText.Contains("[Failed]"))
-            {
-              strStatus = "Failure";
-            }
-
-            // Version 0.5
-            else if (nodeItem["description"].InnerText.Contains("Stage Unpack"))
-            {
-              if (nodeItem["description"].InnerText.Contains("Unpacked"))
+              foreach (XmlNode nodeProgress in nodeInfo.SelectNodes("actions/item"))
               {
-                strStatus = "Success";
-              }
-              else if (nodeItem["description"].InnerText.Contains("Failed"))
-              {
-                strStatus = "Failure";
+                strItemInfo += nodeProgress.InnerText + Environment.NewLine;
               }
             }
 
-            MP.ListItem(_List, nodeItem["title"].InnerText, strStatus, strJobInfo, dtPubDate, 0, String.Empty, 4);
+            MP.ListItem(_List, nodeItem["nzb_name"].InnerText, nodeItem["status"].InnerText, strItemInfo, dtPubDate, 0, String.Empty, 4);
           }
 
           GUIPropertyManager.SetProperty("#Status", "History Loaded");
@@ -432,11 +409,6 @@ namespace mpNZB.Clients
       {
         XmlDocument xmlDoc = new XmlDocument();
         xmlDoc.Load(new XmlTextReader(CreateURL("api?mode=version", "output=xml", false)));
-
-        if (xmlDoc.SelectSingleNode("versions/version") != null)
-        {
-          strResult = xmlDoc.SelectSingleNode("versions/version").InnerText;
-        }
 
         if (xmlDoc.SelectSingleNode("version") != null)
         {
