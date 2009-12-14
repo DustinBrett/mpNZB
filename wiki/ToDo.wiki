@@ -12,14 +12,10 @@
   * Download complete displays when a job is canceled
     * Does download complete show up outside mpNZB
     * Use extract complete instead?
-  * NZBClub size data does not display
-    * Might not be fixable
 
 === Test ===
   * Newzleech
     * Site is currently offline
-  * Display Name
-    * Test with different skin
   * Custom `<searches>` instead of a single `<search>`
     * How does this work?
     * Does this work at all?
