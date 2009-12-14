@@ -10,6 +10,7 @@
     * `api?mode=queue&name=resume&value=[ID]`
   * IMDb/TVRage Information
   * Toggle `btnPause` if `Status` is Paused
+  * Status off if outside plugin and all history is complete
 
 = Future =
   * NZB Streaming  
