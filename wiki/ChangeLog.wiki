@@ -3,7 +3,8 @@
 
 = 1.2 =
 *Modifications*
-  * More accurate History data
+  * Download Complete uses History Data
+  * More accurate History Data
   * This version is for SABnzbd 0.5+
 
 = 1.1 =
