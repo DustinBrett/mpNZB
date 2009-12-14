@@ -3,9 +3,6 @@
 
 = 1.1 =
 === Add ===
-  * NZB Matrix support
-    * Need VIP Account
-    * Free service also?
   * IMDB/TVRAGE Info
     * Never mind Coverart
   * Missing episodes searchs `[s]x[ee]` and `s[ss]e[ee]`
