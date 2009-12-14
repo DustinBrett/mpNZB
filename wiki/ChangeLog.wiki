@@ -6,6 +6,7 @@
   * Download Complete uses History Data (Much more accurate/responsive)
   * More accurate History Data
   * This version is for SABnzbd 0.5+
+  * Status updates only stop on plugin exit
 
 = 1.1 =
 *Additions*
