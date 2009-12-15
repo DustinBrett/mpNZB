@@ -135,33 +135,79 @@ namespace mpNZB.Clients
 
     #endregion
 
-    #region Jobs
+    #region History
 
-    List<string> Jobs = new List<string>();
+    List<GUIListItem> _History = new List<GUIListItem>();
 
-    private void JobCompare(XmlDocument xmlDoc)
+    bool bolLockHistory = false;
+    bool bolItemsDone = false;
+
+    private void HistoryCheck()
     {
-      List<string> _Jobs = new List<string>();
-
-      foreach (XmlNode nodeItem in xmlDoc.SelectNodes("queue/jobs/job"))
+      if (!(bolLockHistory))
       {
-        _Jobs.Add(nodeItem.SelectSingleNode("filename").InnerText + " (" + nodeItem.SelectSingleNode("id").InnerText + ")");
-      }
+        bolLockHistory = true;
 
-      if (_Jobs.Count < Jobs.Count)
-      {
-        foreach (string Job in Jobs)
+        XmlDocument xmlDoc = new XmlDocument();
+        xmlDoc.Load(new XmlTextReader(CreateURL("api?mode=history", "output=xml", false)));
+
+        List<GUIListItem> History = new List<GUIListItem>();
+
+        foreach (XmlNode nodeItem in xmlDoc.SelectNodes("history/slots/slot"))
         {
-          if (!(_Jobs.Contains(Job)))
+          History.Add(new GUIListItem(nodeItem["name"].InnerText, nodeItem["status"].InnerText, nodeItem["nzo_id"].InnerText, false, null));
+        }
+
+        if (_History.Count > 0)
+        {
+          bool bolItemFound;
+          int intItemsDone = 0;
+
+          foreach(GUIListItem NewItem in History)
           {
-            Jobs.Remove(Job);
-            if (Notifications) { MP.OK(Job, "Download Complete"); }
-            return;
+            bolItemFound = false;
+
+            foreach (GUIListItem OldItem in _History)
+            {
+              if (NewItem.Path == OldItem.Path)
+              {
+                if ((NewItem.Label2 == "Completed") || (NewItem.Label2 == "Failed"))
+                {
+                  intItemsDone += 1;
+
+                  if (NewItem.Label2 != OldItem.Label2)
+                  {
+                    MP.OK(NewItem.Label, NewItem.Label2);
+                  }
+                }
+
+                bolItemFound = true;
+                break;
+              }
+            }
+
+            if ((bolItemFound == false) && ((NewItem.Label2 == "Completed") || (NewItem.Label2 == "Failed")))
+            {
+              intItemsDone += 1;
+
+              MP.OK(NewItem.Label, NewItem.Label2);
+            }
+          }
+
+          if (intItemsDone == _History.Count)
+          {
+            bolItemsDone = true;
+          }
+          else
+          {
+            bolItemsDone = false;
           }
         }
-      }
 
-      Jobs = _Jobs;
+        _History = History;
+
+        bolLockHistory = false;
+      }
     }
 
     #endregion
@@ -177,13 +223,14 @@ namespace mpNZB.Clients
 
         if (xmlDoc.SelectSingleNode("queue") != null)
         {
-          int intJobCount = int.Parse(xmlDoc.SelectSingleNode("queue/noofslots").InnerText);
           string strPause = xmlDoc.SelectSingleNode("queue/paused").InnerText;
 
-          if ((intJobCount == 0) || (strPause == "True") || ((InPlugin == false) && (Notifications == false))) { tmrStatus.Enabled = false; }
+          if ((InPlugin == false) && ((Notifications == false) || bolItemsDone)) { tmrStatus.Enabled = false; }
 
           if (InPlugin)
           {
+            int intJobCount = int.Parse(xmlDoc.SelectSingleNode("queue/noofslots").InnerText);
+
             NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
 
             GUIPropertyManager.SetProperty("#Paused", strPause);
@@ -195,7 +242,10 @@ namespace mpNZB.Clients
             GUIPropertyManager.SetProperty("#TimeLeft", xmlDoc.SelectSingleNode("queue/timeleft").InnerText + " S");
           }
 
-          JobCompare(xmlDoc);
+          if (Notifications)
+          {
+            HistoryCheck();
+          }
         }
         else
         {
@@ -273,7 +323,7 @@ namespace mpNZB.Clients
               }
             }
 
-            MP.ListItem(_List, nodeItem["nzb_name"].InnerText, nodeItem["status"].InnerText, strItemInfo, dtPubDate, 0, String.Empty, 4);
+            MP.ListItem(_List, nodeItem["name"].InnerText, nodeItem["status"].InnerText, strItemInfo, dtPubDate, 0, String.Empty, 4);
           }
 
           GUIPropertyManager.SetProperty("#Status", "History Loaded");
@@ -335,7 +385,6 @@ namespace mpNZB.Clients
             SendURL(CreateURL("api?mode=switch&value=" + _List.ListItems[_List.SelectedListItemIndex].Path + "&value2=" + _List.ListItems[_List.Count - 1].Path, String.Empty, false));
             break;
           case "Delete Job":
-            Jobs.Remove(_List.ListItems[_List.SelectedListItemIndex].Label + " (" + _List.ListItems[_List.SelectedListItemIndex].Path + ")");
             SendURL(CreateURL("api?mode=queue&name=delete&value=" + _List.ListItems[_List.SelectedListItemIndex].Path, String.Empty, false));
             break;
           case "Change Category":
@@ -364,7 +413,6 @@ namespace mpNZB.Clients
 
         if (strResult == "ok\n")
         {
-          tmrStatus.Enabled = true;
           GUIPropertyManager.SetProperty("#Status", "Downloading");
         }
         else
@@ -391,7 +439,6 @@ namespace mpNZB.Clients
       {
         if (SendURL(CreateURL("api?mode=resume", String.Empty, false)) == "ok\n")
         {
-          tmrStatus.Enabled = true;
           GUIPropertyManager.SetProperty("#Status", "Queue resumed");
         }
         else
@@ -422,5 +469,5 @@ namespace mpNZB.Clients
 
     #endregion
 
-  }  
+  }
 }
