@@ -280,7 +280,7 @@ namespace mpNZB.Clients
           {
             strJobInfo = "Status: " + nodeItem["status"].InnerText + Environment.NewLine + "Filename: " + nodeItem["filename"].InnerText + Environment.NewLine + "Priority: " + nodeItem["priority"].InnerText + Environment.NewLine + "Category: " + nodeItem["cat"].InnerText + Environment.NewLine + "Percentage: " + nodeItem["percentage"].InnerText + "%";
 
-            MP.ListItem(_List, nodeItem["filename"].InnerText, double.Parse(nodeItem["mbleft"].InnerText, nfi).ToString("N2") + " / " + double.Parse(nodeItem["mb"].InnerText, nfi).ToString("N2") + " MB", strJobInfo, DateTime.Now, ((nodeItem["status"].InnerText == "Paused") ? 1 : 0), nodeItem["nzo_id"].InnerText, 3);
+            MP.ListItem(_List, nodeItem["filename"].InnerText, ((nodeItem["status"].InnerText == "Paused") ? "Paused" : double.Parse(nodeItem["mbleft"].InnerText, nfi).ToString("N2") + " / " + double.Parse(nodeItem["mb"].InnerText, nfi).ToString("N2") + " MB"), strJobInfo, DateTime.Now, 0, nodeItem["nzo_id"].InnerText, 3);
           }
 
           GUIPropertyManager.SetProperty("#Status", "Queue Loaded");
@@ -363,6 +363,7 @@ namespace mpNZB.Clients
           _Items.Add(new GUIListItem("Move to Top"));
         }
       }
+
       if (_List.SelectedListItemIndex != (_List.Count - 1))
       {
         _Items.Add(new GUIListItem("Move Down"));
@@ -371,8 +372,10 @@ namespace mpNZB.Clients
           _Items.Add(new GUIListItem("Move to Bottom"));
         }
       }
+
       _Items.Add(new GUIListItem("Delete Job"));
-      if (_List.ListItems[_List.SelectedListItemIndex].Size == 1)
+
+      if (_List.ListItems[_List.SelectedListItemIndex].Label2 == "Paused")
       {
         _Items.Add(new GUIListItem("Resume Job"));
       }
@@ -380,6 +383,7 @@ namespace mpNZB.Clients
       {
         _Items.Add(new GUIListItem("Pause Job"));
       }
+
       _Items.Add(new GUIListItem("Change Category"));
 
       GUIListItem _Option = MP.Menu(_Items, "Job Options");
