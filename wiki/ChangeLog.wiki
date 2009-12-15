@@ -2,9 +2,13 @@
 #labels Phase-Design
 
 = 1.2 =
+*Additions*
+  * Pause/Resume individual download
+
 *Modifications*
+  * Better Queue information
   * Download Complete uses History Data (Much more accurate/responsive)
-  * Proper History Data parsing
+  * Better History  information
   * This version is for SABnzbd 0.5+
   * Status updates only stop on plugin exit
 
