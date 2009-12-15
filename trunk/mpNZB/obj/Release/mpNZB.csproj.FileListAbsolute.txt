@@ -72,3 +72,20 @@ C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\AxInterop
 C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\taglib-sharp.dll
 C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\ICSharpCode.SharpZipLib.dll
 C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\MediaPortal.Support.dll
+D:\mpNZB\trunk\mpNZB\bin\Release\mpNZB.dll
+D:\mpNZB\trunk\mpNZB\bin\Release\mpNZB.pdb
+D:\mpNZB\trunk\mpNZB\bin\Release\DirectShowLib.dll
+D:\mpNZB\trunk\mpNZB\bin\Release\edtftpnet-1.2.2.dll
+D:\mpNZB\trunk\mpNZB\bin\Release\Interop.WMPLib.dll
+D:\mpNZB\trunk\mpNZB\bin\Release\taglib-sharp.dll
+D:\mpNZB\trunk\mpNZB\bin\Release\ICSharpCode.SharpZipLib.dll
+D:\mpNZB\trunk\mpNZB\bin\Release\BassRegistration.dll
+D:\mpNZB\trunk\mpNZB\bin\Release\Bass.Net.dll
+D:\mpNZB\trunk\mpNZB\bin\Release\CSScriptLibrary.dll
+D:\mpNZB\trunk\mpNZB\bin\Release\AxInterop.WMPLib.dll
+D:\mpNZB\trunk\mpNZB\bin\Release\MediaPortal.Support.dll
+D:\mpNZB\trunk\mpNZB\obj\Release\ResolveAssemblyReference.cache
+D:\mpNZB\trunk\mpNZB\obj\Release\mpNZB.frmSetup.resources
+D:\mpNZB\trunk\mpNZB\obj\Release\mpNZB.csproj.GenerateResource.Cache
+D:\mpNZB\trunk\mpNZB\obj\Release\mpNZB.dll
+D:\mpNZB\trunk\mpNZB\obj\Release\mpNZB.pdb
