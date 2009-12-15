@@ -22,6 +22,13 @@ namespace mpNZB.Clients
       set { _InPlugin = value; }
     }
 
+    private bool _Paused;
+    public bool Paused
+    {
+      get { return _Paused; }
+      set { _Paused = value; }
+    }
+
     private string IP = String.Empty;
     private string Port = String.Empty;
     private string Username = String.Empty;
@@ -223,17 +230,17 @@ namespace mpNZB.Clients
 
         if (xmlDoc.SelectSingleNode("queue") != null)
         {
-          string strPause = xmlDoc.SelectSingleNode("queue/paused").InnerText;
-
           if ((InPlugin == false) && ((Notifications == false) || bolItemsDone)) { tmrStatus.Enabled = false; }
 
           if (InPlugin)
           {
+            _Paused = bool.Parse(xmlDoc.SelectSingleNode("queue/paused").InnerText);
+
             int intJobCount = int.Parse(xmlDoc.SelectSingleNode("queue/noofslots").InnerText);
 
             NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
 
-            GUIPropertyManager.SetProperty("#Paused", strPause);
+            GUIPropertyManager.SetProperty("#Paused", _Paused.ToString());
             GUIPropertyManager.SetProperty("#KBps", ((intJobCount != 0) ? double.Parse(xmlDoc.SelectSingleNode("queue/kbpersec").InnerText, nfi).ToString("N2") : (0.0).ToString("N2")) + " KB/s");
             GUIPropertyManager.SetProperty("#MBStatus", double.Parse(xmlDoc.SelectSingleNode("queue/mbleft").InnerText, nfi).ToString("N2") + " / " + double.Parse(xmlDoc.SelectSingleNode("queue/mb").InnerText, nfi).ToString("N2") + " MB");
             GUIPropertyManager.SetProperty("#JobCount", intJobCount.ToString());
@@ -260,20 +267,20 @@ namespace mpNZB.Clients
       try
       {
         XmlDocument xmlDoc = new XmlDocument();
-        xmlDoc.Load(new XmlTextReader(CreateURL("api?mode=qstatus", "output=xml", false)));
+        xmlDoc.Load(new XmlTextReader(CreateURL("api?mode=queue", "output=xml", false)));
 
-        if (xmlDoc.SelectSingleNode("queue") != null)
+        if (xmlDoc.SelectSingleNode("queue/slots") != null)
         {
           _List.Clear();
 
           NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
           string strJobInfo;
 
-          foreach (XmlNode nodeItem in xmlDoc.SelectNodes("queue/jobs/job"))
+          foreach (XmlNode nodeItem in xmlDoc.SelectNodes("queue/slots/slot"))
           {
-            strJobInfo = ((nodeItem["id"].InnerText.Length > 0) ? "ID: " + nodeItem["id"].InnerText + Environment.NewLine : String.Empty) + ((nodeItem["filename"].InnerText.Length > 0) ? "Filename: " + nodeItem["filename"].InnerText + Environment.NewLine : String.Empty) + ((nodeItem["msgid"].InnerText.Length > 0) ? "Message ID: " + nodeItem["msgid"].InnerText : String.Empty);
+            strJobInfo = "Status: " + nodeItem["status"].InnerText + Environment.NewLine + "Filename: " + nodeItem["filename"].InnerText + Environment.NewLine + "Priority: " + nodeItem["priority"].InnerText + Environment.NewLine + "Category: " + nodeItem["cat"].InnerText + Environment.NewLine + "Percentage: " + nodeItem["percentage"].InnerText + "%";
 
-            MP.ListItem(_List, nodeItem["filename"].InnerText, double.Parse(nodeItem["mbleft"].InnerText, nfi).ToString("N2") + " / " + double.Parse(nodeItem["mb"].InnerText, nfi).ToString("N2") + " MB", strJobInfo, DateTime.Now, 0, nodeItem["id"].InnerText, 3);
+            MP.ListItem(_List, nodeItem["filename"].InnerText, double.Parse(nodeItem["mbleft"].InnerText, nfi).ToString("N2") + " / " + double.Parse(nodeItem["mb"].InnerText, nfi).ToString("N2") + " MB", strJobInfo, DateTime.Now, ((nodeItem["status"].InnerText == "Paused") ? 1 : 0), nodeItem["nzo_id"].InnerText, 3);
           }
 
           GUIPropertyManager.SetProperty("#Status", "Queue Loaded");
@@ -365,6 +372,14 @@ namespace mpNZB.Clients
         }
       }
       _Items.Add(new GUIListItem("Delete Job"));
+      if (_List.ListItems[_List.SelectedListItemIndex].Size == 1)
+      {
+        _Items.Add(new GUIListItem("Resume Job"));
+      }
+      else
+      {
+        _Items.Add(new GUIListItem("Pause Job"));
+      }
       _Items.Add(new GUIListItem("Change Category"));
 
       GUIListItem _Option = MP.Menu(_Items, "Job Options");
@@ -386,6 +401,12 @@ namespace mpNZB.Clients
             break;
           case "Delete Job":
             SendURL(CreateURL("api?mode=queue&name=delete&value=" + _List.ListItems[_List.SelectedListItemIndex].Path, String.Empty, false));
+            break;
+          case "Pause Job":
+            SendURL(CreateURL("api?mode=queue&name=pause&value=" + _List.ListItems[_List.SelectedListItemIndex].Path, String.Empty, false));
+            break;
+          case "Resume Job":
+            SendURL(CreateURL("api?mode=queue&name=resume&value=" + _List.ListItems[_List.SelectedListItemIndex].Path, String.Empty, false));
             break;
           case "Change Category":
             SendURL(CreateURL("api?mode=change_cat&value=" + _List.ListItems[_List.SelectedListItemIndex].Path + "&value2=" + SelectCategory(), String.Empty, false));
