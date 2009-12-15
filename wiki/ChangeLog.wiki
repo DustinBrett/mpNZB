@@ -5,12 +5,13 @@
 *Additions*
   * Pause/Resume individual download
 
-*Modifications*
-  * This version is for SABnzbd 0.5+
+*Fixes*
   * Download Complete uses History instead of Queue (More accurate/responsive)
-  * Revamped Queue information
-  * Revamped History information
-  * Toggle *btnPause* if queue is paused (On Startup)
+
+*Modifications*
+  * Updated Queue information
+  * Updated History information
+  * Toggle *btnPause* if queue is paused on startup
   * Status updates only stop on plugin exit
 
 = 1.1 =
