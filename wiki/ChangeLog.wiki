@@ -10,6 +10,7 @@
   * Download Complete uses History instead of Queue (More accurate/responsive)
   * Revamped Queue information
   * Revamped History information
+  * Toggle *btnPause* if queue is paused (On Startup)
   * Status updates only stop on plugin exit
 
 = 1.1 =
