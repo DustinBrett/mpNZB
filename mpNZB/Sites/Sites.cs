@@ -237,6 +237,7 @@ namespace mpNZB
 
                     FeedURL.Add(strSearchURL.Replace("[QUERY]", FeedName).Replace("[MAX]", MaxResults.ToString())); // 1x01
                     FeedURL.Add(strSearchURL.Replace("[QUERY]", _Series.Label + " " + _Episode.DVDLabel.Replace(" ", "+").Replace("[S]", "S").Replace("[E]", "E")).Replace("[MAX]", MaxResults.ToString())); // S01E01
+                    FeedURL.Add(strSearchURL.Replace("[QUERY]", _Series.Label + " " + _Episode.DVDLabel.Replace(" ", "+").Replace("[S]0", String.Empty).Replace("[S]", String.Empty).Replace("[E]", String.Empty)).Replace("[MAX]", MaxResults.ToString())); // 101
                   }
                 }
                 break;
