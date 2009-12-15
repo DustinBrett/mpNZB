@@ -8,7 +8,7 @@
 			<Source>trunk\mpNZB\bin\Release\mpNZB.dll</Source>
 			<Id>01010</Id>
 			<Option />
-			<Guid>a924b1a4-bda5-4761-81df-56cab0a51a05</Guid>
+			<Guid>07c26d51-cead-4429-8900-b081cffb43c2</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -17,7 +17,7 @@
 			<Source>skin\Blue3\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>09c5b1c3-5266-4019-a296-6cabaa337f8f</Guid>
+			<Guid>c9913ec4-d5b2-4cbb-852e-a97cbf5ef9aa</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -26,7 +26,7 @@
 			<Source>skin\Blue3wide\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>4c1b7c7d-447c-41f2-a8cd-9b271ad430d3</Guid>
+			<Guid>8dce9648-1f63-4216-8cd4-69cf3fb4dc8a</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -35,7 +35,7 @@
 			<Source>skin\Indigo\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>2be5cf7d-9e0f-4362-99a6-8a51e6785b85</Guid>
+			<Guid>090f1f40-1997-4e70-9bf6-7b10276d6aec</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -44,7 +44,7 @@
 			<Source>skin\MediaStream\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>0bb9d02a-5e17-42bd-8cab-b48fdab9161f</Guid>
+			<Guid>b7136ab0-3dac-429c-bee4-e13198336297</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -53,7 +53,7 @@
 			<Source>skin\Monochrome\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>7d3f45e7-699c-4a19-98df-0f2f953b936b</Guid>
+			<Guid>a7e18f39-55bd-43e2-b38a-cc38bcfc38ac</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -62,7 +62,7 @@
 			<Source>skin\PureVisionHD\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>b610a5a0-2df1-4115-9ca2-aa37db9c97db</Guid>
+			<Guid>f026f751-e83d-457f-9063-0caf89788c3c</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -71,7 +71,7 @@
 			<Source>skin\StreamedMP\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>c9f1800e-e3a4-49fa-b6d4-3119d6d2238e</Guid>
+			<Guid>8a8a8996-b7b5-4134-8fe2-84db689180dc</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -80,7 +80,7 @@
 			<Source>skin\BleazleWide\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>b7f797e8-1062-4d67-bd82-f8ed52a72697</Guid>
+			<Guid>5bd1f8fa-9aed-4216-ab36-488367138991</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -89,7 +89,16 @@
 			<Source>skin\Black &amp; White 1080\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>224dbf17-d50b-4970-8607-f0fc673cf5c6</Guid>
+			<Guid>4537c133-4655-4dbb-b60b-38dd43bd48a4</Guid>
+		</File>
+		<File>
+			<FileName>mpNZB.xml</FileName>
+			<Type>Skin</Type>
+			<SubType>Black Glass</SubType>
+			<Source>skin\Black Glass\mpNZB.xml</Source>
+			<Id>02010</Id>
+			<Option />
+			<Guid>1c0143a2-e778-480c-8248-21df6c3cd9ab</Guid>
 		</File>
 		<File>
 			<FileName>Sites.xml</FileName>
@@ -98,7 +107,7 @@
 			<Source>trunk\mpNZB\Sites\Sites.xml</Source>
 			<Id>01010</Id>
 			<Option />
-			<Guid>c9fb5849-48bf-40d8-8027-ab7f915fa805</Guid>
+			<Guid>0bdc008d-7d7c-4c91-86e0-c943e0443438</Guid>
 		</File>
 	</FileList>
 	<StringList />
@@ -107,11 +116,11 @@
 	<SetupGroupMappings />
 	<Option>
 		<BuildFileName />
-		<ProiectFileName>C:\Documents and Settings\Dustin\Desktop\mpNZB\mpNZB.xmp</ProiectFileName>
-		<ProiectName>mpNZB 1.1</ProiectName>
+		<ProiectFileName>Z:\mpNZB\mpNZB.xmp</ProiectFileName>
+		<ProiectName>mpNZB 1.2</ProiectName>
 		<Author>Dustin Brett</Author>
 		<UpdateURL>http://code.google.com/p/mpnzb/</UpdateURL>
-		<Version>1.1</Version>
+		<Version>1.2</Version>
 		<Description>mpNZB is a plug-in for MediaPortal that allows you to download NZB's from multiple sources (Feeds/Groups/Search). Then using SABnzbd it downloads those files from a Usenet provider such as Supernews.</Description>
 		<Group>Web</Group>
 		<Release>Stable </Release>
@@ -206,7 +215,7 @@ class InstallScript : MPInstallerScript
 		<ForumURL>http://forum.team-mediaportal.com/plugins-47/mpnzb-nzb-downloader-57265/</ForumURL>
 		<WebURL>http://code.google.com/p/mpnzb/</WebURL>
 		<WikiURL>http://code.google.com/p/mpnzb/wiki/Manual</WikiURL>
-		<CreationDate>14-12-09</CreationDate>
+		<CreationDate>15-12-09</CreationDate>
 		<SingleGroupSelect>False</SingleGroupSelect>
 		<ClearSkinCache>False</ClearSkinCache>
 		<UseRealPathInPackage>False</UseRealPathInPackage>
