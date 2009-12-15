@@ -14,7 +14,7 @@
   * Updated Queue information
   * Updated History information
   * Missing Episodes just searches (`Series Name [1x01|S01E01]`)
-  * Toggle *btnPause* if queue is paused on startup
+  * Toggle `btnPause` if queue is paused on startup
   * Status updates only stop on plugin exit
 
 = 1.1 =
