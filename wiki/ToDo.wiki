@@ -1,11 +1,8 @@
 #summary To-Do list for project
 #labels Phase-Design
 
-= 1.2 =
-  * IMDb/TVRage Information
-  * Toggle `btnPause` if `Status` is Paused
-
 = Future =
+  * IMDb/TVRage Information
   * NZB Streaming  
   * SABnzbd information on `Basic Home`
 
