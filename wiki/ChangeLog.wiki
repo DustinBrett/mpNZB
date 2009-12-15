@@ -8,10 +8,12 @@
 
 *Fixes*
   * Download Complete uses History instead of Queue (More accurate/responsive)
+  * Search string was not displayed for Missing Episodes
 
 *Modifications*
   * Updated Queue information
   * Updated History information
+  * Missing Episodes just searches (Series Name [1x01|S01E01])
   * Toggle *btnPause* if queue is paused on startup
   * Status updates only stop on plugin exit
 
