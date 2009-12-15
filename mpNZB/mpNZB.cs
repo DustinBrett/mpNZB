@@ -246,6 +246,7 @@ namespace mpNZB
         // Update Status
         Client.InPlugin = true;
         Client.Status();
+        if (Client.Paused) { btnPause.Selected = true; }
       }
       catch (Exception e) { MP.Error(e); }
     }
