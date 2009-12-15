@@ -2,16 +2,12 @@
 #labels Phase-Design
 
 = 1.2 =
-  * Extraction/Download Complete
-    * Use [http://wiki.sabnzbd.org/api#toc10 History Data]
   * [http://wiki.sabnzbd.org/api#toc35 Pause individual download]
     * `api?mode=queue&name=pause&value=[ID]`
   * [http://wiki.sabnzbd.org/api#toc36 Resume individual download]
     * `api?mode=queue&name=resume&value=[ID]`
   * IMDb/TVRage Information
   * Toggle `btnPause` if `Status` is Paused
-  * Status off if outside plugin and all history is complete
-    * Make sure it starts back up on entering plug-in
 
 = Future =
   * NZB Streaming  
