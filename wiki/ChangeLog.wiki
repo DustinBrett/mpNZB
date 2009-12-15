@@ -3,6 +3,13 @@
 
 = 1.2 =
 *Additions*
+  * Missing Episodes now searches 3 ways (S01E01, 1x01, 101)
+
+*Modifications*
+  * Items in queue will say "Paused" when paused
+
+= 1.2 =
+*Additions*
   * Pause/Resume individual download
   * Black Glass skin inside MPI
 
