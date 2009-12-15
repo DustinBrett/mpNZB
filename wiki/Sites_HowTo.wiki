@@ -39,7 +39,7 @@ These fields will be replaced with the correct data automatically by mpNZB.
 	<groups>http://www.newzbin.com/browse/group/p/[GROUP]/?feed=rss&amp;u_post_results_amt=[MAX]</groups>
 	<searches>
 		<search name="Default">http://www.newzbin.com/search/query/?q=[QUERY]&amp;searchaction=Search&amp;u_post_results_amt=[MAX]&amp;feed=rss</search>
-	<searches>
+	</searches>
 	<item type="2">
 		<title element="title" />
 		<size type="2" element="report:size" />
