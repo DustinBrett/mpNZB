@@ -4,6 +4,7 @@
 = 1.2 =
 *Additions*
   * Pause/Resume individual download
+  * Black Glass skin inside MPI
 
 *Fixes*
   * Download Complete uses History instead of Queue (More accurate/responsive)
