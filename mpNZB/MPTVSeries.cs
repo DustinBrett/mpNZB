@@ -42,7 +42,7 @@ namespace mpNZB
         {
           _Item = new GUIListItem();
 
-          _Item.DVDLabel = "[S]" + sqlResults.Rows[i].fields[1].ToString().PadLeft(2, '0') + "[E]" + sqlResults.Rows[i].fields[2].ToString().PadLeft(2, '0') + " - " + sqlResults.Rows[i].fields[3].ToString(); // Title
+          _Item.DVDLabel = "[S]" + sqlResults.Rows[i].fields[1].ToString().PadLeft(2, '0') + "[E]" + sqlResults.Rows[i].fields[2].ToString().PadLeft(2, '0');
           _Item.Label = _Item.DVDLabel.Replace("[S]0", String.Empty).Replace("[S]", String.Empty).Replace("[E]", "x");
 
           _Results.Add(_Item);
