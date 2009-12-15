@@ -2,10 +2,6 @@
 #labels Phase-Design
 
 = 1.2 =
-  * [http://wiki.sabnzbd.org/api#toc35 Pause individual download]
-    * `api?mode=queue&name=pause&value=[ID]`
-  * [http://wiki.sabnzbd.org/api#toc36 Resume individual download]
-    * `api?mode=queue&name=resume&value=[ID]`
   * IMDb/TVRage Information
   * Toggle `btnPause` if `Status` is Paused
 
