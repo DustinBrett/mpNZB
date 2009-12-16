@@ -1,10 +1,6 @@
 #summary To-Do list for project
 #labels Phase-Design
 
-= 1.3 =
-  * Better Newzbin login code
-    * Possibly using `fauth` or `HTTP Auth`
-
 = Future =
   * IMDb/TVRage Information
   * NZB Streaming  
