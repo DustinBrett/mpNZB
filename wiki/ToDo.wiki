@@ -12,13 +12,13 @@
 
 = Idea =
   * Read SABnzbd credentials from SABnzbd.ini (Only work if SABnzbd is local)
-    *`HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders\Local AppData` + `\sabnzbd\sabnzbd.ini`
+    * `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders\Local AppData` + `\sabnzbd\sabnzbd.ini`
       * `[misc]`
       * `username = [USER]`
       * `password = [PASS]`
       * `api_key = [API_KEY]`
   * Read Newzbin credentials from SABnzbd.ini (Only work if SABnzbd is local)
-    *`HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders\Local AppData` + `\sabnzbd\sabnzbd.ini`
+    * `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders\Local AppData` + `\sabnzbd\sabnzbd.ini`
       * `[newzbin]`
       * `username = [USER]`
       * `password = [PASS]`
