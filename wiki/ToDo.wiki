@@ -5,8 +5,8 @@
   * Read Newzbin credentials from SABnzbd
     * `%USERPROFILE%\Local Settings\Application Data\sabnzbd\sabnzbd.ini`
       * `[newzbin]`
-      * `username`
-      * `password`
+      * `username = [USER]`
+      * `password = [PASS]`
   * Better Newzbin login code
     * Possibly using `fauth`
 
