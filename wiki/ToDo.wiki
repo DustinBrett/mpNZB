@@ -3,7 +3,7 @@
 
 = 1.3 =
   * Better Newzbin login code
-    * Possibly using `fauth`
+    * Possibly using `fauth` or `HTTP Auth`
 
 = Future =
   * IMDb/TVRage Information
