@@ -20,6 +20,10 @@ namespace mpNZB
     public string SiteName = String.Empty;
     public string SiteCookie = String.Empty;
     public string FeedName = String.Empty;
+
+    public string Username = String.Empty;
+    public string Password = String.Empty;
+
     public List<string> FeedURL = new List<string>();
 
     private int MaxResults;
@@ -104,17 +108,8 @@ namespace mpNZB
 
               if (xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/login") != null)
               {
-                string strUsername = xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/login").Attributes["username"].InnerText;
-                string strPassword = xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/login").Attributes["password"].InnerText;
-
-                if ((strUsername.Length > 0) && (strUsername.Length > 0))
-                {
-                  SiteCookie = SiteLogin(SiteName, strUsername, strPassword);
-                  if (SiteCookie.Length == 0)
-                  {
-                    GUIPropertyManager.SetProperty("#Status", "Login failure");
-                  }
-                }
+                Username = xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/login").Attributes["username"].InnerText;
+                Password = xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/login").Attributes["password"].InnerText;
               }
             }
           }
@@ -420,92 +415,6 @@ namespace mpNZB
         MP.ListItem(_List, ((xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title[@attribute]") != null) ? _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["element"].InnerText].Attributes[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["attribute"].InnerText].InnerText : _Node[xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item/title").Attributes["element"].InnerText].InnerText).Replace("&quot;", "\"").Replace("&amp;", "&").Replace("&lt;", "<").Replace("&gt;", ">"), strSize, strNZBInfo, dtPubDate, (long)dblSize, strURL, int.Parse(xmlDoc.SelectSingleNode("sites/site[@name='" + SiteName + "']/item").Attributes["type"].InnerText));
       }
       catch (Exception e) { MP.Error(e); }
-    }
-
-    #endregion
-
-    #region Functions
-
-    string SiteLogin(string _Site, string _Username, string _Password)
-    {
-      string strResult = String.Empty;
-      string strURL = String.Empty;
-
-      try
-      {       
-        switch (_Site)
-        {
-          case "Newzbin":
-            strURL = "http://www.newzbin.com/account/login/";
-            break;
-        }
-
-        if (strURL.Length > 0)
-        {
-          Settings mpSettings = new Settings(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml");
-
-          string strLogin = mpSettings.GetValueAsString("#Sites", _Site + "_Login", String.Empty);
-          if (strLogin.Length > 0)
-          {
-            HttpWebRequest cookieReq = (HttpWebRequest)WebRequest.Create(strURL);
-            cookieReq.Headers.Add(HttpRequestHeader.Cookie, strLogin);
-
-            HttpWebResponse cookieResp = (HttpWebResponse)cookieReq.GetResponse();
-            string strCookies = cookieResp.Headers[HttpResponseHeader.SetCookie];
-            if (strCookies.Length > 0)
-            {
-              strResult = strLogin;
-            }
-            cookieResp.Close();
-          }
-
-          if (strResult.Length == 0)
-          {
-            string postString = "username=" + _Username + "&" + "password=" + _Password;
-
-            ASCIIEncoding Encoding = new ASCIIEncoding();
-            byte[] postData = Encoding.GetBytes(postString);
-
-            HttpWebRequest cookieReq = (HttpWebRequest)WebRequest.Create(strURL);
-            cookieReq.Method = "POST";
-            cookieReq.ContentType = "application/x-www-form-urlencoded";
-            cookieReq.ContentLength = postData.Length;
-            cookieReq.AllowAutoRedirect = false;
-
-            Stream postStream = cookieReq.GetRequestStream();
-            postStream.Write(postData, 0, postData.Length);
-            postStream.Close();
-
-            HttpWebResponse cookieResp = (HttpWebResponse)cookieReq.GetResponse();
-            string strCookies = cookieResp.Headers[HttpResponseHeader.SetCookie];
-            if (strCookies.Length > 0)
-            {
-              switch (_Site)
-              {
-                case "Newzbin":
-                  int NzbSessionID_POS = strCookies.IndexOf("NzbSessionID=") + "NzbSessionID=".Length;
-                  string NzbSessionID = strCookies.Substring(NzbSessionID_POS, strCookies.IndexOf(";", NzbSessionID_POS) - NzbSessionID_POS);
-
-                  int NzbSmoke_POS = strCookies.IndexOf("NzbSmoke=") + "NzbSmoke=".Length;
-                  string NzbSmoke = strCookies.Substring(NzbSmoke_POS, strCookies.IndexOf(";", NzbSmoke_POS) - NzbSmoke_POS);
-
-                  if ((NzbSessionID.Length > 0) && (NzbSmoke.Length > 0))
-                  {
-                    strResult = "NzbSessionID=" + NzbSessionID + ";" + "NzbSmoke=" + NzbSmoke;
-                    mpSettings.SetValue("#Sites", _Site + "_Login", strResult);
-                  }
-                  break;
-              }
-            }
-            cookieResp.Close();
-          }
-
-          mpSettings.Dispose();
-        }
-      }
-      catch (Exception e) { MP.Error(e); }
-
-      return strResult;
     }
 
     #endregion

@@ -11,25 +11,25 @@
 	<site name="Newzbin">
 		<login username="" password="" />
 		<feeds>
-			<feed name="Everything">http://www.newzbin.com/browse/category/p/everything/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-			<feed name="Unknown">http://www.newzbin.com/browse/category/p/unknown/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-			<feed name="Anime">http://www.newzbin.com/browse/category/p/anime/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-			<feed name="Apps">http://www.newzbin.com/browse/category/p/apps/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-			<feed name="Books">http://www.newzbin.com/browse/category/p/books/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-			<feed name="Consoles">http://www.newzbin.com/browse/category/p/consoles/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-			<feed name="Discussions">http://www.newzbin.com/browse/category/p/discussions/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-			<feed name="Emulation">http://www.newzbin.com/browse/category/p/emulation/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-			<feed name="Games">http://www.newzbin.com/browse/category/p/games/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-			<feed name="Misc">http://www.newzbin.com/browse/category/p/misc/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-			<feed name="Movies">http://www.newzbin.com/browse/category/p/movies/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-			<feed name="Music">http://www.newzbin.com/browse/category/p/music/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-			<feed name="PDA">http://www.newzbin.com/browse/category/p/pda/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-			<feed name="Resources">http://www.newzbin.com/browse/category/p/resources/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
-			<feed name="TV">http://www.newzbin.com/browse/category/p/tv/?feed=rss&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="Everything">http://www.newzbin.com/browse/all/p/?feed=rss&amp;hauth=1&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="Unknown">http://www.newzbin.com/browse/category/p/unknown/?feed=rss&amp;hauth=1&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="Anime">http://www.newzbin.com/browse/category/p/anime/?feed=rss&amp;hauth=1&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="Apps">http://www.newzbin.com/browse/category/p/apps/?feed=rss&amp;hauth=1&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="Books">http://www.newzbin.com/browse/category/p/books/?feed=rss&amp;hauth=1&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="Consoles">http://www.newzbin.com/browse/category/p/consoles/?feed=rss&amp;hauth=1&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="Discussions">http://www.newzbin.com/browse/category/p/discussions/?feed=rss&amp;hauth=1&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="Emulation">http://www.newzbin.com/browse/category/p/emulation/?feed=rss&amp;hauth=1&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="Games">http://www.newzbin.com/browse/category/p/games/?feed=rss&amp;hauth=1&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="Misc">http://www.newzbin.com/browse/category/p/misc/?feed=rss&amp;hauth=1&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="Movies">http://www.newzbin.com/browse/category/p/movies/?feed=rss&amp;hauth=1&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="Music">http://www.newzbin.com/browse/category/p/music/?feed=rss&amp;hauth=1&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="PDA">http://www.newzbin.com/browse/category/p/pda/?feed=rss&amp;hauth=1&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="Resources">http://www.newzbin.com/browse/category/p/resources/?feed=rss&amp;hauth=1&amp;u_post_results_amt=[MAX]</feed>
+			<feed name="TV">http://www.newzbin.com/browse/category/p/tv/?feed=rss&amp;hauth=1&amp;u_post_results_amt=[MAX]</feed>
 		</feeds>
-		<groups>http://www.newzbin.com/browse/group/p/[GROUP]/?feed=rss&amp;u_post_results_amt=[MAX]</groups>
+		<groups>http://www.newzbin.com/browse/group/p/[GROUP]/?feed=rss&amp;hauth=1&amp;u_post_results_amt=[MAX]</groups>
 		<searches>
-			<search name="Default">http://www.newzbin.com/search/query/?q=[QUERY]&amp;searchaction=Search&amp;u_post_results_amt=[MAX]&amp;feed=rss</search>
+			<search name="Default">http://www.newzbin.com/search/query/?q=[QUERY]&amp;fpn=p&amp;searchaction=Go&amp;areadone=-1&amp;feed=rss&amp;hauth=1&amp;u_post_results_amt=[MAX]</search>
 		</searches>
 		<item type="2">
 			<title element="title" />

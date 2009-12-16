@@ -160,7 +160,7 @@ namespace mpNZB
         GUIPropertyManager.SetProperty("#Status", "Processing...");
         GUIWindowManager.Process();
 
-        ReadRSS(Site.FeedURL, lstItems);
+        ReadRSS(Site.FeedURL, lstItems, Site.Username, Site.Password);
       }
       if (control == btnFeeds)    { SelectSite("Feeds"); }
       if (control == btnGroups)   { SelectSite("Groups"); }
@@ -324,7 +324,7 @@ namespace mpNZB
 
     #region Functions
 
-    private void ReadRSS(List<string> _URL, GUIListControl _List)
+    private void ReadRSS(List<string> _URL, GUIListControl _List, string _Username, string _Password)
     {
       try
       {
@@ -334,6 +334,10 @@ namespace mpNZB
         foreach (string URL in _URL)
         {
           HttpWebRequest webReq = (HttpWebRequest)WebRequest.Create(URL);
+          if ((_Username.Length > 0) && (_Password.Length > 0))
+          {
+            webReq.Credentials = new NetworkCredential(_Username, _Password);
+          }
           webReq.Headers.Add(HttpRequestHeader.AcceptEncoding, "gzip");
           if (Site.SiteCookie.Length > 0)
           {
@@ -400,7 +404,7 @@ namespace mpNZB
             GUIPropertyManager.SetProperty("#Status", "Processing...");
             GUIWindowManager.Process();
 
-            ReadRSS(Site.FeedURL, lstItems);
+            ReadRSS(Site.FeedURL, lstItems, Site.Username, Site.Password);
 
             btnRefresh.Disabled = false;
             GUIPropertyManager.SetProperty("#PageTitle", Site.SiteName + " [" + Site.FeedName + "]");

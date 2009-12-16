@@ -90,8 +90,8 @@
   <PropertyGroup>
     <PostBuildEvent>REM Send to HTPC
 REM ####################
-copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\mpNZB.dll" "\\htpc\c$\Program Files\Team MediaPortal\MediaPortal\plugins\Windows\mpNZB.dll" /y
-copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\Sites\Sites.xml" "\\htpc\c$\Program Files\Team MediaPortal\MediaPortal\plugins\Windows\Sites.xml" /y
+REM copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\mpNZB.dll" "\\htpc\c$\Program Files\Team MediaPortal\MediaPortal\plugins\Windows\mpNZB.dll" /y
+REM copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\Sites\Sites.xml" "\\htpc\c$\Program Files\Team MediaPortal\MediaPortal\plugins\Windows\Sites.xml" /y
 
 REM Send to Home Laptop
 REM ####################
@@ -100,7 +100,7 @@ REM copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\Sites\Sites.xml" "\\DUSTIN-L
 
 REM Send to Work Laptop
 REM ####################
-REM copy "C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\mpNZB.dll" "C:\Program Files\Team MediaPortal\MediaPortal\plugins\Windows\mpNZB.dll" /y
-REM copy "C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\Sites\Sites.xml" "C:\Program Files\Team MediaPortal\MediaPortal\plugins\Windows\Sites.xml" /y</PostBuildEvent>
+copy "C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\mpNZB.dll" "C:\Program Files\Team MediaPortal\MediaPortal\plugins\Windows\mpNZB.dll" /y
+copy "C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\Sites\Sites.xml" "C:\Program Files\Team MediaPortal\MediaPortal\plugins\Windows\Sites.xml" /y</PostBuildEvent>
   </PropertyGroup>
 </Project>
