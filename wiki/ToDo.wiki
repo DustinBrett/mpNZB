@@ -2,17 +2,6 @@
 #labels Phase-Design
 
 = 1.3 =
-  * Read SABnzbd credentials from SABnzbd.ini
-    * `%USERPROFILE%\Local Settings\Application Data\sabnzbd\sabnzbd.ini`
-      * `[misc]`
-      * `username = [USER]`
-      * `password = [PASS]`
-      * `api_key = [API_KEY]`
-  * Read Newzbin credentials from SABnzbd.ini
-    * `%USERPROFILE%\Local Settings\Application Data\sabnzbd\sabnzbd.ini`
-      * `[newzbin]`
-      * `username = [USER]`
-      * `password = [PASS]`
   * Better Newzbin login code
     * Possibly using `fauth`
 
@@ -20,6 +9,19 @@
   * IMDb/TVRage Information
   * NZB Streaming  
   * SABnzbd information on *Basic Home*
+
+= Idea =
+  * Read SABnzbd credentials from SABnzbd.ini (Only work if SABnzbd is local)
+    *`HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders\Local AppData` + `\sabnzbd\sabnzbd.ini`
+      * `[misc]`
+      * `username = [USER]`
+      * `password = [PASS]`
+      * `api_key = [API_KEY]`
+  * Read Newzbin credentials from SABnzbd.ini (Only work if SABnzbd is local)
+    *`HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders\Local AppData` + `\sabnzbd\sabnzbd.ini`
+      * `[newzbin]`
+      * `username = [USER]`
+      * `password = [PASS]`
 
 = General =
   * Update Documentation/Screenshots
