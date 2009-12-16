@@ -3,6 +3,10 @@
 
 = 1.3 =
   * Read Newzbin credentials from SABnzbd
+    * `%USERPROFILE%\Local Settings\Application Data\sabnzbd\sabnzbd.ini`
+      * `[newzbin]`
+      * `username`
+      * `password`
   * Better Newzbin login code
     * Possibly using `fauth`
 
