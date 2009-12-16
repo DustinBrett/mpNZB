@@ -49,6 +49,16 @@ These fields will be replaced with the correct data automatically by mpNZB.
 </site>
 }}}
 
+== _Login_ ==
+This is only required for RSS feeds that support HTTP authentication.
+
+{{{
+<login username="(Username)" password="(Password)" />
+}}}
+
+  * *`(Username)`* = Username for site
+  * *`(Password)`* = Password for site
+
 == _Feeds_ ==
 This section contains the sites RSS feeds.
 
