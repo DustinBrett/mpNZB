@@ -3,6 +3,10 @@
 
 = 1.4 =
   * Better handling of NFO ASCII art
+  * Add suggestions to search
+    * `http://www.blockbuster.com/community/rss`
+    * `http://www.netflix.com/RSSFeeds`
+    * `http://www.zip.ca/publish/rss/index.aspx`
 
 = Future =
   * IMDb/TVRage Information
