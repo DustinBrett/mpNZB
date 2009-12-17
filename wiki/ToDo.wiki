@@ -1,6 +1,9 @@
 #summary To-Do list for project
 #labels Phase-Design
 
+= 1.4 =
+  * Better handling of NFO ASCII art
+
 = Future =
   * IMDb/TVRage Information
     * *Requires*: Website API's
