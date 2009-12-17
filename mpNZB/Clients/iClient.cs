@@ -5,7 +5,7 @@ namespace mpNZB.Clients
 {
   interface iClient
   {
-    bool InPlugin
+    bool Visible
     {
       get;
       set;

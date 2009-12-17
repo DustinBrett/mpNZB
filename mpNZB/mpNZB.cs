@@ -244,7 +244,7 @@ namespace mpNZB
         mpSettings.Dispose();
 
         // Update Status
-        Client.InPlugin = true;
+        Client.Visible = true;
         Client.Status();
         if (Client.Paused) { btnPause.Selected = true; }
       }
@@ -254,7 +254,7 @@ namespace mpNZB
     protected override void OnPageDestroy(int newWindowId)
     {
       base.OnPageDestroy(newWindowId);
-      Client.InPlugin = false;
+      Client.Visible = false;
     }
 
     protected override void OnShowContextMenu()
