@@ -3,5 +3,8 @@
 
 = Future =
   * IMDb/TVRage Information
-  * NZB Streaming  
+    * *Requires*: Website API's
   * SABnzbd information on *Basic Home*
+    * *Requires*: Skin Modification
+  * NZB Streaming
+    * *Requires*: Magic
