@@ -57,3 +57,8 @@ C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Debug\BassRegistr
 C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Debug\Bass.Net.dll
 C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Debug\AxInterop.WMPLib.dll
 C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\obj\Debug\mpNZB.pdb
+C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\obj\Debug\mpNZB.frmSetup.resources
+C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\obj\Debug\mpNZB.csproj.GenerateResource.Cache
+C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\obj\Debug\mpNZB.dll
+C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\obj\Debug\mpNZB.pdb
