@@ -385,14 +385,77 @@ namespace mpNZB
     {
       string _Return = String.Empty;
 
-      Match mNFO = Regex.Match(new WebClient().DownloadString(_URL), @"<pre>(.*?)</pre>");
+      WebClient wClient = new WebClient();
+
+      wClient.Headers.Add(HttpRequestHeader.Cookie, SiteLogin(Site.SiteName, Site.Username, Site.Password));
+
+      Match mNFO = Regex.Match(wClient.DownloadString(_URL), @"<pre>(.*?)</pre>", RegexOptions.Singleline);
 
       if ((mNFO.Success) && (mNFO.Groups[1].Value.Length > 0))
       {
-        _Return = Regex.Replace(Regex.Replace(mNFO.Groups[1].Value, @"<.*?>", String.Empty), @"^\s+|\s+$", String.Empty);
+        _Return = Regex.Replace(Regex.Replace(mNFO.Groups[1].Value, @"<.*?>|&.*?;|^\s+|\s+$", String.Empty, RegexOptions.Multiline & RegexOptions.Singleline), "[\r\n]+", Environment.NewLine + Environment.NewLine);
       }
 
       return _Return;
+    }
+
+    string SiteLogin(string _Site, string _Username, string _Password)
+    {
+      string strResult = String.Empty;
+      string strURL = String.Empty;
+
+      try
+      {
+        switch (_Site)
+        {
+          case "Newzbin":
+            strURL = "http://www.newzbin.com/account/login/";
+            break;
+        }
+
+        if (strURL.Length > 0)
+        {
+          string postString = "username=" + _Username + "&" + "password=" + _Password;
+
+          ASCIIEncoding Encoding = new ASCIIEncoding();
+          byte[] postData = Encoding.GetBytes(postString);
+
+          HttpWebRequest cookieReq = (HttpWebRequest)WebRequest.Create(strURL);
+          cookieReq.Method = "POST";
+          cookieReq.ContentType = "application/x-www-form-urlencoded";
+          cookieReq.ContentLength = postData.Length;
+          cookieReq.AllowAutoRedirect = false;
+
+          Stream postStream = cookieReq.GetRequestStream();
+          postStream.Write(postData, 0, postData.Length);
+          postStream.Close();
+
+          HttpWebResponse cookieResp = (HttpWebResponse)cookieReq.GetResponse();
+          string strCookies = cookieResp.Headers[HttpResponseHeader.SetCookie];
+          if (strCookies.Length > 0)
+          {
+            switch (_Site)
+            {
+              case "Newzbin":
+                int NzbSessionID_POS = strCookies.IndexOf("NzbSessionID=") + "NzbSessionID=".Length;
+                string NzbSessionID = strCookies.Substring(NzbSessionID_POS, strCookies.IndexOf(";", NzbSessionID_POS) - NzbSessionID_POS);
+
+                int NzbSmoke_POS = strCookies.IndexOf("NzbSmoke=") + "NzbSmoke=".Length;
+                string NzbSmoke = strCookies.Substring(NzbSmoke_POS, strCookies.IndexOf(";", NzbSmoke_POS) - NzbSmoke_POS);
+
+                if ((NzbSessionID.Length > 0) && (NzbSmoke.Length > 0))
+                {
+                  strResult = "NzbSessionID=" + NzbSessionID + ";" + "NzbSmoke=" + NzbSmoke;
+                }
+                break;
+            }
+          }
+          cookieResp.Close();
+        }
+      }
+      catch (Exception e) { MP.Error(e); }
+
+      return strResult;
     }
 
     private void SelectSite(string strType)
