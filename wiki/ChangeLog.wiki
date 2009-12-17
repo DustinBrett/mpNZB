@@ -7,6 +7,7 @@
 
 *Modifications*
   * Newzbin authentication using `HTTP Auth` instead of cookies (Much faster)
+  * Recoded Download Complete for better speed / reliability
   * Items in queue will say "Paused" when paused
 
 = 1.2 =
