@@ -322,7 +322,7 @@ namespace mpNZB
               MP.Text(lstItems.ListItems[lstItems.SelectedListItemIndex].DVDLabel, ((lstItems.ListItems[lstItems.SelectedListItemIndex].ItemId == 3) ? "Job Information" : "NZB Information"));
               break;
             case "View NFO":
-              MP.Text(ReadNFO(lstItems.ListItems[lstItems.SelectedListItemIndex].FileInfo.Name), "View NFO");
+              MP.Text(new WebClient().DownloadString(lstItems.ListItems[lstItems.SelectedListItemIndex].FileInfo.Name), "View NFO");
               break;
           }
         }
@@ -379,13 +379,6 @@ namespace mpNZB
           _List.Focus = true;
         }
       }
-    }
-
-    private string ReadNFO(string _URL)
-    {
-      WebClient wClient = new WebClient();
-
-      return wClient.DownloadString(_URL);
     }
 
     private void SelectSite(string strType)
