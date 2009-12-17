@@ -6,6 +6,3 @@
   * NZB Streaming  
   * SABnzbd information on *Basic Home*
   * NFO Viewer
-
-= General =
-  * Update Documentation/Screenshots
