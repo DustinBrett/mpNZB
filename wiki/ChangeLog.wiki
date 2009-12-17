@@ -4,6 +4,7 @@
 = 1.3 =
 *Additions*
   * Missing Episodes now search 3 ways (`S01E01, 1x01, 101`)
+  * NFO viewer for Newzbin results
 
 *Modifications*
   * Newzbin authentication using `HTTP Auth` instead of cookies (Faster)
