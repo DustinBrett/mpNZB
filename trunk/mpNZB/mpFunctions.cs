@@ -96,7 +96,7 @@ namespace mpNZB
 
     #region Control
 
-    public void ListItem(GUIListControl _List, string _Label, string _Label2, string _DVDLabel, DateTime _CreationTime, long _Length, string _Path, int _ItemId)
+    public void ListItem(GUIListControl _List, string _Label, string _Label2, string _DVDLabel, DateTime _CreationTime, long _Length, string _Name, string _Path, int _ItemId)
     {
       // Init Item
       GUIListItem Item = new GUIListItem();
@@ -112,6 +112,7 @@ namespace mpNZB
       Item.FileInfo = new MediaPortal.Util.FileInformation();
       Item.FileInfo.CreationTime = _CreationTime;
       Item.FileInfo.Length = _Length;
+      Item.FileInfo.Name = _Name;
 
       // Add Item to List
       _List.Add(Item);
