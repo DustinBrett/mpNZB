@@ -393,7 +393,7 @@ namespace mpNZB
 
       if ((mNFO.Success) && (mNFO.Groups[1].Value.Length > 0))
       {
-        _Return = Regex.Replace(Regex.Replace(mNFO.Groups[1].Value, @"<.*?>|&.*?;|^\s+|\s+$", String.Empty, RegexOptions.Multiline & RegexOptions.Singleline), "[\r\n]+", Environment.NewLine + Environment.NewLine);
+        _Return = Regex.Replace(mNFO.Groups[1].Value, @"<.*?>|&.*?;|^\s+|\s+$", String.Empty, RegexOptions.Multiline & RegexOptions.Singleline).Replace(Environment.NewLine + Environment.NewLine, Environment.NewLine);
       }
 
       return _Return;
