@@ -205,14 +205,11 @@ namespace mpNZB.Clients
 
         if (xmlDoc.SelectSingleNode("queue") != null)
         {
-          if ((Visible == false) && ((Notifications == false) || bolHaltNotify)) { tmrStatus.Enabled = false; }
+          int intJobCount = int.Parse(xmlDoc.SelectSingleNode("queue/noofslots").InnerText);
+          _Paused = bool.Parse(xmlDoc.SelectSingleNode("queue/paused").InnerText);
 
           if (Visible)
           {
-            _Paused = bool.Parse(xmlDoc.SelectSingleNode("queue/paused").InnerText);
-
-            int intJobCount = int.Parse(xmlDoc.SelectSingleNode("queue/noofslots").InnerText);
-
             NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
 
             GUIPropertyManager.SetProperty("#Paused", _Paused.ToString());
@@ -224,10 +221,9 @@ namespace mpNZB.Clients
             GUIPropertyManager.SetProperty("#TimeLeft", xmlDoc.SelectSingleNode("queue/timeleft").InnerText + " S");
           }
 
-          if (Notifications)
-          {
-            HistoryCheck();
-          }
+          if (Notifications) { HistoryCheck(); }
+
+          if (!Visible && (!Notifications || (bolHaltNotify && ((intJobCount == 0) || _Paused)))) { tmrStatus.Enabled = false; }
         }
         else
         {
