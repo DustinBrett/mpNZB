@@ -18,7 +18,6 @@ namespace mpNZB
     #region Definitions
 
     public string SiteName = String.Empty;
-    public string SiteCookie = String.Empty;
     public string FeedName = String.Empty;
 
     public string Username = String.Empty;
@@ -360,7 +359,7 @@ namespace mpNZB
         switch (SiteName)
         {
           case "Newzbin":
-            if (SiteCookie.Length > 0)
+            if (_Node["report:attributes"] != null)
             {
               string Source = String.Empty;
               string VideoFmt = String.Empty;
@@ -368,31 +367,28 @@ namespace mpNZB
               string Language = String.Empty;
               string Subtitles = String.Empty;
 
-              if (_Node["report:attributes"] != null)
+              XmlNodeList Attributes = _Node["report:attributes"].ChildNodes;
+              if (Attributes.Count > 0)
               {
-                XmlNodeList Attributes = _Node["report:attributes"].ChildNodes;
-                if (Attributes.Count > 0)
+                foreach (XmlNode Attribute in Attributes)
                 {
-                  foreach (XmlNode Attribute in Attributes)
+                  switch (Attribute.Attributes[0].InnerText)
                   {
-                    switch (Attribute.Attributes[0].InnerText)
-                    {
-                      case "Source":
-                        Source += ((Source.Length > 0) ? ", " : String.Empty) + Attribute.InnerText;
-                        break;
-                      case "Video Fmt":
-                        VideoFmt += ((VideoFmt.Length > 0) ? ", " : String.Empty) + Attribute.InnerText;
-                        break;
-                      case "Video Genre":
-                        VideoGenre += ((VideoGenre.Length > 0) ? ", " : String.Empty) + Attribute.InnerText;
-                        break;
-                      case "Language":
-                        Language += ((Language.Length > 0) ? ", " : String.Empty) + Attribute.InnerText;
-                        break;
-                      case "Subtitles":
-                        Subtitles += ((Subtitles.Length > 0) ? ", " : String.Empty) + Attribute.InnerText;
-                        break;
-                    }
+                    case "Source":
+                      Source += ((Source.Length > 0) ? ", " : String.Empty) + Attribute.InnerText;
+                      break;
+                    case "Video Fmt":
+                      VideoFmt += ((VideoFmt.Length > 0) ? ", " : String.Empty) + Attribute.InnerText;
+                      break;
+                    case "Video Genre":
+                      VideoGenre += ((VideoGenre.Length > 0) ? ", " : String.Empty) + Attribute.InnerText;
+                      break;
+                    case "Language":
+                      Language += ((Language.Length > 0) ? ", " : String.Empty) + Attribute.InnerText;
+                      break;
+                    case "Subtitles":
+                      Subtitles += ((Subtitles.Length > 0) ? ", " : String.Empty) + Attribute.InnerText;
+                      break;
                   }
                 }
               }
@@ -400,6 +396,7 @@ namespace mpNZB
               strNZBInfo = ((Source.Length > 0) ? "Source: " + Source + Environment.NewLine : String.Empty) + ((VideoFmt.Length > 0) ? "Video Format: " + VideoFmt + Environment.NewLine : String.Empty) + "Video Genre: " + ((VideoGenre.Length > 0) ? VideoGenre + Environment.NewLine : String.Empty) + ((Language.Length > 0) ? "Language: " + Language + Environment.NewLine : String.Empty) + ((Subtitles.Length > 0) ? "Subtitles: " + Subtitles : String.Empty);
             }
             break;
+
           case "TvNZB":
           case "MyTvNZB":
             if ((_Node["season"] != null) && (_Node["episode"] != null))

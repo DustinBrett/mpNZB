@@ -334,15 +334,9 @@ namespace mpNZB
         foreach (string URL in _URL)
         {
           HttpWebRequest webReq = (HttpWebRequest)WebRequest.Create(URL);
-          if ((_Username.Length > 0) && (_Password.Length > 0))
-          {
-            webReq.Credentials = new NetworkCredential(_Username, _Password);
-          }
           webReq.Headers.Add(HttpRequestHeader.AcceptEncoding, "gzip");
-          if (Site.SiteCookie.Length > 0)
-          {
-            webReq.Headers.Add(HttpRequestHeader.Cookie, Site.SiteCookie);
-          }
+
+          if ((_Username.Length > 0) && (_Password.Length > 0)) { webReq.Credentials = new NetworkCredential(_Username, _Password); }
 
           HttpWebResponse webResp = (HttpWebResponse)webReq.GetResponse();
           XmlDocument xmlDoc = new XmlDocument();
