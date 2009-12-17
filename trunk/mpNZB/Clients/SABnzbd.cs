@@ -15,11 +15,11 @@ namespace mpNZB.Clients
 
     #region Init
 
-    private bool _InPlugin;
-    public bool InPlugin
+    private bool _Visible;
+    public bool Visible
     {
-      get { return _InPlugin; }
-      set { _InPlugin = value; }
+      get { return _Visible; }
+      set { _Visible = value; }
     }
 
     private bool _Paused;
@@ -144,76 +144,51 @@ namespace mpNZB.Clients
 
     #region History
 
-    List<GUIListItem> _History = new List<GUIListItem>();
+    XmlNodeList _History;
 
-    bool bolLockHistory = false;
-    bool bolItemsDone = false;
+    bool bolHaltNotify = false;
 
     private void HistoryCheck()
     {
-      if (!(bolLockHistory))
+      lock (this)
       {
-        bolLockHistory = true;
-
         XmlDocument xmlDoc = new XmlDocument();
         xmlDoc.Load(new XmlTextReader(CreateURL("api?mode=history", "output=xml", false)));
 
-        List<GUIListItem> History = new List<GUIListItem>();
-
-        foreach (XmlNode nodeItem in xmlDoc.SelectNodes("history/slots/slot"))
-        {
-          History.Add(new GUIListItem(nodeItem["name"].InnerText, nodeItem["status"].InnerText, nodeItem["nzo_id"].InnerText, false, null));
-        }
+        XmlNodeList History = xmlDoc.SelectNodes("history/slots/slot");
 
         if (_History.Count > 0)
         {
-          bool bolItemFound;
-          int intItemsDone = 0;
+          bool bolFound;
 
-          foreach(GUIListItem NewItem in History)
+          foreach(XmlNode Current in History)
           {
-            bolItemFound = false;
+            bolFound = false;
 
-            foreach (GUIListItem OldItem in _History)
+            foreach (XmlNode Cached in _History)
             {
-              if (NewItem.Path == OldItem.Path)
+              if (Current["nzo_id"].InnerText == Cached["nzo_id"].InnerText)
               {
-                if ((NewItem.Label2 == "Completed") || (NewItem.Label2 == "Failed"))
+                if ((Current["status"].InnerText != Cached["status"].InnerText) && ((Current["status"].InnerText == "Completed") || (Current["status"].InnerText == "Failed")))
                 {
-                  intItemsDone += 1;
-
-                  if (NewItem.Label2 != OldItem.Label2)
-                  {
-                    MP.OK(NewItem.Label, NewItem.Label2);
-                  }
+                  MP.Text("Name: " + Current["name"].InnerText + Environment.NewLine + ((Current["fail_message"].InnerText.Length > 0) ? "Fail message: " + Current["fail_message"].InnerText + Environment.NewLine : String.Empty) + "Size: " + Current["size"].InnerText + Environment.NewLine + "Category: " + Current["category"].InnerText + Environment.NewLine + "Download time: " + (int.Parse(Current["download_time"].InnerText) / 60).ToString("N2") + " minutes" + Environment.NewLine + "Processing time: " + (int.Parse(Current["postproc_time"].InnerText) / 60).ToString("N2") + " minutes" + Environment.NewLine, Current["status"].InnerText);
                 }
 
-                bolItemFound = true;
+                bolFound = true;
                 break;
               }
             }
 
-            if ((bolItemFound == false) && ((NewItem.Label2 == "Completed") || (NewItem.Label2 == "Failed")))
+            if ((bolFound == false) && ((Current["status"].InnerText == "Completed") || (Current["status"].InnerText == "Failed")))
             {
-              intItemsDone += 1;
-
-              MP.OK(NewItem.Label, NewItem.Label2);
+              MP.Text("Name: " + Current["name"].InnerText + Environment.NewLine + ((Current["fail_message"].InnerText.Length > 0) ? "Fail message: " + Current["fail_message"].InnerText + Environment.NewLine : String.Empty) + "Size: " + Current["size"].InnerText + Environment.NewLine + "Category: " + Current["category"].InnerText + Environment.NewLine + "Download time: " + (int.Parse(Current["download_time"].InnerText) / 60).ToString("N2") + " minutes" + Environment.NewLine + "Processing time: " + (int.Parse(Current["postproc_time"].InnerText) / 60).ToString("N2") + " minutes" + Environment.NewLine, Current["status"].InnerText);
             }
-          }
-
-          if (intItemsDone == _History.Count)
-          {
-            bolItemsDone = true;
-          }
-          else
-          {
-            bolItemsDone = false;
           }
         }
 
         _History = History;
 
-        bolLockHistory = false;
+        bolHaltNotify = (History.Count == 0);
       }
     }
 
@@ -230,9 +205,9 @@ namespace mpNZB.Clients
 
         if (xmlDoc.SelectSingleNode("queue") != null)
         {
-          if ((InPlugin == false) && ((Notifications == false) || bolItemsDone)) { tmrStatus.Enabled = false; }
+          if ((Visible == false) && ((Notifications == false) || bolHaltNotify)) { tmrStatus.Enabled = false; }
 
-          if (InPlugin)
+          if (Visible)
           {
             _Paused = bool.Parse(xmlDoc.SelectSingleNode("queue/paused").InnerText);
 
