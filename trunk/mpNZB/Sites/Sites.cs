@@ -399,7 +399,7 @@ namespace mpNZB
 
               if (_Node["report:nfo"]["report:link"] != null)
               {
-                strNFOLink = _Node["report:nfo"]["report:link"].InnerText;
+                strNFOLink = _Node["report:nfo"]["report:link"].InnerText.Replace("nfo/view/", String.Empty).Replace("www", "nfo");
               }
             }
             break;
