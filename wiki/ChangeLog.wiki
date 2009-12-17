@@ -6,8 +6,8 @@
   * Missing Episodes now search 3 ways (`S01E01, 1x01, 101`)
 
 *Modifications*
-  * Newzbin authentication using `HTTP Auth` instead of cookies (Much faster)
-  * Recoded `Download Complete` for better speed / reliability
+  * Newzbin authentication using `HTTP Auth` instead of cookies (Faster)
+  * Recoded `Download Complete` (Faster / Reliable)
   * Items in queue will say "Paused" when paused
 
 = 1.2 =
