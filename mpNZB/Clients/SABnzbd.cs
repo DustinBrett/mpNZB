@@ -157,31 +157,13 @@ namespace mpNZB.Clients
 
         XmlNodeList History = xmlDoc.SelectNodes("history/slots/slot");
 
-        if (_History.Count > 0)
+        if (_History != null)
         {
-          bool bolFound;
-
           foreach(XmlNode Current in History)
           {
-            bolFound = false;
-
-            foreach (XmlNode Cached in _History)
+            if ((!CompareItem(Current)) && ((Current["status"].InnerText == "Completed") || (Current["status"].InnerText == "Failed")))
             {
-              if (Current["nzo_id"].InnerText == Cached["nzo_id"].InnerText)
-              {
-                if ((Current["status"].InnerText != Cached["status"].InnerText) && ((Current["status"].InnerText == "Completed") || (Current["status"].InnerText == "Failed")))
-                {
-                  MP.Text("Name: " + Current["name"].InnerText + Environment.NewLine + ((Current["fail_message"].InnerText.Length > 0) ? "Fail message: " + Current["fail_message"].InnerText + Environment.NewLine : String.Empty) + "Size: " + Current["size"].InnerText + Environment.NewLine + "Category: " + Current["category"].InnerText + Environment.NewLine + "Download time: " + (int.Parse(Current["download_time"].InnerText) / 60).ToString("N2") + " minutes" + Environment.NewLine + "Processing time: " + (int.Parse(Current["postproc_time"].InnerText) / 60).ToString("N2") + " minutes" + Environment.NewLine, Current["status"].InnerText);
-                }
-
-                bolFound = true;
-                break;
-              }
-            }
-
-            if ((bolFound == false) && ((Current["status"].InnerText == "Completed") || (Current["status"].InnerText == "Failed")))
-            {
-              MP.Text("Name: " + Current["name"].InnerText + Environment.NewLine + ((Current["fail_message"].InnerText.Length > 0) ? "Fail message: " + Current["fail_message"].InnerText + Environment.NewLine : String.Empty) + "Size: " + Current["size"].InnerText + Environment.NewLine + "Category: " + Current["category"].InnerText + Environment.NewLine + "Download time: " + (int.Parse(Current["download_time"].InnerText) / 60).ToString("N2") + " minutes" + Environment.NewLine + "Processing time: " + (int.Parse(Current["postproc_time"].InnerText) / 60).ToString("N2") + " minutes" + Environment.NewLine, Current["status"].InnerText);
+              MP.OK("Name: " + Current["name"].InnerText + Environment.NewLine + ((Current["fail_message"].InnerText.Length > 0) ? "Fail message: " + Current["fail_message"].InnerText + Environment.NewLine : String.Empty) + "Size: " + Current["size"].InnerText + Environment.NewLine + "Category: " + Current["category"].InnerText, Current["status"].InnerText);
             }
           }
         }
@@ -190,6 +172,24 @@ namespace mpNZB.Clients
 
         bolHaltNotify = (History.Count == 0);
       }
+    }
+
+    private bool CompareItem(XmlNode Current)
+    {
+      foreach (XmlNode Cached in _History)
+      {
+        if (Current["nzo_id"].InnerText == Cached["nzo_id"].InnerText)
+        {
+          if ((Current["status"].InnerText != Cached["status"].InnerText) && ((Current["status"].InnerText == "Completed") || (Current["status"].InnerText == "Failed")))
+          {
+            MP.OK("Name: " + Current["name"].InnerText + Environment.NewLine + ((Current["fail_message"].InnerText.Length > 0) ? "Fail message: " + Current["fail_message"].InnerText + Environment.NewLine : String.Empty) + "Size: " + Current["size"].InnerText + Environment.NewLine + "Category: " + Current["category"].InnerText, Current["status"].InnerText);
+          }
+
+          return true;
+        }
+      }
+
+      return false;
     }
 
     #endregion
