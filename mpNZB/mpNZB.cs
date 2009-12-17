@@ -4,6 +4,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Xml;
 
 using MediaPortal.GUI.Library;
@@ -273,6 +274,11 @@ namespace mpNZB
           _Items.Add(new GUIListItem("Information"));
         }
 
+        if (lstItems.ListItems[lstItems.SelectedListItemIndex].FileInfo.Name.Length > 0)
+        {
+          _Items.Add(new GUIListItem("View NFO"));
+        }
+
         GUIListItem _Menu = MP.Menu(_Items, "Menu");
         if (_Menu != null)
         {
@@ -314,6 +320,9 @@ namespace mpNZB
               break;
             case "Information":
               MP.Text(lstItems.ListItems[lstItems.SelectedListItemIndex].DVDLabel, ((lstItems.ListItems[lstItems.SelectedListItemIndex].ItemId == 3) ? "Job Information" : "NZB Information"));
+              break;
+            case "View NFO":
+              MP.Text(ReadNFO(lstItems.ListItems[lstItems.SelectedListItemIndex].FileInfo.Name), "View NFO");
               break;
           }
         }
@@ -370,6 +379,20 @@ namespace mpNZB
           _List.Focus = true;
         }
       }
+    }
+
+    private string ReadNFO(string _URL)
+    {
+      string _Return = String.Empty;
+
+      Match mNFO = Regex.Match(new WebClient().DownloadString(_URL), @"<pre>(.*?)</pre>");
+
+      if ((mNFO.Success) && (mNFO.Groups[1].Value.Length > 0))
+      {
+        _Return = Regex.Replace(Regex.Replace(mNFO.Groups[1].Value, @"<.*?>", String.Empty), @"^\s+|\s+$", String.Empty);
+      }
+
+      return _Return;
     }
 
     private void SelectSite(string strType)

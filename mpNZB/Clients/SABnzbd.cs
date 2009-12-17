@@ -251,7 +251,7 @@ namespace mpNZB.Clients
           {
             strJobInfo = "Status: " + nodeItem["status"].InnerText + Environment.NewLine + "Filename: " + nodeItem["filename"].InnerText + Environment.NewLine + "Priority: " + nodeItem["priority"].InnerText + Environment.NewLine + "Category: " + nodeItem["cat"].InnerText + Environment.NewLine + "Percentage: " + nodeItem["percentage"].InnerText + "%";
 
-            MP.ListItem(_List, nodeItem["filename"].InnerText, ((nodeItem["status"].InnerText == "Paused") ? "Paused" : double.Parse(nodeItem["mbleft"].InnerText, nfi).ToString("N2") + " / " + double.Parse(nodeItem["mb"].InnerText, nfi).ToString("N2") + " MB"), strJobInfo, DateTime.Now, 0, nodeItem["nzo_id"].InnerText, 3);
+            MP.ListItem(_List, nodeItem["filename"].InnerText, ((nodeItem["status"].InnerText == "Paused") ? "Paused" : double.Parse(nodeItem["mbleft"].InnerText, nfi).ToString("N2") + " / " + double.Parse(nodeItem["mb"].InnerText, nfi).ToString("N2") + " MB"), strJobInfo, DateTime.Now, 0, String.Empty ,nodeItem["nzo_id"].InnerText, 3);
           }
 
           GUIPropertyManager.SetProperty("#Status", "Queue Loaded");
@@ -301,7 +301,7 @@ namespace mpNZB.Clients
               }
             }
 
-            MP.ListItem(_List, nodeItem["name"].InnerText, nodeItem["status"].InnerText, strItemInfo, dtPubDate, 0, String.Empty, 4);
+            MP.ListItem(_List, nodeItem["name"].InnerText, nodeItem["status"].InnerText, strItemInfo, dtPubDate, 0, String.Empty, String.Empty, 4);
           }
 
           GUIPropertyManager.SetProperty("#Status", "History Loaded");
