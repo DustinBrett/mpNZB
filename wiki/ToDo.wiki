@@ -8,4 +8,4 @@
   * Better handling of NFO ASCII art
   * Support HTTPS with SABnzbd
   * Download complete asks if you want to go to the download folder
-    * Default is No
+  * Suggestions based on your movie database
