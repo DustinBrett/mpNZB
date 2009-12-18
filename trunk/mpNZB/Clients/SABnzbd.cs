@@ -98,7 +98,10 @@ namespace mpNZB.Clients
       {
         if ((IP.Length != 0) && (Port.Length != 0))
         {
-            strResult = "http://" + IP + ":" + Port + "/sabnzbd/" + _Mode + ((APIKey.Length > 0) ? "&apikey=" + APIKey : String.Empty) + (((Auth) && ((Username.Length > 0) && (Password.Length > 0))) ? "&" + "ma_username=" + Username + "&" + "ma_password=" + Password : String.Empty) + ((_Command.Length > 0) ? "&" + _Command : String.Empty) + ((_CatSelect) ? "&" + "cat=" + SelectCategory() : String.Empty);
+          string strCategory = String.Empty;
+          if (_CatSelect) { strCategory = SelectCategory(); }
+
+          strResult = "http://" + IP + ":" + Port + "/sabnzbd/" + _Mode + ((APIKey.Length > 0) ? "&apikey=" + APIKey : String.Empty) + (((Auth) && ((Username.Length > 0) && (Password.Length > 0))) ? "&" + "ma_username=" + Username + "&" + "ma_password=" + Password : String.Empty) + ((_Command.Length > 0) ? "&" + _Command : String.Empty) + ((strCategory.Length > 0) ? "&" + "cat=" + strCategory : String.Empty);
         }
       }
       catch (Exception e) { MP.Error(e); }
