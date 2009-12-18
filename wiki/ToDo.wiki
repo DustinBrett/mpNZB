@@ -9,3 +9,4 @@
     * `http://www.zip.ca/publish/rss/index.aspx`
   * Download complete asks if you want to go to the download folder
     * Default is No
+  * Support HTTPS with SABnzbd
