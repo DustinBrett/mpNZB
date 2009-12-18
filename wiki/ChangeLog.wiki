@@ -3,7 +3,7 @@
 
 = 1.4 =
 *Additions*
-  * Suggestions has been added to search
+  * Suggestions have been added to search
     * Blockbuster, Netflix, Rotten Tomatoes, Yahoo! Movies, Zip.ca
 
 *Fixes*
