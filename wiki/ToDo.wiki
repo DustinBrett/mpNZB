@@ -2,11 +2,16 @@
 #labels Phase-Design
 
 = 1.4 =
-  * Better handling of NFO ASCII art
   * Add "Suggestions" as a search option
     * `http://www.blockbuster.com/community/rss`
     * `http://www.netflix.com/RSSFeeds`
     * `http://www.zip.ca/publish/rss/index.aspx`
+
+= Future Features =
+  * IMDb/TVRage Information
+  * SABnzbd information on Basic Home
+  * NZB Streaming
+  * Better handling of NFO ASCII art
+  * Support HTTPS with SABnzbd
   * Download complete asks if you want to go to the download folder
     * Default is No
-  * Support HTTPS with SABnzbd
