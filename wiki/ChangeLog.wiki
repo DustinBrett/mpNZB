@@ -4,7 +4,7 @@
 = 1.4 =
 *Additions*
   * Suggestions has been added to search
-    * Blockbuster, Netflix, Rotten Tomatoes, Zip.ca
+    * Blockbuster, Netflix, Rotten Tomatoes, Yahoo! Movies, Zip.ca
 
 *Fixes*
   * Saving to a blank category if you exited during category selection
