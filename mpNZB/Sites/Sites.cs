@@ -174,6 +174,14 @@ namespace mpNZB
           _Items.Add(new GUIListItem("Missing Episodes"));
         }
 
+        XmlDocument xmlDoc = new XmlDocument();
+        xmlDoc.Load(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Plugins) + @"\Windows\Sites.xml");
+
+        if (xmlDoc.SelectNodes("sites/suggestion").Count > 0)
+        {
+          _Items.Add(new GUIListItem("Suggestions"));
+        }
+
         GUIListItem Item;
 
         XmlDocument xmlSettings = new XmlDocument();
@@ -189,9 +197,6 @@ namespace mpNZB
         GUIListItem _Item = MP.Menu(_Items, "Select Search");
         if (_Item != null)
         {
-          XmlDocument xmlDoc = new XmlDocument();
-          xmlDoc.Load(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Plugins) + @"\Windows\Sites.xml");
-
           _Items = new List<GUIListItem>();
 
           foreach (XmlNode searchItem in xmlDoc.SelectNodes("sites/site[@name='" + SiteName + "']/searches/search"))
@@ -232,6 +237,25 @@ namespace mpNZB
                     FeedURL.Add(strSearchURL.Replace("[QUERY]", FeedName).Replace("[MAX]", MaxResults.ToString())); // 1x01
                     FeedURL.Add(strSearchURL.Replace("[QUERY]", _Series.Label + " " + _Episode.DVDLabel.Replace(" ", "+").Replace("[S]", "S").Replace("[E]", "E")).Replace("[MAX]", MaxResults.ToString())); // S01E01
                     FeedURL.Add(strSearchURL.Replace("[QUERY]", _Series.Label + " " + _Episode.DVDLabel.Replace(" ", "+").Replace("[S]0", String.Empty).Replace("[S]", String.Empty).Replace("[E]", String.Empty)).Replace("[MAX]", MaxResults.ToString())); // 101
+                  }
+                }
+                break;
+              case "Suggestions":
+                Suggestions SG = new Suggestions();
+
+                GUIListItem _SuggestSites = MP.Menu(SG.Sites(xmlDoc), "Select Site");
+                if (_SuggestSites != null)
+                {
+                  GUIListItem _SuggestFeeds = MP.Menu(SG.Feeds(xmlDoc, _SuggestSites.Label), "Select Feed");
+                  if (_SuggestFeeds != null)
+                  {
+                    GUIListItem _SuggestList = MP.Menu(SG.List(_SuggestFeeds.Path), "Select Feed");
+                    if (_SuggestList != null)
+                    {
+                      FeedName = _SuggestFeeds.Label + " - " + _SuggestList.Label;
+
+                      FeedURL.Add(strSearchURL.Replace("[QUERY]", _SuggestList.Label).Replace("[MAX]", MaxResults.ToString())); // 1x01
+                    }
                   }
                 }
                 break;
