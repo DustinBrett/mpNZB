@@ -3,10 +3,13 @@
 
 = 1.4 =
   * Better handling of NFO ASCII art
-  * Add suggestions to search
+  * Add "Recommended" as a search option
     * `http://www.blockbuster.com/community/rss`
     * `http://www.netflix.com/RSSFeeds`
     * `http://www.zip.ca/publish/rss/index.aspx`
+  * Fix exiting from the save category still downloading the NZB
+  * Download complete asks if you want to go to the download folder
+    * Default is No
 
 = Future =
   * IMDb/TVRage Information
