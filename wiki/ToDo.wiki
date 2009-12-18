@@ -3,7 +3,7 @@
 
 = 1.4 =
   * Better handling of NFO ASCII art
-  * Add "Recommended" as a search option
+  * Add "Suggestions" as a search option
     * `http://www.blockbuster.com/community/rss`
     * `http://www.netflix.com/RSSFeeds`
     * `http://www.zip.ca/publish/rss/index.aspx`
