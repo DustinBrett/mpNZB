@@ -7,6 +7,5 @@
     * `http://www.blockbuster.com/community/rss`
     * `http://www.netflix.com/RSSFeeds`
     * `http://www.zip.ca/publish/rss/index.aspx`
-  * Fix exiting from the save category still downloading the NZB
   * Download complete asks if you want to go to the download folder
     * Default is No
