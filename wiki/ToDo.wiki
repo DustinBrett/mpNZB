@@ -10,11 +10,3 @@
   * Fix exiting from the save category still downloading the NZB
   * Download complete asks if you want to go to the download folder
     * Default is No
-
-= Future =
-  * IMDb/TVRage Information
-    * *Requires*: Website API's
-  * SABnzbd information on *Basic Home*
-    * *Requires*: Skin Modification
-  * NZB Streaming
-    * *Requires*: Magic
