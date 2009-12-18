@@ -1,12 +1,6 @@
 #summary To-Do list for project
 #labels Phase-Design
 
-= 1.4 =
-  * Add "Suggestions" as a search option
-    * `http://www.blockbuster.com/community/rss`
-    * `http://www.netflix.com/RSSFeeds`
-    * `http://www.zip.ca/publish/rss/index.aspx`
-
 = Future Features =
   * IMDb/TVRage Information
   * SABnzbd information on Basic Home
