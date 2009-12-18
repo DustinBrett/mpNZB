@@ -94,4 +94,93 @@
 			<url element="link" />
 		</item>
 	</site>
+	<suggestion name="Blockbuster">
+		<feeds>
+			<feed name="Online Top 100">http://www.blockbuster.com/rss/top100</feed>
+			<feed name="New Releases">http://www.blockbuster.com/community/rss/newRelease</feed>
+			<feed name="Daily Top 25 Q Adds">http://www.blockbuster.com/rss/queueAdds</feed>
+			<feed name="25 Most Recent Reviews">http://www.blockbuster.com/community/rss/recentReviews</feed>
+			<feed name="What's Hot in Theaters">http://www.blockbuster.com/community/rss/rentWhatsHotInTheaters</feed>
+			<feed name="Movies You Might Have Missed">http://www.blockbuster.com/community/rss/rentMoviesYouMightHaveMissed</feed>
+			<feed name="Action &amp; Adventure Top 25">http://www.blockbuster.com/community/rss/top25/actionAdventure</feed>
+			<feed name="Classics Top 25">http://www.blockbuster.com/community/rss/top25/classics</feed>
+			<feed name="Comedy Top 25">http://www.blockbuster.com/community/rss/top25/comedy</feed>
+			<feed name="Documentary Top 25">http://www.blockbuster.com/community/rss/top25/documentary</feed>
+			<feed name="Drama Top 25">http://www.blockbuster.com/community/rss/top25/drama</feed>
+			<feed name="Family &amp; Kids Top 25">http://www.blockbuster.com/community/rss/top25/familyKids</feed>
+			<feed name="Horror Top 25">http://www.blockbuster.com/community/rss/top25/horror</feed>
+			<feed name="Independent Top 25">http://www.blockbuster.com/community/rss/top25/independent</feed>
+			<feed name="Mystery &amp; Suspense Top 25">http://www.blockbuster.com/community/rss/top25/mysterySuspence</feed>
+			<feed name="Television Top 25">http://www.blockbuster.com/community/rss/top25/television</feed>
+		</feeds>
+	</suggestion>
+	<suggestion name="Netflix">
+		<feeds>
+			<feed name="Top 100">http://rss.netflix.com/Top100RSS</feed>
+			<feed name="New Releases">http://rss.netflix.com/NewReleasesRSS</feed>
+			<feed name="Action &amp; Adventure Top 25">http://rss.netflix.com/Top25RSS?gid=296</feed>
+			<feed name="Anime &amp; Animation Top 25">http://rss.netflix.com/Top25RSS?gid=623</feed>
+			<feed name="Blu-ray Top 25">http://rss.netflix.com/Top25RSS?gid=2444</feed>
+			<feed name="Children &amp; Family Top 25">http://rss.netflix.com/Top25RSS?gid=302</feed>
+			<feed name="Classics Top 25">http://rss.netflix.com/Top25RSS?gid=306</feed>
+			<feed name="Comedy Top 25">http://rss.netflix.com/Top25RSS?gid=307</feed>
+			<feed name="Documentary Top 25">http://rss.netflix.com/Top25RSS?gid=864</feed>
+			<feed name="Drama Top 25">http://rss.netflix.com/Top25RSS?gid=315</feed>
+			<feed name="Faith &amp; Spirituality Top 25">http://rss.netflix.com/Top25RSS?gid=2108</feed>
+			<feed name="Foreign Top 25">http://rss.netflix.com/Top25RSS?gid=2514</feed>
+			<feed name="Gay &amp; Lesbian Top 25">http://rss.netflix.com/Top25RSS?gid=330</feed>
+			<feed name="Horror Top 25">http://rss.netflix.com/Top25RSS?gid=338</feed>
+			<feed name="Independent Top 25">http://rss.netflix.com/Top25RSS?gid=343</feed>
+			<feed name="Music &amp; Musicals Top 25">http://rss.netflix.com/Top25RSS?gid=2310</feed>
+			<feed name="Romance Top 25">http://rss.netflix.com/Top25RSS?gid=371</feed>
+			<feed name="Sci-Fi &amp; Fantasy Top 25">http://rss.netflix.com/Top25RSS?gid=373</feed>
+			<feed name="Special Interest Top 25">http://rss.netflix.com/Top25RSS?gid=2223</feed>
+			<feed name="Sports &amp; Fitness Top 25">http://rss.netflix.com/Top25RSS?gid=2190</feed>
+			<feed name="Television Top 25">http://rss.netflix.com/Top25RSS?gid=2197</feed>
+			<feed name="Thrillers Top 25">http://rss.netflix.com/Top25RSS?gid=38</feed>
+		</feeds>
+	</suggestion>
+	<suggestion name="Rotten Tomatoes">
+		<feeds>
+			<feed name="Top DVDs">http://i.rottentomatoes.com/syndication/rss/top_dvds.xml</feed>
+			<feed name="New Releases">http://i.rottentomatoes.com/syndication/rss/new_releases.xml</feed>
+		</feeds>
+	</suggestion>
+	<suggestion name="Yahoo! Movies">
+		<feeds>
+			<feed name="Top Selling DVDs">http://us.rd.yahoo.com/movies/rss/dvd/topsellers/*http://rss.movies.yahoo.com/dvd/topsellers.xml</feed>
+			<feed name="New on DVD This Week">http://us.rd.yahoo.com/movies/rss/dvd/newthisweek/?http://rss.movies.yahoo.com/dvd/newthisweek.xml</feed>
+			<feed name="New on DVD Next Week">http://us.rd.yahoo.com/movies/rss/dvd/newnextweek/?http://rss.movies.yahoo.com/dvd/newnextweek.xml</feed>
+			<feed name="DVDs Available for Pre-Order">http://us.rd.yahoo.com/movies/rss/dvd-preorders/?http://rss.ent.yahoo.com/movies/dvd/preorders.xml</feed>
+		</feeds>
+	</suggestion>
+	<suggestion name="Zip.ca">
+		<feeds>
+			<feed name="Recent Releases">http://www.zip.ca/publish/rss/feedRSS.ashx?feed=4</feed>
+			<feed name="Coming Soon">http://www.zip.ca/publish/rss/feedRSS.ashx?feed=3</feed>
+			<feed name="Now In Theatres">http://www.zip.ca/publish/rss/feedRSS.ashx?feed=6</feed>
+			<feed name="New to our Library">http://www.zip.ca/publish/rss/feedRSS.ashx?feed=5</feed>
+			<feed name="Top 25 ZipListed">http://www.zip.ca/publish/rss/feedRSS.ashx?feed=1</feed>
+			<feed name="Top 25 Action and Adventure">http://www.zip.ca/publish/rss/feedRSS.ashx?feed=2&amp;cat=1</feed>
+			<feed name="Top 25 Animation">http://www.zip.ca/publish/rss/feedRSS.ashx?feed=2&amp;cat=165</feed>
+			<feed name="Top 25 Anime">http://www.zip.ca/publish/rss/feedRSS.ashx?feed=2&amp;cat=19</feed>
+			<feed name="Top 25 Canadian Films">http://www.zip.ca/publish/rss/feedRSS.ashx?feed=2&amp;cat=223</feed>
+			<feed name="Top 25 Children &amp; Family">http://www.zip.ca/publish/rss/feedRSS.ashx?feed=2&amp;cat=36</feed>
+			<feed name="Top 25 Classic">http://www.zip.ca/publish/rss/feedRSS.ashx?feed=2&amp;cat=222</feed>
+			<feed name="Top 25 Comedy">http://www.zip.ca/publish/rss/feedRSS.ashx?feed=2&amp;cat=2</feed>
+			<feed name="Top 25 Documentary">http://www.zip.ca/publish/rss/feedRSS.ashx?feed=2&amp;cat=76</feed>
+			<feed name="Top 25 Drama">http://www.zip.ca/publish/rss/feedRSS.ashx?feed=2&amp;cat=8</feed>
+			<feed name="Top 25 French">http://www.zip.ca/publish/rss/feedRSS.ashx?feed=2&amp;cat=241</feed>
+			<feed name="Top 25 Foreign &amp; International">http://www.zip.ca/publish/rss/feedRSS.ashx?feed=2&amp;cat=9</feed>
+			<feed name="Top 25 Gay &amp; Lesbian">http://www.zip.ca/publish/rss/feedRSS.ashx?feed=2&amp;cat=84</feed>
+			<feed name="Top 25 Horror">http://www.zip.ca/publish/rss/feedRSS.ashx?feed=2&amp;cat=143</feed>
+			<feed name="Top 25 Independent">http://www.zip.ca/publish/rss/feedRSS.ashx?feed=2&amp;cat=161</feed>
+			<feed name="Top 25 Romance">http://www.zip.ca/publish/rss/feedRSS.ashx?feed=2&amp;cat=156</feed>
+			<feed name="Top 25 Sci-Fi &amp; Fantasy">http://www.zip.ca/publish/rss/feedRSS.ashx?feed=2&amp;cat=176</feed>
+			<feed name="Top 25 Sports">http://www.zip.ca/publish/rss/feedRSS.ashx?feed=2&amp;cat=196</feed>
+			<feed name="Top 25 Television">http://www.zip.ca/publish/rss/feedRSS.ashx?feed=2&amp;cat=208</feed>
+			<feed name="Top 25 Thrillers">http://www.zip.ca/publish/rss/feedRSS.ashx?feed=2&amp;cat=184</feed>
+			<feed name="Top 25 Westerns">http://www.zip.ca/publish/rss/feedRSS.ashx?feed=2&amp;cat=18</feed>
+		</feeds>
+	</suggestion>
 </sites>

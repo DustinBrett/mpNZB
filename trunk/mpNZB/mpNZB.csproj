@@ -45,6 +45,7 @@
       <HintPath>\\htpc\mediaportal\plugins\Windows\Dialogs.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -70,6 +71,7 @@
     <Compile Include="MPTVSeries.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sites\Sites.cs" />
+    <Compile Include="Suggestions.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frmSetup.resx">
@@ -96,6 +98,6 @@ REM copy "C:\Users\Dustin\Desktop\mpNZB\trunk\mpNZB\Sites\Sites.xml" "\\htpc\c$\
 REM Send to Work Laptop
 REM ####################
 copy "C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\bin\Release\mpNZB.dll" "C:\Program Files\Team MediaPortal\MediaPortal\plugins\Windows\mpNZB.dll" /y
-REM copy "C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\Sites\Sites.xml" "C:\Program Files\Team MediaPortal\MediaPortal\plugins\Windows\Sites.xml" /y</PostBuildEvent>
+copy "C:\Documents and Settings\Dustin\Desktop\mpNZB\trunk\mpNZB\Sites\Sites.xml" "C:\Program Files\Team MediaPortal\MediaPortal\plugins\Windows\Sites.xml" /y</PostBuildEvent>
   </PropertyGroup>
 </Project>
