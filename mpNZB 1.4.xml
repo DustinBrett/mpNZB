@@ -2,10 +2,10 @@
 	<ver>1.00.000</ver>
 	<ExtensionList>
 		<Extension>
-			<FileName>mpNZB 1.3.mpi</FileName>
-			<Name>mpNZB 1.3</Name>
+			<FileName>mpNZB 1.4.mpi</FileName>
+			<Name>mpNZB 1.4</Name>
 			<URL>http://code.google.com/p/mpnzb/</URL>
-			<Version>1.3</Version>
+			<Version>1.4</Version>
 			<Author>Dustin Brett</Author>
 			<Description>mpNZB is a plug-in for MediaPortal that allows you to download NZB's from multiple sources (Feeds/Groups/Search). Then using SABnzbd it downloads those files from a Usenet provider such as Supernews.</Description>
 			<Group>Web</Group>
@@ -17,7 +17,7 @@
 				<ForumURL>http://forum.team-mediaportal.com/plugins-47/mpnzb-nzb-downloader-57265/</ForumURL>
 				<WebURL>http://code.google.com/p/mpnzb/</WebURL>
 				<WikiURL>http://code.google.com/p/mpnzb/wiki/Manual</WikiURL>
-				<CreationDate>17-12-09</CreationDate>
+				<CreationDate>18-12-09</CreationDate>
 				<SingleGroupSelect>False</SingleGroupSelect>
 				<ClearSkinCache>False</ClearSkinCache>
 				<UseRealPathInPackage>False</UseRealPathInPackage>

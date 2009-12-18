@@ -8,7 +8,7 @@
 			<Source>trunk\mpNZB\bin\Release\mpNZB.dll</Source>
 			<Id>01010</Id>
 			<Option />
-			<Guid>d7dff278-e31d-4449-8bbe-51ce50d47e6c</Guid>
+			<Guid>6cde9fb2-6ce7-4c37-bfe2-dae109f616b3</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -17,7 +17,7 @@
 			<Source>skin\Blue3\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>681fa6b4-0c3f-41c3-a63b-afafbb8dbb0e</Guid>
+			<Guid>28167885-7319-425d-a39e-7d7046713ad1</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -26,7 +26,7 @@
 			<Source>skin\Blue3wide\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>b8ee87e0-adaa-4090-8ae7-cf1df451b326</Guid>
+			<Guid>e66ed71e-1c61-47dd-8d7a-381d427b019d</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -35,7 +35,7 @@
 			<Source>skin\Indigo\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>8ad98954-3a55-4aca-b5b7-93350e56008f</Guid>
+			<Guid>3dacd1bf-929c-4b1b-80c8-b7b4d5ea4d47</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -44,7 +44,7 @@
 			<Source>skin\MediaStream\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>5f01cd33-e36c-4870-b5d4-73a8413eac9c</Guid>
+			<Guid>b66bd2ac-4065-4662-aaa7-d85cd55a32f4</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -53,7 +53,7 @@
 			<Source>skin\Monochrome\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>cc6b3272-261d-4632-ae76-7fc27b8dd852</Guid>
+			<Guid>15683070-48a3-45d9-b802-02775399aaf3</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -62,7 +62,7 @@
 			<Source>skin\PureVisionHD\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>62d8bd21-b2cd-41f4-bd2d-f80c655d670e</Guid>
+			<Guid>5c41976d-09eb-42d4-a26c-8f0d22e65b4d</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -71,7 +71,7 @@
 			<Source>skin\StreamedMP\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>3bbf6247-fe92-4b6f-b38d-95ca5b6fe908</Guid>
+			<Guid>8a20e988-0070-4639-9824-e8296b8f186e</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -80,7 +80,7 @@
 			<Source>skin\BleazleWide\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>40b87def-7bea-4179-86a5-6c5e65834315</Guid>
+			<Guid>bf5d1c33-5cad-4513-ab15-fb8191da5c96</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -89,7 +89,7 @@
 			<Source>skin\Black &amp; White 1080\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>9d928382-b80d-4266-9b4b-87ab16619e26</Guid>
+			<Guid>270fe614-86c6-49e6-9c21-ddf574743781</Guid>
 		</File>
 		<File>
 			<FileName>mpNZB.xml</FileName>
@@ -98,7 +98,7 @@
 			<Source>skin\Black Glass\mpNZB.xml</Source>
 			<Id>02010</Id>
 			<Option />
-			<Guid>1208b29e-74cd-442a-bfed-6d0645a8a9a1</Guid>
+			<Guid>45e69e39-ad36-4eba-bfd2-fde699c29b16</Guid>
 		</File>
 		<File>
 			<FileName>Sites.xml</FileName>
@@ -107,7 +107,7 @@
 			<Source>trunk\mpNZB\Sites\Sites.xml</Source>
 			<Id>01010</Id>
 			<Option />
-			<Guid>f524ba41-9f5e-4e75-9f16-efa7621b0b58</Guid>
+			<Guid>b2054113-72f7-4500-9e4e-0b87ac0b43b7</Guid>
 		</File>
 	</FileList>
 	<StringList />
@@ -117,10 +117,10 @@
 	<Option>
 		<BuildFileName />
 		<ProiectFileName>C:\Documents and Settings\Dustin\Desktop\mpNZB\mpNZB.xmp</ProiectFileName>
-		<ProiectName>mpNZB 1.3</ProiectName>
+		<ProiectName>mpNZB 1.4</ProiectName>
 		<Author>Dustin Brett</Author>
 		<UpdateURL>http://code.google.com/p/mpnzb/</UpdateURL>
-		<Version>1.3</Version>
+		<Version>1.4</Version>
 		<Description>mpNZB is a plug-in for MediaPortal that allows you to download NZB's from multiple sources (Feeds/Groups/Search). Then using SABnzbd it downloads those files from a Usenet provider such as Supernews.</Description>
 		<Group>Web</Group>
 		<Release>Stable </Release>
@@ -215,7 +215,7 @@ class InstallScript : MPInstallerScript
 		<ForumURL>http://forum.team-mediaportal.com/plugins-47/mpnzb-nzb-downloader-57265/</ForumURL>
 		<WebURL>http://code.google.com/p/mpnzb/</WebURL>
 		<WikiURL>http://code.google.com/p/mpnzb/wiki/Manual</WikiURL>
-		<CreationDate>17-12-09</CreationDate>
+		<CreationDate>18-12-09</CreationDate>
 		<SingleGroupSelect>False</SingleGroupSelect>
 		<ClearSkinCache>False</ClearSkinCache>
 		<UseRealPathInPackage>False</UseRealPathInPackage>
