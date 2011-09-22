@@ -81,9 +81,19 @@ namespace mpNZB
 
     public string Keyboard()
     {
+        return Keyboard(null);
+    }
+
+    public string Keyboard(string parameter)
+    {
       // Init Dialog
       VirtualKeyboard Dialog = (VirtualKeyboard)GUIWindowManager.GetWindow((int)GUIWindow.Window.WINDOW_VIRTUAL_KEYBOARD);
       Dialog.Reset();
+
+      if (parameter != null)
+      {
+          Dialog.Text = parameter;
+      }
 
       // Display Dialog
       Dialog.DoModal(GUIWindowManager.ActiveWindow);

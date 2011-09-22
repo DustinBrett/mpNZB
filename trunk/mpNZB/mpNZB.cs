@@ -154,7 +154,7 @@ namespace mpNZB
       return Load(GUIGraphicsContext.Skin + @"\mpNZB.xml");
     }
 
-    protected override void OnClicked(int controlId, GUIControl control, Action.ActionType actionType)
+    protected override void OnClicked(int controlId, GUIControl control, MediaPortal.GUI.Library.Action.ActionType actionType)
     {
       if (control == btnRefresh)
       {
@@ -248,6 +248,29 @@ namespace mpNZB
         Client.Visible = true;
         Client.Status();
         if (Client.Paused) { btnPause.Selected = true; }
+
+        // Start with parameter
+        // Working at the moment:
+        // "search:string to search"
+        string loadParam = null;
+
+        // check if running version of mediaportal supports loading with parameter and handle _loadParameter
+        System.Reflection.FieldInfo fi = typeof(GUIWindow).GetField("_loadParameter", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        if (fi != null)
+        {
+            loadParam = (string)fi.GetValue(this);
+        }
+
+        if (!string.IsNullOrEmpty(loadParam)) 
+        {
+            Log.Debug("[MPNZB] Loading with param: " + loadParam);
+            string search = Regex.Match(loadParam, "search:([^|]*)").Groups[1].Value;
+            if (!string.IsNullOrEmpty(search))
+            {
+                SelectSite("Search", search);
+            }
+        }
+
       }
       catch (Exception e) { MP.Error(e); }
     }
@@ -381,7 +404,12 @@ namespace mpNZB
       }
     }
 
-    private void SelectSite(string strType)
+    private void SelectSite(string strType) 
+    {
+        SelectSite(strType, null);
+    }
+
+    private void SelectSite(string strType, string parameter)
     {
       try
       {
@@ -398,7 +426,7 @@ namespace mpNZB
               Site.SetGroup();
               break;
             case "Search":
-              Site.SetSearch();
+              Site.SetSearch(parameter);
               break;
           }
 
