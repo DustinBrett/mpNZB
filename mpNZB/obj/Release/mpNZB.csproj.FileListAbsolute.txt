@@ -89,3 +89,37 @@ D:\mpNZB\trunk\mpNZB\obj\Release\mpNZB.frmSetup.resources
 D:\mpNZB\trunk\mpNZB\obj\Release\mpNZB.csproj.GenerateResource.Cache
 D:\mpNZB\trunk\mpNZB\obj\Release\mpNZB.dll
 D:\mpNZB\trunk\mpNZB\obj\Release\mpNZB.pdb
+C:\Users\fate\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\obj\Release\ResolveAssemblyReference.cache
+C:\Users\fate\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\obj\Release\mpNZB.frmSetup.resources
+C:\Users\fate\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\obj\Release\ResGen.read.1.tlog
+C:\Users\fate\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\obj\Release\ResGen.write.1.tlog
+C:\Users\fate\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\obj\Release\mpNZB.dll
+C:\Users\fate\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\obj\Release\mpNZB.pdb
+C:\Users\fate\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\bin\Release\mpNZB.dll
+C:\Users\fate\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\bin\Release\mpNZB.pdb
+C:\Users\fate\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\bin\Release\Common.Utils.dll
+C:\Users\fate\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\bin\Release\Bass.Net.dll
+C:\Users\fate\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\bin\Release\DirectShowLib.dll
+C:\Users\fate\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\bin\Release\taglib-sharp.dll
+C:\Users\fate\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\bin\Release\AxInterop.WMPLib.dll
+C:\Users\fate\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\bin\Release\edtftpnet-1.2.2.dll
+C:\Users\fate\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\bin\Release\BassRegistration.dll
+C:\Users\fate\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\bin\Release\MediaPortal.Support.dll
+C:\Users\fate\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\bin\Release\Interop.WMPLib.dll
+C:\Users\fate\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\bin\Release\CSScriptLibrary.dll
+C:\Users\fate\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\bin\Release\ICSharpCode.SharpZipLib.dll
+D:\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\obj\Release\ResolveAssemblyReference.cache
+D:\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\obj\Release\mpNZB.frmSetup.resources
+D:\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\obj\Release\ResGen.read.1.tlog
+D:\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\obj\Release\ResGen.write.1.tlog
+D:\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\obj\Release\mpNZB.dll
+D:\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\obj\Release\mpNZB.pdb
+D:\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\bin\Release\mpNZB.dll
+D:\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\bin\Release\mpNZB.pdb
+D:\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\bin\Release\DirectShowLib.dll
+D:\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\bin\Release\AxInterop.WMPLib.dll
+D:\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\bin\Release\edtftpnet-1.2.2.dll
+D:\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\bin\Release\BassRegistration.dll
+D:\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\bin\Release\MediaPortal.Support.dll
+D:\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\bin\Release\Interop.WMPLib.dll
+D:\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\mpNZB\bin\Release\CSScriptLibrary.dll
