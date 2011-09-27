@@ -141,7 +141,33 @@ namespace mpNZB.Clients
       catch (Exception e) { MP.Error(e); }
 
       return strResult;
-    }    
+    }
+
+    private string SelectPriority()
+    {
+        string strResult = String.Empty;
+
+        List<GUIListItem> Priorities = new List<GUIListItem>();
+        Priorities.Add(new GUIListItem("High"));
+        Priorities.Add(new GUIListItem("Normal"));
+        Priorities.Add(new GUIListItem("Low"));
+
+        GUIListItem _Item = MP.Menu(Priorities, "Select Priority");
+        switch (_Item.Label)
+        {
+            case "High":
+                strResult = "1";
+                break;
+            case "Normal":
+                strResult = "0";
+                break;
+            case "Low":
+                strResult = "-1";
+                break;
+        }
+
+        return strResult;
+    }
 
     #endregion
 
@@ -360,6 +386,8 @@ namespace mpNZB.Clients
 
       _Items.Add(new GUIListItem("Change Category"));
 
+      _Items.Add(new GUIListItem("Change Priority"));
+
       GUIListItem _Option = MP.Menu(_Items, "Job Options");
       if (_Option != null)
       {
@@ -388,6 +416,9 @@ namespace mpNZB.Clients
             break;
           case "Change Category":
             SendURL(CreateURL("api?mode=change_cat&value=" + _List.ListItems[_List.SelectedListItemIndex].Path + "&value2=" + SelectCategory(), String.Empty, false));
+            break;
+          case "Change Priority":
+            SendURL(CreateURL("api?mode=queue&name=priority&value=" + _List.ListItems[_List.SelectedListItemIndex].Path + "&value2=" + SelectPriority(), String.Empty, false));
             break;
         }
         Queue(_List, _GUI);

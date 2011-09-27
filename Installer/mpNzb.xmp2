@@ -187,17 +187,16 @@ Click Next to continue or Cancel to exit Setup.</Value>
     <Version>
       <Major>1</Major>
       <Minor>5</Minor>
-      <Build>0</Build>
+      <Build>1</Build>
       <Revision>0</Revision>
     </Version>
     <ExtensionDescription>mpNZB is a plug-in for MediaPortal that allows you to download NZB's from multiple sources (Feeds/Groups/Search). Then using SABnzbd it downloads those files from a Usenet provider such as Supernews.</ExtensionDescription>
-    <VersionDescription>- MediaPortal 1.2 compatibility
-- Open with parameter to search for a file ("search:term to search)</VersionDescription>
+    <VersionDescription>You can now change the priority of queued items</VersionDescription>
     <DevelopmentStatus>Stable</DevelopmentStatus>
-    <OnlineLocation>http://mpnzb.googlecode.com/files/mpNZB_1.5.mpe1</OnlineLocation>
-    <ReleaseDate>2011-09-22T19:01:12.4694209+02:00</ReleaseDate>
+    <OnlineLocation>http://mpnzb.googlecode.com/files/mpNZB_1.5.1.mpe1</OnlineLocation>
+    <ReleaseDate>2011-09-27T19:01:12</ReleaseDate>
     <Tags>nzb,usenet,sabnzb</Tags>
-    <Location>D:\Documents\mpNZB_1.5.mpe1</Location>
+    <Location>D:\Documents\mpNZB_1.5.1.mpe1</Location>
     <Params>
       <Items>
         <SectionParam Name="Icon">
@@ -258,7 +257,7 @@ Click Next to continue or Cancel to exit Setup.</Value>
   <ProjectSettings>
     <FolderGroups />
     <ProjectFilename>mpNzb.xmp2</ProjectFilename>
-    <UpdatePath1 />
+    <UpdatePath1>D:\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\Installer\update.xml</UpdatePath1>
     <UpdatePath2 />
     <UpdatePath3 />
   </ProjectSettings>
