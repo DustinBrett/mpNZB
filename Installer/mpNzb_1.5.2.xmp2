@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Version>2.0</Version>
+  <Groups>
+    <Items>
+      <GroupItem Name="Default">
+        <DisplayName>Default</DisplayName>
+        <DefaulChecked>true</DefaulChecked>
+        <Description>Default</Description>
+        <Files>
+          <Items />
+        </Files>
+      </GroupItem>
+      <GroupItem Name="plugin_files">
+        <ParentGroup />
+        <DisplayName>Plugin Files</DisplayName>
+        <DefaulChecked>true</DefaulChecked>
+        <Description>plugin_files</Description>
+        <Files>
+          <Items>
+            <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
+              <Param1 />
+              <UpdateOption>OverwriteIfOlder</UpdateOption>
+              <LocalFileName>..\mpNZB\bin\Release\mpNZB.dll</LocalFileName>
+              <ZipFileName>Installer{CopyFile}\{219b617f-3003-4927-8b5e-b1c4618819c5}-mpNZB.dll</ZipFileName>
+              <DestinationFilename>%Base%\plugins\windows\mpNZB.dll</DestinationFilename>
+            </FileItem>
+          </Items>
+        </Files>
+      </GroupItem>
+      <GroupItem Name="config_files">
+        <ParentGroup />
+        <DisplayName>Config Files</DisplayName>
+        <DefaulChecked>true</DefaulChecked>
+        <Description>config_files</Description>
+        <Files>
+          <Items>
+            <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
+              <Param1 />
+              <UpdateOption>OverwriteIfOlder</UpdateOption>
+              <LocalFileName>..\mpNZB\Sites\Sites.xml</LocalFileName>
+              <ZipFileName>Installer{CopyFile}\{5541f540-0fa2-468f-be3b-f9fe23c33c17}-Sites.xml</ZipFileName>
+              <DestinationFilename>%Base%\plugins\windows\Sites.xml</DestinationFilename>
+            </FileItem>
+          </Items>
+        </Files>
+      </GroupItem>
+    </Items>
+  </Groups>
+  <Sections>
+    <Items>
+      <SectionItem Guid="ff266393-dafa-4352-ba2d-0f0bf74f2219" Name="Welcome Screen" ConditionGroup="">
+        <Params>
+          <Items>
+            <SectionParam Name="Header text">
+              <Value>Welcome to the Extension Installer for [Name]</Value>
+              <ValueType>String</ValueType>
+              <Description />
+            </SectionParam>
+            <SectionParam Name="Description">
+              <Value>This will install [Name] version [Version] on your computer.
+It is recommended that you close all other applications before continuing.
+Click Next to continue or Cancel to exit Setup.</Value>
+              <ValueType>String</ValueType>
+              <Description />
+            </SectionParam>
+            <SectionParam Name="Left part image">
+              <Value />
+              <ValueType>File</ValueType>
+              <Description />
+            </SectionParam>
+            <SectionParam Name="Header image">
+              <Value />
+              <ValueType>File</ValueType>
+              <Description>Image in upper right part</Description>
+            </SectionParam>
+          </Items>
+        </Params>
+        <Actions>
+          <Items />
+        </Actions>
+        <IncludedGroups />
+        <PanelName>Welcome Screen</PanelName>
+        <WizardButtonsEnum>NextCancel</WizardButtonsEnum>
+      </SectionItem>
+      <SectionItem Guid="038da399-0ef4-4b97-b14d-545ff1fba38f" Name="Install Section" ConditionGroup="">
+        <Params>
+          <Items>
+            <SectionParam Name="Header Title">
+              <Value />
+              <ValueType>String</ValueType>
+              <Description>Header title</Description>
+            </SectionParam>
+            <SectionParam Name="Header description">
+              <Value />
+              <ValueType>String</ValueType>
+              <Description>Description of section, shown in under section title</Description>
+            </SectionParam>
+            <SectionParam Name="Header image">
+              <Value />
+              <ValueType>File</ValueType>
+              <Description>Image in upper right part</Description>
+            </SectionParam>
+          </Items>
+        </Params>
+        <Actions>
+          <Items>
+            <ActionItem Name="InstallFiles" ActionType="InstallFiles" ConditionGroup="">
+              <Params>
+                <Items />
+              </Params>
+              <ExecuteLocation>AfterPanelShow</ExecuteLocation>
+            </ActionItem>
+          </Items>
+        </Actions>
+        <IncludedGroups />
+        <PanelName>Install Section</PanelName>
+        <WizardButtonsEnum>Next</WizardButtonsEnum>
+      </SectionItem>
+      <SectionItem Guid="a17a660e-6df9-4c54-a4d3-3154d7fbe539" Name="Setup Complete" ConditionGroup="">
+        <Params>
+          <Items>
+            <SectionParam Name="Header text">
+              <Value>The Extension Installer Wizard has successfully installed [Name].</Value>
+              <ValueType>String</ValueType>
+              <Description />
+            </SectionParam>
+            <SectionParam Name="Left part image">
+              <Value />
+              <ValueType>File</ValueType>
+              <Description />
+            </SectionParam>
+            <SectionParam Name="Show radio buttons">
+              <Value />
+              <ValueType>Bool</ValueType>
+              <Description>Use radiobutton in place of combobox</Description>
+            </SectionParam>
+            <SectionParam Name="Header image">
+              <Value />
+              <ValueType>File</ValueType>
+              <Description>Image in upper right part</Description>
+            </SectionParam>
+          </Items>
+        </Params>
+        <Actions>
+          <Items />
+        </Actions>
+        <IncludedGroups />
+        <PanelName>Setup Complete</PanelName>
+        <WizardButtonsEnum>Finish</WizardButtonsEnum>
+      </SectionItem>
+    </Items>
+  </Sections>
+  <Dependencies>
+    <Items>
+      <DependencyItem>
+        <Type>MediaPortal</Type>
+        <Id />
+        <MinVersion>
+          <Major>1</Major>
+          <Minor>1</Minor>
+          <Build>6</Build>
+          <Revision>27644</Revision>
+        </MinVersion>
+        <MaxVersion>
+          <Major>1</Major>
+          <Minor>1</Minor>
+          <Build>6</Build>
+          <Revision>27644</Revision>
+        </MaxVersion>
+        <WarnOnly>false</WarnOnly>
+        <Message>requires MediaPortal version 1.1.6.27644 to 1.1.6.27644.</Message>
+        <Name>MediaPortal</Name>
+      </DependencyItem>
+    </Items>
+  </Dependencies>
+  <PluginDependencies>
+    <Items />
+  </PluginDependencies>
+  <GeneralInfo>
+    <Name>mpNZB</Name>
+    <Id>9091eb3e-3573-40a0-b322-c3f9a9ba3ece</Id>
+    <Author>Dustin Brett</Author>
+    <HomePage>http://code.google.com/p/mpnzb/</HomePage>
+    <ForumPage>http://forum.team-mediaportal.com/mpnzb-458/</ForumPage>
+    <UpdateUrl>http://mpnzb.googlecode.com/svn/update.xml</UpdateUrl>
+    <Version>
+      <Major>1</Major>
+      <Minor>5</Minor>
+      <Build>2</Build>
+      <Revision>0</Revision>
+    </Version>
+    <ExtensionDescription>mpNZB is a plug-in for MediaPortal that allows you to download NZB's from multiple sources (Feeds/Groups/Search). Then using SABnzbd it downloads those files from a Usenet provider such as Supernews.</ExtensionDescription>
+    <VersionDescription>- Changed notifications to NotifyDialog: Go to setup to configure timeout
+- Added plugin icon</VersionDescription>
+    <DevelopmentStatus>Stable</DevelopmentStatus>
+    <OnlineLocation>http://mpnzb.googlecode.com/files/mpNZB_1.5.2.mpe1</OnlineLocation>
+    <ReleaseDate>2011-10-06T19:01:12</ReleaseDate>
+    <Tags>nzb,usenet,sabnzb</Tags>
+    <Location>D:\Documents\mpNZB_1.5.2.mpe1</Location>
+    <Params>
+      <Items>
+        <SectionParam Name="Icon">
+          <Value>..\mpNZB\Resources\logo_enabled.png</Value>
+          <ValueType>File</ValueType>
+          <Description>The icon file of the package (jpg,png,bmp)</Description>
+        </SectionParam>
+        <SectionParam Name="Online Icon">
+          <Value />
+          <ValueType>String</ValueType>
+          <Description>The icon file of the package stored online (jpg,png,bmp)</Description>
+        </SectionParam>
+        <SectionParam Name="Configuration file">
+          <Value />
+          <ValueType>Template</ValueType>
+          <Description>The file used to configure the extension.
+ If have .exe extension the will be executed
+ If have .dll extension used like MP plugin configuration</Description>
+        </SectionParam>
+        <SectionParam Name="Online Screenshots">
+          <Value />
+          <ValueType>String</ValueType>
+          <Description>Online stored screenshot urls separated by ; </Description>
+        </SectionParam>
+        <SectionParam Name="Force to uninstall on update">
+          <Value>yes</Value>
+          <ValueType>Bool</ValueType>
+          <Description>Show dialog and force to uninstall previous version when updating an extension. Should only be disabled if you are using an NSIS/MSI installer.</Description>
+        </SectionParam>
+      </Items>
+    </Params>
+  </GeneralInfo>
+  <UniqueFileList>
+    <Items>
+      <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
+        <Param1 />
+        <UpdateOption>OverwriteIfOlder</UpdateOption>
+        <LocalFileName>..\mpNZB\bin\Release\mpNZB.dll</LocalFileName>
+        <ZipFileName>Installer{CopyFile}\{219b617f-3003-4927-8b5e-b1c4618819c5}-mpNZB.dll</ZipFileName>
+        <DestinationFilename>%Base%\plugins\windows\mpNZB.dll</DestinationFilename>
+      </FileItem>
+      <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
+        <Param1 />
+        <UpdateOption>OverwriteIfOlder</UpdateOption>
+        <LocalFileName>..\mpNZB\Sites\Sites.xml</LocalFileName>
+        <ZipFileName>Installer{CopyFile}\{5541f540-0fa2-468f-be3b-f9fe23c33c17}-Sites.xml</ZipFileName>
+        <DestinationFilename>%Base%\plugins\windows\Sites.xml</DestinationFilename>
+      </FileItem>
+      <FileItem InstallType="CopyFile" SystemFile="true" Modified="true">
+        <Param1 />
+        <UpdateOption>OverwriteIfOlder</UpdateOption>
+        <LocalFileName>..\mpNZB\Resources\logo_enabled.png</LocalFileName>
+        <ZipFileName>Installer{CopyFile}\{fb29ea37-be7a-4fa5-b800-a7282d466b32}-logo_enabled.png</ZipFileName>
+        <DestinationFilename />
+      </FileItem>
+    </Items>
+  </UniqueFileList>
+  <ProjectSettings>
+    <FolderGroups />
+    <ProjectFilename>mpNzb_1.5.2.xmp2</ProjectFilename>
+    <UpdatePath1>D:\Documents\Visual Studio 2010\Projects\PluginDev\mpnzb\Installer\update.xml</UpdatePath1>
+    <UpdatePath2 />
+    <UpdatePath3 />
+  </ProjectSettings>
+  <IsSkin>false</IsSkin>
+</PackageClass>
