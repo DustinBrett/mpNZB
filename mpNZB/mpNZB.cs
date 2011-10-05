@@ -9,11 +9,14 @@ using System.Xml;
 
 using MediaPortal.GUI.Library;
 using MediaPortal.Profile;
+using MediaPortal.Configuration;
 
 namespace mpNZB
 {
+  [PluginIcons("mpNZB.Resources.logo_enabled.png", "mpNZB.Resources.logo_disabled.png")]
   public class mpNZB : GUIWindow, ISetupForm
   {
+      public const int WINDOW_ID = 3847;
 
     #region SkinControlAttribute
 
@@ -76,7 +79,7 @@ namespace mpNZB
     {
       // WindowID of windowplugin belonging to this setup
       // enter your own unique code
-      return 3847;
+      return WINDOW_ID;
     }
 
     // Indicates if plugin is enabled by default;
@@ -222,7 +225,7 @@ namespace mpNZB
         {
           case "SABnzbd":
             {
-              Client = new Clients.SABnzbd(mpSettings.GetValue("#Client", "Host"), mpSettings.GetValue("#Client", "Port"), mpSettings.GetValueAsBool("#Client", "CatSelect", false), mpSettings.GetValueAsBool("#Client", "Auth", false), mpSettings.GetValue("#Client", "Username"), mpSettings.GetValue("#Client", "Password"), mpSettings.GetValue("#Client", "APIKey"), mpSettings.GetValueAsInt("#Plugin", "UpdateFrequency", 1), mpSettings.GetValueAsBool("#Plugin", "Notifications", false));
+              Client = new Clients.SABnzbd(mpSettings.GetValue("#Client", "Host"), mpSettings.GetValue("#Client", "Port"), mpSettings.GetValueAsBool("#Client", "CatSelect", false), mpSettings.GetValueAsBool("#Client", "Auth", false), mpSettings.GetValue("#Client", "Username"), mpSettings.GetValue("#Client", "Password"), mpSettings.GetValue("#Client", "APIKey"), mpSettings.GetValueAsInt("#Plugin", "UpdateFrequency", 1), mpSettings.GetValueAsBool("#Plugin", "Notifications", false), mpSettings.GetValueAsInt("#Plugin", "AutoHideSeconds", 0));
 
               string strVersion = Client.Version();
 

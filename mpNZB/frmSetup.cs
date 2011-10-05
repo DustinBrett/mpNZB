@@ -22,6 +22,8 @@ namespace mpNZB
       txtHost.Text = "127.0.0.1";
       txtPort.Text = "8080";
       txtUpdateFreq.Text = "1";
+      numericUpDownAutoHide.Value = 0;
+      
 
       if (File.Exists(MediaPortal.Configuration.Config.GetFolder(MediaPortal.Configuration.Config.Dir.Config) + @"\mpNZB.xml"))
       {
@@ -33,6 +35,9 @@ namespace mpNZB
         if (intUpdate > 0) { txtUpdateFreq.Text = intUpdate.ToString(); }
         txtDisplayName.Text = mpSettings.GetValue("#Plugin", "DisplayName");
         chkNotifications.Checked = mpSettings.GetValueAsBool("#Plugin", "Notifications", false);
+
+        int intAutohide = mpSettings.GetValueAsInt("#Plugin", "AutoHideSeconds", 0);
+        if (intUpdate > 0) { numericUpDownAutoHide.Value = intAutohide; }
         // ##################################################
 
         // Client Settings
@@ -99,6 +104,9 @@ namespace mpNZB
       mpSettings.SetValue("#Plugin", "UpdateFrequency", intUpdateFreq);
       mpSettings.SetValue("#Plugin", "DisplayName", txtDisplayName.Text);
       mpSettings.SetValueAsBool("#Plugin", "Notifications", chkNotifications.Checked);
+
+      int intAutohide  = (int)numericUpDownAutoHide.Value;
+      mpSettings.SetValue("#Plugin", "AutoHideSeconds", intAutohide);
       // ##################################################
 
       // Client Settings
@@ -170,7 +178,7 @@ namespace mpNZB
       switch (cmbGrabber.Text)
       {
         case "SABnzbd":
-          Client = new Clients.SABnzbd(txtHost.Text, txtPort.Text, false, chkAuth.Checked, txtUsername.Text, txtPassword.Text, txtAPIKey.Text, 1, false);
+          Client = new Clients.SABnzbd(txtHost.Text, txtPort.Text, false, chkAuth.Checked, txtUsername.Text, txtPassword.Text, txtAPIKey.Text, 1, false, 0);
 
           string strVersion = Client.Version();
 

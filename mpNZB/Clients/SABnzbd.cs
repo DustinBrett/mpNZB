@@ -38,8 +38,9 @@ namespace mpNZB.Clients
     private bool CatSelect = false;
     private bool Auth = false;
     private bool Notifications = false;
+    private int AutoHideSeconds = 0;
 
-    public SABnzbd(string strIP, string strPort, bool bolCatSelect, bool bolAuth, string strUsername, string strPassword, string strAPIKey, int intUpdateFreq, bool bolNotifications)
+    public SABnzbd(string strIP, string strPort, bool bolCatSelect, bool bolAuth, string strUsername, string strPassword, string strAPIKey, int intUpdateFreq, bool bolNotifications, int intAutoHideSeconds)
     {
       IP = strIP;
       Port = strPort;
@@ -52,6 +53,7 @@ namespace mpNZB.Clients
       Auth = bolAuth;
 
       Notifications = bolNotifications;
+      AutoHideSeconds = intAutoHideSeconds;
 
       tmrStatus = new Timer();
       tmrStatus.Elapsed += new System.Timers.ElapsedEventHandler(OnTimer);
@@ -192,7 +194,8 @@ namespace mpNZB.Clients
           {
             if ((!CompareItem(Current)) && ((Current["status"].InnerText == "Completed") || (Current["status"].InnerText == "Failed")))
             {
-              MP.OK("Name: " + Current["name"].InnerText + Environment.NewLine + ((Current["fail_message"].InnerText.Length > 0) ? "Fail message: " + Current["fail_message"].InnerText + Environment.NewLine : String.Empty) + "Size: " + Current["size"].InnerText + Environment.NewLine + "Category: " + Current["category"].InnerText, Current["status"].InnerText);
+              //MP.OK("Name: " + Current["name"].InnerText + Environment.NewLine + ((Current["fail_message"].InnerText.Length > 0) ? "Fail message: " + Current["fail_message"].InnerText + Environment.NewLine : String.Empty) + "Size: " + Current["size"].InnerText + Environment.NewLine + "Category: " + Current["category"].InnerText, Current["status"].InnerText);
+                MP.Notify("Name: " + Current["name"].InnerText + Environment.NewLine + ((Current["fail_message"].InnerText.Length > 0) ? "Fail message: " + Current["fail_message"].InnerText + Environment.NewLine : String.Empty) + "Size: " + Current["size"].InnerText + Environment.NewLine + "Category: " + Current["category"].InnerText, Current["status"].InnerText, AutoHideSeconds);
             }
           }
         }
@@ -211,7 +214,8 @@ namespace mpNZB.Clients
         {
           if ((Current["status"].InnerText != Cached["status"].InnerText) && ((Current["status"].InnerText == "Completed") || (Current["status"].InnerText == "Failed")))
           {
-            MP.OK("Name: " + Current["name"].InnerText + Environment.NewLine + ((Current["fail_message"].InnerText.Length > 0) ? "Fail message: " + Current["fail_message"].InnerText + Environment.NewLine : String.Empty) + "Size: " + Current["size"].InnerText + Environment.NewLine + "Category: " + Current["category"].InnerText, Current["status"].InnerText);
+            //MP.OK("Name: " + Current["name"].InnerText + Environment.NewLine + ((Current["fail_message"].InnerText.Length > 0) ? "Fail message: " + Current["fail_message"].InnerText + Environment.NewLine : String.Empty) + "Size: " + Current["size"].InnerText + Environment.NewLine + "Category: " + Current["category"].InnerText, Current["status"].InnerText);
+              MP.Notify("Name: " + Current["name"].InnerText + Environment.NewLine + ((Current["fail_message"].InnerText.Length > 0) ? "Fail message: " + Current["fail_message"].InnerText + Environment.NewLine : String.Empty) + "Size: " + Current["size"].InnerText + Environment.NewLine + "Category: " + Current["category"].InnerText, Current["status"].InnerText, AutoHideSeconds);
           }
 
           return true;
