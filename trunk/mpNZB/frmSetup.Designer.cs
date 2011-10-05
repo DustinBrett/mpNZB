@@ -60,8 +60,8 @@
         this.lblUpdateFrequency = new System.Windows.Forms.Label();
         this.tabSearch = new System.Windows.Forms.TabPage();
         this.lvSearches = new System.Windows.Forms.ListView();
-        this.clmName = new System.Windows.Forms.ColumnHeader();
-        this.clmString = new System.Windows.Forms.ColumnHeader();
+        this.clmName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+        this.clmString = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
         this.groupBox2 = new System.Windows.Forms.GroupBox();
         this.btnSearchDelete = new System.Windows.Forms.Button();
         this.btnSearchAdd = new System.Windows.Forms.Button();
@@ -72,7 +72,7 @@
         this.label3 = new System.Windows.Forms.Label();
         this.tabGroups = new System.Windows.Forms.TabPage();
         this.lvGroups = new System.Windows.Forms.ListView();
-        this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+        this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
         this.groupBox3 = new System.Windows.Forms.GroupBox();
         this.btnGroupAdd = new System.Windows.Forms.Button();
         this.btnGroupDelete = new System.Windows.Forms.Button();
@@ -83,6 +83,9 @@
         this.checkBox1 = new System.Windows.Forms.CheckBox();
         this.comboBox1 = new System.Windows.Forms.ComboBox();
         this.label1 = new System.Windows.Forms.Label();
+        this.label6 = new System.Windows.Forms.Label();
+        this.label7 = new System.Windows.Forms.Label();
+        this.numericUpDownAutoHide = new System.Windows.Forms.NumericUpDown();
         this.tabPages.SuspendLayout();
         this.tabClientSettings.SuspendLayout();
         this.grpSettings.SuspendLayout();
@@ -94,6 +97,7 @@
         this.groupBox2.SuspendLayout();
         this.tabGroups.SuspendLayout();
         this.groupBox3.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAutoHide)).BeginInit();
         this.SuspendLayout();
         // 
         // tabPages
@@ -323,7 +327,7 @@
         this.groupBox1.Controls.Add(this.txtMaxResults);
         this.groupBox1.Controls.Add(this.label2);
         this.groupBox1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.groupBox1.Location = new System.Drawing.Point(16, 118);
+        this.groupBox1.Location = new System.Drawing.Point(16, 140);
         this.groupBox1.Name = "groupBox1";
         this.groupBox1.Size = new System.Drawing.Size(280, 78);
         this.groupBox1.TabIndex = 19;
@@ -360,6 +364,9 @@
         // 
         // grpVisual
         // 
+        this.grpVisual.Controls.Add(this.numericUpDownAutoHide);
+        this.grpVisual.Controls.Add(this.label7);
+        this.grpVisual.Controls.Add(this.label6);
         this.grpVisual.Controls.Add(this.chkNotifications);
         this.grpVisual.Controls.Add(this.txtUpdateFreq);
         this.grpVisual.Controls.Add(this.txtDisplayName);
@@ -368,7 +375,7 @@
         this.grpVisual.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.grpVisual.Location = new System.Drawing.Point(16, 14);
         this.grpVisual.Name = "grpVisual";
-        this.grpVisual.Size = new System.Drawing.Size(280, 98);
+        this.grpVisual.Size = new System.Drawing.Size(280, 120);
         this.grpVisual.TabIndex = 17;
         this.grpVisual.TabStop = false;
         this.grpVisual.Text = "Visual:";
@@ -676,6 +683,32 @@
         this.label1.TabIndex = 2;
         this.label1.Text = "Grabber:";
         // 
+        // label6
+        // 
+        this.label6.AutoSize = true;
+        this.label6.Location = new System.Drawing.Point(31, 91);
+        this.label6.Name = "label6";
+        this.label6.Size = new System.Drawing.Size(59, 13);
+        this.label6.TabIndex = 22;
+        this.label6.Text = "(Hide after";
+        // 
+        // label7
+        // 
+        this.label7.AutoSize = true;
+        this.label7.Location = new System.Drawing.Point(170, 91);
+        this.label7.Name = "label7";
+        this.label7.Size = new System.Drawing.Size(50, 13);
+        this.label7.TabIndex = 22;
+        this.label7.Text = "seconds)";
+        // 
+        // numericUpDownAutoHide
+        // 
+        this.numericUpDownAutoHide.Location = new System.Drawing.Point(93, 87);
+        this.numericUpDownAutoHide.Name = "numericUpDownAutoHide";
+        this.numericUpDownAutoHide.Size = new System.Drawing.Size(71, 21);
+        this.numericUpDownAutoHide.TabIndex = 23;
+        this.numericUpDownAutoHide.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+        // 
         // frmSetup
         // 
         this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -706,6 +739,7 @@
         this.tabGroups.ResumeLayout(false);
         this.groupBox3.ResumeLayout(false);
         this.groupBox3.PerformLayout();
+        ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAutoHide)).EndInit();
         this.ResumeLayout(false);
 
     }
@@ -767,5 +801,8 @@
     private System.Windows.Forms.CheckBox chkNotifications;
     private System.Windows.Forms.TextBox txtAPIKey;
     private System.Windows.Forms.Label label10;
+    private System.Windows.Forms.Label label7;
+    private System.Windows.Forms.Label label6;
+    private System.Windows.Forms.NumericUpDown numericUpDownAutoHide;
   }
 }

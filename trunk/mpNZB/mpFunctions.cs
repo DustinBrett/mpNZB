@@ -25,6 +25,21 @@ namespace mpNZB
       Dialog.DoModal(GUIWindowManager.ActiveWindow);
     }
 
+    public void Notify(string _Line, string _Heading, int hideAfterSeconds)
+    {
+        // Init Dialog
+        GUIDialogNotify Dialog = (GUIDialogNotify)GUIWindowManager.GetWindow((int)GUIWindow.Window.WINDOW_DIALOG_NOTIFY);
+        Dialog.Reset();
+
+        // Set Dialog Information
+        Dialog.SetHeading(_Heading);
+        Dialog.SetText(_Line);
+        Dialog.TimeOut = hideAfterSeconds;
+
+        // Display Dialog
+        Dialog.DoModal(GUIWindowManager.ActiveWindow);
+    }
+
     public void Text(string _Text, string _Heading)
     {
       // Init Dialog
