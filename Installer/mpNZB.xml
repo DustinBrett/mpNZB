@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+  <id>3847</id>
+  <defaultcontrol>2</defaultcontrol>
+  <allowoverlay>no</allowoverlay>
+  <rememberLastFocusedControl>yes</rememberLastFocusedControl>
+  <define>#currentmodule:#PageTitle</define>
+    <controls>
+      <control>
+      <description>BG</description>
+      <type>image</type>
+      <id>0</id>
+      <texture>Background.png</texture>
+      <width>1280</width>
+      <height>720</height>
+    </control>
+    <control>
+      <type>label</type>
+      <id>0</id>
+      <posX>60</posX>
+      <posY>27</posY>
+      <label>#currentmodule</label>
+      <font>font16</font>
+      <align>left</align>
+      <textcolor>White</textcolor>
+    </control>
+    <control>
+      <description>Selected item Label</description>
+      <type>fadelabel</type>
+      <id>0</id>
+      <posX>60</posX>
+      <posY>65</posY>
+      <width>711</width>
+      <label>#selecteditem</label>
+      <font>font13</font>
+      <align>left</align>
+      <textcolor>ffa9d0f7</textcolor>
+    </control>
+    <control>
+      <description>Date Time</description>
+      <type>label</type>
+      <id>0</id>
+      <posX>1244</posX>
+      <posY>27</posY>
+      <label>#date | #time</label>
+      <align>right</align>
+      <font>font13</font>
+      <textcolor>ffa9d0f7</textcolor>
+    </control>
+    <import>common.time.xml</import>                 
+    
+    <control>
+      <type>actiongroup</type>
+      <description>action menu</description>
+      <defaultcontrol>2</defaultcontrol>
+      <onexit>50</onexit>
+      <buttonX>0</buttonX>
+      <buttonY>0</buttonY>
+      <buttonwidth>106</buttonwidth>
+      <buttonheight>720</buttonheight>
+      <textureFocus>-</textureFocus>
+      <textureNoFocus>Action_nofocus.png</textureNoFocus>
+      <width>275</width>
+      <height>400</height>
+      <dimColor>00ffffff</dimColor>
+      <control>
+        <type>image</type>
+        <posX>26</posX>
+        <posY>140</posY>
+        <width>367</width>
+        <height>400</height>
+        <texture>Backslide.png</texture>
+        <colorDiffuse>fffffffff</colorDiffuse>
+        <visible>!Control.HasFocus(50)</visible>
+        <animation effect="slide" time="70" start="-300,0" reversible="false">visible</animation>
+        <animation effect="slide" time="70" end="-300,0" reversible="false">hidden</animation>
+      </control>
+          
+      <control>
+        <type>group</type>
+        <description>group element</description>
+        <visible>!Control.HasFocus(50)</visible>
+        <animation effect="slide" time="70" start="-300,0" reversible="false">visible</animation>
+        <animation effect="slide" time="70" end="-300,0" reversible="false">hidden</animation>
+        <posX>60</posX>
+        <posY>180</posY>
+        <width>350</width>
+        <height>379</height>
+        <layout>StackLayout(Vertical)</layout>
+          <control>
+            <description>Refresh</description>
+            <type>button</type>
+            <id>1</id>
+            <posX>60</posX>
+            <posY>250</posY>
+            <label>Refresh</label>
+            <onright>50</onright>
+            <ondown>2</ondown>
+          </control>
+          <control>
+            <description>Feeds</description>
+            <type>button</type>
+            <id>2</id>
+            <posX>60</posX>
+            <posY>280</posY>
+            <label>Feeds</label>
+            <onright>50</onright>
+            <onup>1</onup>
+            <ondown>3</ondown>
+          </control>
+          <control>
+            <description>Groups</description>
+            <type>button</type>
+            <id>3</id>
+            <posX>60</posX>
+            <posY>310</posY>
+            <label>Groups</label>
+            <onright>50</onright>
+            <onup>2</onup>
+            <ondown>4</ondown>
+          </control>
+          <control>
+            <description>Search</description>
+            <type>button</type>
+            <id>4</id>
+            <posX>60</posX>
+            <posY>340</posY>
+            <label>Search</label>
+            <onright>50</onright>
+            <onup>3</onup>
+            <ondown>5</ondown>
+          </control>
+          <control>
+            <description>Job Queue</description>
+            <type>button</type>
+            <id>5</id>
+            <posX>60</posX>
+            <posY>380</posY>
+            <label>Job Queue</label>
+            <onright>50</onright>
+            <onup>4</onup>
+            <ondown>7</ondown>
+          </control>
+          <control>
+            <description>History</description>
+            <type>button</type>
+            <id>7</id>
+            <posX>60</posX>
+            <posY>410</posY>
+            <label>History</label>
+            <onright>50</onright>
+            <onup>5</onup>
+            <ondown>6</ondown>
+          </control>
+          <control>
+            <description>Pause Queue</description>
+            <type>togglebutton</type>
+            <id>6</id>
+            <posX>60</posX>
+            <posY>440</posY>
+            <label>Pause Queue</label>
+            <onright>50</onright>
+            <onup>7</onup>
+            <ondown>2</ondown>
+          </control>
+      </control>
+    </control>
+    
+    
+    <control>
+      <description>Paused</description>
+      <type>label</type>
+      <id>8</id>
+      <posX>130</posX>
+      <posY>380</posY>
+      <label>Paused:</label>
+      <align>Right</align>
+      <font>font12</font>
+      <textcolor>ffa9d0f7</textcolor>
+      <visible>Control.HasFocus(50)</visible>
+      <animation effect="fade" time="70" reversible="false">visible</animation>
+    </control>
+    <control>
+      <description>Paused</description>
+      <type>label</type>
+      <id>9</id>
+      <posX>137</posX>
+      <posY>380</posY>
+      <label>#Paused</label>
+      <align>Left</align>
+      <textcolor>aaffffff</textcolor>
+      <visible>Control.HasFocus(50)</visible>
+      <animation effect="fade" time="70" reversible="false">visible</animation>
+    </control>
+    
+    <control>
+      <description>Speed</description>
+      <type>label</type>
+      <id>10</id>
+      <posX>130</posX>
+      <posY>410</posY>
+      <label>Speed:</label>
+      <align>Right</align>
+      <textcolor>ffa9d0f7</textcolor>
+      <visible>Control.HasFocus(50)</visible>
+      <animation effect="fade" time="70" reversible="false">visible</animation>
+    </control>
+    <control>
+      <description>Speed</description>
+      <type>label</type>
+      <id>11</id>
+      <posX>137</posX>
+      <posY>410</posY>
+      <label>#KBps</label>
+      <align>Left</align>
+      <textcolor>aaffffff</textcolor>
+      <visible>Control.HasFocus(50)</visible>
+      <animation effect="fade" time="70" reversible="false">visible</animation>
+    </control>
+    <control>
+      <description>Queued</description>
+      <type>label</type>
+      <id>12</id>
+      <posX>130</posX>
+      <posY>440</posY>
+      <label>Queued:</label>
+      <align>Right</align>
+      <textcolor>ffa9d0f7</textcolor>
+      <visible>Control.HasFocus(50)</visible>
+      <animation effect="fade" time="70" reversible="false">visible</animation>
+    </control>
+    <control>
+      <description>Queued</description>
+      <type>label</type>
+      <id>13</id>
+      <posX>137</posX>
+      <posY>440</posY>
+      <label>#MBStatus</label>
+      <align>Left</align>
+      <textcolor>aaffffff</textcolor>
+      <visible>Control.HasFocus(50)</visible>
+      <animation effect="fade" time="70" reversible="false">visible</animation>
+    </control>
+    
+    <control>
+      <description>Job Count</description>
+      <type>label</type>
+      <id>14</id>
+      <posX>130</posX>
+      <posY>470</posY>
+      <label>Count:</label>
+      <align>Right</align>
+      <textcolor>ffa9d0f7</textcolor>
+      <visible>Control.HasFocus(50)</visible>
+      <animation effect="fade" time="70" reversible="false">visible</animation>
+    </control>
+    <control>
+      <description>Job Count</description>
+      <type>label</type>
+      <id>15</id>
+      <posX>137</posX>
+      <posY>470</posY>
+      <label>#JobCount</label>
+      <align>Left</align>
+      <textcolor>aaffffff</textcolor>
+      <visible>Control.HasFocus(50)</visible>
+      <animation effect="fade" time="70" reversible="false">visible</animation>
+    </control>
+    
+    <control>
+      <description>Disk Space 1</description>
+      <type>label</type>
+      <id>16</id>
+      <posX>130</posX>
+      <posY>500</posY>
+      <label>D/L DIR:</label>
+      <align>Right</align>
+      <textcolor>ffa9d0f7</textcolor>
+      <visible>Control.HasFocus(50)</visible>
+      <animation effect="fade" time="70" reversible="false">visible</animation>
+    </control>
+    <control>
+      <description>Disk Space 1</description>
+      <type>label</type>
+      <id>17</id>
+      <posX>137</posX>
+      <posY>500</posY>
+      <label>#DiskSpace1</label>
+      <align>Left</align>
+      <textcolor>aaffffff</textcolor>
+      <visible>Control.HasFocus(50)</visible>
+      <animation effect="fade" time="70" reversible="false">visible</animation>
+    </control>
+    <control>
+      <description>Disk Space 2</description>
+      <type>label</type>
+      <id>18</id>
+      <posX>130</posX>
+      <posY>530</posY>
+      <label>Temp DIR:</label>
+      <align>Right</align>
+      <textcolor>ffa9d0f7</textcolor>
+      <visible>Control.HasFocus(50)</visible>
+      <animation effect="fade" time="70" reversible="false">visible</animation>
+    </control>
+    <control>
+      <description>Disk Space 2</description>
+      <type>label</type>
+      <id>19</id>
+      <posX>137</posX>
+      <posY>530</posY>
+      <label>#DiskSpace2</label>
+      <align>Left</align>
+      <textcolor>aaffffff</textcolor>
+      <visible>Control.HasFocus(50)</visible>
+      <animation effect="fade" time="70" reversible="false">visible</animation>
+    </control>
+    
+    <control>
+      <description>Time Left</description>
+      <type>label</type>
+      <id>20</id>
+      <posX>130</posX>
+      <posY>560</posY>
+      <label>ETA:</label>
+      <align>Right</align>
+      <textcolor>ffa9d0f7</textcolor>
+      <visible>Control.HasFocus(50)</visible>
+      <animation effect="fade" time="70" reversible="false">visible</animation>
+    </control>
+    <control>
+      <description>Time Left</description>
+      <type>label</type>
+      <id>21</id>
+      <posX>137</posX>
+      <posY>560</posY>
+      <label>#TimeLeft</label>
+      <align>Left</align>
+      <textcolor>aaffffff</textcolor>
+      <visible>Control.HasFocus(50)</visible>
+      <animation effect="fade" time="70" reversible="false">visible</animation>
+    </control>
+    
+    
+    
+    <control>
+      <description>listcontrol</description>
+      <type>listcontrol</type>
+      <id>50</id>
+      <posX>350</posX>
+      <posY>150</posY>
+      <onleft>2</onleft>
+      <onright>2</onright>
+      <width>650</width>
+      <height>530</height>
+      <spinPosX>1175</spinPosX>
+      <spinPosY>681</spinPosY>
+      <spinAlign>Right</spinAlign>
+      <textureUp>arrow_round_up_nofocus.png</textureUp>
+      <textureDown>arrow_round_down_nofocus.png</textureDown>
+      <textureUpFocus>arrow_round_up_focus.png</textureUpFocus>
+      <textureDownFocus>arrow_round_down_focus.png</textureDownFocus>
+      <spinWidth>50</spinWidth>
+      <spinHeight>37</spinHeight>
+      <textXOff2>850</textXOff2>
+    </control>
+    <control>
+      <description>Page Count Label</description>
+      <type>label</type>
+      <label>30009</label>
+      <id>0</id>
+      <posX>1023</posX>
+      <posY>688</posY>
+      <font>font12</font>
+      <textcolor>ff909090</textcolor>
+      <visible>yes</visible>
+      <animation effect="fade" time="250">WindowOpen</animation>
+      <animation effect="fade" time="250">WindowClose</animation>
+      <animation effect="slide" time="150" start="800,0">WindowOpen</animation>
+      <animation effect="slide" time="250" end="800,0">WindowClose</animation>
+    </control>
+    <control>
+      <description>Status</description>
+      <type>label</type>
+      <id>52</id>
+      <posX>1244</posX>
+      <posY>60</posY>
+      <font>font10</font>      
+      <label>#Status</label>
+      <align>right</align>
+      <textcolor>ffffffff</textcolor>
+      <visible>control.isvisible(50)</visible>
+      <animation effect="fade" time="250">WindowOpen</animation>
+      <animation effect="fade" time="250">WindowClose</animation>
+    </control>
+  </controls>  
+</window>

@@ -10,13 +10,23 @@ using System.Xml;
 using MediaPortal.GUI.Library;
 using MediaPortal.Profile;
 using MediaPortal.Configuration;
+using System.Timers;
 
 namespace mpNZB
 {
   [PluginIcons("mpNZB.Resources.logo_enabled.png", "mpNZB.Resources.logo_disabled.png")]
   public class mpNZB : GUIWindow, ISetupForm
   {
-      public const int WINDOW_ID = 3847;
+    public const int WINDOW_ID = 3847;
+    public enum ClientView
+    {
+        None = 0,
+        Queue,
+        History,
+        Feeds,
+        Groups,
+        Search
+    }
 
     #region SkinControlAttribute
 
@@ -38,6 +48,37 @@ namespace mpNZB
 
     [SkinControlAttribute(50)]
     protected GUIListControl lstItems = null;
+
+    #endregion
+
+    #region Timer
+
+    private Timer tmrStatus = new Timer();
+    private Timer tmrPause = null;
+
+    private void OnTimer(object sender, System.Timers.ElapsedEventArgs e)
+    {
+      Client.Status();
+       
+      // Update queue
+      if (Client.ActiveView == (int)mpNZB.ClientView.Queue)
+      {
+          Client.Queue(lstItems, this, false);
+      }
+    }
+
+    // Unpause queue after timeout
+    private void OnPauseTimer(object sender, System.Timers.ElapsedEventArgs e)
+    {
+        if (Client.Paused)
+        {
+            Client.Pause(false);
+            btnPause.Selected = false;
+        }
+
+        tmrPause.Stop();
+        tmrPause = null;
+    }
 
     #endregion
 
@@ -166,11 +207,11 @@ namespace mpNZB
 
         ReadRSS(Site.FeedURL, lstItems, Site.Username, Site.Password);
       }
-      if (control == btnFeeds)    { SelectSite("Feeds"); }
-      if (control == btnGroups)   { SelectSite("Groups"); }
-      if (control == btnSearch)   { SelectSite("Search"); }
-      if (control == btnJobQueue) { Client.Queue(lstItems, this); }
-      if (control == btnHistory)  { Client.History(lstItems, this); }      
+      if (control == btnFeeds) { SelectSite("Feeds"); Client.ActiveView = (int)ClientView.Feeds; }
+      if (control == btnGroups) { SelectSite("Groups"); Client.ActiveView = (int)ClientView.Groups; }
+      if (control == btnSearch) { SelectSite("Search"); Client.ActiveView = (int)ClientView.Search; }
+      if (control == btnJobQueue) { Client.Queue(lstItems, this, true); Client.ActiveView = (int)ClientView.Queue; }
+      if (control == btnHistory) { Client.History(lstItems, this); Client.ActiveView = (int)ClientView.History; }      
       if (control == btnPause)    { Client.Pause(btnPause.Selected); }
       if (control == lstItems)
       {
@@ -198,6 +239,70 @@ namespace mpNZB
         }
       }
       base.OnClicked(controlId, control, actionType);
+    }
+
+    public override void OnAction(MediaPortal.GUI.Library.Action action)
+    {
+        // Context menu on pause button
+        if (action.wID == MediaPortal.GUI.Library.Action.ActionType.ACTION_CONTEXT_MENU
+            && btnPause.IsFocused)
+        {
+            List<GUIListItem> _Items = new List<GUIListItem>();
+
+            _Items.Add(new GUIListItem("5 minutes"));
+            _Items.Add(new GUIListItem("10 minutes"));
+            _Items.Add(new GUIListItem("15 minutes"));
+            _Items.Add(new GUIListItem("30 minutes"));
+            _Items.Add(new GUIListItem("45 minutes"));
+            _Items.Add(new GUIListItem("60 minutes"));
+            _Items.Add(new GUIListItem("90 minutes"));
+            _Items.Add(new GUIListItem("2 hours"));
+
+            GUIListItem _Menu = MP.Menu(_Items, "Pause for ...");
+            if (_Menu != null)
+            {
+                int minutesToPause = 0;
+
+                switch (_Menu.Label)
+                {
+                    case "5 minutes":
+                        minutesToPause = 5;
+                        break;
+
+                    case "10 minutes":
+                        minutesToPause = 10;
+                        break;
+
+                    case "15 minutes":
+                        minutesToPause = 15;
+                        break;
+
+                    case "30 minutes":
+                        minutesToPause = 35;
+                        break;
+
+                    case "45 minutes":
+                        minutesToPause = 45;
+                        break;
+
+                    case "60 minutes":
+                        minutesToPause = 60;
+                        break;
+
+                    case "90 minutes":
+                        minutesToPause = 90;
+                        break;
+
+                    case "2 hours":
+                        minutesToPause = 120;
+                        break;
+                }
+
+                PauseForTimespan(minutesToPause);
+            }
+        }
+
+        base.OnAction(action);
     }
     
     protected override void OnPageLoad()
@@ -242,15 +347,27 @@ namespace mpNZB
               break;
             }
         }
+
+        
+        tmrStatus = new Timer();
+        tmrStatus.Elapsed += new System.Timers.ElapsedEventHandler(OnTimer);
+        tmrStatus.Interval = (mpSettings.GetValueAsInt("#Plugin", "UpdateFrequency", 1) * 1000);
+        tmrStatus.Enabled = true;
+        
         // ##################################################
 
         // Unload Settings
         mpSettings.Dispose();
+          
 
         // Update Status
         Client.Visible = true;
         Client.Status();
         if (Client.Paused) { btnPause.Selected = true; }
+
+        // Load queue
+        Client.Queue(lstItems, this, true); 
+        Client.ActiveView = (int)ClientView.Queue;
 
         // Start with parameter
         // Working at the moment:
@@ -282,11 +399,12 @@ namespace mpNZB
     {
       base.OnPageDestroy(newWindowId);
       Client.Visible = false;
+      Client.ActiveView = (int)ClientView.None;
     }
 
     protected override void OnShowContextMenu()
     {
-      if ((lstItems.Count > 0) && (lstItems.ListItems[lstItems.SelectedListItemIndex].ItemId <= 3))
+      if ((lstItems.Count > 0) && (lstItems.ListItems[lstItems.SelectedListItemIndex].ItemId <= 3) && !btnPause.IsFocused)
       {
         List<GUIListItem> _Items = new List<GUIListItem>();
 
@@ -446,6 +564,29 @@ namespace mpNZB
         }
       }
       catch (Exception e) { MP.Error(e); }
+    }
+
+    /// <summary>
+    /// Pause Queue for x minutes
+    /// </summary>
+    /// <param name="minutes">Minutes to pause the queue</param>
+    private void PauseForTimespan(int minutes)
+    {
+        if (tmrPause != null)
+        {
+            tmrPause.Stop();
+            tmrPause = null;
+        }
+
+        // Pause client
+        Client.Pause(true);
+        btnPause.Selected = true;
+
+        // Wait x minutes, then resume
+        tmrPause = new Timer();
+        tmrPause.Elapsed += new System.Timers.ElapsedEventHandler(OnPauseTimer);
+        tmrPause.Interval = minutes * 1000 * 60;
+        tmrPause.Enabled = true;
     }
 
     #endregion

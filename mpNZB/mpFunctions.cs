@@ -143,6 +143,28 @@ namespace mpNZB
       _List.Add(Item);
     }
 
+    public void UpdateListItem(int index, GUIListControl _List, string _Label, string _Label2, string _DVDLabel, DateTime _CreationTime, long _Length, string _Name, string _Path, int _ItemId)
+    {
+        if (_List.Count <= index)
+        {
+            return;
+        }
+
+        // Set Item Information
+        _List.ListItems[index].Label = _Label;
+        _List.ListItems[index].Label2 = _Label2;
+        _List.ListItems[index].DVDLabel = _DVDLabel;
+        _List.ListItems[index].Path = _Path;
+        _List.ListItems[index].ItemId = _ItemId;
+
+        // Set File Information
+        _List.ListItems[index].FileInfo = new MediaPortal.Util.FileInformation();
+        _List.ListItems[index].FileInfo.CreationTime = _CreationTime;
+        _List.ListItems[index].FileInfo.Length = _Length;
+        _List.ListItems[index].FileInfo.Name = _Name;        
+
+    }
+
     #endregion
 
     #region Error

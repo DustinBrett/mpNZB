@@ -29,6 +29,12 @@ namespace mpNZB.Clients
       set { _Paused = value; }
     }
 
+    public int ActiveView
+    {
+        get;
+        set;
+    }
+
     private string IP = String.Empty;
     private string Port = String.Empty;
     private string Username = String.Empty;
@@ -55,14 +61,17 @@ namespace mpNZB.Clients
       Notifications = bolNotifications;
       AutoHideSeconds = intAutoHideSeconds;
 
+      ActiveView = (int)mpNZB.ClientView.None;
+      /*
       tmrStatus = new Timer();
       tmrStatus.Elapsed += new System.Timers.ElapsedEventHandler(OnTimer);
       tmrStatus.Interval = (intUpdateFreq * 1000);
       tmrStatus.Enabled = true;
+      */
     }
 
     #endregion
-
+/*
     #region Timer
 
     private Timer tmrStatus = new Timer();
@@ -70,10 +79,16 @@ namespace mpNZB.Clients
     private void OnTimer(object sender, System.Timers.ElapsedEventArgs e)
     {
       Status();
+       
+      // Update queue
+      if (ActiveView == (int)mpNZB.ClientView.Queue)
+      {
+          Queue(
+      }
     }
 
     #endregion
-
+*/
     #region Functions
 
     private mpFunctions MP = new mpFunctions();
@@ -256,7 +271,7 @@ namespace mpNZB.Clients
 
           if (Notifications) { HistoryCheck(); }
 
-          if (!Visible && (!Notifications || (bolHaltNotify && ((intJobCount == 0) || _Paused)))) { tmrStatus.Enabled = false; }
+          //if (!Visible && (!Notifications || (bolHaltNotify && ((intJobCount == 0) || _Paused)))) { tmrStatus.Enabled = false; }
         }
         else
         {
@@ -266,43 +281,64 @@ namespace mpNZB.Clients
       catch (Exception e) { MP.Error(e); }
     }
 
-    public void Queue(GUIListControl _List, GUIWindow _GUI)
+    public void Queue(GUIListControl _List, GUIWindow _GUI, bool refocus)
     {
-      try
-      {
-        XmlDocument xmlDoc = new XmlDocument();
-        xmlDoc.Load(new XmlTextReader(CreateURL("api?mode=queue", "output=xml", false)));
+        int selectedIndex = _List.SelectedListItemIndex;
 
-        if (xmlDoc.SelectSingleNode("queue/slots") != null)
+        try
         {
-          _List.Clear();
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(new XmlTextReader(CreateURL("api?mode=queue", "output=xml", false)));
 
-          NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
-          string strJobInfo;
+            if (xmlDoc.SelectSingleNode("queue/slots") != null)
+            {
+                if (refocus)
+                {
+                    _List.Clear();
+                }
 
-          foreach (XmlNode nodeItem in xmlDoc.SelectNodes("queue/slots/slot"))
-          {
-            strJobInfo = "Status: " + nodeItem["status"].InnerText + Environment.NewLine + "Filename: " + nodeItem["filename"].InnerText + Environment.NewLine + "Priority: " + nodeItem["priority"].InnerText + Environment.NewLine + "Category: " + nodeItem["cat"].InnerText + Environment.NewLine + "Percentage: " + nodeItem["percentage"].InnerText + "%";
+                NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
+                string strJobInfo;
 
-            MP.ListItem(_List, nodeItem["filename"].InnerText, ((nodeItem["status"].InnerText == "Paused") ? "Paused" : double.Parse(nodeItem["mbleft"].InnerText, nfi).ToString("N2") + " / " + double.Parse(nodeItem["mb"].InnerText, nfi).ToString("N2") + " MB"), strJobInfo, DateTime.Now, 0, String.Empty ,nodeItem["nzo_id"].InnerText, 3);
-          }
+                int i = 0;
+                foreach (XmlNode nodeItem in xmlDoc.SelectNodes("queue/slots/slot"))
+                {
+                    strJobInfo = "Status: " + nodeItem["status"].InnerText + Environment.NewLine + "Filename: " + nodeItem["filename"].InnerText + Environment.NewLine + "Priority: " + nodeItem["priority"].InnerText + Environment.NewLine + "Category: " + nodeItem["cat"].InnerText + Environment.NewLine + "Percentage: " + nodeItem["percentage"].InnerText + "%";
 
-          GUIPropertyManager.SetProperty("#Status", "Queue Loaded");
+                    double mbdone = double.Parse(nodeItem["mb"].InnerText, nfi) - double.Parse(nodeItem["mbleft"].InnerText, nfi);
+
+                    if (_List.Count > i && !refocus)
+                    {
+                        MP.UpdateListItem(i, _List, nodeItem["filename"].InnerText, ((nodeItem["status"].InnerText == "Paused") ? "Paused" : mbdone.ToString("N2") + " / " + double.Parse(nodeItem["mb"].InnerText, nfi).ToString("N2") + " MB"), strJobInfo, DateTime.Now, 0, String.Empty, nodeItem["nzo_id"].InnerText, 3);
+                    }
+                    else
+                    {
+                        MP.ListItem(_List, nodeItem["filename"].InnerText, ((nodeItem["status"].InnerText == "Paused") ? "Paused" : mbdone.ToString("N2") + " / " + double.Parse(nodeItem["mb"].InnerText, nfi).ToString("N2") + " MB"), strJobInfo, DateTime.Now, 0, String.Empty, nodeItem["nzo_id"].InnerText, 3);
+                    }
+
+                    ++i;
+                }
+
+                GUIPropertyManager.SetProperty("#Status", "Queue Loaded");
+            }
+            else
+            {
+                GUIPropertyManager.SetProperty("#Status", "Error parsing XML");
+            }
         }
-        else
+        catch (Exception e) { MP.Error(e); }
+        finally
         {
-          GUIPropertyManager.SetProperty("#Status", "Error parsing XML");
+            if (_List.Count > 0 && refocus)
+            {
+                _GUI.LooseFocus();
+                _List.Focus = true;
+            }
+            else if (_List.IsFocused && _List.Count > selectedIndex)
+            {
+                _List.SelectedListItemIndex = selectedIndex;
+            }
         }
-      }
-      catch (Exception e) { MP.Error(e); }
-      finally
-      {
-        if (_List.Count > 0)
-        {
-          _GUI.LooseFocus();
-          _List.Focus = true;
-        }
-      }
     }
 
     public void History(GUIListControl _List, GUIWindow _GUI)
@@ -425,7 +461,7 @@ namespace mpNZB.Clients
             SendURL(CreateURL("api?mode=queue&name=priority&value=" + _List.ListItems[_List.SelectedListItemIndex].Path + "&value2=" + SelectPriority(), String.Empty, false));
             break;
         }
-        Queue(_List, _GUI);
+        Queue(_List, _GUI, true);
       }
     }
 
