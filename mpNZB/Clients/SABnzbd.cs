@@ -40,13 +40,16 @@ namespace mpNZB.Clients
     private string Username = String.Empty;
     private string Password = String.Empty;
     private string APIKey = String.Empty;
+    private bool Https = false;
 
     private bool CatSelect = false;
     private bool Auth = false;
     private bool Notifications = false;
     private int AutoHideSeconds = 0;
 
-    public SABnzbd(string strIP, string strPort, bool bolCatSelect, bool bolAuth, string strUsername, string strPassword, string strAPIKey, int intUpdateFreq, bool bolNotifications, int intAutoHideSeconds)
+    public SABnzbd(string strIP, string strPort, bool bolCatSelect, bool bolAuth, string strUsername, string strPassword, string strAPIKey, int intUpdateFreq, bool bolNotifications, int intAutoHideSeconds) : this(strIP, strPort, bolCatSelect, bolAuth, strUsername, strPassword, strAPIKey, intUpdateFreq, bolNotifications, intAutoHideSeconds, false) { }
+
+    public SABnzbd(string strIP, string strPort, bool bolCatSelect, bool bolAuth, string strUsername, string strPassword, string strAPIKey, int intUpdateFreq, bool bolNotifications, int intAutoHideSeconds, bool https)
     {
       IP = strIP;
       Port = strPort;
@@ -62,6 +65,17 @@ namespace mpNZB.Clients
       AutoHideSeconds = intAutoHideSeconds;
 
       ActiveView = (int)mpNZB.ClientView.None;
+
+      Https = https;
+      if (https)
+      {
+          // Accept unsigned certificates
+          // DISCLAIMER: this opens up the possibility for man in the middle attacks ...
+          //             just don't know how to do it better (present the user a cert and let
+          //             him choose to accept or deny it)
+          ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+      }
+
       /*
       tmrStatus = new Timer();
       tmrStatus.Elapsed += new System.Timers.ElapsedEventHandler(OnTimer);
@@ -118,7 +132,7 @@ namespace mpNZB.Clients
           string strCategory = String.Empty;
           if (_CatSelect) { strCategory = SelectCategory(); }
 
-          strResult = "http://" + IP + ":" + Port + "/sabnzbd/" + _Mode + ((APIKey.Length > 0) ? "&apikey=" + APIKey : String.Empty) + (((Auth) && ((Username.Length > 0) && (Password.Length > 0))) ? "&" + "ma_username=" + Username + "&" + "ma_password=" + Password : String.Empty) + ((_Command.Length > 0) ? "&" + _Command : String.Empty) + ((strCategory.Length > 0) ? "&" + "cat=" + strCategory : String.Empty);
+          strResult = ((Https) ? "https://" : "http://") + IP + ":" + Port + "/sabnzbd/" + _Mode + ((APIKey.Length > 0) ? "&apikey=" + APIKey : String.Empty) + (((Auth) && ((Username.Length > 0) && (Password.Length > 0))) ? "&" + "ma_username=" + Username + "&" + "ma_password=" + Password : String.Empty) + ((_Command.Length > 0) ? "&" + _Command : String.Empty) + ((strCategory.Length > 0) ? "&" + "cat=" + strCategory : String.Empty);
         }
       }
       catch (Exception e) { MP.Error(e); }

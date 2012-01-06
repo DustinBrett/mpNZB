@@ -53,6 +53,9 @@
         this.txtMaxResults = new System.Windows.Forms.TextBox();
         this.label2 = new System.Windows.Forms.Label();
         this.grpVisual = new System.Windows.Forms.GroupBox();
+        this.numericUpDownAutoHide = new System.Windows.Forms.NumericUpDown();
+        this.label7 = new System.Windows.Forms.Label();
+        this.label6 = new System.Windows.Forms.Label();
         this.chkNotifications = new System.Windows.Forms.CheckBox();
         this.txtUpdateFreq = new System.Windows.Forms.TextBox();
         this.txtDisplayName = new System.Windows.Forms.TextBox();
@@ -83,9 +86,7 @@
         this.checkBox1 = new System.Windows.Forms.CheckBox();
         this.comboBox1 = new System.Windows.Forms.ComboBox();
         this.label1 = new System.Windows.Forms.Label();
-        this.label6 = new System.Windows.Forms.Label();
-        this.label7 = new System.Windows.Forms.Label();
-        this.numericUpDownAutoHide = new System.Windows.Forms.NumericUpDown();
+        this.checkBoxHttps = new System.Windows.Forms.CheckBox();
         this.tabPages.SuspendLayout();
         this.tabClientSettings.SuspendLayout();
         this.grpSettings.SuspendLayout();
@@ -93,11 +94,11 @@
         this.tabPluginSettings.SuspendLayout();
         this.groupBox1.SuspendLayout();
         this.grpVisual.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAutoHide)).BeginInit();
         this.tabSearch.SuspendLayout();
         this.groupBox2.SuspendLayout();
         this.tabGroups.SuspendLayout();
         this.groupBox3.SuspendLayout();
-        ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAutoHide)).BeginInit();
         this.SuspendLayout();
         // 
         // tabPages
@@ -110,7 +111,7 @@
         this.tabPages.Location = new System.Drawing.Point(12, 12);
         this.tabPages.Name = "tabPages";
         this.tabPages.SelectedIndex = 0;
-        this.tabPages.Size = new System.Drawing.Size(320, 317);
+        this.tabPages.Size = new System.Drawing.Size(320, 350);
         this.tabPages.TabIndex = 1;
         // 
         // tabClientSettings
@@ -121,13 +122,14 @@
         this.tabClientSettings.Location = new System.Drawing.Point(4, 22);
         this.tabClientSettings.Name = "tabClientSettings";
         this.tabClientSettings.Padding = new System.Windows.Forms.Padding(3);
-        this.tabClientSettings.Size = new System.Drawing.Size(312, 291);
+        this.tabClientSettings.Size = new System.Drawing.Size(312, 324);
         this.tabClientSettings.TabIndex = 0;
         this.tabClientSettings.Text = "Client Settings";
         this.tabClientSettings.UseVisualStyleBackColor = true;
         // 
         // grpSettings
         // 
+        this.grpSettings.Controls.Add(this.checkBoxHttps);
         this.grpSettings.Controls.Add(this.txtAPIKey);
         this.grpSettings.Controls.Add(this.label10);
         this.grpSettings.Controls.Add(this.btnTestConn);
@@ -143,7 +145,7 @@
         this.grpSettings.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.grpSettings.Location = new System.Drawing.Point(16, 95);
         this.grpSettings.Name = "grpSettings";
-        this.grpSettings.Size = new System.Drawing.Size(280, 178);
+        this.grpSettings.Size = new System.Drawing.Size(280, 217);
         this.grpSettings.TabIndex = 10;
         this.grpSettings.TabStop = false;
         this.grpSettings.Text = "Settings:";
@@ -151,7 +153,7 @@
         // txtAPIKey
         // 
         this.txtAPIKey.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.txtAPIKey.Location = new System.Drawing.Point(77, 146);
+        this.txtAPIKey.Location = new System.Drawing.Point(78, 183);
         this.txtAPIKey.Name = "txtAPIKey";
         this.txtAPIKey.Size = new System.Drawing.Size(187, 21);
         this.txtAPIKey.TabIndex = 10;
@@ -160,7 +162,7 @@
         // 
         this.label10.AutoSize = true;
         this.label10.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.label10.Location = new System.Drawing.Point(22, 149);
+        this.label10.Location = new System.Drawing.Point(23, 186);
         this.label10.Name = "label10";
         this.label10.Size = new System.Drawing.Size(49, 13);
         this.label10.TabIndex = 9;
@@ -168,9 +170,9 @@
         // 
         // btnTestConn
         // 
-        this.btnTestConn.Location = new System.Drawing.Point(160, 48);
+        this.btnTestConn.Location = new System.Drawing.Point(77, 75);
         this.btnTestConn.Name = "btnTestConn";
-        this.btnTestConn.Size = new System.Drawing.Size(104, 21);
+        this.btnTestConn.Size = new System.Drawing.Size(187, 21);
         this.btnTestConn.TabIndex = 8;
         this.btnTestConn.Text = "Test Connection";
         this.btnTestConn.UseVisualStyleBackColor = true;
@@ -180,7 +182,7 @@
         // 
         this.chkAuth.AutoSize = true;
         this.chkAuth.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.chkAuth.Location = new System.Drawing.Point(77, 77);
+        this.chkAuth.Location = new System.Drawing.Point(78, 114);
         this.chkAuth.Name = "chkAuth";
         this.chkAuth.Size = new System.Drawing.Size(141, 17);
         this.chkAuth.TabIndex = 5;
@@ -192,7 +194,7 @@
         // 
         this.txtUsername.Enabled = false;
         this.txtUsername.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.txtUsername.Location = new System.Drawing.Point(77, 98);
+        this.txtUsername.Location = new System.Drawing.Point(78, 135);
         this.txtUsername.Name = "txtUsername";
         this.txtUsername.Size = new System.Drawing.Size(187, 21);
         this.txtUsername.TabIndex = 6;
@@ -201,7 +203,7 @@
         // 
         this.lblUsername.AutoSize = true;
         this.lblUsername.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.lblUsername.Location = new System.Drawing.Point(12, 101);
+        this.lblUsername.Location = new System.Drawing.Point(13, 138);
         this.lblUsername.Name = "lblUsername";
         this.lblUsername.Size = new System.Drawing.Size(59, 13);
         this.lblUsername.TabIndex = 4;
@@ -211,7 +213,7 @@
         // 
         this.txtPassword.Enabled = false;
         this.txtPassword.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.txtPassword.Location = new System.Drawing.Point(77, 122);
+        this.txtPassword.Location = new System.Drawing.Point(78, 159);
         this.txtPassword.Name = "txtPassword";
         this.txtPassword.Size = new System.Drawing.Size(187, 21);
         this.txtPassword.TabIndex = 7;
@@ -249,7 +251,7 @@
         // 
         this.lblPassword.AutoSize = true;
         this.lblPassword.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.lblPassword.Location = new System.Drawing.Point(14, 125);
+        this.lblPassword.Location = new System.Drawing.Point(15, 162);
         this.lblPassword.Name = "lblPassword";
         this.lblPassword.Size = new System.Drawing.Size(57, 13);
         this.lblPassword.TabIndex = 6;
@@ -316,7 +318,7 @@
         this.tabPluginSettings.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.tabPluginSettings.Location = new System.Drawing.Point(4, 22);
         this.tabPluginSettings.Name = "tabPluginSettings";
-        this.tabPluginSettings.Size = new System.Drawing.Size(312, 291);
+        this.tabPluginSettings.Size = new System.Drawing.Size(312, 324);
         this.tabPluginSettings.TabIndex = 1;
         this.tabPluginSettings.Text = "Plugin Settings";
         this.tabPluginSettings.UseVisualStyleBackColor = true;
@@ -380,6 +382,32 @@
         this.grpVisual.TabStop = false;
         this.grpVisual.Text = "Visual:";
         // 
+        // numericUpDownAutoHide
+        // 
+        this.numericUpDownAutoHide.Location = new System.Drawing.Point(93, 87);
+        this.numericUpDownAutoHide.Name = "numericUpDownAutoHide";
+        this.numericUpDownAutoHide.Size = new System.Drawing.Size(71, 21);
+        this.numericUpDownAutoHide.TabIndex = 23;
+        this.numericUpDownAutoHide.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+        // 
+        // label7
+        // 
+        this.label7.AutoSize = true;
+        this.label7.Location = new System.Drawing.Point(170, 91);
+        this.label7.Name = "label7";
+        this.label7.Size = new System.Drawing.Size(50, 13);
+        this.label7.TabIndex = 22;
+        this.label7.Text = "seconds)";
+        // 
+        // label6
+        // 
+        this.label6.AutoSize = true;
+        this.label6.Location = new System.Drawing.Point(31, 91);
+        this.label6.Name = "label6";
+        this.label6.Size = new System.Drawing.Size(59, 13);
+        this.label6.TabIndex = 22;
+        this.label6.Text = "(Hide after";
+        // 
         // chkNotifications
         // 
         this.chkNotifications.AutoSize = true;
@@ -434,7 +462,7 @@
         this.tabSearch.Location = new System.Drawing.Point(4, 22);
         this.tabSearch.Name = "tabSearch";
         this.tabSearch.Padding = new System.Windows.Forms.Padding(3);
-        this.tabSearch.Size = new System.Drawing.Size(312, 291);
+        this.tabSearch.Size = new System.Drawing.Size(312, 324);
         this.tabSearch.TabIndex = 2;
         this.tabSearch.Text = "Searches";
         this.tabSearch.UseVisualStyleBackColor = true;
@@ -449,7 +477,7 @@
         this.lvSearches.Location = new System.Drawing.Point(16, 116);
         this.lvSearches.MultiSelect = false;
         this.lvSearches.Name = "lvSearches";
-        this.lvSearches.Size = new System.Drawing.Size(280, 160);
+        this.lvSearches.Size = new System.Drawing.Size(280, 192);
         this.lvSearches.TabIndex = 21;
         this.lvSearches.UseCompatibleStateImageBehavior = false;
         this.lvSearches.View = System.Windows.Forms.View.Details;
@@ -552,7 +580,7 @@
         this.tabGroups.Controls.Add(this.groupBox3);
         this.tabGroups.Location = new System.Drawing.Point(4, 22);
         this.tabGroups.Name = "tabGroups";
-        this.tabGroups.Size = new System.Drawing.Size(312, 291);
+        this.tabGroups.Size = new System.Drawing.Size(312, 324);
         this.tabGroups.TabIndex = 3;
         this.tabGroups.Text = "Groups";
         this.tabGroups.UseVisualStyleBackColor = true;
@@ -566,7 +594,7 @@
         this.lvGroups.Location = new System.Drawing.Point(16, 71);
         this.lvGroups.MultiSelect = false;
         this.lvGroups.Name = "lvGroups";
-        this.lvGroups.Size = new System.Drawing.Size(280, 205);
+        this.lvGroups.Size = new System.Drawing.Size(280, 239);
         this.lvGroups.TabIndex = 23;
         this.lvGroups.UseCompatibleStateImageBehavior = false;
         this.lvGroups.View = System.Windows.Forms.View.Details;
@@ -631,7 +659,7 @@
         // btnCancel
         // 
         this.btnCancel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.btnCancel.Location = new System.Drawing.Point(257, 339);
+        this.btnCancel.Location = new System.Drawing.Point(257, 368);
         this.btnCancel.Name = "btnCancel";
         this.btnCancel.Size = new System.Drawing.Size(75, 23);
         this.btnCancel.TabIndex = 2;
@@ -642,7 +670,7 @@
         // btnOK
         // 
         this.btnOK.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.btnOK.Location = new System.Drawing.Point(176, 339);
+        this.btnOK.Location = new System.Drawing.Point(176, 368);
         this.btnOK.Name = "btnOK";
         this.btnOK.Size = new System.Drawing.Size(75, 23);
         this.btnOK.TabIndex = 3;
@@ -683,37 +711,22 @@
         this.label1.TabIndex = 2;
         this.label1.Text = "Grabber:";
         // 
-        // label6
+        // checkBoxHttps
         // 
-        this.label6.AutoSize = true;
-        this.label6.Location = new System.Drawing.Point(31, 91);
-        this.label6.Name = "label6";
-        this.label6.Size = new System.Drawing.Size(59, 13);
-        this.label6.TabIndex = 22;
-        this.label6.Text = "(Hide after";
-        // 
-        // label7
-        // 
-        this.label7.AutoSize = true;
-        this.label7.Location = new System.Drawing.Point(170, 91);
-        this.label7.Name = "label7";
-        this.label7.Size = new System.Drawing.Size(50, 13);
-        this.label7.TabIndex = 22;
-        this.label7.Text = "seconds)";
-        // 
-        // numericUpDownAutoHide
-        // 
-        this.numericUpDownAutoHide.Location = new System.Drawing.Point(93, 87);
-        this.numericUpDownAutoHide.Name = "numericUpDownAutoHide";
-        this.numericUpDownAutoHide.Size = new System.Drawing.Size(71, 21);
-        this.numericUpDownAutoHide.TabIndex = 23;
-        this.numericUpDownAutoHide.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+        this.checkBoxHttps.AutoSize = true;
+        this.checkBoxHttps.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        this.checkBoxHttps.Location = new System.Drawing.Point(202, 50);
+        this.checkBoxHttps.Name = "checkBoxHttps";
+        this.checkBoxHttps.Size = new System.Drawing.Size(62, 17);
+        this.checkBoxHttps.TabIndex = 11;
+        this.checkBoxHttps.Text = "HTTPS?";
+        this.checkBoxHttps.UseVisualStyleBackColor = true;
         // 
         // frmSetup
         // 
         this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
         this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        this.ClientSize = new System.Drawing.Size(344, 372);
+        this.ClientSize = new System.Drawing.Size(344, 402);
         this.Controls.Add(this.btnOK);
         this.Controls.Add(this.btnCancel);
         this.Controls.Add(this.tabPages);
@@ -733,13 +746,13 @@
         this.groupBox1.PerformLayout();
         this.grpVisual.ResumeLayout(false);
         this.grpVisual.PerformLayout();
+        ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAutoHide)).EndInit();
         this.tabSearch.ResumeLayout(false);
         this.groupBox2.ResumeLayout(false);
         this.groupBox2.PerformLayout();
         this.tabGroups.ResumeLayout(false);
         this.groupBox3.ResumeLayout(false);
         this.groupBox3.PerformLayout();
-        ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAutoHide)).EndInit();
         this.ResumeLayout(false);
 
     }
@@ -804,5 +817,6 @@
     private System.Windows.Forms.Label label7;
     private System.Windows.Forms.Label label6;
     private System.Windows.Forms.NumericUpDown numericUpDownAutoHide;
+    private System.Windows.Forms.CheckBox checkBoxHttps;
   }
 }
