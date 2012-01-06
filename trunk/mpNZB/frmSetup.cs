@@ -50,6 +50,8 @@ namespace mpNZB
         string strPort = mpSettings.GetValue("#Client", "Port");
         if (strPort.Length > 0) { txtPort.Text = strPort; }
 
+        checkBoxHttps.Checked = mpSettings.GetValueAsBool("#Client", "Https", false);
+
         chkCatSelect.Enabled = (cmbGrabber.Text == "SABnzbd");
         chkCatSelect.Checked = mpSettings.GetValueAsBool("#Client", "CatSelect", false);
 
@@ -115,6 +117,7 @@ namespace mpNZB
 
       mpSettings.SetValue("#Client", "Host", txtHost.Text);
       mpSettings.SetValue("#Client", "Port", txtPort.Text);
+      mpSettings.SetValueAsBool("#Client", "Https", checkBoxHttps.Checked);
 
       mpSettings.SetValueAsBool("#Client", "CatSelect", chkCatSelect.Checked);
       
@@ -178,8 +181,7 @@ namespace mpNZB
       switch (cmbGrabber.Text)
       {
         case "SABnzbd":
-          Client = new Clients.SABnzbd(txtHost.Text, txtPort.Text, false, chkAuth.Checked, txtUsername.Text, txtPassword.Text, txtAPIKey.Text, 1, false, 0);
-
+          Client = new Clients.SABnzbd(txtHost.Text, txtPort.Text, false, chkAuth.Checked, txtUsername.Text, txtPassword.Text, txtAPIKey.Text, 1, false, 0, checkBoxHttps.Checked);
           string strVersion = Client.Version();
 
           if (strVersion.Length != 0)

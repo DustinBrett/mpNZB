@@ -31,7 +31,7 @@
           </GroupItem>
           <GroupItem Name="theme_files">
             <DisplayName>theme_files</DisplayName>
-            <DefaulChecked>false</DefaulChecked>
+            <DefaulChecked>true</DefaulChecked>
             <Description>theme_files</Description>
             <Files>
               <Items />
@@ -78,19 +78,18 @@
         <Version>
           <Major>1</Major>
           <Minor>5</Minor>
-          <Build>3</Build>
+          <Build>4</Build>
           <Revision>0</Revision>
         </Version>
         <ExtensionDescription>mpNZB is a plug-in for MediaPortal that allows you to download NZB's from multiple sources (Feeds/Groups/Search). Then using SABnzbd it downloads those files from a Usenet provider such as Supernews.</ExtensionDescription>
-        <VersionDescription>- Open context menu on pause button for pause with timeout
-- Autorefresh queue
-- Automatically show queue on start
-- Default wide skin file</VersionDescription>
+        <VersionDescription>You can now use a https connection (see setup).
+
+DISCLAIMER: the plugin blindly accepts all ssl certificates, this opens up the possiblity of man in the middle attacks. Please be aware of that when using https connections.</VersionDescription>
         <DevelopmentStatus>Stable</DevelopmentStatus>
-        <OnlineLocation>http://mpnzb.googlecode.com/files/mpNZB_1.5.3.mpe1</OnlineLocation>
-        <ReleaseDate>2011-12-06T19:01:12</ReleaseDate>
+        <OnlineLocation>http://mpnzb.googlecode.com/files/mpNZB_1.5.4.mpe1</OnlineLocation>
+        <ReleaseDate>2012-01-06T19:01:12</ReleaseDate>
         <Tags>nzb,usenet,sabnzb</Tags>
-        <Location>D:\Documents\mpNZB_1.5.3.mpe1</Location>
+        <Location>D:\Documents\mpNZB_1.5.4.mpe1</Location>
         <Params>
           <Items>
             <SectionParam Name="Online Icon">
